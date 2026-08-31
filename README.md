@@ -40,5 +40,14 @@ Push to `main` and GitHub Actions rebuilds and deploys the site automatically.
 ## Updating the resume
 
 Profile data (experience, skills, education) lives in `src/data/profile.ts` and feeds the
-Career and Resume pages. The downloadable PDF is generated from `tools/resume-print.html`
-(see instructions in that file) and stored at `public/cv.pdf`.
+Career page, plus a print-optimized page at `/resume-print/`
+(`src/pages/resume-print.astro`, excluded from the sitemap and marked noindex).
+
+The downloadable PDF at `public/cv.pdf` is printed from that page. After editing
+`src/data/profile.ts`, regenerate it with:
+
+```powershell
+npm run build
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+  --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "<repo>\dist\resume-print\index.html"
+```

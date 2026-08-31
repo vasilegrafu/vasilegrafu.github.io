@@ -4,7 +4,14 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://vasilegrafu.github.io',
-  integrations: [sitemap()],
+  redirects: {
+    '/resume': '/career',
+  },
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/resume-print/'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -2,7 +2,7 @@ export const site = {
   name: 'Vasile Grafu',
   title: 'Engineering Manager | Solutions Architect | Enterprise & AI Systems',
   tagline:
-    'Engineering leader with 20+ years in software — from game engines at Ubisoft to cloud platforms handling millions of requests a day, now building agentic AI systems.',
+    'Engineering leader with 20+ years in software — from game programming at Ubisoft to cloud platforms handling millions of requests a day, now building agentic AI systems.',
   location: 'Bucharest, Romania',
   email: 'vasilegrafu@gmail.com',
   phone: '+40 722 635 785',
@@ -36,9 +36,9 @@ export const experience: Role[] = [
       'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
       'Contribute to software architecture: design and implementation of scalable, secure, and maintainable systems.',
       'Hands-on development: shared components, application structure, data flow, database design, security principles, and infrastructure improvements.',
-      'AWS Solution Architect: designing and managing cloud environments and implementing CI/CD pipelines.',
+      'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
-      'Building a large-scale internal conversational AI platform: agentic architecture combining LLMs with orchestration layers, RAG (Retrieval-Augmented Generation), structured prompt engineering, and MCP-style tool integration. Multiple domain-specific agents — each with tailored prompts, tools, and data sources — collaborate through an orchestration layer, backed by a continuous data-ingestion and retrieval pipeline over internal documentation, APIs, and business data.',
+      'Building a large-scale internal conversational AI platform: LLMs, agent orchestration, RAG, and MCP-style tool integration.',
     ],
     tech: [
       'AI-assisted development',
@@ -58,8 +58,8 @@ export const experience: Role[] = [
     summary:
       'Consignor, a Scandinavian company with offices in Norway, Denmark, and Sweden, was the largest supplier of transport administration solutions in Scandinavia. I led two teams and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer.',
     bullets: [
-      'Webservices Team: handled many millions of requests per day serving the client components of the Consignor business.',
-      'Integration Team: brought Consignor functionality to major e-commerce platforms such as WooCommerce, Klarna, and Magento.',
+      'Webservices Team: ran the web services serving the client components of the Consignor business.',
+      'Integration Team: brought Consignor functionality to the major e-commerce platforms.',
       'Hiring, training, and coordinating people; critical architecture decisions; hands-on development; and management of cross-team projects.',
     ],
   },
@@ -200,7 +200,7 @@ export const projects: Project[] = [
     title: 'High-Throughput Webservices Platform',
     role: 'Engineering Manager · nShift',
     description:
-      'The core web-services platform behind nShift’s delivery-management suite, handling millions of requests per day for multiple business-critical applications and 10,000+ business clients, distributed across AWS.',
+      'The core web-services platform behind nShift’s delivery-management suite: dozens of services and full-stack applications distributed across AWS, serving the client components of business-critical delivery workflows around the clock.',
     tags: ['C# / .NET', 'AWS', 'SQL Server', 'PostgreSQL', 'Docker', 'CI/CD'],
   },
   {
@@ -209,12 +209,5 @@ export const projects: Project[] = [
     description:
       'Led the team that brought Consignor’s shipping functionality into major e-commerce ecosystems — WooCommerce, Klarna, Magento, and more — connecting thousands of online shops to multi-carrier delivery.',
     tags: ['Integrations', 'E-commerce', 'APIs'],
-  },
-  {
-    title: 'Shipped Game Titles at Ubisoft',
-    role: 'Game Programmer · Ubisoft',
-    description:
-      'Silent Hunter 4 (crew/weapons/equipment evolution framework and Career module), King Kong PC (Intel Viiv / Media Center integration, multithreaded rendering, security module), Blazing Angels PC (Save/Load, Media Center shell), and Tom Clancy’s FireHawk (Enhanced Reality System).',
-    tags: ['C++', 'STL', 'Optimization', 'Game Engines'],
   },
 ];

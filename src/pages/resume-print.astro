@@ -1,0 +1,134 @@
+---
+// Print source for public/cv.pdf, rendered entirely from src/data/profile.ts.
+// Regenerate the PDF after any profile change with:
+//   npm run build
+//   & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+//     --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "<repo>\dist\resume-print\index.html"
+// This page is noindex and excluded from the sitemap (see astro.config.mjs).
+import { site, experience, skills, education, selfLearning, projects } from '../data/profile';
+
+const keyProject = projects[0];
+
+const linkedinLabel = site.linkedin.replace('https://www.', '');
+const siteLabel = site.url.replace('https://', '');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>{site.name} — Resume</title>
+    <style is:inline>
+      :root {
+        --ink: #1e293b;
+        --muted: #64748b;
+        --accent: #4338ca;
+        --line: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      @page { size: A4; margin: 11mm 15mm; }
+      body {
+        font-family: "Segoe UI", ui-sans-serif, system-ui, Arial, sans-serif;
+        color: var(--ink);
+        font-size: 9.5pt;
+        line-height: 1.38;
+      }
+      header { border-bottom: 2.5px solid var(--accent); padding-bottom: 10px; }
+      h1 { font-size: 22pt; letter-spacing: -0.5px; }
+      .subtitle { font-size: 11pt; color: var(--accent); font-weight: 600; margin-top: 2px; }
+      .contact { margin-top: 6px; color: var(--muted); font-size: 8.5pt; }
+      .contact span + span::before { content: " · "; }
+      a { color: var(--accent); text-decoration: none; }
+      h2 {
+        font-size: 10.5pt;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        margin: 12px 0 5px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 2px;
+      }
+      .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; }
+      .skills p { font-size: 8.5pt; }
+      .skills b { color: var(--ink); }
+      .role { margin-bottom: 11px; page-break-inside: avoid; }
+      .role.allow-break { page-break-inside: auto; }
+      .role-head { display: flex; justify-content: space-between; align-items: baseline; }
+      .role-head h3 { font-size: 10.5pt; }
+      .role-head .period { color: var(--muted); font-size: 8.5pt; white-space: nowrap; }
+      .role .summary { margin-top: 2px; color: var(--ink); }
+      .role ul { margin: 3px 0 0 14px; }
+      .role li { margin-bottom: 1.5px; }
+      .tech { margin-top: 3px; color: var(--muted); font-size: 8.5pt; }
+      .edu { margin-bottom: 6px; }
+      .edu .period { color: var(--muted); font-size: 8.5pt; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{site.name}</h1>
+      <div class="subtitle">{site.title}</div>
+      <div class="contact">
+        <span>{site.location}</span>
+        <span>{site.phone}</span>
+        <span>{site.email}</span>
+        <span>{linkedinLabel}</span>
+        <span>{siteLabel}</span>
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p>{site.tagline}</p>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      {
+        skills.map((s) => (
+          <p>
+            <b>{s.group}:</b> {s.items.join(', ')}
+          </p>
+        ))
+      }
+    </div>
+
+    <h2>Experience</h2>
+    {
+      experience.map((role) => (
+        <div class={role.bullets.length > 5 ? 'role allow-break' : 'role'}>
+          <div class="role-head">
+            <h3>{role.position} · {role.company}, {role.location}</h3>
+            <span class="period">{role.period}</span>
+          </div>
+          <p class="summary">{role.summary}</p>
+          <ul>
+            {role.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+          {role.tech && <p class="tech">{role.tech.join(' · ')}</p>}
+        </div>
+      ))
+    }
+
+    <h2>Key Project</h2>
+    <div class="role">
+      <div class="role-head">
+        <h3>{keyProject.title}</h3>
+        <span class="period">{keyProject.role}</span>
+      </div>
+      <p class="summary">{keyProject.description}</p>
+    </div>
+
+    <h2>Education</h2>
+    {
+      education.map((e) => (
+        <div class="edu">
+          <b>{e.degree}</b> — {e.school} <span class="period">({e.period})</span>
+        </div>
+      ))
+    }
+
+    <h2>Self-Learning</h2>
+    <p>{selfLearning}</p>
+  </body>
+</html>

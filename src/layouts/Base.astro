@@ -11,7 +11,6 @@ const { title, description = site.tagline } = Astro.props;
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/career/', label: 'Career' },
-  { href: '/resume/', label: 'Resume' },
   { href: '/projects/', label: 'Projects' },
   { href: '/articles/', label: 'Articles' },
   { href: '/ideas/', label: 'Ideas' },
@@ -69,14 +68,13 @@ const isActive = (href: string) =>
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800">
-      <div class="mx-auto max-w-4xl px-4 py-6 text-sm text-slate-500 dark:text-slate-400 space-y-1">
+      <div class="mx-auto max-w-4xl px-4 py-6 text-sm text-slate-500 dark:text-slate-400">
         <p>
           © {new Date().getFullYear()} {site.name} ·
           <a href={site.github} class="hover:text-indigo-600 dark:hover:text-indigo-400">GitHub</a> ·
           <a href={site.linkedin} class="hover:text-indigo-600 dark:hover:text-indigo-400">LinkedIn</a> ·
           <a href="/rss.xml" class="hover:text-indigo-600 dark:hover:text-indigo-400">RSS</a>
         </p>
-        <p>Views and content on this site are my own and do not represent my employer.</p>
       </div>
     </footer>
   </body>
