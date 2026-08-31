@@ -69,6 +69,8 @@ import { experience, education, selfLearning } from '../data/profile';
   </ul>
 
   <h2 class="mt-14 font-display text-2xl font-bold text-slate-900 dark:text-white">Self-learning</h2>
-  <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">{selfLearning}</p>
+  <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-300">
+    {selfLearning.map((p) => <p>{p}</p>)}
+  </div>
 
 </Base>

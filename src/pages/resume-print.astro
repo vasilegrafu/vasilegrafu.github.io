@@ -129,6 +129,6 @@ const siteLabel = site.url.replace('https://', '');
     }
 
     <h2>Self-Learning</h2>
-    <p>{selfLearning}</p>
+    {selfLearning.map((p) => <p style="margin-bottom: 4px">{p}</p>)}
   </body>
 </html>

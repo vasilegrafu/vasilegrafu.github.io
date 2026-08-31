@@ -178,8 +178,10 @@ export const education = [
   },
 ];
 
-export const selfLearning =
-  'I have a strong curiosity-driven mindset that extends beyond formal job requirements and continuously pushes me to deepen my understanding of computer science and AI. Over time this has led me to independently build a solid conceptual foundation in machine learning, deep learning, neural networks, reinforcement learning, probability theory, linear algebra, calculus, and statistics. I prioritize understanding core principles and mathematical foundations — developing deep intuition for how algorithms and systems work under the hood — which lets me reason effectively about system design, model behavior, and trade-offs in complex technical environments. Along the way I have worked hands-on with Python, NumPy, Pandas, TensorFlow, and Matplotlib in practical experiments and small-scale implementations.';
+export const selfLearning: string[] = [
+  'I have a deeply curiosity-driven mindset that consistently pushes me beyond the boundaries of formal job requirements. I genuinely enjoy understanding how things work at a fundamental level, and this has led me to independently build a strong conceptual foundation across computer science and AI. Over time, I have studied machine learning, deep learning, neural networks, reinforcement learning, probability theory, linear algebra, calculus, and statistics — not simply to become familiar with these topics, but to understand the principles and mathematics that make them work.',
+  'I place particular value on developing strong intuition for what happens under the hood. Rather than treating algorithms and models as black boxes, I try to understand their underlying mechanisms, assumptions, limitations, and trade-offs. This way of thinking allows me to reason more effectively about system design, model behavior, and complex technical problems, even when working outside areas I have encountered before.',
+];
 
 export interface Project {
   title: string;
