@@ -4,7 +4,8 @@ import { projects } from '../data/profile';
 ---
 
 <Base title="Projects — Vasile Grafu" description="Selected systems: enterprise AI platforms, high-throughput web services, and e-commerce integrations.">
-  <h1 class="text-3xl font-bold text-slate-900 dark:text-white">Projects</h1>
+  <p class="kicker">Selected systems</p>
+  <h1 class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">Projects</h1>
   <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
     The systems I’m proudest of — what they do, the scale they run at, and the architecture
     behind them.
@@ -13,8 +14,8 @@ import { projects } from '../data/profile';
   <div class="mt-8 grid gap-6 sm:grid-cols-2">
     {
       projects.map((p) => (
-        <article class="rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col">
-          <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{p.title}</h2>
+        <article class="card-lift rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col">
+          <h2 class="font-display text-lg font-semibold text-slate-900 dark:text-white">{p.title}</h2>
           <p class="mt-1 text-sm text-indigo-600 dark:text-indigo-400">{p.role}</p>
           <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 grow">
             {p.description}
