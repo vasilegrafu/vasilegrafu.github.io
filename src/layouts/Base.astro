@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import { site } from '../data/profile';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = site.tagline } = Astro.props;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/career/', label: 'Career' },
+  { href: '/resume/', label: 'Resume' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/articles/', label: 'Articles' },
+  { href: '/ideas/', label: 'Ideas' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href.replace(/\/$/, ''));
+---
+
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={new URL(path, site.url)} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Articles`} href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(path, site.url)} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-200 flex flex-col font-sans">
+    <header class="sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur">
+      <div class="mx-auto max-w-4xl px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+        <a href="/" class="font-semibold tracking-tight text-slate-900 dark:text-white">
+          Vasile Grafu
+        </a>
+        <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                class={`hover:text-indigo-600 dark:hover:text-indigo-400 ${
+                  isActive(item.href)
+                    ? 'text-indigo-600 dark:text-indigo-400 font-medium'
+                    : 'text-slate-600 dark:text-slate-400'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto w-full max-w-4xl px-4 py-10 grow">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+      <div class="mx-auto max-w-4xl px-4 py-6 text-sm text-slate-500 dark:text-slate-400 space-y-1">
+        <p>
+          © {new Date().getFullYear()} {site.name} ·
+          <a href={site.github} class="hover:text-indigo-600 dark:hover:text-indigo-400">GitHub</a> ·
+          <a href={site.linkedin} class="hover:text-indigo-600 dark:hover:text-indigo-400">LinkedIn</a> ·
+          <a href="/rss.xml" class="hover:text-indigo-600 dark:hover:text-indigo-400">RSS</a>
+        </p>
+        <p>Views and content on this site are my own and do not represent my employer.</p>
+      </div>
+    </footer>
+  </body>
+</html>

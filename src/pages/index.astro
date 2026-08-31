@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, experience } from '../data/profile';
+
+const current = experience[0];
+---
+
+<Base title="Vasile Grafu — Engineering Manager & AI Systems Builder">
+  <section class="py-8">
+    <p class="text-indigo-600 dark:text-indigo-400 font-medium">Hello, I’m</p>
+    <h1 class="mt-1 text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+      {site.name}
+    </h1>
+    <p class="mt-3 text-xl text-slate-600 dark:text-slate-300">{site.title}</p>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed">
+      {site.tagline}
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/resume/"
+        class="rounded-lg bg-indigo-600 px-5 py-2.5 text-white font-medium hover:bg-indigo-700"
+      >
+        View my resume
+      </a>
+      <a
+        href="/contact/"
+        class="rounded-lg border border-slate-300 dark:border-slate-700 px-5 py-2.5 font-medium hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+      >
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+  <section class="py-8 grid gap-6 sm:grid-cols-3">
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+      <h2 class="font-semibold text-slate-900 dark:text-white">Engineering leadership</h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Leading core teams at {current.company.split(' ')[0]} that run web services handling
+        millions of requests a day for 10,000+ business clients.
+      </p>
+    </div>
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+      <h2 class="font-semibold text-slate-900 dark:text-white">AI systems</h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Building agentic AI platforms — LLM orchestration, RAG pipelines, and multi-agent
+        architectures grounded in real business data.
+      </p>
+    </div>
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+      <h2 class="font-semibold text-slate-900 dark:text-white">Hands-on architect</h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        AWS Solution Architect who still codes: C#/.NET, Python, React — from game engines at
+        Ubisoft to cloud platforms today.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">What I’m open to</h2>
+    <ul class="mt-4 space-y-3 text-slate-600 dark:text-slate-300">
+      <li class="flex gap-3">
+        <span class="text-indigo-600 dark:text-indigo-400">→</span>
+        <span><strong class="text-slate-900 dark:text-white">Collaboration</strong> on applied AI research and agentic systems.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="text-indigo-600 dark:text-indigo-400">→</span>
+        <span><strong class="text-slate-900 dark:text-white">Business partnerships</strong> — I have product ideas I’m looking to develop. See <a href="/ideas/" class="text-indigo-600 dark:text-indigo-400 hover:underline">Ideas</a>.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="text-indigo-600 dark:text-indigo-400">→</span>
+        <span><strong class="text-slate-900 dark:text-white">Conversations</strong> about engineering leadership, architecture, and AI-assisted development.</span>
+      </li>
+    </ul>
+  </section>
+</Base>

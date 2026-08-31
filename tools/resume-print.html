@@ -1,0 +1,190 @@
+<!doctype html>
+<!--
+  Print source for public/cv.pdf. Regenerate after editing with:
+  & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+    --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "<repo>\tools\resume-print.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vasile Grafu — Resume</title>
+<style>
+  :root {
+    --ink: #1e293b;
+    --muted: #64748b;
+    --accent: #4338ca;
+    --line: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 14mm 16mm; }
+  body {
+    font-family: "Segoe UI", ui-sans-serif, system-ui, Arial, sans-serif;
+    color: var(--ink);
+    font-size: 9.5pt;
+    line-height: 1.45;
+  }
+  header { border-bottom: 2.5px solid var(--accent); padding-bottom: 10px; }
+  h1 { font-size: 22pt; letter-spacing: -0.5px; }
+  .subtitle { font-size: 11pt; color: var(--accent); font-weight: 600; margin-top: 2px; }
+  .contact { margin-top: 6px; color: var(--muted); font-size: 8.5pt; }
+  .contact span + span::before { content: " · "; }
+  a { color: var(--accent); text-decoration: none; }
+  h2 {
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin: 14px 0 6px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; }
+  .skills p { font-size: 8.5pt; }
+  .skills b { color: var(--ink); }
+  .role { margin-bottom: 11px; page-break-inside: avoid; }
+  .role.allow-break { page-break-inside: auto; }
+  .role-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .role-head h3 { font-size: 10.5pt; }
+  .role-head .period { color: var(--muted); font-size: 8.5pt; white-space: nowrap; }
+  .role .summary { margin-top: 2px; color: var(--ink); }
+  .role ul { margin: 3px 0 0 14px; }
+  .role li { margin-bottom: 1.5px; }
+  .tech { margin-top: 3px; color: var(--muted); font-size: 8.5pt; }
+  .edu { margin-bottom: 6px; }
+  .edu .period { color: var(--muted); font-size: 8.5pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vasile Grafu</h1>
+  <div class="subtitle">Engineering Manager | Solutions Architect | Enterprise &amp; AI Systems</div>
+  <div class="contact">
+    <span>Bucharest, Romania</span>
+    <span>+40 722 635 785</span>
+    <span>vasilegrafu@gmail.com</span>
+    <span>linkedin.com/in/vasile-grafu-6a99369</span>
+    <span>vasilegrafu.github.io</span>
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p>
+  Engineering leader with 20+ years in software — from game engines at Ubisoft to cloud platforms
+  handling millions of requests a day, now building agentic AI systems. I combine hands-on
+  development with leadership: coding, architecture, and decision-making while aligning teams
+  across the company.
+</p>
+
+<h2>Skills</h2>
+<div class="skills">
+  <p><b>Leadership:</b> Engineering Management, Team &amp; Technical Leadership, Hiring &amp; Mentoring, Agile/Scrum, Project Management (Prince2), Strategic Planning</p>
+  <p><b>AI &amp; ML:</b> AI-Assisted Development, Agentic Architectures, LLM Orchestration, RAG, Prompt Engineering, MCP-style Tool Integration, TensorFlow, NumPy, Pandas</p>
+  <p><b>Backend:</b> C#, .NET, ASP.NET Core, Entity Framework, LINQ, Python, FastAPI, SQLAlchemy, Solution &amp; Software Architecture, Framework Design</p>
+  <p><b>Cloud &amp; Data:</b> AWS (EC2, ECS, RDS, S3, CloudFormation), Docker, CI/CD, SQL Server, PostgreSQL, Database Design</p>
+  <p><b>Frontend:</b> JavaScript, ReactJS, HTML, CSS, SASS, Material UI</p>
+  <p><b>Foundations:</b> Data Structures &amp; Algorithms, Mathematics, Probability, Machine Learning, Deep Learning</p>
+</div>
+
+<h2>Experience</h2>
+
+<div class="role allow-break">
+  <div class="role-head">
+    <h3>Engineering Manager · nShift (formerly Consignor), Bucharest</h3>
+    <span class="period">Jan 2022 – Present</span>
+  </div>
+  <p class="summary">
+    nShift is a global leader in parcel delivery management and multi-carrier shipping software.
+    I lead the Webservices Team — one of the company's core teams — building web services that
+    handle millions of requests per day for multiple business-critical applications.
+  </p>
+  <ul>
+    <li>Lead and manage the team: clear goals, direction, and a motivated, effective group; recruit, onboard, and mentor engineers.</li>
+    <li>Establish engineering processes and standards that improve collaboration, maintain quality, and accelerate delivery.</li>
+    <li>Provide technical guidance: design reviews, complex problem-solving, and critical decisions on challenging topics.</li>
+    <li>Hands-on in architecture and development: shared components, application structure, data flow, database design, and security.</li>
+    <li>AWS Solution Architect: cloud environments and CI/CD pipelines. Scrum Master for the team's agile ceremonies.</li>
+    <li>Building a large-scale internal conversational AI platform: agentic architecture combining LLMs with orchestration layers, RAG, structured prompt engineering, and MCP-style tool integration; domain-specific agents collaborate over a continuously updated ingestion and retrieval pipeline of internal documentation, APIs, and business data.</li>
+  </ul>
+  <p class="tech">C# / .NET / ASP.NET Core · Python / FastAPI / SQLAlchemy · SQL Server / PostgreSQL · AWS (EC2, ECS, RDS, S3) · Docker · JavaScript / ReactJS / Material UI</p>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <h3>Team Manager · Consignor, Bucharest</h3>
+    <span class="period">Jan 2017 – Jan 2022</span>
+  </div>
+  <p class="summary">
+    Consignor, the largest supplier of transport-administration solutions in Scandinavia. Led two
+    teams, combining Team Manager, Technical Lead, Project Manager (Prince2), and Software
+    Developer roles as business demanded.
+  </p>
+  <ul>
+    <li>Webservices Team: handled many millions of requests per day serving the client components of the Consignor business.</li>
+    <li>Integration Team: brought Consignor functionality to major e-commerce platforms — WooCommerce, Klarna, Magento, and more.</li>
+    <li>Hiring, training, and coordination; critical architecture decisions; hands-on development; cross-team project management.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <h3>Technical Lead · Consignor, Bucharest</h3>
+    <span class="period">2009 – 2017</span>
+  </div>
+  <p class="summary">
+    Led the team behind 50 web services and 5 full-stack web applications serving 10,000+
+    business clients, distributed across Amazon Cloud.
+  </p>
+  <ul>
+    <li>Key part of the entire application development workflow; designed many modules of the business software.</li>
+    <li>Mentored junior and senior developers; wrote technical and user documentation; liaison between development and other departments.</li>
+  </ul>
+  <p class="tech">C# .NET, ASP.NET MVC · WCF · SQL Server Enterprise · JavaScript, jQuery, Bootstrap, LESS/SASS · Python, IronPython · AWS</p>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <h3>Team Leader · TeamNet, Bucharest</h3>
+    <span class="period">2008 – 2009</span>
+  </div>
+  <ul>
+    <li>Managed the Optimus ERP modules through all development steps, from specification to testing and deployment.</li>
+    <li>Planned new features with the design department; owned enhancement work and defect resolution with the Quality Department.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <h3>Game Programmer · Ubisoft, Bucharest</h3>
+    <span class="period">Jan 2005 – Jun 2008</span>
+  </div>
+  <ul>
+    <li><b>Silent Hunter 4:</b> framework for Crew, Weapons, and Equipment evolution of the U-Boat simulator; Career module.</li>
+    <li><b>King Kong (PC):</b> Intel Viiv / Windows Media Center integration, multithreaded rendering, security module.</li>
+    <li><b>Blazing Angels (PC):</b> Save/Load system and Media Center shell. <b>Tom Clancy's FireHawk:</b> Enhanced Reality System module.</li>
+  </ul>
+  <p class="tech">C++, STL · Software optimization · Linear algebra, calculus, probabilities</p>
+</div>
+
+<h2>Education</h2>
+<div class="edu">
+  <b>Master of Science in Computer Science</b>, Specialization in Project Management —
+  Academy of Economic Studies, Bucharest <span class="period">(2000 – 2002)</span>
+</div>
+<div class="edu">
+  <b>Bachelor in Business Administration</b>, Major in Computer Science, Specialization in
+  Computer Science Applied in Business — Academy of Economic Studies, Bucharest
+  <span class="period">(1995 – 2000)</span>
+</div>
+
+<h2>Self-Learning</h2>
+<p>
+  Curiosity-driven mindset extending well beyond formal job requirements: independently built a
+  solid conceptual foundation in machine learning, deep learning, neural networks, reinforcement
+  learning, probability theory, linear algebra, calculus, and statistics — prioritizing core
+  principles and deep intuition for how algorithms work under the hood. Hands-on experiments with
+  Python, NumPy, Pandas, TensorFlow, and Matplotlib.
+</p>
+
+</body>
+</html>
