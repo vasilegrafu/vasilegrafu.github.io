@@ -1,6 +1,34 @@
 ---
 import Base from '../layouts/Base.astro';
 import { experience, education, selfLearning } from '../data/profile';
+
+const stats = [
+  { value: '20+', label: 'years in software' },
+  { value: '18', label: 'years leading teams' },
+  { value: '4', label: 'companies' },
+];
+
+// Company eras for the ribbon; widths are proportional to duration.
+const eras = [
+  { company: 'Ubisoft', span: '’05–’08', years: 3.5 },
+  { company: 'TeamNet', span: '’08–’09', years: 1 },
+  { company: 'Consignor', span: '’09–’22', years: 13 },
+  { company: 'nShift', span: '’22–now', years: 4.7, current: true },
+];
+
+// Inline icon per role, in the same order as `experience` (lucide outlines).
+const roleIcons = [
+  // nShift — sparkles
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M9.8 15.3 9 18l-.8-2.7a4 4 0 0 0-2.5-2.5L3 12l2.7-.8a4 4 0 0 0 2.5-2.5L9 6l.8 2.7a4 4 0 0 0 2.5 2.5l2.7.8-2.7.8a4 4 0 0 0-2.5 2.5ZM18 4l.4 1.6L20 6l-1.6.4L18 8l-.4-1.6L16 6l1.6-.4Zm0 10 .4 1.6L20 16l-1.6.4L18 18l-.4-1.6L16 16l1.6-.4Z"/>',
+  // Consignor Team Manager — globe
+  '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 3a13.9 13.9 0 0 0 0 18 13.9 13.9 0 0 0 0-18ZM3 12h18"/>',
+  // Consignor Technical Lead — layers
+  '<path stroke-linecap="round" stroke-linejoin="round" d="m12 3 9 4.5-9 4.5-9-4.5L12 3Zm-9 9 9 4.5 9-4.5m-18 4.5L12 21l9-4.5"/>',
+  // TeamNet — package
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Zm-17.7-1 8.7 5 8.7-5M12 22V12"/>',
+  // Ubisoft — gamepad
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M6 12h4m-2-2v4m8-1h.01M15 11h.01M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.54-.6-6.58-.7-7.41A4 4 0 0 0 17.32 5Z"/>',
+];
 ---
 
 <Base title="Career — Vasile Grafu" description="20+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems.">
@@ -24,11 +52,43 @@ import { experience, education, selfLearning } from '../data/profile';
     </a>
   </div>
 
+  <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {
+      stats.map((s) => (
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 text-center">
+          <p class="font-display text-3xl font-bold bg-gradient-to-br from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+            {s.value}
+          </p>
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">{s.label}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 flex flex-wrap sm:flex-nowrap gap-1.5" aria-label="Career timeline by company">
+    {
+      eras.map((e) => (
+        <div
+          class={`rounded-lg px-2.5 py-1.5 text-center text-xs whitespace-nowrap ${
+            e.current
+              ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+          }`}
+          style={`flex-grow: ${e.years}; flex-basis: 0; min-width: fit-content;`}
+        >
+          {e.company} <span class={e.current ? 'text-indigo-100' : 'text-slate-400 dark:text-slate-500'}>{e.span}</span>
+        </div>
+      ))
+    }
+  </div>
+
   <ol class="mt-10 relative border-s border-slate-200 dark:border-slate-800 space-y-12">
     {
-      experience.map((role) => (
+      experience.map((role, i) => (
         <li class="ms-6">
-          <span class="absolute -start-1.5 mt-2 h-3 w-3 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600" />
+          <span class="absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-indigo-600 dark:text-indigo-400">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true" set:html={roleIcons[i]} />
+          </span>
           <p class="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
             <span class="rounded-full bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300">{role.period}</span>
             {role.location}
@@ -37,11 +97,16 @@ import { experience, education, selfLearning } from '../data/profile';
             {role.position} · {role.company}
           </h2>
           <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">{role.summary}</p>
-          <ul class="mt-3 list-disc ps-5 space-y-1.5 text-slate-600 dark:text-slate-300">
-            {role.bullets.map((b) => (
-              <li>{b}</li>
-            ))}
-          </ul>
+          <details class="mt-3">
+            <summary class="cursor-pointer select-none text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
+              What I did
+            </summary>
+            <ul class="mt-2 list-disc ps-5 space-y-1.5 text-slate-600 dark:text-slate-300">
+              {role.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </details>
           {role.tech && (
             <div class="mt-4 flex flex-wrap gap-2">
               {role.tech.map((t) => (
@@ -72,5 +137,4 @@ import { experience, education, selfLearning } from '../data/profile';
   <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-300">
     {selfLearning.map((p) => <p>{p}</p>)}
   </div>
-
 </Base>
