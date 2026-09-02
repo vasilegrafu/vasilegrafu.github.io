@@ -27,6 +27,11 @@ html {
   }
 }
 
+/* Rotate the chevron of an open details expander */
+details[open] > summary .chev {
+  transform: rotate(180deg);
+}
+
 /* Card hover lift shared by feature cards */
 .card-lift {
   transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
