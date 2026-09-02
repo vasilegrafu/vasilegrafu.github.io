@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------
    Themes — each file defines the same set of --t-* tokens for one look.
    The active theme is chosen by data-theme on <html> (set by ThemeMenuPart);
-   with no attribute, light is the default and dark follows the OS preference.
+   with no attribute, light is the default.
 
    Token contract (every theme must define all of these):
      --t-bg            page ground

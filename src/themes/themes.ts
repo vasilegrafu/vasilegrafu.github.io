@@ -9,7 +9,7 @@ export interface ThemeDef {
 }
 
 export const themes: ThemeDef[] = [
-  { id: 'light', label: 'Light', swatch: '#4f46e5' },
+  { id: 'light', label: 'Light', swatch: '#1e3a8a' },
   { id: 'dark', label: 'Dark', swatch: '#020617' },
   { id: 'emerald', label: 'Emerald', swatch: '#047857' },
   { id: 'sepia', label: 'Sepia', swatch: '#9a3412' },

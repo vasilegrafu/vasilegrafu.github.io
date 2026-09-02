@@ -1,6 +1,6 @@
 ---
 // Theme dropdown: lists every registered theme (src/themes/themes.ts) and
-// shows the active one on the button. Dark is the default; the choice is
+// shows the active one on the button. Light is the default; the choice is
 // stored in localStorage and applied before first paint by the inline script
 // in BaseLayout's <head>.
 import { Icon } from 'astro-icon/components';
@@ -18,7 +18,7 @@ import { themes } from '@themes/themes';
     class="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
   >
     <Icon name="lucide:palette" class="h-4 w-4" aria-hidden="true" />
-    <span id="theme-menu-label">Dark</span>
+    <span id="theme-menu-label">Light</span>
     <Icon
       name="lucide:chevron-down"
       class="h-3.5 w-3.5 transition-transform [[aria-expanded='true']_&]:rotate-180"
@@ -65,9 +65,9 @@ import { themes } from '@themes/themes';
 
     function current() {
       try {
-        return localStorage.getItem('theme') || 'dark';
+        return localStorage.getItem('theme') || 'light';
       } catch (e) {
-        return 'dark';
+        return 'light';
       }
     }
     function sync() {

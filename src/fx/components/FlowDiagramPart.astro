@@ -1,0 +1,35 @@
+---
+// Small architecture flow diagram: labeled steps joined by arrows inside a
+// tinted panel. Fully data-driven — pass the step labels and an optional note.
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  steps: string[];
+  note?: string;
+  ariaLabel?: string;
+}
+
+const { steps, note, ariaLabel } = Astro.props;
+---
+
+<div class="bg-tint border-line rounded-lg border p-3" role="img" aria-label={ariaLabel}>
+  <div class="flex flex-wrap items-center gap-x-1.5 gap-y-2">
+    {
+      steps.map((step, i) => (
+        <>
+          {i > 0 && (
+            <Icon
+              name="lucide:arrow-right"
+              class="text-faint h-3.5 w-3.5 shrink-0"
+              aria-hidden="true"
+            />
+          )}
+          <span class="border-accent-line bg-surface text-ink rounded-md border px-2.5 py-1 text-xs font-medium">
+            {step}
+          </span>
+        </>
+      ))
+    }
+  </div>
+  {note && <p class="text-faint mt-2 text-xs">{note}</p>}
+</div>

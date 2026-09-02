@@ -1,7 +1,4 @@
-/* Dark — the default theme (applies when no theme is selected).
-   :where() keeps the default at zero specificity so any [data-theme='…']
-   selection always overrides it, regardless of import order. */
-:where(:root),
+/* Dark. */
 [data-theme='dark'] {
   --t-bg: #020617;
   --t-surface: #0f172a;

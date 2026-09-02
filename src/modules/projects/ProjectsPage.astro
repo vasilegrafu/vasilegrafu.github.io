@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@modules/shared/BaseLayout.astro';
+import FlowDiagramPart from '@fx/components/FlowDiagramPart.astro';
 import ProjectCard from './ProjectCardPart.astro';
 import { projects } from '@data/profile';
 
@@ -9,6 +10,27 @@ const projectIcons = [
   'lucide:hammer', // AI app builder skill
   'lucide:server', // high-throughput webservices
   'lucide:shopping-cart', // e-commerce integrations
+];
+
+// Architecture flow per project, in the same order as `projects`.
+const projectFlows: { steps: string[]; ariaLabel: string }[] = [
+  {
+    steps: ['Departments', 'Agents', 'Orchestration', 'LLMs + RAG'],
+    ariaLabel: 'Department agents collaborate through an orchestration layer over LLMs and RAG',
+  },
+  {
+    steps: ['Codebase', 'Structural snapshot', 'Generate · Migrate · Translate', 'Proven app'],
+    ariaLabel:
+      'A structural snapshot of a codebase drives generation, migration, or translation into a proven application',
+  },
+  {
+    steps: ['Clients', 'Web services', 'Databases', 'AWS'],
+    ariaLabel: 'Client applications call web services backed by databases, distributed on AWS',
+  },
+  {
+    steps: ['Online shops', 'Integrations', 'Multi-carrier delivery'],
+    ariaLabel: 'Online shops connect through integrations to multi-carrier delivery',
+  },
 ];
 ---
 
@@ -24,7 +46,13 @@ const projectIcons = [
   </p>
 
   <div class="mt-8 grid gap-6 sm:grid-cols-2">
-    {projects.map((p, i) => <ProjectCard project={p} icon={projectIcons[i]} />)}
+    {
+      projects.map((p, i) => (
+        <ProjectCard project={p} icon={projectIcons[i]}>
+          <FlowDiagramPart slot="diagram" {...projectFlows[i]} />
+        </ProjectCard>
+      ))
+    }
   </div>
 
   <p class="text-muted mt-10">

@@ -20,6 +20,13 @@ const { project, icon } = Astro.props;
   <p class="text-muted mt-3 grow text-sm leading-relaxed">
     {project.description}
   </p>
+  {
+    Astro.slots.has('diagram') && (
+      <div class="mt-4">
+        <slot name="diagram" />
+      </div>
+    )
+  }
   <div class="mt-4 flex flex-wrap gap-2">
     {project.tags.map((t) => <span class="tag">{t}</span>)}
   </div>

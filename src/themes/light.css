@@ -1,26 +1,31 @@
-/* Light. */
+﻿/* Light — the default theme (applies when no theme is selected).
+   Light, navy-based, business-oriented: white ground, deep navy accents,
+   restrained gold labels. :where() keeps the default at zero specificity
+   so any [data-theme='…'] selection always overrides it. */
+:where(:root),
 [data-theme='light'] {
   --t-bg: #ffffff;
   --t-surface: #ffffff;
-  --t-tint: rgb(248 250 252 / 0.5);
+  --t-tint: rgb(248 250 252 / 0.6);
   --t-chip: #f1f5f9;
   --t-ink: #0f172a;
   --t-muted: #475569;
   --t-faint: #64748b;
   --t-line: #e2e8f0;
   --t-line-strong: #cbd5e1;
-  --t-accent: #4f46e5;
-  --t-accent-strong: #4338ca;
+  --t-accent: #1e40af;
+  --t-accent-strong: #1e3a8a;
   --t-accent-ink: #ffffff;
-  --t-accent-solid: #4f46e5;
-  --t-accent-hover: #4338ca;
-  --t-accent-soft: #eef2ff;
-  --t-accent-line: #c7d2fe;
-  --t-grad-a: #4f46e5;
-  --t-grad-b: #7c3aed;
-  --t-label: #d97706;
-  --t-label-strong: #b45309;
+  --t-accent-solid: #1e3a8a;
+  --t-accent-hover: #172554;
+  --t-accent-soft: #e8eefb;
+  --t-accent-line: #bfd0ee;
+  --t-grad-a: #1e3a8a;
+  --t-grad-b: #2563eb;
+  --t-label: #b45309;
+  --t-label-strong: #92400e;
   --t-label-soft: #fffbeb;
-  --t-blob-a: rgb(199 210 254 / 0.4);
-  --t-blob-b: rgb(221 214 254 / 0.3);
+  --t-blob-a: rgb(30 58 138 / 0.08);
+  --t-blob-b: rgb(37 99 235 / 0.07);
 }
+
