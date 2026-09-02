@@ -1,41 +1,65 @@
 ---
-import Base from '../../layouts/Base.astro';
+import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
-import LinkCardPart from '../../fx/components/LinkCardPart.astro';
-import { site } from '../../data/profile';
+import LinkCardPart from '@fx/components/LinkCardPart.astro';
+import { site } from '@data/profile';
 ---
 
-<Base title="Contact — Vasile Grafu" description="Get in touch with Vasile Grafu to exchange ideas on engineering leadership, AI systems, and research.">
+<BaseLayout
+  title="Contact — Vasile Grafu"
+  description="Get in touch with Vasile Grafu to exchange ideas on engineering leadership, AI systems, and research."
+>
   <div class="relative">
     <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <div class="absolute -top-16 -right-24 h-72 w-72 rounded-full bg-blob-a blur-3xl"></div>
-      <div class="absolute top-48 -left-24 h-56 w-56 rounded-full bg-blob-b blur-3xl"></div>
+      <div class="blob bg-blob-a -top-16 -right-24 h-72 w-72"></div>
+      <div class="blob bg-blob-b top-48 -left-24 h-56 w-56"></div>
     </div>
 
     <h1 class="title-page">Contact</h1>
-    <p class="lede">
-      I read everything and reply to thoughtful messages.
-    </p>
+    <p class="lede">I read everything and reply to thoughtful messages.</p>
 
     <div class="mt-10 grid gap-8 lg:grid-cols-[1fr_20rem]">
       <div class="space-y-4">
-        <LinkCardPart href={`mailto:${site.email}`} icon="lucide:mail" title="Email" subtitle={site.email} />
-        <LinkCardPart href={site.linkedin} icon="lucide:linkedin" title="LinkedIn" subtitle="Best for professional messages" />
-        <LinkCardPart href={site.github} icon="lucide:github" title="GitHub" subtitle="Code and experiments" />
+        <LinkCardPart
+          href={`mailto:${site.email}`}
+          icon="lucide:mail"
+          title="Email"
+          subtitle={site.email}
+        />
+        <LinkCardPart
+          href={site.linkedin}
+          icon="lucide:linkedin"
+          title="LinkedIn"
+          subtitle="Best for professional messages"
+        />
+        <LinkCardPart
+          href={site.github}
+          icon="lucide:github"
+          title="GitHub"
+          subtitle="Code and experiments"
+        />
       </div>
 
-      <aside class="card h-fit bg-tint p-6">
-        <ul class="space-y-4 text-sm text-muted">
+      <aside class="card bg-tint h-fit p-6">
+        <ul class="text-muted space-y-4 text-sm">
           <li class="flex items-start gap-3">
-            <Icon name="lucide:map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-label" aria-hidden="true" />
+            <Icon
+              name="lucide:map-pin"
+              class="text-label mt-0.5 h-4 w-4 shrink-0"
+              aria-hidden="true"
+            />
             <span>{site.location}</span>
           </li>
           <li class="flex items-start gap-3">
-            <Icon name="lucide:clock" class="mt-0.5 h-4 w-4 shrink-0 text-label" aria-hidden="true" />
+            <Icon
+              name="lucide:clock"
+              class="text-label mt-0.5 h-4 w-4 shrink-0"
+              aria-hidden="true"
+            />
             <span>EET (UTC+2)</span>
           </li>
         </ul>
       </aside>
     </div>
   </div>
-</Base>
+</BaseLayout>

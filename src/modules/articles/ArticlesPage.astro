@@ -1,16 +1,19 @@
 ---
-import Base from '../../layouts/Base.astro';
+import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { articlesByDate } from './registry';
 
 const articles = articlesByDate();
 ---
 
-<Base title="Articles — Vasile Grafu" description="Writing on engineering leadership, software architecture, and applied AI.">
+<BaseLayout
+  title="Articles — Vasile Grafu"
+  description="Writing on engineering leadership, software architecture, and applied AI."
+>
   <p class="kicker">Writing</p>
-  <h1 class="mt-2 title-page">Articles</h1>
+  <h1 class="title-page mt-2">Articles</h1>
   <p class="lede">
-    Writing on engineering leadership, software architecture, agentic AI systems, and
-    AI-assisted development. Subscribe via <a href="/rss.xml" class="link-accent">RSS</a>.
+    Writing on engineering leadership, software architecture, agentic AI systems, and AI-assisted
+    development. Subscribe via <a href="/rss.xml" class="link-accent">RSS</a>.
   </p>
 
   <ul class="mt-8 space-y-8">
@@ -18,20 +21,18 @@ const articles = articlesByDate();
       articles.map((article) => (
         <li>
           <a href={`/articles/${article.id}/`} class="group block">
-            <p class="text-sm text-faint">
+            <p class="text-faint text-sm">
               {article.pubDate.toLocaleDateString('en-GB', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}
             </p>
-            <h2 class="mt-1 title-item group-hover:text-accent">
-              {article.title}
-            </h2>
-            <p class="mt-2 text-muted">{article.description}</p>
+            <h2 class="title-item group-hover:text-accent mt-1">{article.title}</h2>
+            <p class="text-muted mt-2">{article.description}</p>
           </a>
         </li>
       ))
     }
   </ul>
-</Base>
+</BaseLayout>

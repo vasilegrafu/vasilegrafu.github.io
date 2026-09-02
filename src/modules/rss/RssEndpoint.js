@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { site } from '../../data/profile';
+import { site } from '@data/profile';
 import { articlesByDate } from '../articles/registry';
 
 export async function GET(context) {

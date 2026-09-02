@@ -2,22 +2,18 @@
 // Dropdown nav panel shown below the header on mobile; opened by MenuButton.
 import { Icon } from 'astro-icon/components';
 import { navItems } from './nav';
-import { isActive } from '../../fx/lib/routing';
+import { isActive } from '@fx/lib/routing';
 
 const path = Astro.url.pathname;
 ---
 
-<div id="mobile-menu" class="hidden sm:hidden border-t border-line">
-  <nav class="mx-auto max-w-4xl px-4 py-3 flex flex-col gap-1 text-sm">
+<div id="mobile-menu" class="border-line hidden border-t sm:hidden">
+  <nav class="mx-auto flex max-w-4xl flex-col gap-1 px-4 py-3 text-sm">
     {
       navItems.map((item) => (
         <a
           href={item.href}
-          class={`flex items-center gap-2.5 rounded-lg px-3 py-2 transition-colors ${
-            isActive(item.href, path)
-              ? 'bg-accent-soft font-medium text-accent-strong'
-              : 'text-muted hover:bg-chip hover:text-ink'
-          }`}
+          class:list={['menu-item', isActive(item.href, path) && 'menu-item-active']}
         >
           <Icon name={item.icon} class="h-4.5 w-4.5" aria-hidden="true" />
           {item.label}

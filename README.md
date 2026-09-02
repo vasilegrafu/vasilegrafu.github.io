@@ -58,6 +58,7 @@ The downloadable PDF at `public/cv.pdf` is printed from that page. After editing
 
 ```powershell
 npm run build
+npm run preview   # note the port it prints (4321 unless busy)
 & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
-  --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "<repo>\dist\resume-print\index.html"
+  --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "http://localhost:4321/resume-print/"
 ```

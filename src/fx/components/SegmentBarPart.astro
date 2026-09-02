@@ -16,18 +16,19 @@ interface Props {
 const { segments, ariaLabel } = Astro.props;
 ---
 
-<div class="mt-6 flex flex-wrap sm:flex-nowrap gap-1.5" aria-label={ariaLabel}>
+<div class="mt-6 flex flex-wrap gap-1.5 sm:flex-nowrap" aria-label={ariaLabel}>
   {
     segments.map((s) => (
       <div
         class={`rounded-lg px-2.5 py-1.5 text-center text-xs whitespace-nowrap ${
           s.highlight
-            ? 'bg-gradient-to-r from-grad-a to-grad-b text-accent-ink font-medium'
+            ? 'from-grad-a to-grad-b text-accent-ink bg-gradient-to-r font-medium'
             : 'bg-chip text-muted'
         }`}
         style={`flex-grow: ${s.weight}; flex-basis: 0; min-width: fit-content;`}
       >
-        {s.label} {s.note && <span class={s.highlight ? 'text-accent-ink/80' : 'text-faint'}>{s.note}</span>}
+        {s.label}{' '}
+        {s.note && <span class={s.highlight ? 'text-accent-ink/80' : 'text-faint'}>{s.note}</span>}
       </div>
     ))
   }

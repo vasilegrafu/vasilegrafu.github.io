@@ -1,10 +1,10 @@
 ---
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
-import '../styles/global.css';
-import HeaderPart from '../modules/shared/HeaderPart.astro';
-import FooterPart from '../modules/shared/FooterPart.astro';
-import { site } from '../data/profile';
+import '@styles/global.css';
+import HeaderPart from './HeaderPart.astro';
+import FooterPart from './FooterPart.astro';
+import { site } from '@data/profile';
 
 interface Props {
   title: string;
@@ -25,7 +25,12 @@ const path = Astro.url.pathname;
     <meta name="theme-color" content="#4f46e5" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={new URL(path, site.url)} />
-    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Articles`} href="/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${site.name} — Articles`}
+      href="/rss.xml"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
@@ -40,15 +45,17 @@ const path = Astro.url.pathname;
     <script is:inline>
       (function () {
         var t;
-        try { t = localStorage.getItem('theme'); } catch (e) {}
+        try {
+          t = localStorage.getItem('theme');
+        } catch (e) {}
         if (t) document.documentElement.setAttribute('data-theme', t);
       })();
     </script>
   </head>
-  <body class="min-h-screen bg-bg text-ink/90 flex flex-col font-sans">
+  <body class="bg-bg text-ink/90 flex min-h-screen flex-col font-sans">
     <HeaderPart />
 
-    <main class="mx-auto w-full max-w-4xl px-4 py-10 grow">
+    <main class="mx-auto w-full max-w-4xl grow px-4 py-10">
       <slot />
     </main>
 

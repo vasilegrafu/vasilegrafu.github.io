@@ -2,22 +2,15 @@
 // Desktop pill navigation.
 import { Icon } from 'astro-icon/components';
 import { navItems } from './nav';
-import { isActive } from '../../fx/lib/routing';
+import { isActive } from '@fx/lib/routing';
 
 const path = Astro.url.pathname;
 ---
 
-<nav class="hidden sm:flex flex-wrap gap-1 text-sm">
+<nav class="hidden flex-wrap gap-1 text-sm sm:flex">
   {
     navItems.map((item) => (
-      <a
-        href={item.href}
-        class={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${
-          isActive(item.href, path)
-            ? 'bg-accent-soft font-medium text-accent-strong'
-            : 'text-muted hover:bg-chip hover:text-ink'
-        }`}
-      >
+      <a href={item.href} class:list={['nav-pill', isActive(item.href, path) && 'nav-pill-active']}>
         <Icon name={item.icon} class="h-4 w-4" aria-hidden="true" />
         {item.label}
       </a>

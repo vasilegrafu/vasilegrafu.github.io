@@ -2,7 +2,7 @@
 // One entry on the Career timeline: era icon, period badge, summary,
 // collapsible "What I did" achievement cards, and tech chips.
 import { Icon } from 'astro-icon/components';
-import type { Role } from '../../data/profile';
+import type { Role } from '@data/profile';
 
 interface Props {
   role: Role;
@@ -13,44 +13,52 @@ const { role, icon } = Astro.props;
 ---
 
 <li class="ms-6">
-  <span class="absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border border-line bg-bg text-accent">
+  <span
+    class="border-line bg-bg text-accent absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border"
+  >
     <Icon name={icon} class="h-4 w-4" aria-hidden="true" />
   </span>
-  <p class="flex flex-wrap items-center gap-2 text-sm text-faint">
-    <span class="rounded-full bg-label-soft px-2.5 py-0.5 text-xs font-medium text-label-strong">{role.period}</span>
+  <p class="text-faint flex flex-wrap items-center gap-2 text-sm">
+    <span class="badge">{role.period}</span>
     {role.location}
   </p>
-  <h2 class="mt-2 title-item">
+  <h2 class="title-item mt-2">
     {role.position} · {role.company}
   </h2>
-  <p class="mt-3 leading-relaxed text-muted">{role.summary}</p>
+  <p class="text-muted mt-3 leading-relaxed">{role.summary}</p>
   <details class="mt-4">
-    <summary class="inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent-soft/50 list-none [&::-webkit-details-marker]:hidden">
+    <summary class="summary-pill">
       What I did
-      <Icon name="lucide:chevron-down" class="h-4 w-4 transition-transform [details[open]_&]:rotate-180" aria-hidden="true" />
+      <Icon
+        name="lucide:chevron-down"
+        class="h-4 w-4 transition-transform [details[open]_&]:rotate-180"
+        aria-hidden="true"
+      />
     </summary>
     <div class="mt-4 grid gap-3 sm:grid-cols-2">
-      {role.bullets.map((b) => {
-        const idx = b.indexOf(': ');
-        const title = idx > 0 ? b.slice(0, idx) : null;
-        const rest = idx > 0 ? b.slice(idx + 2) : b;
-        const body = title ? rest.charAt(0).toUpperCase() + rest.slice(1) : rest;
-        return (
-          <div class="card card-lift bg-surface p-4">
-            {title && <p class="text-sm font-semibold text-ink">{title}</p>}
-            <p class={`text-sm leading-relaxed text-muted ${title ? 'mt-1' : ''}`}>{body}</p>
-          </div>
-        );
-      })}
+      {
+        role.bullets.map((b) => {
+          const idx = b.indexOf(': ');
+          const title = idx > 0 ? b.slice(0, idx) : null;
+          const rest = idx > 0 ? b.slice(idx + 2) : b;
+          const body = title ? rest.charAt(0).toUpperCase() + rest.slice(1) : rest;
+          return (
+            <div class="card card-lift bg-surface p-4">
+              {title && <p class="text-ink text-sm font-semibold">{title}</p>}
+              <p class={`text-muted text-sm leading-relaxed ${title ? 'mt-1' : ''}`}>{body}</p>
+            </div>
+          );
+        })
+      }
     </div>
   </details>
-  {role.tech && (
-    <div class="mt-4 flex flex-wrap gap-2">
-      {role.tech.map((t) => (
-        <span class="tag">
-          {t}
-        </span>
-      ))}
-    </div>
-  )}
+  {
+    role.tech && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {role.tech.map((t) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+    )
+  }
 </li>

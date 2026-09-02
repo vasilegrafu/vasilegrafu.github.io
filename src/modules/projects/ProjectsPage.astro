@@ -1,7 +1,7 @@
 ---
-import Base from '../../layouts/Base.astro';
+import BaseLayout from '@modules/shared/BaseLayout.astro';
 import ProjectCard from './ProjectCardPart.astro';
-import { projects } from '../../data/profile';
+import { projects } from '@data/profile';
 
 // Lucide icon per project, in the same order as `projects` in profile.ts
 const projectIcons = [
@@ -11,20 +11,23 @@ const projectIcons = [
 ];
 ---
 
-<Base title="Projects — Vasile Grafu" description="Selected systems: enterprise AI platforms, high-throughput web services, and e-commerce integrations.">
+<BaseLayout
+  title="Projects — Vasile Grafu"
+  description="Selected systems: enterprise AI platforms, high-throughput web services, and e-commerce integrations."
+>
   <p class="kicker">Selected systems</p>
-  <h1 class="mt-2 title-page">Projects</h1>
+  <h1 class="title-page mt-2">Projects</h1>
   <p class="lede">
-    The systems I’m proudest of — what they do, the scale they run at, and the architecture
-    behind them.
+    The systems I’m proudest of — what they do, the scale they run at, and the architecture behind
+    them.
   </p>
 
   <div class="mt-8 grid gap-6 sm:grid-cols-2">
     {projects.map((p, i) => <ProjectCard project={p} icon={projectIcons[i]} />)}
   </div>
 
-  <p class="mt-10 text-muted">
+  <p class="text-muted mt-10">
     Open-source experiments and AI demos are coming to this page — watch
     <a href="https://github.com/vasilegrafu" class="link-accent">my GitHub</a>.
   </p>
-</Base>
+</BaseLayout>

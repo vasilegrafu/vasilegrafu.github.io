@@ -1,8 +1,10 @@
-@import "tailwindcss";
-@import "../themes/index.css";
+@import 'tailwindcss';
+@import '../themes/index.css';
 
 @theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans:
+    'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
   --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -45,23 +47,23 @@ html {
 @layer components {
   /* Typography */
   .title-hero {
-    @apply font-display text-4xl sm:text-6xl font-bold tracking-tight text-ink;
+    @apply font-display text-ink text-4xl font-bold tracking-tight sm:text-6xl;
   }
   .title-page {
-    @apply font-display text-3xl font-bold text-ink;
+    @apply font-display text-ink text-3xl font-bold;
   }
   .title-section {
-    @apply font-display text-2xl font-bold text-ink;
+    @apply font-display text-ink text-2xl font-bold;
   }
   .title-item {
-    @apply font-display text-xl font-semibold text-ink;
+    @apply font-display text-ink text-xl font-semibold;
   }
   .kicker {
-    @apply text-xs font-semibold uppercase text-label;
+    @apply text-label text-xs font-semibold uppercase;
     letter-spacing: 0.14em;
   }
   .lede {
-    @apply mt-3 max-w-2xl text-muted;
+    @apply text-muted mt-3 max-w-2xl;
   }
 
   /* Buttons */
@@ -69,26 +71,55 @@ html {
     @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors;
   }
   .btn-primary {
-    @apply bg-accent-solid text-accent-ink shadow-sm hover:bg-accent-hover;
+    @apply bg-accent-solid text-accent-ink hover:bg-accent-hover shadow-sm;
   }
   .btn-ghost {
-    @apply border border-line-strong text-ink hover:border-accent hover:text-accent;
+    @apply border-line-strong text-ink hover:border-accent hover:text-accent border;
   }
 
   /* Surfaces */
   .card {
-    @apply rounded-xl border border-line;
+    @apply border-line rounded-xl border;
   }
   .card-lift {
-    @apply transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px] hover:shadow-accent/25;
+    @apply hover:shadow-accent/25 transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px];
+  }
+
+  /* Navigation */
+  .nav-pill {
+    @apply text-muted hover:bg-chip hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
+  }
+  .nav-pill-active {
+    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
+  }
+  .menu-item {
+    @apply text-muted hover:bg-chip hover:text-ink flex w-full items-center gap-2.5 rounded-lg px-3 py-2 transition-colors;
+  }
+  .menu-item-active {
+    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
   }
 
   /* Small pieces */
   .tag {
-    @apply rounded-full bg-chip px-3 py-1 text-xs text-muted;
+    @apply bg-chip text-muted rounded-full px-3 py-1 text-xs;
+  }
+  .badge {
+    @apply bg-label-soft text-label-strong rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .chip {
+    @apply border-line bg-surface/60 text-muted inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5;
+  }
+  .summary-pill {
+    @apply border-line text-accent hover:border-accent hover:bg-accent-soft/50 inline-flex cursor-pointer list-none items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors select-none;
+  }
+  .summary-pill::-webkit-details-marker {
+    display: none;
+  }
+  .blob {
+    @apply absolute rounded-full blur-3xl;
   }
   .icon-tile {
-    @apply flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent;
+    @apply bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-lg;
   }
   .link-accent {
     @apply text-accent hover:underline;
@@ -102,7 +133,7 @@ html {
   }
   .tip::after {
     content: attr(data-tip);
-    @apply pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-xs font-medium text-bg opacity-0 transition-[opacity,transform] duration-150;
+    @apply bg-ink text-bg pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 rounded-md px-2.5 py-1 text-xs font-medium whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150;
     transform: translateX(-50%) translateY(-2px);
   }
   .tip:hover::after,
@@ -111,7 +142,7 @@ html {
     transform: translateX(-50%) translateY(0);
   }
   .tip-end::after {
-    @apply left-auto right-0;
+    @apply right-0 left-auto;
     transform: translateY(-2px);
   }
   .tip-end:hover::after,
@@ -121,13 +152,6 @@ html {
 
   /* Article body typography (rendered ArticlePart HTML) */
   .prose-article {
-    @apply max-w-none space-y-4 leading-relaxed text-muted
-      [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:text-ink
-      [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:text-ink
-      [&_a]:text-accent [&_a]:underline
-      [&_ol]:list-decimal [&_ol]:ps-5 [&_ul]:list-disc [&_ul]:ps-5
-      [&_code]:rounded [&_code]:bg-chip [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-sm
-      [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4
-      [&_blockquote]:border-s-4 [&_blockquote]:border-line-strong [&_blockquote]:ps-4 [&_blockquote]:italic;
+    @apply text-muted [&_h2]:text-ink [&_h3]:text-ink [&_a]:text-accent [&_code]:bg-chip [&_blockquote]:border-line-strong max-w-none space-y-4 leading-relaxed [&_a]:underline [&_blockquote]:border-s-4 [&_blockquote]:ps-4 [&_blockquote]:italic [&_code]:rounded [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-sm [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_ol]:list-decimal [&_ol]:ps-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4 [&_ul]:list-disc [&_ul]:ps-5;
   }
 }

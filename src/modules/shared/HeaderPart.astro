@@ -1,15 +1,17 @@
 ---
 // Sticky site header: nav pills (desktop) / hamburger (mobile) on the left,
 // social links and theme toggle on the right, mobile dropdown panel below.
-import MenuButton from '../../fx/components/MenuButtonPart.astro';
+import MenuButton from '@fx/components/MenuButtonPart.astro';
 import NavMenu from './NavMenuPart.astro';
 import MobileMenu from './MobileMenuPart.astro';
 import SocialLinks from './SocialLinksPart.astro';
 import ThemeMenuPart from './ThemeMenuPart.astro';
 ---
 
-<header class="sticky top-0 z-10 border-b border-line bg-bg/90 backdrop-blur">
-  <div class="mx-auto max-w-4xl px-4 py-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+<header class="border-line bg-bg/90 sticky top-0 z-10 border-b backdrop-blur">
+  <div
+    class="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3"
+  >
     <MenuButton />
     <NavMenu />
     <div class="flex items-center gap-x-5">

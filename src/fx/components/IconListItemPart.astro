@@ -11,6 +11,6 @@ const { icon, title } = Astro.props;
 ---
 
 <li class="flex gap-3">
-  <Icon name={icon} class="mt-1 h-5 w-5 shrink-0 text-label" aria-hidden="true" />
+  <Icon name={icon} class="text-label mt-1 h-5 w-5 shrink-0" aria-hidden="true" />
   <span><strong class="text-ink">{title}</strong> <slot /></span>
 </li>

@@ -1,10 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro';
+import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
-import StatTilePart from '../../fx/components/StatTilePart.astro';
-import SegmentBarPart from '../../fx/components/SegmentBarPart.astro';
+import StatTilePart from '@fx/components/StatTilePart.astro';
+import SegmentBarPart from '@fx/components/SegmentBarPart.astro';
 import RoleItem from './RoleItemPart.astro';
-import { experience, education, selfLearning } from '../../data/profile';
+import { experience, education, selfLearning } from '@data/profile';
 
 const stats = [
   { value: '20+', label: 'years in software' },
@@ -30,55 +30,54 @@ const roleIcons = [
 ];
 ---
 
-<Base title="Career — Vasile Grafu" description="20+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems.">
+<BaseLayout
+  title="Career — Vasile Grafu"
+  description="20+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems."
+>
   <div class="flex flex-wrap items-start justify-between gap-4">
     <div>
       <p class="kicker">Journey</p>
-      <h1 class="mt-2 title-page">Career</h1>
-      <p class="lede">
-        The roles I’ve held, the teams I’ve built, and what each chapter added.
-      </p>
+      <h1 class="title-page mt-2">Career</h1>
+      <p class="lede">The roles I’ve held, the teams I’ve built, and what each chapter added.</p>
     </div>
-    <a
-      href="/cv.pdf"
-      download="Vasile-Grafu-Resume.pdf"
-      class="btn btn-primary"
-    >
+    <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" class="btn btn-primary">
       <Icon name="lucide:download" class="h-3.5 w-3.5" aria-hidden="true" />
       Download resume (PDF)
     </a>
   </div>
 
-  <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+  <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
     {stats.map((s) => <StatTilePart value={s.value} label={s.label} />)}
   </div>
 
   <SegmentBarPart segments={eras} ariaLabel="Career timeline by company" />
 
-  <ol class="mt-10 relative border-s border-line space-y-12">
+  <ol class="border-line relative mt-10 space-y-12 border-s">
     {experience.map((role, i) => <RoleItem role={role} icon={roleIcons[i]} />)}
   </ol>
 
-  <h2 class="mt-14 flex items-center gap-2.5 title-section">
-    <Icon name="lucide:graduation-cap" class="h-6 w-6 text-accent" aria-hidden="true" />
+  <h2 class="title-section mt-14 flex items-center gap-2.5">
+    <Icon name="lucide:graduation-cap" class="text-accent h-6 w-6" aria-hidden="true" />
     Education
   </h2>
   <ul class="mt-4 space-y-4">
     {
       education.map((e) => (
         <li>
-          <p class="font-medium text-ink">{e.degree}</p>
-          <p class="text-sm text-faint">{e.school} · {e.period}</p>
+          <p class="text-ink font-medium">{e.degree}</p>
+          <p class="text-faint text-sm">
+            {e.school} · {e.period}
+          </p>
         </li>
       ))
     }
   </ul>
 
-  <h2 class="mt-14 flex items-center gap-2.5 title-section">
-    <Icon name="lucide:book-open" class="h-6 w-6 text-accent" aria-hidden="true" />
+  <h2 class="title-section mt-14 flex items-center gap-2.5">
+    <Icon name="lucide:book-open" class="text-accent h-6 w-6" aria-hidden="true" />
     Self-learning
   </h2>
-  <div class="mt-4 space-y-4 leading-relaxed text-muted">
+  <div class="text-muted mt-4 space-y-4 leading-relaxed">
     {selfLearning.map((p) => <p>{p}</p>)}
   </div>
-</Base>
+</BaseLayout>

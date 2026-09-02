@@ -1,10 +1,10 @@
 ---
 // Mail / GitHub / LinkedIn icon links shown in the header.
 import { Icon } from 'astro-icon/components';
-import { site } from '../../data/profile';
+import { site } from '@data/profile';
 ---
 
-<div class="flex items-center gap-3 text-faint">
+<div class="text-faint flex items-center gap-3">
   <a
     href={`mailto:${site.email}`}
     aria-label="Email"

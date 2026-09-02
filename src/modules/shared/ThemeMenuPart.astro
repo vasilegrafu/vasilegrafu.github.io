@@ -3,7 +3,7 @@
 // "System". The choice is stored in localStorage and applied before first
 // paint by the inline script in Base.astro's <head>.
 import { Icon } from 'astro-icon/components';
-import { themes } from '../../themes/themes';
+import { themes } from '@themes/themes';
 ---
 
 <div class="relative">
@@ -14,27 +14,31 @@ import { themes } from '../../themes/themes';
     aria-haspopup="menu"
     aria-expanded="false"
     data-tip="Change the site's color theme"
-    class="tip tip-end inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-accent"
+    class="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
   >
     <Icon name="lucide:palette" class="h-4 w-4" aria-hidden="true" />
     Theme
-    <Icon name="lucide:chevron-down" class="h-3.5 w-3.5 transition-transform [[aria-expanded='true']_&]:rotate-180" aria-hidden="true" />
+    <Icon
+      name="lucide:chevron-down"
+      class="h-3.5 w-3.5 transition-transform [[aria-expanded='true']_&]:rotate-180"
+      aria-hidden="true"
+    />
   </button>
 
   <div
     id="theme-menu"
     role="menu"
-    class="hidden absolute right-0 top-full z-20 mt-2 w-44 card bg-bg p-1 shadow-lg"
+    class="card bg-bg absolute top-full right-0 z-20 mt-2 hidden w-44 p-1 shadow-lg"
   >
     <button
       type="button"
       role="menuitemradio"
       data-theme-id="system"
-      class="theme-item flex w-full items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-chip hover:text-ink"
+      class="theme-item menu-item text-sm"
     >
-      <Icon name="lucide:monitor" class="h-3.5 w-3.5 text-faint" aria-hidden="true" />
+      <Icon name="lucide:monitor" class="text-faint h-3.5 w-3.5" aria-hidden="true" />
       <span class="grow text-start">System</span>
-      <Icon name="lucide:check" class="theme-check hidden h-4 w-4 text-accent" aria-hidden="true" />
+      <Icon name="lucide:check" class="theme-check text-accent hidden h-4 w-4" aria-hidden="true" />
     </button>
     {
       themes.map((t) => (
@@ -42,11 +46,19 @@ import { themes } from '../../themes/themes';
           type="button"
           role="menuitemradio"
           data-theme-id={t.id}
-          class="theme-item flex w-full items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-chip hover:text-ink"
+          class="theme-item menu-item text-sm"
         >
-          <span class="h-3.5 w-3.5 rounded-full border border-line-strong" style={`background:${t.swatch}`} aria-hidden="true" />
+          <span
+            class="border-line-strong h-3.5 w-3.5 rounded-full border"
+            style={`background:${t.swatch}`}
+            aria-hidden="true"
+          />
           <span class="grow text-start">{t.label}</span>
-          <Icon name="lucide:check" class="theme-check hidden h-4 w-4 text-accent" aria-hidden="true" />
+          <Icon
+            name="lucide:check"
+            class="theme-check text-accent hidden h-4 w-4"
+            aria-hidden="true"
+          />
         </button>
       ))
     }
@@ -60,7 +72,11 @@ import { themes } from '../../themes/themes';
     var items = menu.querySelectorAll('.theme-item');
 
     function current() {
-      try { return localStorage.getItem('theme') || 'system'; } catch (e) { return 'system'; }
+      try {
+        return localStorage.getItem('theme') || 'system';
+      } catch (e) {
+        return 'system';
+      }
     }
     function updateChecks() {
       var active = current();

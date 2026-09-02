@@ -1,5 +1,5 @@
 ---
-import Base from '../../layouts/Base.astro';
+import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { articles, type ArticleMeta } from './registry';
 
 export async function getStaticPaths() {
@@ -23,9 +23,9 @@ const contentModules = import.meta.glob<{ default: any }>('./content/*/ArticlePa
 const Content = contentModules[`./content/${article.id}/ArticlePart.astro`].default;
 ---
 
-<Base title={`${article.title} — Vasile Grafu`} description={article.description}>
+<BaseLayout title={`${article.title} — Vasile Grafu`} description={article.description}>
   <article>
-    <p class="text-sm text-faint">
+    <p class="text-faint text-sm">
       {
         article.pubDate.toLocaleDateString('en-GB', {
           year: 'numeric',
@@ -34,14 +34,12 @@ const Content = contentModules[`./content/${article.id}/ArticlePart.astro`].defa
         })
       }
     </p>
-    <h1 class="mt-2 title-page">{article.title}</h1>
+    <h1 class="title-page mt-2">{article.title}</h1>
     {
       article.tags.length > 0 && (
         <div class="mt-3 flex flex-wrap gap-2">
           {article.tags.map((t) => (
-            <span class="tag">
-              {t}
-            </span>
+            <span class="tag">{t}</span>
           ))}
         </div>
       )
@@ -53,4 +51,4 @@ const Content = contentModules[`./content/${article.id}/ArticlePart.astro`].defa
   <p class="mt-10">
     <a href="/articles/" class="link-accent">← All articles</a>
   </p>
-</Base>
+</BaseLayout>
