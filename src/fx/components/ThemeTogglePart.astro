@@ -1,0 +1,25 @@
+---
+// Slider switch for light/dark theme. The saved choice is applied before first
+// paint by the inline script in Base.astro's <head>.
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle dark mode"
+  data-tip="Switch between light and dark theme"
+  class="tip tip-end relative inline-flex h-5 w-9 shrink-0 items-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600"
+>
+  <span class="inline-flex h-4 w-4 translate-x-0.5 items-center justify-center rounded-full bg-white shadow-sm transition-transform dark:translate-x-[18px] dark:bg-slate-900">
+    <Icon name="lucide:sun" class="h-2.5 w-2.5 text-slate-500 dark:hidden" aria-hidden="true" />
+    <Icon name="lucide:moon" class="hidden h-2.5 w-2.5 text-slate-400 dark:block" aria-hidden="true" />
+  </span>
+</button>
+
+<script is:inline>
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var dark = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+  });
+</script>

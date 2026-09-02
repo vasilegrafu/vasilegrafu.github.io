@@ -22,9 +22,17 @@ npm run preview  # preview the production build
 
 ## Adding an article
 
-Create a Markdown file in `src/content/articles/` with frontmatter:
+Create a directory in `src/modules/articles/content/` named after the URL slug, with an
+`index.mdx` inside:
 
-```md
+```
+src/modules/articles/content/my-article/
+  index.mdx        ← the article (frontmatter + MDX body)
+  Chart.astro      ← optional rich content local to this article
+  demo.ts          ← components, TypeScript, videos, audio — anything
+```
+
+```mdx
 ---
 title: 'Article title'
 description: 'One-line summary shown in listings and SEO.'
@@ -32,7 +40,9 @@ pubDate: 2026-09-15
 tags: ['ai', 'leadership']
 ---
 
-Article body in Markdown…
+import Chart from './Chart.astro';
+
+Article body in Markdown… with embedded components: <Chart />
 ```
 
 Push to `main` and GitHub Actions rebuilds and deploys the site automatically.

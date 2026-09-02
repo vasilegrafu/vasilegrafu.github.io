@@ -1,0 +1,34 @@
+---
+// Generic horizontal segment bar: each segment's width is proportional to its
+// weight; one segment can be highlighted with the gradient accent.
+interface Segment {
+  label: string;
+  note?: string;
+  weight: number;
+  highlight?: boolean;
+}
+
+interface Props {
+  segments: Segment[];
+  ariaLabel?: string;
+}
+
+const { segments, ariaLabel } = Astro.props;
+---
+
+<div class="mt-6 flex flex-wrap sm:flex-nowrap gap-1.5" aria-label={ariaLabel}>
+  {
+    segments.map((s) => (
+      <div
+        class={`rounded-lg px-2.5 py-1.5 text-center text-xs whitespace-nowrap ${
+          s.highlight
+            ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium'
+            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+        }`}
+        style={`flex-grow: ${s.weight}; flex-basis: 0; min-width: fit-content;`}
+      >
+        {s.label} {s.note && <span class={s.highlight ? 'text-indigo-100' : 'text-slate-400 dark:text-slate-500'}>{s.note}</span>}
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,57 @@
+/* Generic, project-independent styles. */
+
+/* CSS-only tooltip: add .tip + data-tip="text"; .tip-end right-aligns the bubble */
+.tip {
+  position: relative;
+}
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-2px);
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--color-slate-800);
+  color: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 30;
+}
+.tip:hover::after,
+.tip:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.tip-end::after {
+  left: auto;
+  right: 0;
+  transform: translateY(-2px);
+}
+.tip-end:hover::after,
+.tip-end:focus-visible::after {
+  transform: translateY(0);
+}
+.dark .tip::after {
+  background: var(--color-slate-200);
+  color: var(--color-slate-900);
+}
+
+/* Rotate the chevron of an open details expander */
+details[open] > summary .chev {
+  transform: rotate(180deg);
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -12px rgb(79 70 229 / 0.25);
+}

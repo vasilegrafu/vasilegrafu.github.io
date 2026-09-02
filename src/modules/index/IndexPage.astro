@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import ChipPart from '../../fx/components/ChipPart.astro';
+import IconCardPart from '../../fx/components/IconCardPart.astro';
+import IconListItemPart from '../../fx/components/IconListItemPart.astro';
+import { site, experience } from '../../data/profile';
+
+const current = experience[0];
+---
+
+<Base title="Vasile Grafu — Engineering Manager & AI Systems Builder">
+  <section class="relative py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-indigo-200/40 dark:bg-indigo-500/10 blur-3xl"></div>
+      <div class="absolute top-32 -left-24 h-64 w-64 rounded-full bg-violet-200/30 dark:bg-violet-500/10 blur-3xl"></div>
+    </div>
+    <div class="flex flex-wrap lg:flex-nowrap items-center justify-between gap-8">
+      <div class="max-w-2xl min-w-0">
+        <p class="text-indigo-600 dark:text-indigo-400 font-medium">Hello, I’m</p>
+        <h1 class="mt-1 font-display text-4xl sm:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
+          {site.name}
+        </h1>
+        <p class="mt-3 text-xl text-slate-600 dark:text-slate-300">{site.title}</p>
+        <p class="mt-5 text-lg leading-relaxed">
+          {site.tagline}
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2 text-sm">
+          <ChipPart icon="lucide:map-pin">{site.location}</ChipPart>
+          <ChipPart icon="lucide:clock">20+ years in software</ChipPart>
+          <ChipPart icon="lucide:briefcase">Engineering Manager @ nShift</ChipPart>
+        </div>
+      </div>
+      <div class="hidden lg:flex shrink-0 items-center justify-center" aria-hidden="true">
+        <div class="rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 p-1 shadow-xl shadow-indigo-600/20">
+          <div class="flex h-36 w-36 items-center justify-center rounded-full bg-white dark:bg-slate-950">
+            <span class="font-display text-4xl font-bold bg-gradient-to-br from-indigo-600 to-violet-600 bg-clip-text text-transparent">VG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/career/"
+        class="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
+      >
+        My career story
+      </a>
+      <a
+        href="/articles/"
+        class="inline-flex items-center rounded-lg border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+      >
+        Read my writing
+      </a>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <p class="kicker">What I do</p>
+    <div class="mt-4 grid gap-6 sm:grid-cols-3">
+      <IconCardPart icon="lucide:users" title="Engineering leadership">
+        Leading one of {current.company.split(' ')[0]}’s core teams — hiring, mentoring, and
+        building the engineering culture behind business-critical delivery software.
+      </IconCardPart>
+      <IconCardPart icon="lucide:sparkles" title="AI systems">
+        Building agentic AI platforms — LLM orchestration, RAG pipelines, and multi-agent
+        architectures grounded in real business data.
+      </IconCardPart>
+      <IconCardPart icon="lucide:code-xml" title="Hands-on architect">
+        Solutions Architect who still codes — C#/.NET, Python, React, and the AWS infrastructure
+        it all runs on.
+      </IconCardPart>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <p class="kicker">Principles</p>
+    <h2 class="mt-2 font-display text-2xl font-bold text-slate-900 dark:text-white">What drives me</h2>
+    <ul class="mt-4 space-y-3 text-slate-600 dark:text-slate-300">
+      <IconListItemPart icon="lucide:compass" title="Curiosity.">
+        I’m naturally driven to understand how things work and why they work the way they do. I enjoy going deep into a problem, learning from first principles, and connecting ideas across different areas. For me, the process of understanding is rewarding in itself.
+      </IconListItemPart>
+      <IconListItemPart icon="lucide:trending-up" title="Constant evolution.">
+        I’m always looking for ways to improve how I think, work, and build. AI-assisted engineering has already reshaped my daily practice, and I actively explore new tools, ideas, and approaches that can make me more effective. I see change as an opportunity to rethink what’s possible rather than simply adapt to it.
+      </IconListItemPart>
+      <IconListItemPart icon="lucide:users" title="Teams that discover.">
+        I do my best work in supportive, collaborative teams where people learn from each other, challenge ideas constructively, and take pride in their craft. I value working toward a shared goal while giving everyone the space to contribute, experiment, and grow.
+      </IconListItemPart>
+      <IconListItemPart icon="lucide:target" title="Impact.">
+        Technology is most interesting to me when it matters — when the systems we build carry real businesses, save people time, and open possibilities that weren’t there before. Understanding why the work matters shapes how I build it, and seeing an idea become something people rely on every day is the most satisfying part of engineering.
+      </IconListItemPart>
+    </ul>
+  </section>
+</Base>

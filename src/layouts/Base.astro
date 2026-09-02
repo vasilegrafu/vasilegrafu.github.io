@@ -2,7 +2,8 @@
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
 import '../styles/global.css';
-import { Icon } from 'astro-icon/components';
+import HeaderPart from '../modules/shared/HeaderPart.astro';
+import FooterPart from '../modules/shared/FooterPart.astro';
 import { site } from '../data/profile';
 
 interface Props {
@@ -11,16 +12,7 @@ interface Props {
 }
 
 const { title, description = site.tagline } = Astro.props;
-const nav = [
-  { href: '/', label: 'Home', icon: 'lucide:house' },
-  { href: '/career/', label: 'Career', icon: 'lucide:briefcase' },
-  { href: '/projects/', label: 'Projects', icon: 'lucide:layers' },
-  { href: '/articles/', label: 'Articles', icon: 'lucide:file-text' },
-  { href: '/contact/', label: 'Contact', icon: 'lucide:at-sign' },
-];
 const path = Astro.url.pathname;
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href.replace(/\/$/, ''));
 ---
 
 <html lang="en" class="antialiased">
@@ -55,127 +47,12 @@ const isActive = (href: string) =>
     </script>
   </head>
   <body class="min-h-screen bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-200 flex flex-col font-sans">
-    <header class="sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur">
-      <div class="mx-auto max-w-4xl px-4 py-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-        <button
-          id="menu-toggle"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded="false"
-          class="sm:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 transition-colors hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
-        >
-          <Icon name="lucide:menu" id="menu-icon-open" class="h-5 w-5" aria-hidden="true" />
-          <Icon name="lucide:x" id="menu-icon-close" class="hidden h-5 w-5" aria-hidden="true" />
-        </button>
-        <nav class="hidden sm:flex flex-wrap gap-1 text-sm">
-          {
-            nav.map((item) => (
-              <a
-                href={item.href}
-                class={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${
-                  isActive(item.href)
-                    ? 'bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-white'
-                }`}
-              >
-                <Icon name={item.icon} class="h-4 w-4" aria-hidden="true" />
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
-        <div class="flex items-center gap-x-5">
-          <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
-            <a href={`mailto:${site.email}`} aria-label="Email" class="hover:text-indigo-600 dark:hover:text-indigo-400">
-              <Icon name="lucide:mail" class="h-4.5 w-4.5" aria-hidden="true" />
-            </a>
-            <a href={site.github} aria-label="GitHub" class="hover:text-indigo-600 dark:hover:text-indigo-400">
-              <Icon name="lucide:github" class="h-4.5 w-4.5" aria-hidden="true" />
-            </a>
-            <a href={site.linkedin} aria-label="LinkedIn" class="hover:text-indigo-600 dark:hover:text-indigo-400">
-              <Icon name="lucide:linkedin" class="h-4.5 w-4.5" aria-hidden="true" />
-            </a>
-          </div>
-          <button
-            id="theme-toggle"
-            type="button"
-            aria-label="Toggle dark mode"
-            title="Switch between light and dark theme"
-            class="relative inline-flex h-5 w-9 shrink-0 items-center rounded-full bg-slate-200 transition-colors hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600"
-          >
-            <span class="inline-flex h-4 w-4 translate-x-0.5 items-center justify-center rounded-full bg-white shadow-sm transition-transform dark:translate-x-[18px] dark:bg-slate-900">
-              <Icon name="lucide:sun" class="h-2.5 w-2.5 text-slate-500 dark:hidden" aria-hidden="true" />
-              <Icon name="lucide:moon" class="hidden h-2.5 w-2.5 text-slate-400 dark:block" aria-hidden="true" />
-            </span>
-          </button>
-        </div>
-      </div>
-      <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-200 dark:border-slate-800">
-        <nav class="mx-auto max-w-4xl px-4 py-3 flex flex-col gap-1 text-sm">
-          {
-            nav.map((item) => (
-              <a
-                href={item.href}
-                class={`flex items-center gap-2.5 rounded-lg px-3 py-2 transition-colors ${
-                  isActive(item.href)
-                    ? 'bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-white'
-                }`}
-              >
-                <Icon name={item.icon} class="h-4.5 w-4.5" aria-hidden="true" />
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
-      </div>
-    </header>
+    <HeaderPart />
 
     <main class="mx-auto w-full max-w-4xl px-4 py-10 grow">
       <slot />
     </main>
 
-    <footer class="border-t border-slate-200 dark:border-slate-800">
-      <div class="mx-auto max-w-4xl px-4 py-8">
-        <div class="flex flex-wrap items-start justify-between gap-6">
-          <div>
-            <p class="font-display font-semibold text-slate-900 dark:text-white">Vasile Grafu</p>
-            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-xs">
-              Engineering leadership, software architecture, and applied AI.
-            </p>
-          </div>
-          <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600 dark:text-slate-400">
-            {
-              nav.map((item) => (
-                <a href={item.href} class="hover:text-indigo-600 dark:hover:text-indigo-400">
-                  {item.label}
-                </a>
-              ))
-            }
-          </nav>
-        </div>
-        <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">
-          © {new Date().getFullYear()} {site.name} ·
-          <a href={site.github} class="hover:text-indigo-600 dark:hover:text-indigo-400">GitHub</a> ·
-          <a href={site.linkedin} class="hover:text-indigo-600 dark:hover:text-indigo-400">LinkedIn</a> ·
-          <a href="/rss.xml" class="hover:text-indigo-600 dark:hover:text-indigo-400">RSS</a>
-        </p>
-      </div>
-    </footer>
-
-    <script is:inline>
-      document.getElementById('theme-toggle').addEventListener('click', function () {
-        var dark = document.documentElement.classList.toggle('dark');
-        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-      });
-      document.getElementById('menu-toggle').addEventListener('click', function () {
-        var menu = document.getElementById('mobile-menu');
-        var open = menu.classList.toggle('hidden') === false;
-        document.getElementById('menu-icon-open').classList.toggle('hidden', open);
-        document.getElementById('menu-icon-close').classList.toggle('hidden', !open);
-        this.setAttribute('aria-expanded', open ? 'true' : 'false');
-        this.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      });
-    </script>
+    <FooterPart />
   </body>
 </html>

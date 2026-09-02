@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import { Icon } from 'astro-icon/components';
+import StatTilePart from '../../fx/components/StatTilePart.astro';
+import SegmentBarPart from '../../fx/components/SegmentBarPart.astro';
+import RoleItem from './RoleItemPart.astro';
+import { experience, education, selfLearning } from '../../data/profile';
+
+const stats = [
+  { value: '20+', label: 'years in software' },
+  { value: '18', label: 'years leading teams' },
+  { value: '4', label: 'companies' },
+];
+
+// Company eras for the ribbon; widths are proportional to duration.
+const eras = [
+  { label: 'Ubisoft', note: '’05–’08', weight: 3.5 },
+  { label: 'TeamNet', note: '’08–’09', weight: 1 },
+  { label: 'Consignor', note: '’09–’22', weight: 13 },
+  { label: 'nShift', note: '’22–now', weight: 4.7, highlight: true },
+];
+
+// Lucide icon per role, in the same order as `experience`.
+const roleIcons = [
+  'lucide:sparkles', // nShift — AI era
+  'lucide:globe', // Consignor Team Manager
+  'lucide:layers', // Consignor Technical Lead
+  'lucide:package', // TeamNet — ERP
+  'lucide:gamepad-2', // Ubisoft
+];
+---
+
+<Base title="Career — Vasile Grafu" description="20+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems.">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div>
+      <p class="kicker">Journey</p>
+      <h1 class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">Career</h1>
+      <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+        The roles I’ve held, the teams I’ve built, and what each chapter added.
+      </p>
+    </div>
+    <a
+      href="/cv.pdf"
+      download="Vasile-Grafu-Resume.pdf"
+      class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
+    >
+      <Icon name="lucide:download" class="h-3.5 w-3.5" aria-hidden="true" />
+      Download resume (PDF)
+    </a>
+  </div>
+
+  <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {stats.map((s) => <StatTilePart value={s.value} label={s.label} />)}
+  </div>
+
+  <SegmentBarPart segments={eras} ariaLabel="Career timeline by company" />
+
+  <ol class="mt-10 relative border-s border-slate-200 dark:border-slate-800 space-y-12">
+    {experience.map((role, i) => <RoleItem role={role} icon={roleIcons[i]} />)}
+  </ol>
+
+  <h2 class="mt-14 flex items-center gap-2.5 font-display text-2xl font-bold text-slate-900 dark:text-white">
+    <Icon name="lucide:graduation-cap" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+    Education
+  </h2>
+  <ul class="mt-4 space-y-4">
+    {
+      education.map((e) => (
+        <li>
+          <p class="font-medium text-slate-900 dark:text-white">{e.degree}</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">{e.school} · {e.period}</p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="mt-14 flex items-center gap-2.5 font-display text-2xl font-bold text-slate-900 dark:text-white">
+    <Icon name="lucide:book-open" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+    Self-learning
+  </h2>
+  <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-300">
+    {selfLearning.map((p) => <p>{p}</p>)}
+  </div>
+</Base>

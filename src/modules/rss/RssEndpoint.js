@@ -1,17 +1,16 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { site } from '../data/profile';
+import { site } from '../../data/profile';
+import { articlesByDate } from '../articles/registry';
 
 export async function GET(context) {
-  const articles = await getCollection('articles');
   return rss({
     title: `${site.name} — Articles`,
     description: 'Writing on engineering leadership, software architecture, and applied AI.',
     site: context.site,
-    items: articles.map((article) => ({
-      title: article.data.title,
-      description: article.data.description,
-      pubDate: article.data.pubDate,
+    items: articlesByDate().map((article) => ({
+      title: article.title,
+      description: article.description,
+      pubDate: article.pubDate,
       link: `/articles/${article.id}/`,
     })),
   });

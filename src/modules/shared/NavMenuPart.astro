@@ -1,0 +1,26 @@
+---
+// Desktop pill navigation.
+import { Icon } from 'astro-icon/components';
+import { navItems } from './nav';
+import { isActive } from '../../fx/lib/routing';
+
+const path = Astro.url.pathname;
+---
+
+<nav class="hidden sm:flex flex-wrap gap-1 text-sm">
+  {
+    navItems.map((item) => (
+      <a
+        href={item.href}
+        class={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${
+          isActive(item.href, path)
+            ? 'bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300'
+            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-white'
+        }`}
+      >
+        <Icon name={item.icon} class="h-4 w-4" aria-hidden="true" />
+        {item.label}
+      </a>
+    ))
+  }
+</nav>

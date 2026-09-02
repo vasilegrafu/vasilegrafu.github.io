@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../fx/styles/fx.css";
 
 /* Class-based dark mode so the header toggle can override the OS preference */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -22,18 +23,4 @@ html {
 }
 .dark .kicker {
   color: var(--color-amber-400);
-}
-
-/* Rotate the chevron of an open details expander */
-details[open] > summary .chev {
-  transform: rotate(180deg);
-}
-
-/* Card hover lift shared by feature cards */
-.card-lift {
-  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
-}
-.card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px -12px rgb(79 70 229 / 0.25);
 }

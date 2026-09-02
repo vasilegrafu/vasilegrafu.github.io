@@ -1,0 +1,16 @@
+---
+// Big gradient number over a small label, used in the Career "at a glance" row.
+interface Props {
+  value: string;
+  label: string;
+}
+
+const { value, label } = Astro.props;
+---
+
+<div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 text-center">
+  <p class="font-display text-3xl font-bold bg-gradient-to-br from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+    {value}
+  </p>
+  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">{label}</p>
+</div>
