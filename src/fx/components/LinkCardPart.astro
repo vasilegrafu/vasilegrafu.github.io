@@ -14,9 +14,9 @@ const { href, icon, title, subtitle } = Astro.props;
 
 <a
   href={href}
-  class="card-lift group flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 p-5 hover:border-indigo-600 dark:hover:border-indigo-400"
+  class="card card-lift group flex items-center gap-4 p-5 hover:border-indigo-600 dark:hover:border-indigo-400"
 >
-  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+  <span class="icon-tile h-11 w-11 shrink-0">
     <Icon name={icon} class="h-5 w-5" aria-hidden="true" />
   </span>
   <span class="min-w-0 grow">
