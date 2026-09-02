@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "../fx/styles/fx.css";
 @import "../themes/index.css";
 
 @theme {
@@ -80,6 +79,9 @@ html {
   .card {
     @apply rounded-xl border border-line;
   }
+  .card-lift {
+    @apply transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px] hover:shadow-accent/25;
+  }
 
   /* Small pieces */
   .tag {
@@ -90,6 +92,31 @@ html {
   }
   .link-accent {
     @apply text-accent hover:underline;
+  }
+
+  /* CSS-only tooltip: add .tip + data-tip="text"; .tip-end right-aligns the
+     bubble. Kept as a class because ::after + content: attr() cannot be
+     expressed with utilities. */
+  .tip {
+    @apply relative;
+  }
+  .tip::after {
+    content: attr(data-tip);
+    @apply pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-xs font-medium text-bg opacity-0 transition-[opacity,transform] duration-150;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .tip:hover::after,
+  .tip:focus-visible::after {
+    @apply opacity-100;
+    transform: translateX(-50%) translateY(0);
+  }
+  .tip-end::after {
+    @apply left-auto right-0;
+    transform: translateY(-2px);
+  }
+  .tip-end:hover::after,
+  .tip-end:focus-visible::after {
+    transform: translateY(0);
   }
 
   /* Article body typography (rendered ArticlePart HTML) */

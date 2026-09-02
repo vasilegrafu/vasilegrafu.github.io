@@ -27,7 +27,7 @@ const { role, icon } = Astro.props;
   <details class="mt-4">
     <summary class="inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent-soft/50 list-none [&::-webkit-details-marker]:hidden">
       What I did
-      <Icon name="lucide:chevron-down" class="chev h-4 w-4 transition-transform" aria-hidden="true" />
+      <Icon name="lucide:chevron-down" class="h-4 w-4 transition-transform [details[open]_&]:rotate-180" aria-hidden="true" />
     </summary>
     <div class="mt-4 grid gap-3 sm:grid-cols-2">
       {role.bullets.map((b) => {
