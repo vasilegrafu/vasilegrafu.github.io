@@ -16,7 +16,7 @@ This site has three jobs:
 2. **Share what I learn.** I'm deeply invested in AI research and AI-assisted engineering.
    Articles here will cover agentic architectures, RAG in production, leading teams through the
    AI transition, and the mathematical foundations behind it all.
-3. **Start conversations.** I'm always [exploring ideas](/ideas/), and some of the best
+3. **Start conversations.** I'm always exploring ideas, and some of the best
    insights come from people thinking about the same problems. [Reach out](/contact/).
 
 The site itself is built with Astro, Tailwind CSS, and Markdown, deployed to GitHub Pages by

@@ -6,6 +6,7 @@ export default defineConfig({
   site: 'https://vasilegrafu.github.io',
   redirects: {
     '/resume': '/career',
+    '/ideas': '/',
   },
   integrations: [
     sitemap({
