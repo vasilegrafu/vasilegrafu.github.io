@@ -38,16 +38,17 @@ export const experience: Role[] = [
       'Hands-on development: shared components, application structure, data flow, database design, security principles, and infrastructure improvements.',
       'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
-      'Building a large-scale internal conversational AI platform: LLMs, agent orchestration, RAG, and MCP-style tool integration.',
+      'Building a large-scale conversational AI platform: LLMs, agent orchestration, RAG, and MCP-style tool integration.',
     ],
     tech: [
-      'AI-assisted development',
+      'AI-assisted development (Claude Code)',
+      'LLMs, Agents, RAG, MCP',
       'C# / .NET / ASP.NET Core',
       'Python / FastAPI / SQLAlchemy',
       'SQL Server / PostgreSQL',
       'AWS (EC2, ECS, RDS, S3)',
-      'Docker',
-      'JavaScript / ReactJS / Material UI',
+      'Docker, CI/CD',
+      'JavaScript / TypeScript / ReactJS / Material UI',
     ],
   },
   {
@@ -61,6 +62,13 @@ export const experience: Role[] = [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce platforms.',
       'Hiring, training, and coordinating people; critical architecture decisions; hands-on development; and management of cross-team projects.',
+    ],
+    tech: [
+      'C# / .NET web services',
+      'E-commerce platforms (WooCommerce, Klarna, Magento)',
+      'APIs & integrations',
+      'AWS',
+      'Project management (Prince2)',
     ],
   },
   {
@@ -78,12 +86,12 @@ export const experience: Role[] = [
       'Acted as liaison between the development team and other departments.',
     ],
     tech: [
-      'C# .NET, ASP.NET MVC',
-      'WCF',
+      'C# / .NET, ASP.NET MVC',
+      'WCF web services',
       'SQL Server Enterprise',
       'JavaScript, jQuery, Bootstrap, LESS/SASS',
-      'Python, IronPython',
-      'Amazon Web Services',
+      'Python',
+      'AWS',
     ],
   },
   {
@@ -97,6 +105,12 @@ export const experience: Role[] = [
       'Managed the Optimus ERP modules through all development steps, from specification to testing and deployment.',
       'Elaborated development plans for new features in collaboration with the design department.',
       'Responsible for enhancing existing features and for triaging and resolving all defects identified by the Quality Department.',
+    ],
+    tech: [
+      'Optimus ERP',
+      'Full development lifecycle',
+      'Feature planning & specifications',
+      'Defect triage & quality management',
     ],
   },
   {
@@ -112,7 +126,13 @@ export const experience: Role[] = [
       'Blazing Angels (PC): Save/Load system and Media Center shell implementation.',
       'Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.',
     ],
-    tech: ['C++, STL', 'Software optimization', 'Linear algebra, calculus, probabilities'],
+    tech: [
+      'C++, STL',
+      'Gameplay & platform modules',
+      'Multithreaded rendering',
+      'Software optimization',
+      'Linear algebra, calculus, probabilities',
+    ],
   },
 ];
 
@@ -227,10 +247,10 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'Internal Conversational AI Platform',
+    title: 'Conversational AI Platform',
     role: 'Engineering Manager & Architect · nShift',
     description:
-      'A large-scale internal AI assistant built on an agentic architecture: LLMs combined with orchestration layers, RAG, and structured prompt engineering. Domain-specific agents for different departments — each with tailored prompts, tools, and data access — collaborate through an orchestration layer. A continuous ingestion pipeline indexes internal documentation, APIs, and business data into knowledge stores, so responses stay context-aware and grounded in company-specific information.',
+      'A large-scale AI assistant built on an agentic architecture: LLMs combined with orchestration layers, RAG, and structured prompt engineering. Domain-specific agents for different departments — each with tailored prompts, tools, and data access — collaborate through an orchestration layer. A continuous ingestion pipeline indexes internal documentation, APIs, and business data into knowledge stores, so responses stay context-aware and grounded in company-specific information.',
     tags: ['LLMs', 'Agents', 'RAG', 'MCP', 'Orchestration', 'Python'],
   },
   {
