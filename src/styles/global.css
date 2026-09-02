@@ -15,15 +15,15 @@ html {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-indigo-600);
+  color: var(--color-amber-600);
 }
 .dark .kicker,
 :where(html.dark) .kicker {
-  color: var(--color-indigo-400);
+  color: var(--color-amber-400);
 }
 @media (prefers-color-scheme: dark) {
   .kicker {
-    color: var(--color-indigo-400);
+    color: var(--color-amber-400);
   }
 }
 
