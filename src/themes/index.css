@@ -1,0 +1,32 @@
+/* ---------------------------------------------------------------------------
+   Themes — each file defines the same set of --t-* tokens for one look.
+   The active theme is chosen by data-theme on <html> (set by ThemeMenuPart);
+   with no attribute, light is the default and dark follows the OS preference.
+
+   Token contract (every theme must define all of these):
+     --t-bg            page ground
+     --t-surface       raised panels / cards
+     --t-tint          subtly tinted panels
+     --t-chip          neutral chip / hover fill
+     --t-ink           headings & strong text
+     --t-muted         body text
+     --t-faint         timestamps, footnotes
+     --t-line          default borders
+     --t-line-strong   stronger borders (buttons, inputs)
+     --t-accent        interactive color (links, icons)
+     --t-accent-strong active-state text on accent-soft
+     --t-accent-ink    text on solid accent
+     --t-accent-solid  solid accent fill (primary buttons)
+     --t-accent-hover  hover state of the solid fill
+     --t-accent-soft   soft accent fill (icon tiles, active pills)
+     --t-accent-line   accent-tinted border
+     --t-grad-a/b      brand gradient stops
+     --t-label         secondary label color (kickers, badges)
+     --t-label-strong  label text on label-soft
+     --t-label-soft    soft label fill
+     --t-blob-a/b      decorative hero blooms
+--------------------------------------------------------------------------- */
+@import './light.css';
+@import './dark.css';
+@import './emerald.css';
+@import './sepia.css';

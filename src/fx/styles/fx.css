@@ -1,4 +1,5 @@
-/* Generic, project-independent styles. */
+/* Generic, project-independent styles. Colors come from the host project's
+   theme tokens (--color-ink / --color-bg). */
 
 /* CSS-only tooltip: add .tip + data-tip="text"; .tip-end right-aligns the bubble */
 .tip {
@@ -16,8 +17,8 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
-  background: var(--color-slate-800);
-  color: var(--color-white);
+  background: var(--color-ink, #1e293b);
+  color: var(--color-bg, #fff);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
@@ -37,10 +38,6 @@
 .tip-end:focus-visible::after {
   transform: translateY(0);
 }
-.dark .tip::after {
-  background: var(--color-slate-200);
-  color: var(--color-slate-900);
-}
 
 /* Rotate the chevron of an open details expander */
 details[open] > summary .chev {
@@ -53,5 +50,5 @@ details[open] > summary .chev {
 }
 .card-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -12px rgb(79 70 229 / 0.25);
+  box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--color-accent, #4f46e5) 25%, transparent);
 }

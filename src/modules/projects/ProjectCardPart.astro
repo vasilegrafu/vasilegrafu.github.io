@@ -16,8 +16,8 @@ const { project, icon } = Astro.props;
     <Icon name={icon} class="h-5 w-5" aria-hidden="true" />
   </div>
   <h2 class="title-item text-lg">{project.title}</h2>
-  <p class="mt-1 text-sm text-indigo-600 dark:text-indigo-400">{project.role}</p>
-  <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 grow">
+  <p class="mt-1 text-sm text-accent">{project.role}</p>
+  <p class="mt-3 text-sm leading-relaxed text-muted grow">
     {project.description}
   </p>
   <div class="mt-4 flex flex-wrap gap-2">

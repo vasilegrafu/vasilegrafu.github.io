@@ -1,0 +1,109 @@
+---
+// Theme dropdown: lists every registered theme (src/themes/themes.ts) plus
+// "System". The choice is stored in localStorage and applied before first
+// paint by the inline script in Base.astro's <head>.
+import { Icon } from 'astro-icon/components';
+import { themes } from '../../themes/themes';
+---
+
+<div class="relative">
+  <button
+    id="theme-menu-btn"
+    type="button"
+    aria-label="Change theme"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    data-tip="Change the site's color theme"
+    class="tip tip-end inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-accent"
+  >
+    <Icon name="lucide:palette" class="h-4 w-4" aria-hidden="true" />
+    Theme
+    <Icon name="lucide:chevron-down" class="chev h-3.5 w-3.5 transition-transform" aria-hidden="true" />
+  </button>
+
+  <div
+    id="theme-menu"
+    role="menu"
+    class="hidden absolute right-0 top-full z-20 mt-2 w-44 card bg-bg p-1 shadow-lg"
+  >
+    <button
+      type="button"
+      role="menuitemradio"
+      data-theme-id="system"
+      class="theme-item flex w-full items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-chip hover:text-ink"
+    >
+      <Icon name="lucide:monitor" class="h-3.5 w-3.5 text-faint" aria-hidden="true" />
+      <span class="grow text-start">System</span>
+      <Icon name="lucide:check" class="theme-check hidden h-4 w-4 text-accent" aria-hidden="true" />
+    </button>
+    {
+      themes.map((t) => (
+        <button
+          type="button"
+          role="menuitemradio"
+          data-theme-id={t.id}
+          class="theme-item flex w-full items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-chip hover:text-ink"
+        >
+          <span class="h-3.5 w-3.5 rounded-full border border-line-strong" style={`background:${t.swatch}`} aria-hidden="true" />
+          <span class="grow text-start">{t.label}</span>
+          <Icon name="lucide:check" class="theme-check hidden h-4 w-4 text-accent" aria-hidden="true" />
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('theme-menu-btn');
+    var menu = document.getElementById('theme-menu');
+    var items = menu.querySelectorAll('.theme-item');
+
+    function current() {
+      try { return localStorage.getItem('theme') || 'system'; } catch (e) { return 'system'; }
+    }
+    function updateChecks() {
+      var active = current();
+      items.forEach(function (item) {
+        var isActive = item.getAttribute('data-theme-id') === active;
+        item.querySelector('.theme-check').classList.toggle('hidden', !isActive);
+        item.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+    }
+    function close() {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!menu.contains(e.target) && e.target !== btn) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var id = item.getAttribute('data-theme-id');
+        try {
+          if (id === 'system') {
+            localStorage.removeItem('theme');
+            document.documentElement.removeAttribute('data-theme');
+          } else {
+            localStorage.setItem('theme', id);
+            document.documentElement.setAttribute('data-theme', id);
+          }
+        } catch (e) {}
+        updateChecks();
+        close();
+      });
+    });
+
+    updateChecks();
+  })();
+</script>

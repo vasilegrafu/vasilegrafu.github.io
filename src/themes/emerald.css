@@ -1,0 +1,26 @@
+/* Emerald — fresh green-on-mint look. */
+[data-theme='emerald'] {
+  --t-bg: #f6faf8;
+  --t-surface: #ffffff;
+  --t-tint: rgb(236 253 245 / 0.5);
+  --t-chip: #e3efe9;
+  --t-ink: #0f2e24;
+  --t-muted: #3f5b52;
+  --t-faint: #5f7a70;
+  --t-line: #d5e5de;
+  --t-line-strong: #b6cfc4;
+  --t-accent: #047857;
+  --t-accent-strong: #065f46;
+  --t-accent-ink: #ffffff;
+  --t-accent-solid: #047857;
+  --t-accent-hover: #065f46;
+  --t-accent-soft: #d1fae5;
+  --t-accent-line: #a7f3d0;
+  --t-grad-a: #059669;
+  --t-grad-b: #0d9488;
+  --t-label: #b45309;
+  --t-label-strong: #92400e;
+  --t-label-soft: #fef3c7;
+  --t-blob-a: rgb(167 243 208 / 0.4);
+  --t-blob-b: rgb(153 246 228 / 0.35);
+}

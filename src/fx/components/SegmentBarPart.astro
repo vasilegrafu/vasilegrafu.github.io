@@ -22,12 +22,12 @@ const { segments, ariaLabel } = Astro.props;
       <div
         class={`rounded-lg px-2.5 py-1.5 text-center text-xs whitespace-nowrap ${
           s.highlight
-            ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium'
-            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+            ? 'bg-gradient-to-r from-grad-a to-grad-b text-accent-ink font-medium'
+            : 'bg-chip text-muted'
         }`}
         style={`flex-grow: ${s.weight}; flex-basis: 0; min-width: fit-content;`}
       >
-        {s.label} {s.note && <span class={s.highlight ? 'text-indigo-100' : 'text-slate-400 dark:text-slate-500'}>{s.note}</span>}
+        {s.label} {s.note && <span class={s.highlight ? 'text-accent-ink/80' : 'text-faint'}>{s.note}</span>}
       </div>
     ))
   }
