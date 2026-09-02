@@ -68,4 +68,4 @@ Adding a theme: create `src/themes/<name>.css` implementing the token
 contract, import it in `themes/index.css`, add an entry in `themes.ts` —
 it appears in the header dropdown automatically. Selection persists in
 `localStorage` and is applied pre-paint in `BaseLayout`'s head script;
-without a selection, light is default and dark follows the OS.
+without a selection, dark is the default.

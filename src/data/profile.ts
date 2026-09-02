@@ -116,9 +116,18 @@ export const experience: Role[] = [
   },
 ];
 
-export const skills: { group: string; items: string[] }[] = [
+export interface SkillCategory {
+  group: string;
+  icon: string; // lucide icon name, used on the Skills page (the PDF ignores it)
+  blurb: string; // one-line intro, used on the Skills page (the PDF ignores it)
+  items: string[];
+}
+
+export const skills: SkillCategory[] = [
   {
     group: 'Leadership & Management',
+    icon: 'lucide:users',
+    blurb: 'Building, growing, and running engineering teams.',
     items: [
       'Engineering Management',
       'Team & Technical Leadership',
@@ -130,27 +139,33 @@ export const skills: { group: string; items: string[] }[] = [
   },
   {
     group: 'AI & Machine Learning',
+    icon: 'lucide:brain',
+    blurb: 'Agentic systems in production — and the theory underneath them.',
     items: [
       'AI-Assisted Software Development',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
       'Prompt Engineering & MCP-style Tool Integration',
       'Machine Learning & Deep Learning (TensorFlow, NumPy, Pandas)',
-      'Probability, Linear Algebra, Calculus, Statistics',
+      'Neural Networks & Reinforcement Learning',
     ],
   },
   {
     group: 'Backend & Architecture',
+    icon: 'lucide:server',
+    blurb: 'Designing and building the services that carry the business.',
     items: [
       'C#, .NET, ASP.NET Core, Entity Framework, LINQ',
       'Python, FastAPI, SQLAlchemy',
       'Solution & Software Architecture',
       'Framework Design',
-      'Data Structures & Algorithms',
+      'API Design & E-commerce Integrations',
     ],
   },
   {
-    group: 'Cloud & Data',
+    group: 'Cloud, Data & DevOps',
+    icon: 'lucide:cloud',
+    blurb: 'Running systems reliably on AWS, from database to pipeline.',
     items: [
       'AWS (EC2, ECS, RDS, S3, CloudFormation)',
       'Docker, CI/CD',
@@ -159,8 +174,22 @@ export const skills: { group: string; items: string[] }[] = [
     ],
   },
   {
-    group: 'Frontend',
-    items: ['JavaScript, ReactJS', 'HTML, CSS, SASS', 'Material UI'],
+    group: 'Frontend & Web',
+    icon: 'lucide:monitor',
+    blurb: 'Interfaces for the platforms and tools I build.',
+    items: ['JavaScript, ReactJS', 'HTML, CSS, SASS', 'Material UI', 'Astro, Tailwind CSS'],
+  },
+  {
+    group: 'Foundations',
+    icon: 'lucide:sigma',
+    blurb: 'The math and fundamentals everything else stands on.',
+    items: [
+      'Probability, Linear Algebra, Calculus, Statistics',
+      'Data Structures & Algorithms',
+      'Problem Solving & Analytical Thinking',
+      'Software Architecture Principles',
+      'Design Patterns & Clean Code',
+    ],
   },
 ];
 

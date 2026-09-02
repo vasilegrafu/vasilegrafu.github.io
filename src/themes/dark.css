@@ -1,5 +1,7 @@
-/* Dark — chosen explicitly, or followed from the OS preference when no
-   theme is set. Both blocks must stay identical. */
+/* Dark — the default theme (applies when no theme is selected).
+   :where() keeps the default at zero specificity so any [data-theme='…']
+   selection always overrides it, regardless of import order. */
+:where(:root),
 [data-theme='dark'] {
   --t-bg: #020617;
   --t-surface: #0f172a;
@@ -24,32 +26,4 @@
   --t-label-soft: rgb(69 26 3 / 0.4);
   --t-blob-a: rgb(99 102 241 / 0.1);
   --t-blob-b: rgb(139 92 246 / 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --t-bg: #020617;
-    --t-surface: #0f172a;
-    --t-tint: rgb(15 23 42 / 0.4);
-    --t-chip: #1e293b;
-    --t-ink: #ffffff;
-    --t-muted: #cbd5e1;
-    --t-faint: #94a3b8;
-    --t-line: #1e293b;
-    --t-line-strong: #334155;
-    --t-accent: #818cf8;
-    --t-accent-strong: #a5b4fc;
-    --t-accent-ink: #ffffff;
-    --t-accent-solid: #4f46e5;
-    --t-accent-hover: #4338ca;
-    --t-accent-soft: rgb(30 27 75 / 0.6);
-    --t-accent-line: #312e81;
-    --t-grad-a: #4f46e5;
-    --t-grad-b: #7c3aed;
-    --t-label: #fbbf24;
-    --t-label-strong: #fcd34d;
-    --t-label-soft: rgb(69 26 3 / 0.4);
-    --t-blob-a: rgb(99 102 241 / 0.1);
-    --t-blob-b: rgb(139 92 246 / 0.1);
-  }
 }

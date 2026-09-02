@@ -1,5 +1,4 @@
-/* Light — the default theme. */
-:root,
+/* Light. */
 [data-theme='light'] {
   --t-bg: #ffffff;
   --t-surface: #ffffff;

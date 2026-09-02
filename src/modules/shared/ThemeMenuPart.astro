@@ -1,7 +1,8 @@
 ---
-// Theme dropdown: lists every registered theme (src/themes/themes.ts) plus
-// "System". The choice is stored in localStorage and applied before first
-// paint by the inline script in Base.astro's <head>.
+// Theme dropdown: lists every registered theme (src/themes/themes.ts) and
+// shows the active one on the button. Dark is the default; the choice is
+// stored in localStorage and applied before first paint by the inline script
+// in BaseLayout's <head>.
 import { Icon } from 'astro-icon/components';
 import { themes } from '@themes/themes';
 ---
@@ -17,7 +18,7 @@ import { themes } from '@themes/themes';
     class="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
   >
     <Icon name="lucide:palette" class="h-4 w-4" aria-hidden="true" />
-    Theme
+    <span id="theme-menu-label">Dark</span>
     <Icon
       name="lucide:chevron-down"
       class="h-3.5 w-3.5 transition-transform [[aria-expanded='true']_&]:rotate-180"
@@ -30,16 +31,6 @@ import { themes } from '@themes/themes';
     role="menu"
     class="card bg-bg absolute top-full right-0 z-20 mt-2 hidden w-44 p-1 shadow-lg"
   >
-    <button
-      type="button"
-      role="menuitemradio"
-      data-theme-id="system"
-      class="theme-item menu-item text-sm"
-    >
-      <Icon name="lucide:monitor" class="text-faint h-3.5 w-3.5" aria-hidden="true" />
-      <span class="grow text-start">System</span>
-      <Icon name="lucide:check" class="theme-check text-accent hidden h-4 w-4" aria-hidden="true" />
-    </button>
     {
       themes.map((t) => (
         <button
@@ -69,21 +60,23 @@ import { themes } from '@themes/themes';
   (function () {
     var btn = document.getElementById('theme-menu-btn');
     var menu = document.getElementById('theme-menu');
+    var label = document.getElementById('theme-menu-label');
     var items = menu.querySelectorAll('.theme-item');
 
     function current() {
       try {
-        return localStorage.getItem('theme') || 'system';
+        return localStorage.getItem('theme') || 'dark';
       } catch (e) {
-        return 'system';
+        return 'dark';
       }
     }
-    function updateChecks() {
+    function sync() {
       var active = current();
       items.forEach(function (item) {
         var isActive = item.getAttribute('data-theme-id') === active;
         item.querySelector('.theme-check').classList.toggle('hidden', !isActive);
         item.setAttribute('aria-checked', isActive ? 'true' : 'false');
+        if (isActive) label.textContent = item.querySelector('.grow').textContent;
       });
     }
     function close() {
@@ -107,19 +100,14 @@ import { themes } from '@themes/themes';
       item.addEventListener('click', function () {
         var id = item.getAttribute('data-theme-id');
         try {
-          if (id === 'system') {
-            localStorage.removeItem('theme');
-            document.documentElement.removeAttribute('data-theme');
-          } else {
-            localStorage.setItem('theme', id);
-            document.documentElement.setAttribute('data-theme', id);
-          }
+          localStorage.setItem('theme', id);
         } catch (e) {}
-        updateChecks();
+        document.documentElement.setAttribute('data-theme', id);
+        sync();
         close();
       });
     });
 
-    updateChecks();
+    sync();
   })();
 </script>

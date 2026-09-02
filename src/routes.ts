@@ -8,6 +8,7 @@ export interface RouteDef {
 export const routes: RouteDef[] = [
   { pattern: '/', entrypoint: './src/modules/index/IndexPage.astro' },
   { pattern: '/career', entrypoint: './src/modules/career/CareerPage.astro' },
+  { pattern: '/skills', entrypoint: './src/modules/skills/SkillsPage.astro' },
   { pattern: '/projects', entrypoint: './src/modules/projects/ProjectsPage.astro' },
   { pattern: '/articles', entrypoint: './src/modules/articles/ArticlesPage.astro' },
   { pattern: '/articles/[id]', entrypoint: './src/modules/articles/ArticlePage.astro' },

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@modules/shared/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { skills } from '@data/profile';
+---
+
+<BaseLayout
+  title="Skills — Vasile Grafu"
+  description="Skills across leadership, AI and machine learning, backend architecture, cloud, and the fundamentals beneath them."
+>
+  <p class="kicker">Toolbox</p>
+  <h1 class="title-page mt-2">Skills</h1>
+  <p class="lede">
+    What I reach for and the ground it stands on — from leading teams to the math under the models.
+  </p>
+
+  <div class="mt-8 grid gap-6 sm:grid-cols-2">
+    {
+      skills.map((cat) => (
+        <section class="card card-lift p-5">
+          <div class="flex items-center gap-3">
+            <div class="icon-tile">
+              <Icon name={cat.icon} class="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h2 class="font-display text-ink font-semibold">{cat.group}</h2>
+          </div>
+          <p class="text-muted mt-3 text-sm">{cat.blurb}</p>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {cat.items.map((item) => (
+              <li class="chip text-sm">{item}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
