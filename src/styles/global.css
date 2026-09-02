@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode so the header toggle can override the OS preference */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
@@ -17,14 +20,8 @@ html {
   text-transform: uppercase;
   color: var(--color-amber-600);
 }
-.dark .kicker,
-:where(html.dark) .kicker {
+.dark .kicker {
   color: var(--color-amber-400);
-}
-@media (prefers-color-scheme: dark) {
-  .kicker {
-    color: var(--color-amber-400);
-  }
 }
 
 /* Rotate the chevron of an open details expander */
