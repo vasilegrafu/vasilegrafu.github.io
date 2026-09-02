@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Icon } from 'astro-icon/components';
 import { experience, education, selfLearning } from '../data/profile';
 
 const stats = [
@@ -16,18 +17,13 @@ const eras = [
   { company: 'nShift', span: '’22–now', years: 4.7, current: true },
 ];
 
-// Inline icon per role, in the same order as `experience` (lucide outlines).
+// Lucide icon per role, in the same order as `experience`.
 const roleIcons = [
-  // nShift — sparkles
-  '<path stroke-linecap="round" stroke-linejoin="round" d="M9.8 15.3 9 18l-.8-2.7a4 4 0 0 0-2.5-2.5L3 12l2.7-.8a4 4 0 0 0 2.5-2.5L9 6l.8 2.7a4 4 0 0 0 2.5 2.5l2.7.8-2.7.8a4 4 0 0 0-2.5 2.5ZM18 4l.4 1.6L20 6l-1.6.4L18 8l-.4-1.6L16 6l1.6-.4Zm0 10 .4 1.6L20 16l-1.6.4L18 18l-.4-1.6L16 16l1.6-.4Z"/>',
-  // Consignor Team Manager — globe
-  '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 3a13.9 13.9 0 0 0 0 18 13.9 13.9 0 0 0 0-18ZM3 12h18"/>',
-  // Consignor Technical Lead — layers
-  '<path stroke-linecap="round" stroke-linejoin="round" d="m12 3 9 4.5-9 4.5-9-4.5L12 3Zm-9 9 9 4.5 9-4.5m-18 4.5L12 21l9-4.5"/>',
-  // TeamNet — package
-  '<path stroke-linecap="round" stroke-linejoin="round" d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Zm-17.7-1 8.7 5 8.7-5M12 22V12"/>',
-  // Ubisoft — gamepad
-  '<path stroke-linecap="round" stroke-linejoin="round" d="M6 12h4m-2-2v4m8-1h.01M15 11h.01M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.54-.6-6.58-.7-7.41A4 4 0 0 0 17.32 5Z"/>',
+  'lucide:sparkles', // nShift — AI era
+  'lucide:globe', // Consignor Team Manager
+  'lucide:layers', // Consignor Technical Lead
+  'lucide:package', // TeamNet — ERP
+  'lucide:gamepad-2', // Ubisoft
 ];
 ---
 
@@ -45,9 +41,7 @@ const roleIcons = [
       download="Vasile-Grafu-Resume.pdf"
       class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
     >
-      <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
-      </svg>
+      <Icon name="lucide:download" class="h-3.5 w-3.5" aria-hidden="true" />
       Download resume (PDF)
     </a>
   </div>
@@ -87,7 +81,7 @@ const roleIcons = [
       experience.map((role, i) => (
         <li class="ms-6">
           <span class="absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-indigo-600 dark:text-indigo-400">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true" set:html={roleIcons[i]} />
+            <Icon name={roleIcons[i]} class="h-4 w-4" aria-hidden="true" />
           </span>
           <p class="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
             <span class="rounded-full bg-amber-50 dark:bg-amber-950/40 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">{role.period}</span>
@@ -100,9 +94,7 @@ const roleIcons = [
           <details class="mt-4">
             <summary class="inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors hover:border-indigo-600 hover:bg-indigo-50/50 dark:hover:border-indigo-400 dark:hover:bg-indigo-950/40 list-none [&::-webkit-details-marker]:hidden">
               What I did
-              <svg class="chev h-4 w-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
-              </svg>
+              <Icon name="lucide:chevron-down" class="chev h-4 w-4 transition-transform" aria-hidden="true" />
             </summary>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
               {role.bullets.map((b) => {
@@ -133,7 +125,10 @@ const roleIcons = [
     }
   </ol>
 
-  <h2 class="mt-14 font-display text-2xl font-bold text-slate-900 dark:text-white">Education</h2>
+  <h2 class="mt-14 flex items-center gap-2.5 font-display text-2xl font-bold text-slate-900 dark:text-white">
+    <Icon name="lucide:graduation-cap" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+    Education
+  </h2>
   <ul class="mt-4 space-y-4">
     {
       education.map((e) => (
@@ -145,7 +140,10 @@ const roleIcons = [
     }
   </ul>
 
-  <h2 class="mt-14 font-display text-2xl font-bold text-slate-900 dark:text-white">Self-learning</h2>
+  <h2 class="mt-14 flex items-center gap-2.5 font-display text-2xl font-bold text-slate-900 dark:text-white">
+    <Icon name="lucide:book-open" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+    Self-learning
+  </h2>
   <div class="mt-4 space-y-4 leading-relaxed text-slate-600 dark:text-slate-300">
     {selfLearning.map((p) => <p>{p}</p>)}
   </div>
