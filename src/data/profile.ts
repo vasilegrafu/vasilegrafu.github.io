@@ -234,6 +234,13 @@ export const projects: Project[] = [
     tags: ['LLMs', 'Agents', 'RAG', 'MCP', 'Orchestration', 'Python'],
   },
   {
+    title: 'AI App Builder — Claude Code Skill',
+    role: 'Independent R&D · Personal project',
+    description:
+      'An advanced Claude Code skill that builds applications from existing codebases instead of from imagination. It reads codebases of any size — Python, TypeScript, JavaScript, C# — through a structural snapshot built once and queried many times, then works in three modes: generating new code shaped like the code that already exists, migrating an application to another stack, or translating it to another technology while preserving its domain and structure. Every output is proven rather than assumed — contract conformance, entity preservation, and side-by-side behaviour parity — and every decision that shapes the result is put to the user, never guessed.',
+    tags: ['Claude Code', 'Agent Skills', 'Code Generation', 'Static Analysis', 'Python'],
+  },
+  {
     title: 'High-Throughput Webservices Platform',
     role: 'Engineering Manager · nShift',
     description:
