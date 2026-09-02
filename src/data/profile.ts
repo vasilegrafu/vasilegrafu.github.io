@@ -142,12 +142,12 @@ export const skills: SkillCategory[] = [
     icon: 'lucide:brain',
     blurb: 'Agentic systems in production — and the theory underneath them.',
     items: [
-      'AI-Assisted Software Development',
+      'AI-Assisted Software Development (Claude Code)',
+      'Advanced Agent Skills & Prompt Engineering',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
-      'Prompt Engineering & MCP-style Tool Integration',
-      'Machine Learning & Deep Learning (TensorFlow, NumPy, Pandas)',
-      'Neural Networks & Reinforcement Learning',
+      'MCP Gateways, Servers & Integrations',
+      'Machine Learning, Neural Networks & Deep Learning Foundations',
     ],
   },
   {
@@ -159,7 +159,7 @@ export const skills: SkillCategory[] = [
       'Python, FastAPI, SQLAlchemy',
       'Solution & Software Architecture',
       'Framework Design',
-      'API Design & E-commerce Integrations',
+      'API Design (REST, gRPC, SOAP/WCF)',
     ],
   },
   {
@@ -177,7 +177,13 @@ export const skills: SkillCategory[] = [
     group: 'Frontend & Web',
     icon: 'lucide:monitor',
     blurb: 'Interfaces for the platforms and tools I build.',
-    items: ['JavaScript, ReactJS', 'HTML, CSS, SASS', 'Material UI', 'Astro, Tailwind CSS'],
+    items: [
+      'JavaScript, TypeScript',
+      'ReactJS, Material UI',
+      'HTML, CSS, SASS',
+      'Astro, Tailwind CSS, HTMX',
+      'Server-Rendered Web (ASP.NET MVC, FastAPI)',
+    ],
   },
   {
     group: 'Foundations',
