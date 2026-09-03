@@ -7,12 +7,27 @@
 //     --no-pdf-header-footer --print-to-pdf="<repo>\public\cv.pdf" "http://localhost:4321/resume-print/"
 // This page is noindex and excluded from the sitemap (see astro.config.mjs).
 import './resume-print.css';
-import { site, experience, skills, education, selfLearning, projects } from '@data/profile';
+import { site, experience, skills, education, selfLearningShort, projects } from '@data/profile';
 
 const keyProject = projects[0];
 
 const linkedinLabel = site.linkedin.replace('https://www.', '');
 const siteLabel = site.url.replace('https://', '');
+const telHref = `tel:${site.phone.replace(/\s/g, '')}`;
+
+// Read in the first few seconds, so it leads with figures rather than prose.
+const highlights = [
+  'Millions of requests served every day by the platform my team runs',
+  '10,000+ business clients on the systems I have led',
+  '50 web services in production, distributed across AWS',
+  '20+ years, from real-time game engines to agentic AI systems',
+];
+
+/** Bullets are written as "Lead-in: detail" — split so the lead-in can be bold. */
+function splitBullet(b: string) {
+  const i = b.indexOf(': ');
+  return i > 0 ? { title: b.slice(0, i), rest: b.slice(i + 2) } : { title: null, rest: b };
+}
 ---
 
 <html lang="en">
@@ -27,15 +42,19 @@ const siteLabel = site.url.replace('https://', '');
       <div class="subtitle">{site.title}</div>
       <div class="contact">
         <span>{site.location}</span>
-        <span>{site.phone}</span>
-        <span>{site.email}</span>
-        <span>{linkedinLabel}</span>
-        <span>{siteLabel}</span>
+        <span><a href={telHref}>{site.phone}</a></span>
+        <span><a href={`mailto:${site.email}`}>{site.email}</a></span>
+        <span><a href={site.linkedin}>{linkedinLabel}</a></span>
+        <span><a href={site.url}>{siteLabel}</a></span>
       </div>
     </header>
 
     <h2>Summary</h2>
-    <p>{site.tagline}</p>
+    <p>{site.intro}</p>
+
+    <div class="highlights">
+      {highlights.map((h) => <div>{h}</div>)}
+    </div>
 
     <h2>Skills</h2>
     <div class="skills">
@@ -52,7 +71,7 @@ const siteLabel = site.url.replace('https://', '');
     {
       experience.map((role) => {
         // The Career page carries every bullet; the PDF takes the leading few
-        // when a role sets pdfBullets, which is what keeps this to two pages.
+        // when a role sets pdfBullets, which caps how long the resume can grow.
         const bullets = role.pdfBullets ? role.bullets.slice(0, role.pdfBullets) : role.bullets;
         return (
           <div class={bullets.length > 5 ? 'role allow-break' : 'role'}>
@@ -62,11 +81,23 @@ const siteLabel = site.url.replace('https://', '');
               </h3>
               <span class="period">{role.period}</span>
             </div>
+            {role.aboutShort && <p class="about">{role.aboutShort}</p>}
             {role.summary && <p class="summary">{role.summary}</p>}
             <ul>
-              {bullets.map((b) => (
-                <li>{b}</li>
-              ))}
+              {bullets.map((b) => {
+                const { title, rest } = splitBullet(b);
+                return (
+                  <li>
+                    {title ? (
+                      <Fragment>
+                        <b>{title}:</b> {rest}
+                      </Fragment>
+                    ) : (
+                      b
+                    )}
+                  </li>
+                );
+              })}
             </ul>
             {role.tech && <p class="tech">{role.tech.join(' · ')}</p>}
           </div>
@@ -93,6 +124,8 @@ const siteLabel = site.url.replace('https://', '');
     }
 
     <h2>Self-Learning</h2>
-    {selfLearning.map((p) => <p style="margin-bottom: 4px">{p}</p>)}
+    <ul class="plain">
+      {selfLearningShort.map((p) => <li>{p}</li>)}
+    </ul>
   </body>
 </html>

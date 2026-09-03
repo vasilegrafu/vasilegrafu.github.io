@@ -9,7 +9,6 @@ const projectIcons = [
   'lucide:bot-message-square', // conversational AI platform
   'lucide:hammer', // AI app builder skill
   'lucide:server', // high-throughput webservices
-  'lucide:shopping-cart', // e-commerce integrations
 ];
 
 // Architecture flow per project, in the same order as `projects`.
@@ -27,16 +26,12 @@ const projectFlows: { steps: string[]; ariaLabel: string }[] = [
     steps: ['Clients', 'Web services', 'Databases', 'AWS'],
     ariaLabel: 'Client applications call web services backed by databases, distributed on AWS',
   },
-  {
-    steps: ['Online shops', 'Integrations', 'Multi-carrier delivery'],
-    ariaLabel: 'Online shops connect through integrations to multi-carrier delivery',
-  },
 ];
 ---
 
 <BaseLayout
   title="Projects — Vasile Grafu"
-  description="Selected systems: enterprise AI platforms, high-throughput web services, and e-commerce integrations."
+  description="Selected systems: enterprise AI platforms, AI-assisted engineering tooling, and high-throughput web services."
 >
   <p class="kicker">Selected systems</p>
   <h1 class="title-page mt-2">Projects</h1>

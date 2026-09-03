@@ -21,8 +21,10 @@ export interface Role {
   position: string;
   period: string;
   location: string;
-  /** What the company is. Career page only — the PDF keeps to the role itself. */
+  /** What the company is. Career page only — the PDF uses `aboutShort`. */
   about?: string;
+  /** One line of company context for the resume, where `about` is too long. */
+  aboutShort?: string;
   /** What I did there. Optional — some roles are carried by their bullets alone. */
   summary?: string;
   /** Ordered most resume-worthy first — the PDF may show only the first few. */
@@ -46,6 +48,8 @@ export const experience: Role[] = [
     position: 'Engineering Manager',
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
+    aboutShort:
+      'Global delivery-management platform — over 1,000 carriers across some 190 countries.',
     about:
       'nShift is a global leader in delivery and experience management software, formed in 2021 from the merger of Consignor, Unifaun and Transsmart. Its cloud platform covers the whole parcel journey — checkout delivery options, rule-based carrier selection, label and document generation, tracking, and returns — connecting retailers, 3PLs and manufacturers to a network of over 1,000 carriers across some 190 countries, with integrations into 450+ OMS, ERP and WMS systems.',
     summary:
@@ -77,6 +81,8 @@ export const experience: Role[] = [
     position: 'Team Manager',
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
+    aboutShort:
+      'Scandinavia’s leading multi-carrier shipping software; 10,000+ business customers.',
     about:
       'Founded in Oslo in 1997, Consignor grew into one of the largest suppliers of transport administration and multi-carrier shipping software in Scandinavia, serving more than 10,000 business customers from offices in Norway, Sweden, Denmark, Finland, Romania and the UK. In 2021 it merged with Unifaun and Transsmart to become nShift.',
     summary:
@@ -106,11 +112,11 @@ export const experience: Role[] = [
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
-      'Key part of the entire application development workflow.',
-      'Designed many modules of the business software to satisfy client requirements.',
-      'Mentored junior and senior developers.',
-      'Wrote detailed technical and user documentation.',
-      'Acted as liaison between the development team and other departments.',
+      'End-to-end delivery: involved across the entire application development workflow.',
+      'Module design: designed many modules of the business software to satisfy client requirements.',
+      'Mentoring: guided both junior and senior developers.',
+      'Documentation: wrote detailed technical and user documentation.',
+      'Cross-department liaison: connected the development team with other departments.',
     ],
     tech: [
       'C# / .NET, ASP.NET MVC',
@@ -126,12 +132,13 @@ export const experience: Role[] = [
     position: 'Team Leader',
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
+    aboutShort: 'Romanian technology and systems-integration company.',
     about:
       'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
     bullets: [
-      'Managed the Optimus ERP modules through all development steps, from specification to testing and deployment.',
-      'Elaborated development plans for new features in collaboration with the design department.',
-      'Responsible for enhancing existing features and for triaging and resolving all defects identified by the Quality Department.',
+      'Optimus ERP modules: managed them through every development step, from specification to testing and deployment.',
+      'Feature planning: built development plans for new features with the design department.',
+      'Quality and maintenance: enhanced existing features, and triaged and resolved every defect raised by the Quality Department.',
     ],
     tech: ['C# / .NET', 'Windows Forms', 'SQL Server'],
   },
@@ -140,6 +147,7 @@ export const experience: Role[] = [
     position: 'Game Programmer',
     period: 'January 2005 – June 2008',
     location: 'Bucharest, Romania',
+    aboutShort: 'One of the world’s largest video game publishers.',
     about:
       'Ubisoft is a French video game publisher founded in 1986 by the Guillemot brothers and now one of the largest in the world, with studios across more than 45 locations behind franchises such as Assassin’s Creed, Far Cry, Rainbow Six and Prince of Persia. Ubisoft Bucharest, opened in 1992, was the company’s first production studio outside France and grew into one of its largest.',
     summary:
@@ -262,6 +270,14 @@ export const selfLearning: string[] = [
   'I place particular value on developing strong intuition for what happens under the hood. Rather than treating algorithms and models as black boxes, I try to understand their underlying mechanisms, assumptions, limitations, and trade-offs. This way of thinking allows me to reason more effectively about system design, model behavior, and complex technical problems, even when working outside areas I have encountered before.',
 ];
 
+// Condensed for the resume PDF, where the two full paragraphs above would eat
+// a third of a page. The Career page still shows `selfLearning` in full.
+export const selfLearningShort: string[] = [
+  'Studied machine learning, deep learning, neural networks, probability, linear algebra, calculus and statistics independently — to understand the mathematics, not just the frameworks.',
+  'Prefer to understand mechanisms, assumptions, limitations and trade-offs rather than treat algorithms and models as black boxes.',
+  'That habit is what lets me reason about system design and model behaviour in areas I have not worked in before.',
+];
+
 export interface Project {
   title: string;
   role: string;
@@ -290,12 +306,5 @@ export const projects: Project[] = [
     description:
       'The core web-services platform behind nShift’s delivery-management suite: dozens of services and full-stack applications distributed across AWS, serving the client components of business-critical delivery workflows around the clock.',
     tags: ['C# / .NET', 'AWS', 'SQL Server', 'PostgreSQL', 'Docker', 'CI/CD'],
-  },
-  {
-    title: 'E-Commerce Platform Integrations',
-    role: 'Team Manager · Consignor',
-    description:
-      'Led the team that brought Consignor’s shipping functionality into major e-commerce ecosystems — WooCommerce, Klarna, Magento, and more — connecting thousands of online shops to multi-carrier delivery.',
-    tags: ['Integrations', 'E-commerce', 'APIs'],
   },
 ];
