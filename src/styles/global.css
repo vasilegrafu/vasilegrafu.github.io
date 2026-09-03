@@ -121,6 +121,10 @@ html {
   .icon-tile {
     @apply bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-lg;
   }
+  /* Gold variant, for personal/principle content rather than technical work. */
+  .icon-tile-label {
+    @apply bg-label-soft text-label;
+  }
   .link-accent {
     @apply text-accent hover:underline;
   }

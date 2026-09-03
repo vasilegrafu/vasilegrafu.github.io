@@ -3,23 +3,70 @@ import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
 import ChipPart from '@fx/components/ChipPart.astro';
 import IconCardPart from '@fx/components/IconCardPart.astro';
-import IconListItemPart from '@fx/components/IconListItemPart.astro';
 import StatTilePart from '@fx/components/StatTilePart.astro';
 import { site, experience } from '@data/profile';
 
 const current = experience[0];
 
-// The scale behind the work — figures the career story backs up.
+// Scale and practice: the first three tiles are figures the career story backs
+// up, the rest describe how the work is done now. The AI tiles carry a word
+// rather than a count — the claim is that this is production practice, not a
+// pilot, and an invented number would say less.
 const scaleStats = [
   { value: 'Millions', label: 'of requests served every day' },
   { value: '10,000+', label: 'business clients served' },
-  { value: '50+', label: 'web services & applications' },
+  { value: '50', label: 'web services in production' },
+  { value: 'Agentic', label: 'AI platform: LLMs, agents, RAG, MCP' },
+  { value: 'Daily', label: 'AI-assisted development, not experiments' },
+];
+
+// Written from the employer's point of view rather than mine.
+const valueProps = [
+  {
+    icon: 'lucide:rocket',
+    title: 'Teams that ship',
+    body: 'A manager who builds cohesive teams around clear goals and engineering standards — teams that deliver business-critical software reliably, year after year. I hire, onboard, and mentor with the same care I give the architecture, because the team outlasts any single system it builds.',
+  },
+  {
+    icon: 'lucide:lightbulb',
+    title: 'Pragmatic AI modernization',
+    body: 'AI brought into real engineering workflows where it pays off — grounded in production experience with agents, RAG, and AI-assisted development, not hype. I can say which problems these tools genuinely solve today, which ones still need conventional engineering, and what it costs to tell the difference.',
+  },
+  {
+    icon: 'lucide:wrench',
+    title: 'Leadership that stays hands-on',
+    body: 'An architect’s judgment in every decision — from someone who still designs, codes, and reviews, so technical calls are made close to reality. That means estimates you can trust, designs that survive contact with implementation, and far fewer surprises late in delivery.',
+  },
+];
+
+// What keeps me in this work, as opposed to what I am paid to do.
+const principles = [
+  {
+    icon: 'lucide:compass',
+    title: 'Curiosity',
+    body: 'I’m naturally driven to understand how things work and why they work the way they do. I enjoy going deep into a problem, learning from first principles, and connecting ideas across different areas. For me, the process of understanding is rewarding in itself.',
+  },
+  {
+    icon: 'lucide:trending-up',
+    title: 'Constant evolution',
+    body: 'I’m always looking for ways to improve how I think, work, and build. AI-assisted engineering has already reshaped my daily practice, and I actively explore new tools, ideas, and approaches that can make me more effective. I see change as an opportunity to rethink what’s possible rather than simply adapt to it.',
+  },
+  {
+    icon: 'lucide:users',
+    title: 'Teams that discover',
+    body: 'I do my best work in supportive, collaborative teams where people learn from each other, challenge ideas constructively, and take pride in their craft. I value working toward a shared goal while giving everyone the space to contribute, experiment, and grow.',
+  },
+  {
+    icon: 'lucide:target',
+    title: 'Impact',
+    body: 'Technology is most interesting to me when it matters — when the systems we build carry real businesses, save people time, and open possibilities that weren’t there before. Understanding why the work matters shapes how I build it, and seeing an idea become something people rely on every day is the most satisfying part of engineering.',
+  },
 ];
 ---
 
 <BaseLayout title="Vasile Grafu — Engineering Manager & AI Systems Builder">
   <section class="relative py-10 sm:py-14">
-    <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
       <div class="blob bg-blob-a -top-24 -right-24 h-80 w-80"></div>
       <div class="blob bg-blob-b top-32 -left-24 h-64 w-64"></div>
     </div>
@@ -59,8 +106,8 @@ const scaleStats = [
   </section>
 
   <section class="py-8">
-    <p class="kicker">The scale I work at</p>
-    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <p class="kicker">Scale and practice</p>
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {scaleStats.map((s) => <StatTilePart value={s.value} label={s.label} />)}
     </div>
   </section>
@@ -70,20 +117,26 @@ const scaleStats = [
     <div class="mt-4 grid gap-6 sm:grid-cols-2">
       <IconCardPart icon="lucide:users" title="Engineering leadership">
         Leading one of {current.company.split(' ')[0]}’s core teams — hiring, mentoring, and
-        building the engineering culture behind business-critical delivery software.
+        building the engineering culture behind business-critical delivery software. I set the goals
+        and the standards, then make sure the team has what it needs to hit them, from onboarding
+        through to code review.
       </IconCardPart>
       <IconCardPart icon="lucide:hammer" title="AI-assisted engineering">
         Creating advanced Claude Code skills — including an app builder that reads existing
         codebases through a structural snapshot and generates, migrates, or translates applications
-        with proven, verified results.
+        with proven, verified results. Every output is checked against the code it came from rather
+        than assumed correct.
       </IconCardPart>
       <IconCardPart icon="lucide:sparkles" title="AI systems">
         Building agentic AI platforms — LLM orchestration, RAG pipelines, and multi-agent
-        architectures grounded in real business data.
+        architectures grounded in real business data. The work runs from prompt and agent design
+        through tool integration over MCP, down to the infrastructure that keeps the whole thing
+        answerable in production.
       </IconCardPart>
       <IconCardPart icon="lucide:code-xml" title="Hands-on architect">
         Solutions Architect who still codes — C#/.NET, Python, React, and the AWS infrastructure it
-        all runs on.
+        all runs on. I design the cloud environments and CI/CD pipelines myself, which keeps
+        architecture decisions honest about what they actually cost to build and operate.
       </IconCardPart>
     </div>
   </section>
@@ -92,65 +145,31 @@ const scaleStats = [
     <p class="kicker">Working with me</p>
     <h2 class="title-section mt-2">What I bring to an organization</h2>
     <div class="bg-tint border-line mt-4 grid gap-6 rounded-xl border p-6 sm:grid-cols-3">
-      <div>
-        <div class="icon-tile">
-          <Icon name="lucide:rocket" class="h-5 w-5" aria-hidden="true" />
-        </div>
-        <h3 class="font-display text-ink mt-3 font-semibold">Teams that ship</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          A manager who builds cohesive teams around clear goals and engineering standards — teams
-          that deliver business-critical software reliably, year after year.
-        </p>
-      </div>
-      <div>
-        <div class="icon-tile">
-          <Icon name="lucide:lightbulb" class="h-5 w-5" aria-hidden="true" />
-        </div>
-        <h3 class="font-display text-ink mt-3 font-semibold">Pragmatic AI modernization</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          AI brought into real engineering workflows where it pays off — grounded in production
-          experience with agents, RAG, and AI-assisted development, not hype.
-        </p>
-      </div>
-      <div>
-        <div class="icon-tile">
-          <Icon name="lucide:wrench" class="h-5 w-5" aria-hidden="true" />
-        </div>
-        <h3 class="font-display text-ink mt-3 font-semibold">Leadership that stays hands-on</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          An architect’s judgment in every decision — from someone who still designs, codes, and
-          reviews, so technical calls are made close to reality.
-        </p>
-      </div>
+      {
+        valueProps.map((v) => (
+          <div>
+            <div class="icon-tile">
+              <Icon name={v.icon} class="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h3 class="font-display text-ink mt-3 font-semibold">{v.title}</h3>
+            <p class="text-muted mt-2 text-sm leading-relaxed">{v.body}</p>
+          </div>
+        ))
+      }
     </div>
   </section>
 
   <section class="py-8">
     <p class="kicker">Principles</p>
     <h2 class="title-section mt-2">What drives me</h2>
-    <ul class="text-muted mt-4 space-y-3">
-      <IconListItemPart icon="lucide:compass" title="Curiosity.">
-        I’m naturally driven to understand how things work and why they work the way they do. I
-        enjoy going deep into a problem, learning from first principles, and connecting ideas across
-        different areas. For me, the process of understanding is rewarding in itself.
-      </IconListItemPart>
-      <IconListItemPart icon="lucide:trending-up" title="Constant evolution.">
-        I’m always looking for ways to improve how I think, work, and build. AI-assisted engineering
-        has already reshaped my daily practice, and I actively explore new tools, ideas, and
-        approaches that can make me more effective. I see change as an opportunity to rethink what’s
-        possible rather than simply adapt to it.
-      </IconListItemPart>
-      <IconListItemPart icon="lucide:users" title="Teams that discover.">
-        I do my best work in supportive, collaborative teams where people learn from each other,
-        challenge ideas constructively, and take pride in their craft. I value working toward a
-        shared goal while giving everyone the space to contribute, experiment, and grow.
-      </IconListItemPart>
-      <IconListItemPart icon="lucide:target" title="Impact.">
-        Technology is most interesting to me when it matters — when the systems we build carry real
-        businesses, save people time, and open possibilities that weren’t there before.
-        Understanding why the work matters shapes how I build it, and seeing an idea become
-        something people rely on every day is the most satisfying part of engineering.
-      </IconListItemPart>
-    </ul>
+    <div class="mt-4 grid gap-6 sm:grid-cols-2">
+      {
+        principles.map((p) => (
+          <IconCardPart icon={p.icon} title={p.title} tone="label" as="h3">
+            {p.body}
+          </IconCardPart>
+        ))
+      }
+    </div>
   </section>
 </BaseLayout>
