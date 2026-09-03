@@ -20,22 +20,38 @@ const scaleStats = [
   { value: 'AI-assisted', label: 'engineering, every day' },
 ];
 
-// Written from the employer's point of view rather than mine.
+// Written from the employer's point of view rather than mine — one line each,
+// stating a benefit rather than restating a fact the tiles above already carry.
 const valueProps = [
   {
     icon: 'lucide:rocket',
     title: 'Teams that ship',
-    body: 'A manager who builds cohesive teams around clear goals and engineering standards — teams that deliver business-critical software reliably, year after year. I hire, onboard, and mentor with the same care I give the architecture, because the team outlasts any single system it builds.',
-  },
-  {
-    icon: 'lucide:lightbulb',
-    title: 'Pragmatic AI modernization',
-    body: 'AI brought into real engineering workflows where it pays off — grounded in production experience with agents, RAG, and AI-assisted development, not hype. I can say which problems these tools genuinely solve today, which ones still need conventional engineering, and what it costs to tell the difference.',
+    body: 'Cohesive teams delivering business-critical software, year after year.',
   },
   {
     icon: 'lucide:wrench',
-    title: 'Leadership that stays hands-on',
-    body: 'An architect’s judgment in every decision — from someone who still designs, codes, and reviews, so technical calls are made close to reality. That means estimates you can trust, designs that survive contact with implementation, and far fewer surprises late in delivery.',
+    title: 'Leadership that builds',
+    body: 'An architect’s judgment, from someone who still writes the code.',
+  },
+  {
+    icon: 'lucide:workflow',
+    title: 'Fewer handoff gaps',
+    body: 'Someone who has worked every phase sees what falls between them.',
+  },
+  {
+    icon: 'lucide:lightbulb',
+    title: 'AI that pays off',
+    body: 'Grounded in production experience, not in hype.',
+  },
+  {
+    icon: 'lucide:gauge',
+    title: 'Built for load',
+    body: 'Systems that stay up when the business depends on them.',
+  },
+  {
+    icon: 'lucide:sprout',
+    title: 'People who grow',
+    body: 'Engineers hired, mentored and kept — the team outlasts the system.',
   },
 ];
 
@@ -110,28 +126,23 @@ const principles = [
   <section class="py-8">
     <p class="kicker">What I do</p>
     <div class="mt-4 grid gap-6 sm:grid-cols-2">
+      <IconCardPart icon="lucide:code-xml" title="Hands-on engineering">
+        I still write the code: C#/.NET, Python, React, SQL, and the AWS infrastructure it runs on.
+        Specifications, architecture, cloud environments, CI/CD pipelines — I build them, not just
+        approve them.
+      </IconCardPart>
       <IconCardPart icon="lucide:users" title="Engineering leadership">
-        Leading one of {current.company.split(' ')[0]}’s core teams — hiring, mentoring, and
-        building the engineering culture behind business-critical delivery software. I set the goals
-        and the standards, then make sure the team has what it needs to hit them, from onboarding
-        through to code review.
+        Leading one of {current.company}’s core teams — hiring, mentoring, and setting the standards
+        behind business-critical delivery software.
       </IconCardPart>
       <IconCardPart icon="lucide:hammer" title="AI-assisted engineering">
-        Creating advanced Claude Code skills — including an app builder that reads existing
-        codebases through a structural snapshot and generates, migrates, or translates applications
-        with proven, verified results. Every output is checked against the code it came from rather
-        than assumed correct.
+        Advanced Claude Code skills, including an app builder that reads existing codebases through
+        a structural snapshot and generates, migrates, or translates applications with verified
+        results.
       </IconCardPart>
       <IconCardPart icon="lucide:sparkles" title="AI systems">
-        Building agentic AI platforms — LLM orchestration, RAG pipelines, and multi-agent
-        architectures grounded in real business data. The work runs from prompt and agent design
-        through tool integration over MCP, down to the infrastructure that keeps the whole thing
-        answerable in production.
-      </IconCardPart>
-      <IconCardPart icon="lucide:code-xml" title="Hands-on architect">
-        Solutions Architect who still codes — C#/.NET, Python, React, and the AWS infrastructure it
-        all runs on. I design the cloud environments and CI/CD pipelines myself, which keeps
-        architecture decisions honest about what they actually cost to build and operate.
+        Agentic AI platforms: LLM orchestration, RAG pipelines, and multi-agent architectures
+        grounded in real business data, integrated over MCP and answerable in production.
       </IconCardPart>
     </div>
   </section>
@@ -139,15 +150,19 @@ const principles = [
   <section class="py-8">
     <p class="kicker">Working with me</p>
     <h2 class="title-section mt-2">What I bring to an organization</h2>
-    <div class="bg-tint border-line mt-4 grid gap-6 rounded-xl border p-6 sm:grid-cols-3">
+    <!-- Set apart by scale and a tint already used elsewhere on the site, not by
+         a colour block — the page stays one design language. -->
+    <div
+      class="bg-accent-soft border-accent-line mt-4 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3"
+    >
       {
         valueProps.map((v) => (
           <div>
-            <div class="icon-tile">
-              <Icon name={v.icon} class="h-5 w-5" aria-hidden="true" />
+            <div class="bg-accent-solid text-accent-ink flex h-12 w-12 items-center justify-center rounded-xl shadow-sm">
+              <Icon name={v.icon} class="h-6 w-6" aria-hidden="true" />
             </div>
-            <h3 class="font-display text-ink mt-3 font-semibold">{v.title}</h3>
-            <p class="text-muted mt-2 text-sm leading-relaxed">{v.body}</p>
+            <h3 class="font-display text-ink mt-4 text-lg font-semibold">{v.title}</h3>
+            <p class="text-muted mt-1.5 text-sm leading-relaxed">{v.body}</p>
           </div>
         ))
       }
