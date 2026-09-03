@@ -58,7 +58,7 @@ const siteLabel = site.url.replace('https://', '');
             </h3>
             <span class="period">{role.period}</span>
           </div>
-          <p class="summary">{role.summary}</p>
+          {role.summary && <p class="summary">{role.summary}</p>}
           <ul>
             {role.bullets.map((b) => (
               <li>{b}</li>

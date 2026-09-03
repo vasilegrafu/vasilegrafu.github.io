@@ -1,8 +1,13 @@
 export const site = {
   name: 'Vasile Grafu',
   title: 'Engineering Manager | Solutions Architect | Enterprise & AI Systems',
+  // Short form. Feeds the meta/OG description and the resume PDF, where length
+  // is constrained — keep it near 160 characters. The home hero uses `intro`.
   tagline:
-    'Engineering leader with 20+ years in software — from game programming at Ubisoft to cloud platforms handling millions of requests a day, now building agentic AI systems.',
+    'Engineering leader with 20+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.',
+  // Long form, home hero only — free to say more than the meta description can.
+  intro:
+    'Engineering leader with 20+ years in software — from real-time game programming to cloud platforms handling millions of requests a day, now building agentic AI systems. I lead one of nShift’s core engineering teams, design the architecture behind it, and still write the code myself.',
   location: 'Bucharest, Romania',
   email: 'vasilegrafu@gmail.com',
   phone: '+40 722 635 785',
@@ -16,7 +21,10 @@ export interface Role {
   position: string;
   period: string;
   location: string;
-  summary: string;
+  /** What the company is. Career page only — the PDF keeps to the role itself. */
+  about?: string;
+  /** What I did there. Optional — some roles are carried by their bullets alone. */
+  summary?: string;
   bullets: string[];
   tech?: string[];
 }
@@ -27,8 +35,10 @@ export const experience: Role[] = [
     position: 'Engineering Manager',
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
+    about:
+      'nShift is a global leader in delivery and experience management software, formed in 2021 from the merger of Consignor, Unifaun and Transsmart. Its cloud platform covers the whole parcel journey — checkout delivery options, rule-based carrier selection, label and document generation, tracking, and returns — connecting retailers, 3PLs and manufacturers to a network of over 1,000 carriers across some 190 countries, with integrations into 450+ OMS, ERP and WMS systems.',
     summary:
-      'nShift is a global leader in parcel delivery management and multi-carrier shipping software. I lead the Webservices Team — one of the company’s core teams — building web services that handle millions of requests per day and support multiple business-critical applications. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
+      'I lead the Webservices Team — one of the company’s core teams — building web services that handle millions of requests per day and support multiple business-critical applications. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
     bullets: [
       'Lead and manage the Webservices Team: setting clear goals, providing direction, and keeping every member motivated and effective.',
       'Establish engineering processes and standards — consistent development practices that improve collaboration, maintain quality, and accelerate delivery.',
@@ -56,8 +66,10 @@ export const experience: Role[] = [
     position: 'Team Manager',
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
+    about:
+      'Founded in Oslo in 1997, Consignor grew into one of the largest suppliers of transport administration and multi-carrier shipping software in Scandinavia, serving more than 10,000 business customers from offices in Norway, Sweden, Denmark, Finland, Romania and the UK. In 2021 it merged with Unifaun and Transsmart to become nShift.',
     summary:
-      'Consignor, a Scandinavian company with offices in Norway, Denmark, and Sweden, was the largest supplier of transport administration solutions in Scandinavia. I led two teams and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer.',
+      'I led two teams and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself.',
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce platforms.',
@@ -77,7 +89,7 @@ export const experience: Role[] = [
     period: '2009 – 2017',
     location: 'Bucharest, Romania',
     summary:
-      'Led the team behind 50 web services and 5 full-stack web applications serving over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud.',
+      'Led the team behind 50 web services serving over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
       'Key part of the entire application development workflow.',
       'Designed many modules of the business software to satisfy client requirements.',
@@ -99,30 +111,27 @@ export const experience: Role[] = [
     position: 'Team Leader',
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
-    summary:
-      'TeamNet offered software development and implementation services for the business segment of the market.',
+    about:
+      'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
     bullets: [
       'Managed the Optimus ERP modules through all development steps, from specification to testing and deployment.',
       'Elaborated development plans for new features in collaboration with the design department.',
       'Responsible for enhancing existing features and for triaging and resolving all defects identified by the Quality Department.',
     ],
-    tech: [
-      'Optimus ERP',
-      'Full development lifecycle',
-      'Feature planning & specifications',
-      'Defect triage & quality management',
-    ],
+    tech: ['C# / .NET', 'Windows Forms', 'SQL Server'],
   },
   {
     company: 'Ubisoft',
     position: 'Game Programmer',
     period: 'January 2005 – June 2008',
     location: 'Bucharest, Romania',
+    about:
+      'Ubisoft is a French video game publisher founded in 1986 by the Guillemot brothers and now one of the largest in the world, with studios across more than 45 locations behind franchises such as Assassin’s Creed, Far Cry, Rainbow Six and Prince of Persia. Ubisoft Bucharest, opened in 1992, was the company’s first production studio outside France and grew into one of its largest.',
     summary:
-      'Ubisoft is one of the leading game publishers worldwide. I designed, developed, and optimized gameplay and platform modules on four shipped and in-development titles.',
+      'I designed, developed, and optimized gameplay and platform modules on four shipped and in-development titles.',
     bullets: [
       'Silent Hunter 4: designed and built the framework managing the evolution of the Crew, Weapons, and Equipment of the U-Boat simulator, plus the Career module.',
-      'King Kong (PC): Intel Viiv / Windows Media Center integration, multithreaded rendering, and the security module.',
+      'King Kong (PC): Windows Media Center integration, multithreaded rendering, and the security module.',
       'Blazing Angels (PC): Save/Load system and Media Center shell implementation.',
       'Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.',
     ],

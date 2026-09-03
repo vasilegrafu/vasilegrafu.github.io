@@ -25,7 +25,14 @@ const { role, icon } = Astro.props;
   <h2 class="title-item mt-2">
     {role.position} · {role.company}
   </h2>
-  <p class="text-muted mt-3 leading-relaxed">{role.summary}</p>
+  {
+    role.about && (
+      <p class="text-faint border-line-strong mt-3 border-s-2 ps-3.5 text-sm leading-relaxed">
+        {role.about}
+      </p>
+    )
+  }
+  {role.summary && <p class="text-muted mt-3 leading-relaxed">{role.summary}</p>}
   <details class="mt-4">
     <summary class="summary-pill">
       What I did
