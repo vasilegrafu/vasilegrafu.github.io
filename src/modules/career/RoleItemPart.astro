@@ -44,14 +44,26 @@ const { role, icon } = Astro.props;
     </summary>
     <div class="mt-4 grid gap-3 sm:grid-cols-2">
       {
-        role.bullets.map((b) => {
+        role.bullets.map((b, i) => {
           const idx = b.indexOf(': ');
           const title = idx > 0 ? b.slice(0, idx) : null;
           const rest = idx > 0 ? b.slice(idx + 2) : b;
           const body = title ? rest.charAt(0).toUpperCase() + rest.slice(1) : rest;
+          // Leading bullets name the teams I ran — scope, not activity — so
+          // they get the accent treatment to set them apart from the rest.
+          const lead = i < (role.leadBullets ?? 0);
           return (
-            <div class="card card-lift bg-surface p-4">
-              {title && <p class="text-ink text-sm font-semibold">{title}</p>}
+            <div
+              class={`card card-lift p-4 ${lead ? 'border-accent-line bg-accent-soft/50' : 'bg-surface'}`}
+            >
+              {title && (
+                <p
+                  class={`flex items-center gap-1.5 text-sm font-semibold ${lead ? 'text-accent-strong' : 'text-ink'}`}
+                >
+                  {lead && <Icon name="lucide:users" class="h-3.5 w-3.5" aria-hidden="true" />}
+                  {title}
+                </p>
+              )}
               <p class={`text-muted text-sm leading-relaxed ${title ? 'mt-1' : ''}`}>{body}</p>
             </div>
           );

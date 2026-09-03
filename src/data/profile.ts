@@ -25,13 +25,24 @@ export interface Role {
   about?: string;
   /** What I did there. Optional — some roles are carried by their bullets alone. */
   summary?: string;
+  /** Ordered most resume-worthy first — the PDF may show only the first few. */
   bullets: string[];
+  /**
+   * How many leading bullets describe the scope of the role (the teams I ran)
+   * rather than the work itself. The Career page gives those stronger emphasis.
+   */
+  leadBullets?: number;
+  /**
+   * How many bullets the resume PDF shows for this role. Omit to show all.
+   * Lets the Career page carry full detail while the PDF stays at two pages.
+   */
+  pdfBullets?: number;
   tech?: string[];
 }
 
 export const experience: Role[] = [
   {
-    company: 'nShift (formerly Consignor)',
+    company: 'nShift',
     position: 'Engineering Manager',
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
@@ -41,7 +52,7 @@ export const experience: Role[] = [
       'I lead the Webservices Team — one of the company’s core teams — building web services that handle millions of requests per day and support multiple business-critical applications. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
     bullets: [
       'Lead and manage the Webservices Team: setting clear goals, providing direction, and keeping every member motivated and effective.',
-      'Establish engineering processes and standards — consistent development practices that improve collaboration, maintain quality, and accelerate delivery.',
+      'Establish engineering processes and standards: consistent development practices that improve collaboration, maintain quality, and accelerate delivery.',
       'Recruit and develop engineers: active role in hiring, onboarding, and mentoring to build a skilled, cohesive team.',
       'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
       'Contribute to software architecture: design and implementation of scalable, secure, and maintainable systems.',
@@ -69,12 +80,16 @@ export const experience: Role[] = [
     about:
       'Founded in Oslo in 1997, Consignor grew into one of the largest suppliers of transport administration and multi-carrier shipping software in Scandinavia, serving more than 10,000 business customers from offices in Norway, Sweden, Denmark, Finland, Romania and the UK. In 2021 it merged with Unifaun and Transsmart to become nShift.',
     summary:
-      'I led two teams and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself.',
+      'I led two teams — the Webservices Team and the Integration Team — and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself.',
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce platforms.',
-      'Hiring, training, and coordinating people; critical architecture decisions; hands-on development; and management of cross-team projects.',
+      'Team leadership: set goals and direction for both teams, keeping two groups with very different missions pulling toward one platform.',
+      'Technical guidance and architecture: made the critical design decisions and worked through the hard problems alongside the developers.',
+      'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
+      'Hands-on development: shared components, application structure, and database design across the Consignor suite.',
     ],
+    leadBullets: 2,
     tech: [
       'C# / .NET web services',
       'E-commerce platforms (WooCommerce, Klarna, Magento)',
@@ -89,7 +104,7 @@ export const experience: Role[] = [
     period: '2009 – 2017',
     location: 'Bucharest, Romania',
     summary:
-      'Led the team behind 50 web services serving over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
+      'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
       'Key part of the entire application development workflow.',
       'Designed many modules of the business software to satisfy client requirements.',

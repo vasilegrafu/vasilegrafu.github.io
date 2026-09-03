@@ -50,23 +50,28 @@ const siteLabel = site.url.replace('https://', '');
 
     <h2>Experience</h2>
     {
-      experience.map((role) => (
-        <div class={role.bullets.length > 5 ? 'role allow-break' : 'role'}>
-          <div class="role-head">
-            <h3>
-              {role.position} · {role.company}, {role.location}
-            </h3>
-            <span class="period">{role.period}</span>
+      experience.map((role) => {
+        // The Career page carries every bullet; the PDF takes the leading few
+        // when a role sets pdfBullets, which is what keeps this to two pages.
+        const bullets = role.pdfBullets ? role.bullets.slice(0, role.pdfBullets) : role.bullets;
+        return (
+          <div class={bullets.length > 5 ? 'role allow-break' : 'role'}>
+            <div class="role-head">
+              <h3>
+                {role.position} · {role.company}, {role.location}
+              </h3>
+              <span class="period">{role.period}</span>
+            </div>
+            {role.summary && <p class="summary">{role.summary}</p>}
+            <ul>
+              {bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+            {role.tech && <p class="tech">{role.tech.join(' · ')}</p>}
           </div>
-          {role.summary && <p class="summary">{role.summary}</p>}
-          <ul>
-            {role.bullets.map((b) => (
-              <li>{b}</li>
-            ))}
-          </ul>
-          {role.tech && <p class="tech">{role.tech.join(' · ')}</p>}
-        </div>
-      ))
+        );
+      })
     }
 
     <h2>Key Project</h2>
