@@ -7,7 +7,7 @@ export const site = {
     'Engineering leader with 20+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.',
   // Long form, home hero only — free to say more than the meta description can.
   intro:
-    'Engineering leader with 20+ years in software — from real-time game programming to cloud platforms handling millions of requests a day, now building agentic AI systems. I lead one of nShift’s core engineering teams, design the architecture behind it, and still write the code myself.',
+    '20+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production.',
   location: 'Bucharest, Romania',
   email: 'vasilegrafu@gmail.com',
   phone: '+40 722 635 785',

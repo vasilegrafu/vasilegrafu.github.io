@@ -1,24 +1,23 @@
 ---
 import BaseLayout from '@modules/shared/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
-import ChipPart from '@fx/components/ChipPart.astro';
 import IconCardPart from '@fx/components/IconCardPart.astro';
 import StatTilePart from '@fx/components/StatTilePart.astro';
 import { site, experience } from '@data/profile';
 
 const current = experience[0];
 
-// Scale and practice: the first three tiles are figures the career story backs
-// up, the rest describe how the work is done now. The AI tiles carry a word
-// rather than a count — the claim is that this is production practice, not a
-// pilot, and an invented number would say less.
+// Reach and practice: three figures, then how the work is actually done. The
+// lifecycle detail sits in the hero sentence above, so one tile points at it
+// rather than spending six. The AI tiles say what I build and how I build —
+// they describe the systems and the practice, never me.
 const scaleStats = [
-  { value: 'Millions', label: 'of requests served every day' },
-  { value: '10,000+', label: 'business clients served' },
-  { value: '50', label: 'web services in production' },
-  { value: 'Agentic', label: 'AI platform: LLMs, agents, RAG, MCP' },
-  { value: 'Daily', label: 'AI-assisted development, not experiments' },
-  { value: 'Self-taught', label: 'machine learning, deep learning, and the math beneath it' },
+  { value: '20+', label: 'years in software development' },
+  { value: '50+', label: 'applications built and contributed to' },
+  { value: 'Millions', label: 'of requests a day on some applications' },
+  { value: 'Every phase', label: 'specification through production' },
+  { value: 'AI systems', label: 'built, not just used' },
+  { value: 'AI-assisted', label: 'engineering, every day' },
 ];
 
 // Written from the employer's point of view rather than mine.
@@ -81,11 +80,6 @@ const principles = [
         <p class="mt-5 text-lg leading-relaxed">
           {site.intro}
         </p>
-        <div class="mt-6 flex flex-wrap gap-2 text-sm">
-          <ChipPart icon="lucide:map-pin">{site.location}</ChipPart>
-          <ChipPart icon="lucide:clock">20+ years in software</ChipPart>
-          <ChipPart icon="lucide:briefcase">Engineering Manager @ nShift</ChipPart>
-        </div>
       </div>
       <div class="hidden shrink-0 items-center justify-center lg:flex" aria-hidden="true">
         <div
@@ -107,7 +101,7 @@ const principles = [
   </section>
 
   <section class="py-8">
-    <p class="kicker">Scale and practice</p>
+    <p class="kicker">Reach and practice</p>
     <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {scaleStats.map((s) => <StatTilePart value={s.value} label={s.label} />)}
     </div>
