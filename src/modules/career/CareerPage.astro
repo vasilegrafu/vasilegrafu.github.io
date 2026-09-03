@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import StatTilePart from '@fx/components/StatTilePart.astro';
 import SegmentBarPart from '@fx/components/SegmentBarPart.astro';
 import RoleItem from './RoleItemPart.astro';
-import { experience, education, selfLearning } from '@data/profile';
+import { experience, education } from '@data/profile';
 
 const stats = [
   { value: '20+', label: 'years in software' },
@@ -72,12 +72,4 @@ const roleIcons = [
       ))
     }
   </ul>
-
-  <h2 class="title-section mt-14 flex items-center gap-2.5">
-    <Icon name="lucide:book-open" class="text-accent h-6 w-6" aria-hidden="true" />
-    Self-learning
-  </h2>
-  <div class="text-muted mt-4 space-y-4 leading-relaxed">
-    {selfLearning.map((p) => <p>{p}</p>)}
-  </div>
 </BaseLayout>

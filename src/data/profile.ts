@@ -264,11 +264,6 @@ export const education = [
   },
 ];
 
-export const selfLearning: string[] = [
-  'I have a deeply curiosity-driven mindset that consistently pushes me beyond the boundaries of formal job requirements. I genuinely enjoy understanding how things work at a fundamental level, and this has led me to independently build a strong conceptual foundation across computer science and AI. Over time, I have studied machine learning, deep learning, neural networks, reinforcement learning, probability theory, linear algebra, calculus, and statistics — not simply to become familiar with these topics, but to understand the principles and mathematics that make them work.',
-  'I place particular value on developing strong intuition for what happens under the hood. Rather than treating algorithms and models as black boxes, I try to understand their underlying mechanisms, assumptions, limitations, and trade-offs. This way of thinking allows me to reason more effectively about system design, model behavior, and complex technical problems, even when working outside areas I have encountered before.',
-];
-
 export interface Project {
   title: string;
   role: string;
