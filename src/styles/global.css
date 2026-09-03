@@ -109,21 +109,11 @@ html {
   .chip {
     @apply border-line bg-surface/60 text-muted inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5;
   }
-  .summary-pill {
-    @apply border-line text-accent hover:border-accent hover:bg-accent-soft/50 inline-flex cursor-pointer list-none items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors select-none;
-  }
-  .summary-pill::-webkit-details-marker {
-    display: none;
-  }
   .blob {
     @apply absolute rounded-full blur-3xl;
   }
   .icon-tile {
     @apply bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-lg;
-  }
-  /* Gold variant, for personal/principle content rather than technical work. */
-  .icon-tile-label {
-    @apply bg-label-soft text-label;
   }
   .link-accent {
     @apply text-accent hover:underline;

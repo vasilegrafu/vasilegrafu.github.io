@@ -60,10 +60,9 @@ export const experience: Role[] = [
       'Recruit and develop engineers: active role in hiring, onboarding, and mentoring to build a skilled, cohesive team.',
       'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
       'Contribute to software architecture: design and implementation of scalable, secure, and maintainable systems.',
-      'Hands-on development: shared components, application structure, data flow, database design, security principles, and infrastructure improvements.',
+      'Hands-on development: shared components, application structure, data flow, database design, security, and infrastructure — plus the AI systems built on top, with LLMs, agent orchestration, RAG, and MCP-style tool integration.',
       'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
-      'Building a large-scale conversational AI platform: LLMs, agent orchestration, RAG, and MCP-style tool integration.',
     ],
     tech: [
       'AI-assisted development (Claude Code)',

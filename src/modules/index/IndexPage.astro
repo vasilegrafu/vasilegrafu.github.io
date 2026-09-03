@@ -13,7 +13,7 @@ const current = experience[0];
 // they describe the systems and the practice, never me.
 const scaleStats = [
   { value: '20+', label: 'years in software development' },
-  { value: '50+', label: 'applications built and contributed to' },
+  { value: '50+', label: 'applications built or contributed to' },
   { value: 'Millions', label: 'of requests a day on some applications' },
   { value: 'Every phase', label: 'specification through production' },
   { value: 'AI systems', label: 'built, not just used' },
@@ -58,7 +58,7 @@ const valueProps = [
 // What keeps me in this work, as opposed to what I am paid to do.
 const principles = [
   {
-    icon: 'lucide:compass',
+    icon: 'lucide:telescope',
     title: 'Curiosity',
     body: 'I’m naturally driven to understand how things work and why they work the way they do. I enjoy going deep into a problem, learning from first principles, and connecting ideas across different areas. For me, the process of understanding is rewarding in itself.',
   },
@@ -68,7 +68,7 @@ const principles = [
     body: 'I’m always looking for ways to improve how I think, work, and build. AI-assisted engineering has already reshaped my daily practice, and I actively explore new tools, ideas, and approaches that can make me more effective. I see change as an opportunity to rethink what’s possible rather than simply adapt to it.',
   },
   {
-    icon: 'lucide:users',
+    icon: 'lucide:handshake',
     title: 'Teams that discover',
     body: 'I do my best work in supportive, collaborative teams where people learn from each other, challenge ideas constructively, and take pride in their craft. I value working toward a shared goal while giving everyone the space to contribute, experiment, and grow.',
   },
@@ -118,8 +118,12 @@ const principles = [
 
   <section class="py-8">
     <p class="kicker">Reach and practice</p>
-    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {scaleStats.map((s) => <StatTilePart value={s.value} label={s.label} />)}
+    <!-- A strip between hairlines rather than a card grid, so the facts read
+         differently from the capability cards below. -->
+    <div
+      class="border-line mt-5 grid grid-cols-2 gap-x-6 gap-y-8 border-y py-8 sm:grid-cols-3 sm:gap-x-10"
+    >
+      {scaleStats.map((s) => <StatTilePart value={s.value} label={s.label} bare />)}
     </div>
   </section>
 
@@ -150,16 +154,16 @@ const principles = [
   <section class="py-8">
     <p class="kicker">Working with me</p>
     <h2 class="title-section mt-2">What I bring to an organization</h2>
-    <!-- Set apart by scale and a tint already used elsewhere on the site, not by
-         a colour block — the page stays one design language. -->
+    <!-- The only panel on a page of strips, cards and lists — that shape is
+         enough to mark the zone, so the colour stays out of it. -->
     <div
-      class="bg-accent-soft border-accent-line mt-4 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3"
+      class="bg-tint border-line mt-4 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3"
     >
       {
         valueProps.map((v) => (
           <div>
-            <div class="bg-accent-solid text-accent-ink flex h-12 w-12 items-center justify-center rounded-xl shadow-sm">
-              <Icon name={v.icon} class="h-6 w-6" aria-hidden="true" />
+            <div class="icon-tile">
+              <Icon name={v.icon} class="h-5 w-5" aria-hidden="true" />
             </div>
             <h3 class="font-display text-ink mt-4 text-lg font-semibold">{v.title}</h3>
             <p class="text-muted mt-1.5 text-sm leading-relaxed">{v.body}</p>
@@ -172,12 +176,18 @@ const principles = [
   <section class="py-8">
     <p class="kicker">Principles</p>
     <h2 class="title-section mt-2">What drives me</h2>
-    <div class="mt-4 grid gap-6 sm:grid-cols-2">
+    <!-- A numbered manifesto rather than another card grid — principles are not
+         features, and the form should say so before the words do. -->
+    <div class="mt-6 grid gap-x-12 gap-y-9 sm:grid-cols-2">
       {
         principles.map((p) => (
-          <IconCardPart icon={p.icon} title={p.title} tone="label" as="h3">
-            {p.body}
-          </IconCardPart>
+          <div class="flex gap-4">
+            <Icon name={p.icon} class="text-label mt-0.5 h-6 w-6 shrink-0" aria-hidden="true" />
+            <div>
+              <h3 class="font-display text-ink font-semibold">{p.title}</h3>
+              <p class="text-muted mt-1.5 text-sm leading-relaxed">{p.body}</p>
+            </div>
+          </div>
         ))
       }
     </div>

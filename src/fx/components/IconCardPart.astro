@@ -1,27 +1,21 @@
 ---
 // Bordered card with an icon tile and title; body text goes in the slot.
-// Used for the "What I do" and "What drives me" grids on the home page.
-//
-// `tone` picks the icon tile's palette — accent for technical work, label
-// (gold) for personal content. `as` sets the heading level so the card can sit
-// under a section <h2> without breaking the document outline.
+// Used for the "What I do" grid on the home page and similar grids.
 import { Icon } from 'astro-icon/components';
 
 interface Props {
   icon: string;
   title: string;
-  tone?: 'accent' | 'label';
-  as?: 'h2' | 'h3';
 }
 
-const { icon, title, tone = 'accent', as: Heading = 'h2' }: Props = Astro.props;
+const { icon, title }: Props = Astro.props;
 ---
 
 <div class="card card-lift p-5">
-  <div class:list={['icon-tile', tone === 'label' && 'icon-tile-label']}>
+  <div class="icon-tile">
     <Icon name={icon} class="h-5 w-5" aria-hidden="true" />
   </div>
-  <Heading class="font-display text-ink mt-3 font-semibold">{title}</Heading>
+  <h2 class="font-display text-ink mt-3 font-semibold">{title}</h2>
   <p class="text-muted mt-2 text-sm leading-relaxed">
     <slot />
   </p>

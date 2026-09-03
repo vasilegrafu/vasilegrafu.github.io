@@ -1,6 +1,6 @@
 ---
-// One entry on the Career timeline: era icon, period badge, summary,
-// collapsible "What I did" achievement cards, and tech chips.
+// One entry on the Career timeline: era icon, period badge, company context,
+// role summary, a numbered list of what I did, and tech chips.
 import { Icon } from 'astro-icon/components';
 import type { Role } from '@data/profile';
 
@@ -33,44 +33,34 @@ const { role, icon } = Astro.props;
     )
   }
   {role.summary && <p class="text-muted mt-3 leading-relaxed">{role.summary}</p>}
-  <details class="mt-4">
-    <summary class="summary-pill">
-      What I did
-      <Icon
-        name="lucide:chevron-down"
-        class="h-4 w-4 transition-transform [details[open]_&]:rotate-180"
-        aria-hidden="true"
-      />
-    </summary>
-    <div class="mt-4 grid gap-3 sm:grid-cols-2">
-      {
-        role.bullets.map((b, i) => {
-          const idx = b.indexOf(': ');
-          const title = idx > 0 ? b.slice(0, idx) : null;
-          const rest = idx > 0 ? b.slice(idx + 2) : b;
-          const body = title ? rest.charAt(0).toUpperCase() + rest.slice(1) : rest;
-          // Leading bullets name the teams I ran — scope, not activity — so
-          // they get the accent treatment to set them apart from the rest.
-          const lead = i < (role.leadBullets ?? 0);
-          return (
-            <div
-              class={`card card-lift p-4 ${lead ? 'border-accent-line bg-accent-soft/50' : 'bg-surface'}`}
+  <div class="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+    {
+      role.bullets.map((b, i) => {
+        const idx = b.indexOf(': ');
+        const title = idx > 0 ? b.slice(0, idx) : null;
+        const rest = idx > 0 ? b.slice(idx + 2) : b;
+        const body = title ? rest.charAt(0).toUpperCase() + rest.slice(1) : rest;
+        // Leading bullets name the teams I ran — scope, not activity — so their
+        // numeral takes the accent colour to set them apart from the rest.
+        const lead = i < (role.leadBullets ?? 0);
+        return (
+          <div class="flex gap-3">
+            <span
+              class={`font-display pt-px text-sm font-bold tabular-nums ${lead ? 'text-accent' : 'text-label/70'}`}
             >
-              {title && (
-                <p
-                  class={`flex items-center gap-1.5 text-sm font-semibold ${lead ? 'text-accent-strong' : 'text-ink'}`}
-                >
-                  {lead && <Icon name="lucide:users" class="h-3.5 w-3.5" aria-hidden="true" />}
-                  {title}
-                </p>
-              )}
-              <p class={`text-muted text-sm leading-relaxed ${title ? 'mt-1' : ''}`}>{body}</p>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              {title && <p class="text-ink text-base font-semibold">{title}</p>}
+              <p class={`text-muted text-[15px] leading-relaxed ${title ? 'mt-0.5' : ''}`}>
+                {body}
+              </p>
             </div>
-          );
-        })
-      }
-    </div>
-  </details>
+          </div>
+        );
+      })
+    }
+  </div>
   {
     role.tech && (
       <div class="mt-4 flex flex-wrap gap-2">
