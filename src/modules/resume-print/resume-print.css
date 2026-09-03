@@ -97,10 +97,23 @@ h2 {
 .role li {
   margin-bottom: 3px;
 }
+/* The stack for a role: given a rule, a label and full-strength ink, because a
+   recruiter scanning for a technology should find it without reading prose. */
 .tech {
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: 8.5pt;
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 9pt;
+}
+.tech-label {
+  display: inline-block;
+  margin-right: 7px;
+  color: var(--accent);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 .edu {
   margin-bottom: 6px;
@@ -143,12 +156,4 @@ h2 {
 /* Contact links stay clickable in the PDF and read as links. */
 .contact a {
   color: var(--accent);
-}
-
-/* Bulleted list without the role indentation, used by Self-Learning. */
-ul.plain {
-  margin: 0 0 0 15px;
-}
-ul.plain li {
-  margin-bottom: 4px;
 }

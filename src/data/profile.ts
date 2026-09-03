@@ -269,14 +269,6 @@ export const selfLearning: string[] = [
   'I place particular value on developing strong intuition for what happens under the hood. Rather than treating algorithms and models as black boxes, I try to understand their underlying mechanisms, assumptions, limitations, and trade-offs. This way of thinking allows me to reason more effectively about system design, model behavior, and complex technical problems, even when working outside areas I have encountered before.',
 ];
 
-// Condensed for the resume PDF, where the two full paragraphs above would eat
-// a third of a page. The Career page still shows `selfLearning` in full.
-export const selfLearningShort: string[] = [
-  'Studied machine learning, deep learning, neural networks, probability, linear algebra, calculus and statistics independently — to understand the mathematics, not just the frameworks.',
-  'Prefer to understand mechanisms, assumptions, limitations and trade-offs rather than treat algorithms and models as black boxes.',
-  'That habit is what lets me reason about system design and model behaviour in areas I have not worked in before.',
-];
-
 export interface Project {
   title: string;
   role: string;
