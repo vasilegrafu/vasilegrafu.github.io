@@ -6,6 +6,7 @@
 import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 'react';
 import type { RouteObject } from 'react-router';
 import BaseLayout from '@modules/shared/BaseLayout';
+import RouteErrorPart from '@modules/shared/RouteErrorPart';
 import { routes, type PageId } from './routes';
 
 const pages: Record<PageId, LazyExoticComponent<ComponentType>> = {
@@ -31,6 +32,7 @@ const bareRoutes = routes.filter((r) => r.bare);
 export const routeObjects: RouteObject[] = [
   {
     element: <BaseLayout />,
+    errorElement: <RouteErrorPart />,
     children: shellRoutes.map((r) => toRoute(r.path, r.page)),
   },
   ...bareRoutes.map((r) => {

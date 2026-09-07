@@ -8,7 +8,7 @@ Guidance for Claude Code working in this repository.
 
 - Make changes in the working tree and leave them uncommitted. I review them myself.
 - When work is done, summarise what changed and stop. Do not offer to commit as a next step; wait for me to ask.
-- `/publish` is how I ask: it means verify, commit everything in the working tree, push to `main`, and confirm the deploy (see `.claude/commands/publish.md`).
+- `/publish` is how I ask: it means verify, commit everything in the working tree, push to `main`, and confirm the deploy (see `.claude/commands/publish.md`). `/cp` is the bare version: commit and push, nothing else.
 - When I do ask for a commit, commit only what I asked for. Never `git add -A` / `git add .` blindly — stage the specific paths.
 - Never rewrite history: no `commit --amend`, `rebase`, `reset --hard`, `push --force`, `checkout --` over my changes, `clean -fd`, or `stash drop`.
 - Never touch the remote: no `push`, `fetch --prune` with deletion, no branch deletion, no `gh pr create/merge`.
