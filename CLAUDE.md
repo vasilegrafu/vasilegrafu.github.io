@@ -25,7 +25,7 @@ Guidance for Claude Code working in this repository.
 
 ## 3. What this repo is
 
-Personal site published to GitHub Pages at `vasilegrafu.github.io`. It is mid-migration: the previous Astro site has been removed from the working tree (those deletions are staged/unstaged, deliberately) and replaced with a fresh React app.
+Personal site published to GitHub Pages at `vasilegrafu.github.io`. It was migrated from Astro to a React single-page app in September 2026; the migration plan and the architecture notes are in `docs/`.
 
 ```
 docs/      # project documentation (plans, architecture, how-tos) — not served, never a build output
@@ -47,10 +47,11 @@ All commands run from `webapp/`:
 | Lint    | `npm run lint`    |
 | Preview | `npm run preview` |
 
-- Stack: Vite 8, React 19, TypeScript 6, ESLint 10 (flat config in `eslint.config.js`).
+- Stack: Vite 8, React 19, TypeScript 6, React Router 8, Tailwind CSS 4, lucide-react, ESLint 10 (flat config in `eslint.config.js`).
 - `npm run build` runs `tsc -b` first — a type error fails the build. Run the build before telling me something works.
-- Entry points: `index.html` → `src/main.tsx` → `src/App.tsx`.
-- `src/assets/` is bundled and hashed; `public/` is copied verbatim and referenced by absolute path.
+- Entry points: `index.html` → `src/main.tsx` → `src/router.tsx` (built from the manifest in `src/routes.ts`).
+- Layers, naming and the styling rules are in `docs/ARCHITECTURE.md` — read it before adding a page, part, icon or theme.
+- `public/` is copied verbatim and referenced by absolute path.
 
 ## 5. How I want you to work
 

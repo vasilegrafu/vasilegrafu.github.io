@@ -172,7 +172,7 @@ new on 5173, side by side).
    `react-dom/static` over the route list at build — no extra dependency, but
    its own piece of work. Recommendation: ship the SPA first.
 
-## Phase 6 — Cleanup and documentation
+## Phase 6 — Cleanup and documentation — done (2026-09-07)
 
 - Replace the scaffold `webapp/README.md` with the old README adapted to
   React (dev/build/preview, adding an article, regenerating the PDF, how the

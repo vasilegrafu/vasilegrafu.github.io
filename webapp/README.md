@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# vasilegrafu.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal website of **Vasile Grafu** — Engineering Manager, Solutions Architect, Enterprise & AI Systems.
 
-Currently, two official plugins are available:
+Live at **https://vasilegrafu.github.io**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript — single-page app
+- [React Router](https://reactrouter.com) — client-side routing
+- [Tailwind CSS v4](https://tailwindcss.com) — styling, with a themeable token layer
+- [Lucide](https://lucide.dev) — icons
+- Deployed to GitHub Pages by GitHub Actions on every push to `main`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Architecture notes live in [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm install
+npm run dev      # local dev server at http://localhost:5173
+npm run build    # type-check + production build to ./dist
+npm run lint     # eslint
+npm run preview  # preview the production build at http://localhost:4173
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+`npm run build` runs `tsc -b` first, so a type error fails the build. The build
+also writes `sitemap.xml`, `rss.xml` and `404.html` (the SPA fallback GitHub
+Pages needs for deep links) into `dist/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Adding an article
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Add the metadata to `src/modules/articles/registry.ts`:
 
+   ```ts
+   {
+     id: 'my-article',            // the URL slug: /articles/my-article
+     title: 'Article title',
+     description: 'One-line summary shown in listings, RSS and SEO.',
+     pubDate: new Date('2026-09-15'),
+     tags: ['ai', 'leadership'],
+   }
+   ```
+
+2. Create `src/modules/articles/content/my-article/ArticlePart.tsx` exporting a
+   default component with the article body. Anything the article needs —
+   charts, animations, media, helper components — lives in the same directory.
+
+The listing, the article route, RSS and the sitemap all pick it up from the
+registry. Push to `main` and it deploys.
+
+## Updating the resume
+
+Profile data (experience, skills, education, projects) lives in
+`src/data/profile.ts` and feeds the Career, Skills and Projects pages, plus a
+print-optimised page at `/resume-print` (rendered without the site shell,
+`noindex`, not in the sitemap).
+
+The downloadable PDF at `public/cv.pdf` is printed from that page. After editing
+`src/data/profile.ts`, regenerate it with:
+
+```powershell
+npm run build
+npm run preview   # note the port it prints (4173 unless busy)
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+  --no-pdf-header-footer --print-to-pdf="<repo>\webapp\public\cv.pdf" "http://localhost:4173/resume-print"
 ```
+
+## Deployment
+
+`.github/workflows/deploy.yml` runs on every push to `main`: install, lint,
+build, then publish `webapp/dist` to GitHub Pages. A failing lint or build does
+not deploy — the previous release stays live. Check the Actions tab after
+pushing.
