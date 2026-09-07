@@ -1,6 +1,9 @@
-// Central route manifest — plain data, no React. router.tsx turns it into the
-// browser router; the build step reads it for sitemap.xml. Adding a page =
-// new module directory + one entry here + one lazy import in router.tsx.
+// Central route manifest — plain data, no React. routeTree.tsx turns it into
+// route objects; the build reads it for sitemap.xml and prerendering. Adding a
+// page = new module directory + one entry here + one lazy import in routeTree.tsx.
+// (The import keeps its extension so vite.config.ts can load this file too.)
+import { articlesByDate } from './modules/articles/registry.ts';
+
 export type PageId =
   | 'index'
   | 'career'
@@ -38,3 +41,9 @@ export const redirects: { from: string; to: string }[] = [
   { from: '/resume', to: '/career' },
   { from: '/ideas', to: '/' },
 ];
+
+/** Concrete paths for a route: parameterised routes are expanded from their data. */
+export function expandPath(path: string): string[] {
+  if (path === '/articles/:id') return articlesByDate().map((a) => `/articles/${a.id}`);
+  return [path];
+}

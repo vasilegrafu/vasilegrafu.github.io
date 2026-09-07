@@ -8,6 +8,7 @@ Guidance for Claude Code working in this repository.
 
 - Make changes in the working tree and leave them uncommitted. I review them myself.
 - When work is done, summarise what changed and stop. Do not offer to commit as a next step; wait for me to ask.
+- `/publish` is how I ask: it means verify, commit everything in the working tree, push to `main`, and confirm the deploy (see `.claude/commands/publish.md`).
 - When I do ask for a commit, commit only what I asked for. Never `git add -A` / `git add .` blindly — stage the specific paths.
 - Never rewrite history: no `commit --amend`, `rebase`, `reset --hard`, `push --force`, `checkout --` over my changes, `clean -fd`, or `stash drop`.
 - Never touch the remote: no `push`, `fetch --prune` with deletion, no branch deletion, no `gh pr create/merge`.
@@ -51,6 +52,7 @@ All commands run from `webapp/`:
 - `npm run build` runs `tsc -b` first — a type error fails the build. Run the build before telling me something works.
 - Entry points: `index.html` → `src/main.tsx` → `src/router.tsx` (built from the manifest in `src/routes.ts`).
 - Layers, naming and the styling rules are in `docs/ARCHITECTURE.md` — read it before adding a page, part, icon or theme.
+- Pages are prerendered at build time and hydrated in the browser; `docs/SEO.md` explains that plus sitemap, RSS, canonical URLs and social previews. Every page must render `PageMetaPart`, and render-time state that differs per visitor must be hydration-safe.
 - `public/` is copied verbatim and referenced by absolute path.
 
 ## 5. How I want you to work

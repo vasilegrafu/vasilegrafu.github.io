@@ -25,8 +25,10 @@ npm run preview  # preview the production build at http://localhost:4173
 ```
 
 `npm run build` runs `tsc -b` first, so a type error fails the build. The build
-also writes `sitemap.xml`, `rss.xml` and `404.html` (the SPA fallback GitHub
-Pages needs for deep links) into `dist/`.
+also writes `sitemap.xml`, `rss.xml` and `404.html` into `dist/`, then
+prerenders every page to a static HTML file so crawlers and link previews see
+real content. How all of that fits together is in
+[`../docs/SEO.md`](../docs/SEO.md).
 
 ## Adding an article
 

@@ -6,26 +6,19 @@ import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 import { site } from './src/data/profile.ts'
 import { articlesByDate } from './src/modules/articles/registry.ts'
-import { routes } from './src/routes.ts'
+import { expandPath, routes } from './src/routes.ts'
 
 const src = (dir: string) => fileURLToPath(new URL(`./src/${dir}`, import.meta.url))
 
 const escapeXml = (s: string) =>
   s.replace(/[<>&'"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' })[c]!)
 
-/** Every indexable URL: static routes, with `/articles/:id` expanded from the registry. */
-function sitemapUrls(): string[] {
-  const urls: string[] = []
-  for (const r of routes) {
-    if (!r.sitemap) continue
-    if (r.path === '/articles/:id') {
-      for (const a of articlesByDate()) urls.push(`/articles/${a.id}`)
-    } else {
-      urls.push(r.path)
-    }
-  }
-  return urls.map((p) => new URL(p, site.url).href)
-}
+/** Every indexable URL: routes flagged for the sitemap, parameterised ones expanded. */
+const sitemapUrls = () =>
+  routes
+    .filter((r) => r.sitemap)
+    .flatMap((r) => expandPath(r.path))
+    .map((p) => new URL(p, site.url).href)
 
 function sitemapXml(): string {
   const entries = sitemapUrls().map((u) => `  <url><loc>${escapeXml(u)}</loc></url>`)

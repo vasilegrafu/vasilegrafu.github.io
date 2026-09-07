@@ -155,7 +155,7 @@ The one existing article (`why-i-built-this-site`) becomes `ArticlePart.tsx`
 Checkpoint per page: visual parity with the old site (old dev server on 4321,
 new on 5173, side by side).
 
-## Phase 5 — Static-site concerns a SPA has to solve — done (2026-09-07), prerender left for later
+## Phase 5 — Static-site concerns a SPA has to solve — done (2026-09-07)
 
 1. **Deep links on GitHub Pages.** Pages serves `404.html` for unknown paths;
    a post-build step copies `index.html` to `404.html` so `/career` loads the
@@ -167,10 +167,10 @@ new on 5173, side by side).
 3. **Resume PDF.** `/resume-print` stays the print source; regenerate
    `public/cv.pdf` with headless Chrome against `npm run preview`
    (port 4173 instead of 4321). Command documented in the README.
-4. **SEO / social previews (optional, later).** A SPA ships an empty
-   `<div id="root">` to crawlers. If that matters, add a prerender step using
-   `react-dom/static` over the route list at build — no extra dependency, but
-   its own piece of work. Recommendation: ship the SPA first.
+4. **SEO / social previews — done (2026-09-07).** `scripts/prerender.ts`
+   renders every route to static HTML at build time with `react-dom/static`
+   and React Router's static handler; the client hydrates. No extra
+   dependency. Documented in `docs/SEO.md`.
 
 ## Phase 6 — Cleanup and documentation — done (2026-09-07)
 
@@ -188,7 +188,7 @@ new on 5173, side by side).
 1. Deploy workflow pushed right away; the Vite placeholder goes live until
    Phase 4 lands.
 2. Phase 2 dependencies approved and installed. Prettier left out for now.
-3. SEO prerendering: later (Phase 5, item 4 stays optional).
+3. SEO prerendering: done the same day, after the site went live.
 
 ## Order and size
 

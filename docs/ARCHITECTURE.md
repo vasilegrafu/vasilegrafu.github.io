@@ -17,8 +17,11 @@ src/
 ├─ styles/global.css   design system (token mapping + Tailwind recipes)
 ├─ themes/             design tokens — one CSS file per look + themes.ts registry
 ├─ routes.ts           central route manifest (URL → page id), plain data
-├─ router.tsx          builds the React Router from the manifest
-└─ main.tsx            entry: fonts, global.css, RouterProvider
+├─ routeTree.tsx       route objects built from the manifest (lazy pages)
+├─ router.tsx          the browser router
+├─ prerender.tsx       build-time rendering of a route to HTML
+└─ main.tsx            entry: fonts, global.css, hydrate or render
+scripts/prerender.ts   post-build step writing one HTML file per route into dist/
 ```
 
 **Dependency rule: imports point downward only.**
@@ -44,12 +47,14 @@ Path aliases (`tsconfig.app.json`, mirrored in `vite.config.ts`): `@modules/*`,
 `src/routes.ts` is the single list of URLs: `path`, `page` id, whether it is in
 the sitemap, and whether it renders `bare` (outside the shell — the resume
 print page). It has no React imports, so the build plugin in `vite.config.ts`
-can read it too. `src/router.tsx` maps each page id to a `React.lazy` import
-and builds `createBrowserRouter`; every page is its own chunk. Old URLs are
-listed in `redirects` and become `<Navigate replace>` routes.
+can read it too. `src/routeTree.tsx` maps each page id to a `React.lazy`
+import and builds the route objects; `src/router.tsx` turns them into
+`createBrowserRouter` for the browser and `src/prerender.tsx` into a static
+router for the build. Every page is its own chunk. Old URLs are listed in
+`redirects` and become `<Navigate replace>` routes.
 
 Adding a page = new module directory + one entry in `routes.ts` + one lazy
-import in `router.tsx`.
+import in `routeTree.tsx`.
 
 Internal links use `<Link>`/`<NavLink>` from React Router and the
 no-trailing-slash form (`/career`). `PageMetaPart` normalises the canonical
@@ -109,5 +114,9 @@ The `static-site-files` plugin in `vite.config.ts` emits, at build time:
 - `sitemap.xml` — every route flagged `sitemap: true`, with `/articles/:id`
   expanded from the registry.
 - `rss.xml` — the article feed.
-- `404.html` — a copy of `index.html`, so GitHub Pages serves the app for any
-  deep link and the router renders the page (or the real 404 page).
+- `404.html` — a copy of the empty `index.html` shell, so GitHub Pages serves
+  the app for unknown URLs and the router renders the 404 page or a redirect.
+
+Then `scripts/prerender.ts` writes a static HTML file for every real route
+(`career.html` + `career/index.html`, …), which the client hydrates. The
+reasoning and the rules that keep it working are in [SEO.md](SEO.md).
