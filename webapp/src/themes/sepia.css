@@ -1,0 +1,26 @@
+/* Sepia — warm paper-like reading theme. */
+[data-theme='sepia'] {
+  --t-bg: #f7f1e6;
+  --t-surface: #fffaf0;
+  --t-tint: rgb(250 240 222 / 0.6);
+  --t-chip: #efe4d0;
+  --t-ink: #3b2f23;
+  --t-muted: #6b5b46;
+  --t-faint: #8a7a63;
+  --t-line: #e4d7c0;
+  --t-line-strong: #d0bfa1;
+  --t-accent: #9a3412;
+  --t-accent-strong: #7c2d12;
+  --t-accent-ink: #fff7ed;
+  --t-accent-solid: #9a3412;
+  --t-accent-hover: #7c2d12;
+  --t-accent-soft: #fdeadb;
+  --t-accent-line: #f5cfae;
+  --t-grad-a: #b45309;
+  --t-grad-b: #9a3412;
+  --t-label: #0f766e;
+  --t-label-strong: #115e59;
+  --t-label-soft: #ccfbf1;
+  --t-blob-a: rgb(253 230 138 / 0.35);
+  --t-blob-b: rgb(254 215 170 / 0.4);
+}

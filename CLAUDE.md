@@ -28,9 +28,13 @@ Guidance for Claude Code working in this repository.
 Personal site published to GitHub Pages at `vasilegrafu.github.io`. It is mid-migration: the previous Astro site has been removed from the working tree (those deletions are staged/unstaged, deliberately) and replaced with a fresh React app.
 
 ```
-docs/      # (empty) intended GitHub Pages publish target
+docs/      # project documentation (plans, architecture, how-tos) — not served, never a build output
 webapp/    # Vite + React 19 + TypeScript source
 ```
+
+Deployment: a GitHub Actions workflow builds `webapp/` and publishes
+`webapp/dist` to GitHub Pages on every push to `main`. Build output is never
+committed.
 
 ## 4. Working in `webapp/`
 

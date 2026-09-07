@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+  Source for public/og.png (1200x630 link-preview card). Regenerate after editing with:
+  & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+    --screenshot="<repo>\public\og.png" --window-size=1200,630 --hide-scrollbars "<repo>\design\og-image.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: #0f172a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 90px;
+  }
+  .blob1, .blob2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+  }
+  .blob1 { width: 560px; height: 560px; right: -140px; top: -200px; background: rgba(79, 70, 229, 0.45); }
+  .blob2 { width: 420px; height: 420px; left: -120px; bottom: -180px; background: rgba(124, 58, 237, 0.35); }
+  .content { position: relative; display: flex; align-items: center; gap: 64px; }
+  .ring {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    padding: 6px;
+    flex-shrink: 0;
+  }
+  .ring-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: #0f172a;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ring-inner span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px; font-weight: 700;
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 84px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1.05;
+  }
+  .title { margin-top: 18px; font-size: 30px; font-weight: 500; color: #c7d2fe; }
+  .site { margin-top: 30px; font-size: 24px; color: #94a3b8; }
+</style>
+</head>
+<body>
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="content">
+    <div class="ring"><div class="ring-inner"><span>VG</span></div></div>
+    <div>
+      <h1>Vasile Grafu</h1>
+      <p class="title">Engineering Manager · Solutions Architect · Enterprise &amp; AI Systems</p>
+      <p class="site">vasilegrafu.github.io</p>
+    </div>
+  </div>
+</body>
+</html>
