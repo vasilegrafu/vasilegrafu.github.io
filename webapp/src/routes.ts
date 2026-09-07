@@ -36,12 +36,6 @@ export const routes: RouteDef[] = [
   { path: '*', page: 'not-found', sitemap: false },
 ];
 
-/** Old URLs that still get traffic. */
-export const redirects: { from: string; to: string }[] = [
-  { from: '/resume', to: '/career' },
-  { from: '/ideas', to: '/' },
-];
-
 /** Concrete paths for a route: parameterised routes are expanded from their data. */
 export function expandPath(path: string): string[] {
   if (path === '/articles/:id') return articlesByDate().map((a) => `/articles/${a.id}`);

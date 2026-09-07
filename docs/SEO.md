@@ -28,8 +28,7 @@ HTML — the full page markup inside `#root`, and the page's head tags in
 - In the browser, `src/main.tsx` hydrates the prerendered markup instead of
   rendering from scratch, so there is no flash and no duplicate work.
 - `404.html` stays the empty shell. It is what GitHub Pages serves for unknown
-  URLs and for the redirect routes (`/resume`, `/ideas`); the client renders
-  the 404 page or the redirect there.
+  URLs; the client renders the 404 page there.
 
 Hydration rule: the first client render must match the server output. State
 that differs per visitor (the saved theme) goes through `useSyncExternalStore`
@@ -63,9 +62,9 @@ results and in previews.
 - One canonical form per page: no trailing slash. Internal links, the sitemap,
   the feed and the canonical tag all use it. Both forms are served (see the
   file layout above), so old links keep working.
-- Old URLs that still get traffic are listed in `redirects` in
-  `src/routes.ts` and become client-side redirects. They are not in the
-  sitemap.
+- There are no redirects. A URL that stops existing gets the 404 page; if an
+  old URL ever needs to keep working, add a route for it rather than a
+  client-side redirect, so it can be prerendered with a proper status.
 - Article slugs are the directory names under `src/modules/articles/content/`
   and the `id` in the registry. Once published, a slug is a URL — do not rename.
 

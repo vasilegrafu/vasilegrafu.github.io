@@ -26,7 +26,7 @@ Guidance for Claude Code working in this repository.
 
 ## 3. What this repo is
 
-Personal site published to GitHub Pages at `vasilegrafu.github.io`. It was migrated from Astro to a React single-page app in September 2026; the migration plan and the architecture notes are in `docs/`.
+Personal site published to GitHub Pages at `vasilegrafu.github.io`. It was migrated from Astro to a React single-page app in September 2026; the architecture notes and the SEO notes are in `docs/`.
 
 ```
 docs/      # project documentation (plans, architecture, how-tos) — not served, never a build output

@@ -50,8 +50,7 @@ print page). It has no React imports, so the build plugin in `vite.config.ts`
 can read it too. `src/routeTree.tsx` maps each page id to a `React.lazy`
 import and builds the route objects; `src/router.tsx` turns them into
 `createBrowserRouter` for the browser and `src/prerender.tsx` into a static
-router for the build. Every page is its own chunk. Old URLs are listed in
-`redirects` and become `<Navigate replace>` routes.
+router for the build. Every page is its own chunk.
 
 Adding a page = new module directory + one entry in `routes.ts` + one lazy
 import in `routeTree.tsx`.
@@ -115,7 +114,7 @@ The `static-site-files` plugin in `vite.config.ts` emits, at build time:
   expanded from the registry.
 - `rss.xml` — the article feed.
 - `404.html` — a copy of the empty `index.html` shell, so GitHub Pages serves
-  the app for unknown URLs and the router renders the 404 page or a redirect.
+  the app for unknown URLs and the router renders the 404 page.
 
 Then `scripts/prerender.ts` writes a static HTML file for every real route
 (`career.html` + `career/index.html`, …), which the client hydrates. The

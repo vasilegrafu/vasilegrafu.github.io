@@ -4,9 +4,9 @@
 // them inside its Suspense boundary, and `bare` routes render on their own
 // outside the shell.
 import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 'react';
-import { Navigate, type RouteObject } from 'react-router';
+import type { RouteObject } from 'react-router';
 import BaseLayout from '@modules/shared/BaseLayout';
-import { redirects, routes, type PageId } from './routes';
+import { routes, type PageId } from './routes';
 
 const pages: Record<PageId, LazyExoticComponent<ComponentType>> = {
   index: lazy(() => import('@modules/index/IndexPage')),
@@ -31,10 +31,7 @@ const bareRoutes = routes.filter((r) => r.bare);
 export const routeObjects: RouteObject[] = [
   {
     element: <BaseLayout />,
-    children: [
-      ...shellRoutes.map((r) => toRoute(r.path, r.page)),
-      ...redirects.map((r) => ({ path: r.from, element: <Navigate to={r.to} replace /> })),
-    ],
+    children: shellRoutes.map((r) => toRoute(r.path, r.page)),
   },
   ...bareRoutes.map((r) => {
     const Page = pages[r.page];
