@@ -75,7 +75,7 @@ formatter.
 Nothing else. RSS, sitemap, the SPA fallback and the resume PDF need no
 packages (Phase 5).
 
-## Phase 3 — Design system and shell
+## Phase 3 — Design system and shell — done (2026-09-07)
 
 Design system:
 
@@ -117,7 +117,7 @@ it. Naming: `XxxPage.tsx`, `XxxPart.tsx`, `XxxLayout.tsx`.
 
 Checkpoint: header, footer and theme switching working on an empty page.
 
-## Phase 4 — Pages (one page per diff)
+## Phase 4 — Pages — done (2026-09-07)
 
 The central route manifest splits in two so the build plugin (Phase 5) can
 read it without pulling React into `vite.config.ts`:
@@ -155,7 +155,7 @@ The one existing article (`why-i-built-this-site`) becomes `ArticlePart.tsx`
 Checkpoint per page: visual parity with the old site (old dev server on 4321,
 new on 5173, side by side).
 
-## Phase 5 — Static-site concerns a SPA has to solve
+## Phase 5 — Static-site concerns a SPA has to solve — done (2026-09-07), prerender left for later
 
 1. **Deep links on GitHub Pages.** Pages serves `404.html` for unknown paths;
    a post-build step copies `index.html` to `404.html` so `/career` loads the

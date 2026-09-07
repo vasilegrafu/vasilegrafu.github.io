@@ -1,0 +1,151 @@
+@import 'tailwindcss';
+@import '../themes/index.css';
+
+@theme {
+  --font-sans:
+    'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Map theme tokens to Tailwind colors: bg-bg, text-ink, border-line,
+   text-accent, from-grad-a … resolve to the active theme's values. */
+@theme inline {
+  --color-bg: var(--t-bg);
+  --color-surface: var(--t-surface);
+  --color-tint: var(--t-tint);
+  --color-chip: var(--t-chip);
+  --color-ink: var(--t-ink);
+  --color-muted: var(--t-muted);
+  --color-faint: var(--t-faint);
+  --color-line: var(--t-line);
+  --color-line-strong: var(--t-line-strong);
+  --color-accent: var(--t-accent);
+  --color-accent-strong: var(--t-accent-strong);
+  --color-accent-ink: var(--t-accent-ink);
+  --color-accent-solid: var(--t-accent-solid);
+  --color-accent-hover: var(--t-accent-hover);
+  --color-accent-soft: var(--t-accent-soft);
+  --color-accent-line: var(--t-accent-line);
+  --color-grad-a: var(--t-grad-a);
+  --color-grad-b: var(--t-grad-b);
+  --color-label: var(--t-label);
+  --color-label-strong: var(--t-label-strong);
+  --color-label-soft: var(--t-label-soft);
+  --color-blob-a: var(--t-blob-a);
+  --color-blob-b: var(--t-blob-b);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------------------------------
+   Design system — the site's reusable style vocabulary. Change a recipe here
+   and every usage across the site follows.
+--------------------------------------------------------------------------- */
+@layer components {
+  /* Typography */
+  .title-hero {
+    @apply font-display text-ink text-3xl font-bold tracking-tight sm:text-5xl;
+  }
+  .title-page {
+    @apply font-display text-ink text-3xl font-bold;
+  }
+  .title-section {
+    @apply font-display text-ink text-2xl font-bold;
+  }
+  .title-item {
+    @apply font-display text-ink text-xl font-semibold;
+  }
+  .kicker {
+    @apply text-label text-xs font-semibold uppercase;
+    letter-spacing: 0.14em;
+  }
+  .lede {
+    @apply text-muted mt-3 max-w-2xl;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-accent-solid text-accent-ink hover:bg-accent-hover shadow-sm;
+  }
+  .btn-ghost {
+    @apply border-line-strong text-ink hover:border-accent hover:text-accent border;
+  }
+
+  /* Surfaces */
+  .card {
+    @apply border-line rounded-xl border;
+  }
+  .card-lift {
+    @apply hover:shadow-accent/25 transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px];
+  }
+
+  /* Navigation */
+  .nav-pill {
+    @apply text-muted hover:bg-chip hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
+  }
+  .nav-pill-active {
+    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
+  }
+  .menu-item {
+    @apply text-muted hover:bg-chip hover:text-ink flex w-full items-center gap-2.5 rounded-lg px-3 py-2 transition-colors;
+  }
+  .menu-item-active {
+    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
+  }
+
+  /* Small pieces */
+  .tag {
+    @apply bg-chip text-muted rounded-full px-3 py-1 text-xs;
+  }
+  .badge {
+    @apply bg-label-soft text-label-strong rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .chip {
+    @apply border-line bg-surface/60 text-muted inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5;
+  }
+  .blob {
+    @apply absolute rounded-full blur-3xl;
+  }
+  .icon-tile {
+    @apply bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-lg;
+  }
+  .link-accent {
+    @apply text-accent hover:underline;
+  }
+
+  /* CSS-only tooltip: add .tip + data-tip="text"; .tip-end right-aligns the
+     bubble. Kept as a class because ::after + content: attr() cannot be
+     expressed with utilities. */
+  .tip {
+    @apply relative;
+  }
+  .tip::after {
+    content: attr(data-tip);
+    @apply bg-ink text-bg pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 rounded-md px-2.5 py-1 text-xs font-medium whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .tip:hover::after,
+  .tip:focus-visible::after {
+    @apply opacity-100;
+    transform: translateX(-50%) translateY(0);
+  }
+  .tip-end::after {
+    @apply right-0 left-auto;
+    transform: translateY(-2px);
+  }
+  .tip-end:hover::after,
+  .tip-end:focus-visible::after {
+    transform: translateY(0);
+  }
+
+  /* Article body typography (rendered ArticlePart HTML) */
+  .prose-article {
+    @apply text-muted [&_h2]:text-ink [&_h3]:text-ink [&_a]:text-accent [&_code]:bg-chip [&_blockquote]:border-line-strong max-w-none space-y-4 leading-relaxed [&_a]:underline [&_blockquote]:border-s-4 [&_blockquote]:ps-4 [&_blockquote]:italic [&_code]:rounded [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-sm [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_ol]:list-decimal [&_ol]:ps-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4 [&_ul]:list-disc [&_ul]:ps-5;
+  }
+}

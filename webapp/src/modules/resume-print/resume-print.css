@@ -1,0 +1,163 @@
+/* Print stylesheet for the resume PDF (A4). Standalone by design — the PDF
+   must keep a fixed, print-tuned look independent of the site's themes, so
+   every rule is scoped under .resume-print and uses its own palette. */
+.resume-print {
+  --ink: #1e293b;
+  --muted: #64748b;
+  --accent: #4338ca;
+  --line: #e2e8f0;
+
+  background: #ffffff;
+  color: var(--ink);
+  font-family: 'Segoe UI', ui-sans-serif, system-ui, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.42;
+  flex-grow: 1;
+}
+@page {
+  size: A4;
+  margin: 16mm 16mm;
+}
+/* On screen, show the page the way it prints. */
+@media screen {
+  .resume-print {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 16mm;
+  }
+}
+.resume-print header {
+  border-bottom: 2.5px solid var(--accent);
+  padding-bottom: 12px;
+}
+.resume-print h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.resume-print .subtitle {
+  font-size: 11pt;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 2px;
+}
+.resume-print .contact {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 8.5pt;
+}
+.resume-print .contact span + span::before {
+  content: ' · ';
+}
+.resume-print a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.resume-print h2 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin: 14px 0 6px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+.resume-print .skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 18px;
+}
+.resume-print .skills p {
+  font-size: 8.5pt;
+}
+.resume-print .skills b {
+  color: var(--ink);
+}
+.resume-print .role {
+  margin-bottom: 13px;
+  page-break-inside: avoid;
+}
+.resume-print .role.allow-break {
+  page-break-inside: auto;
+}
+.resume-print .role-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.resume-print .role-head h3 {
+  font-size: 10.5pt;
+  font-weight: 700;
+}
+.resume-print .role-head .period {
+  color: var(--muted);
+  font-size: 8.5pt;
+  white-space: nowrap;
+}
+.resume-print .role .summary {
+  margin-top: 2px;
+  color: var(--ink);
+}
+.resume-print .role ul {
+  list-style: disc;
+  margin: 4px 0 0 15px;
+}
+.resume-print .role li {
+  margin-bottom: 3px;
+}
+/* The stack for a role: given a rule, a label and full-strength ink, because a
+   recruiter scanning for a technology should find it without reading prose. */
+.resume-print .tech {
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 9pt;
+}
+.resume-print .tech-label {
+  display: inline-block;
+  margin-right: 7px;
+  color: var(--accent);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.resume-print .edu {
+  margin-bottom: 6px;
+}
+.resume-print .edu .period {
+  color: var(--muted);
+  font-size: 8.5pt;
+}
+
+/* Number-led facts under the summary, for the recruiter's first scan. */
+.resume-print .highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+  margin-top: 6px;
+}
+.resume-print .highlights div {
+  position: relative;
+  padding-left: 13px;
+  font-size: 9.5pt;
+}
+.resume-print .highlights div::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
+/* One line of company context under a role heading. */
+.resume-print .role .about {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 8.8pt;
+}

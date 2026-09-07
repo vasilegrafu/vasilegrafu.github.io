@@ -1,13 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="antialiased">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>webapp</title>
+    <!-- Per-page <title>, description, canonical and og:title/description/url
+         are rendered by PageMetaPart (React 19 hoists them into <head>).
+         Only site-wide, page-independent tags live here. -->
+    <meta name="author" content="Vasile Grafu" />
+    <meta name="theme-color" content="#1e3a8a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="Vasile Grafu — Articles" href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vasile Grafu" />
+    <meta property="og:image" content="https://vasilegrafu.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://vasilegrafu.github.io/og.png" />
+    <script>
+      // Apply the saved theme before first paint so there is no flash of the
+      // default look. ThemeMenuPart owns the choice from here on.
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem('theme');
+        } catch (e) {}
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="bg-bg text-ink/90 overflow-x-clip font-sans">
+    <div id="root" class="flex min-h-screen flex-col"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
