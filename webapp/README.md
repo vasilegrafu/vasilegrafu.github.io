@@ -28,6 +28,14 @@ npm ci
 `npm ci` installs exactly what `package-lock.json` pins, which is also what CI
 uses. Use `npm install` only when you intend to change dependencies.
 
+Or let the script do the Node check and the install for you (Git Bash on
+Windows, or any macOS/Linux shell):
+
+```sh
+./setup.sh          # check Node 24, npm ci
+./setup.sh --dev    # same, then start the dev server
+```
+
 ## Running locally
 
 ```sh
