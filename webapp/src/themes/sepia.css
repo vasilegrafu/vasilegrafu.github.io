@@ -6,7 +6,7 @@
   --t-chip: #efe4d0;
   --t-ink: #3b2f23;
   --t-muted: #6b5b46;
-  --t-faint: #8a7a63;
+  --t-faint: #75654f; /* 5.0:1 on --t-bg */
   --t-line: #e4d7c0;
   --t-line-strong: #d0bfa1;
   --t-accent: #9a3412;

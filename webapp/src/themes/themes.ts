@@ -6,11 +6,13 @@ export interface ThemeDef {
   label: string;
   /** Swatch color shown next to the theme name in the dropdown. */
   swatch: string;
+  /** The theme's --t-bg, for the browser's theme-color (mobile address bar). */
+  chrome: string;
 }
 
 export const themes: ThemeDef[] = [
-  { id: 'light', label: 'Light', swatch: '#1e3a8a' },
-  { id: 'dark', label: 'Dark', swatch: '#020617' },
-  { id: 'emerald', label: 'Emerald', swatch: '#047857' },
-  { id: 'sepia', label: 'Sepia', swatch: '#9a3412' },
+  { id: 'light', label: 'Light', swatch: '#1e3a8a', chrome: '#ffffff' },
+  { id: 'dark', label: 'Dark', swatch: '#020617', chrome: '#020617' },
+  { id: 'emerald', label: 'Emerald', swatch: '#047857', chrome: '#f6faf8' },
+  { id: 'sepia', label: 'Sepia', swatch: '#9a3412', chrome: '#f7f1e6' },
 ];

@@ -85,6 +85,19 @@ pre-paint theme script live in `index.html`.
    title that stands out by weight only. The unused Tailwind steps alias to the
    nearest role, so do not reach for `text-sm`, `text-lg` or arbitrary
    `text-[15px]` values — pick a recipe, or leave the size to inherit.
+
+   **Vertical rhythm.** Sections are `py-8` (64px between them). Inside a
+   section: kicker → heading `mt-2`, heading or lede → content `mt-6` on the
+   home page and `mt-8` under a page header, cards in a grid `gap-6`. Inside a
+   card or list item: icon → title `mt-4`, title → body `mt-2`. Pick from
+   those steps rather than inventing a `mt-1.5` or `mt-5` for one place.
+
+   **Keyboard and assistive tech.** `global.css` sets one `:focus-visible`
+   ring in the accent colour for every interactive element; `BaseLayout`
+   renders a skip link to `#main` and the `theme-color` meta tag for the
+   active theme. `NavLink` adds `aria-current="page"` on its own. Every
+   `--t-faint` must keep at least 4.5:1 against `--t-bg` and `--t-surface`;
+   check it when adding a theme.
 3. **Inline utilities** — everything else, directly in the markup. Conditional
    classes go through `cx()` from `@fx/lib/cx`.
 4. **`style=` attribute** — only for data-driven values Tailwind cannot know

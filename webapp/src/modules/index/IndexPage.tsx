@@ -7,17 +7,20 @@ import { experience, site } from '@data/profile';
 
 const current = experience[0];
 
-// Reach and practice: three figures, then how the work is actually done. The
-// lifecycle detail sits in the hero sentence above, so one tile points at it
-// rather than spending six. The AI tiles say what I build and how I build —
-// they describe the systems and the practice, never me.
+// Reach: three figures, kept to numbers so the tiles keep their punch.
 const scaleStats = [
   { value: '20+', label: 'years in software development' },
   { value: '50+', label: 'applications built or contributed to' },
   { value: 'Millions', label: 'of requests a day on some applications' },
-  { value: 'Every phase', label: 'specification through production' },
-  { value: 'AI systems', label: 'built, not just used' },
-  { value: 'AI-assisted', label: 'engineering, every day' },
+];
+
+// Practice: how the work is actually done. Phrases, not figures, so they get
+// a row of chips under the numbers rather than tiles of their own. They
+// describe the systems and the practice, never me.
+const practice = [
+  { icon: 'lucide:layers', text: 'Every phase, specification through production' },
+  { icon: 'lucide:brain', text: 'AI systems built, not just used' },
+  { icon: 'lucide:sparkles', text: 'AI-assisted engineering, every day' },
 ];
 
 // Written from the employer's point of view rather than mine — one line each,
@@ -96,13 +99,12 @@ export default function IndexPage() {
             <p className="text-muted mt-3 text-xl">{site.title}</p>
             <p className="mt-5">{site.intro}</p>
           </div>
+          {/* Monogram: a solid gradient disc with the initials knocked out in
+              the accent-ink colour, so it reads as a mark rather than a
+              placeholder for a photo. */}
           <div className="hidden shrink-0 items-center justify-center lg:flex" aria-hidden="true">
-            <div className="from-grad-a to-grad-b shadow-accent-solid/20 rounded-full bg-gradient-to-br p-1 shadow-xl">
-              <div className="bg-bg flex h-36 w-36 items-center justify-center rounded-full">
-                <span className="font-display from-grad-a to-grad-b bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent">
-                  VG
-                </span>
-              </div>
+            <div className="from-grad-a to-grad-b text-accent-ink shadow-accent-solid/30 ring-accent-line flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br shadow-xl ring-4">
+              <span className="font-display text-5xl font-bold tracking-tight">VG</span>
             </div>
           </div>
         </div>
@@ -120,16 +122,26 @@ export default function IndexPage() {
         <p className="kicker">Reach and practice</p>
         {/* A strip between hairlines rather than a card grid, so the facts read
             differently from the capability cards below. */}
-        <div className="border-line mt-5 grid grid-cols-2 gap-x-6 gap-y-8 border-y py-8 sm:grid-cols-3 sm:gap-x-10">
-          {scaleStats.map((s) => (
-            <StatTilePart key={s.label} value={s.value} label={s.label} bare />
-          ))}
+        <div className="border-line mt-6 border-y py-8">
+          <div className="grid grid-cols-3 gap-x-6 sm:gap-x-10">
+            {scaleStats.map((s) => (
+              <StatTilePart key={s.label} value={s.value} label={s.label} bare />
+            ))}
+          </div>
+          <ul className="mt-8 flex flex-wrap justify-center gap-3">
+            {practice.map((p) => (
+              <li key={p.text} className="chip">
+                <IconPart name={p.icon} className="text-accent h-4 w-4 shrink-0" />
+                {p.text}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section className="py-8">
         <p className="kicker">What I do</p>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
           <IconCardPart icon="lucide:code-xml" title="Hands-on engineering">
             I still write the code: C#/.NET, Python, React, SQL, and the AWS infrastructure it runs
             on. Specifications, architecture, cloud environments, CI/CD pipelines — I build them, not
@@ -156,14 +168,14 @@ export default function IndexPage() {
         <h2 className="title-section mt-2">What I bring to an organization</h2>
         {/* The only panel on a page of strips, cards and lists — that shape is
             enough to mark the zone, so the colour stays out of it. */}
-        <div className="bg-tint border-line mt-4 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="bg-tint border-line mt-6 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3">
           {valueProps.map((v) => (
             <div key={v.title}>
               <div className="icon-tile">
                 <IconPart name={v.icon} className="h-5 w-5" />
               </div>
               <h3 className="title-card mt-4">{v.title}</h3>
-              <p className="text-muted mt-1.5">{v.body}</p>
+              <p className="text-muted mt-2">{v.body}</p>
             </div>
           ))}
         </div>
@@ -180,7 +192,7 @@ export default function IndexPage() {
               <IconPart name={p.icon} className="text-label mt-0.5 h-6 w-6 shrink-0" />
               <div>
                 <h3 className="title-card">{p.title}</h3>
-                <p className="text-muted mt-1.5">{p.body}</p>
+                <p className="text-muted mt-2">{p.body}</p>
               </div>
             </div>
           ))}

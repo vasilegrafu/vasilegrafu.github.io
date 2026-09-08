@@ -20,7 +20,7 @@ export default function ContactPage() {
         <h1 className="title-page">Contact</h1>
         <p className="lede">I read everything and reply to thoughtful messages.</p>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_20rem]">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_20rem]">
           <div className="space-y-4">
             <LinkCardPart
               href={`mailto:${site.email}`}

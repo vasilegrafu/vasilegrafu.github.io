@@ -5,12 +5,32 @@
 //
 // Each path is written twice — `career.html` and `career/index.html` — so
 // both `/career` and `/career/` are served directly, without a redirect.
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { createServer } from 'vite';
 
 const dist = join(import.meta.dirname, '..', 'dist');
-const template = readFileSync(join(dist, 'index.html'), 'utf8');
+
+/** Latin subsets of the two site fonts, as emitted (hashed) by the build. */
+const PRELOAD_FONTS = [/^inter-latin-wght-normal-.*\.woff2$/, /^space-grotesk-latin-wght-normal-.*\.woff2$/];
+
+/* Preload the fonts so they download alongside the CSS rather than after it,
+   which is what makes the first paint show fallback text. The hashed names
+   are only known after the build, hence this step rather than index.html. */
+function fontPreloadLinks(): string {
+  const assets = readdirSync(join(dist, 'assets'));
+  return PRELOAD_FONTS.flatMap((re) => assets.filter((f) => re.test(f)))
+    .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
+    .join('\n    ');
+}
+
+const template = readFileSync(join(dist, 'index.html'), 'utf8').replace(
+  '</head>',
+  `${fontPreloadLinks()}\n  </head>`,
+);
+// The SPA fallback is the same shell; give it the preloads too.
+const fallback = join(dist, '404.html');
+if (existsSync(fallback)) writeFileSync(fallback, template);
 
 /** Tags React hoists into <head>; they arrive at the start of the rendered output. */
 const HOISTED = /^(?:<(?:title|meta|link)\b[^>]*>(?:[^<]*<\/title>)?)+/;

@@ -15,7 +15,7 @@ export default function IconCardPart({ icon, title, children }: Props) {
       <div className="icon-tile">
         <IconPart name={icon} className="h-5 w-5" />
       </div>
-      <h2 className="title-card mt-3">{title}</h2>
+      <h2 className="title-card mt-4">{title}</h2>
       <p className="text-muted mt-2">{children}</p>
     </div>
   );

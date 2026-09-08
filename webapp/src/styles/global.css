@@ -79,6 +79,16 @@ body {
   line-height: var(--text-base--line-height);
 }
 
+/* One keyboard focus ring for every interactive element, in the theme's
+   accent. :focus-visible leaves mouse clicks alone; the outline follows the
+   element's border-radius in every current browser. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--t-accent);
+    outline-offset: 2px;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Design system — the site's reusable style vocabulary. Change a recipe here
    and every usage across the site follows.
@@ -130,6 +140,10 @@ body {
   }
 
   /* Navigation */
+  /* Visually hidden until focused, then a pill at the top-left corner. */
+  .skip-link {
+    @apply bg-accent-solid text-accent-ink focus-visible:not-sr-only sr-only rounded-lg px-4 py-2 font-medium shadow-lg focus-visible:absolute focus-visible:top-3 focus-visible:left-3 focus-visible:z-50;
+  }
   .nav-pill {
     @apply text-muted hover:bg-chip hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
   }

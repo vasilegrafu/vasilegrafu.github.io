@@ -66,7 +66,7 @@ export default function CareerPage() {
         <IconPart name="lucide:graduation-cap" className="text-accent h-6 w-6" />
         Education
       </h2>
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-6 space-y-4">
         {education.map((e) => (
           <li key={e.degree}>
             <p className="text-ink font-medium">{e.degree}</p>
