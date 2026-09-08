@@ -6,6 +6,28 @@
     'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
   --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale: Tailwind's default steps, each 2px larger, with line heights
+     re-tuned so the smaller sizes stay airy and the large ones stay tight.
+     The root stays at 16px so rem-based spacing is unchanged. */
+  --text-xs: 0.875rem; /* 14px */
+  --text-xs--line-height: calc(20 / 14);
+  --text-sm: 1rem; /* 16px */
+  --text-sm--line-height: calc(24 / 16);
+  --text-base: 1.125rem; /* 18px */
+  --text-base--line-height: calc(28 / 18);
+  --text-lg: 1.25rem; /* 20px */
+  --text-lg--line-height: calc(30 / 20);
+  --text-xl: 1.375rem; /* 22px */
+  --text-xl--line-height: calc(30 / 22);
+  --text-2xl: 1.625rem; /* 26px */
+  --text-2xl--line-height: calc(34 / 26);
+  --text-3xl: 2rem; /* 32px */
+  --text-3xl--line-height: calc(38 / 32);
+  --text-4xl: 2.375rem; /* 38px */
+  --text-4xl--line-height: calc(42 / 38);
+  --text-5xl: 3.125rem; /* 50px */
+  --text-5xl--line-height: 1;
 }
 
 /* Map theme tokens to Tailwind colors: bg-bg, text-ink, border-line,
@@ -38,6 +60,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Body text follows the scale's base step, so text without an explicit size
+   (lede, article prose, plain paragraphs) moves with it. */
+body {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
 }
 
 /* ---------------------------------------------------------------------------
