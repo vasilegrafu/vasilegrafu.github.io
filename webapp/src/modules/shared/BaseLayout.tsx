@@ -3,6 +3,7 @@
 import { Suspense } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router';
 import { themes } from '@themes/themes';
+import BannerPart from './BannerPart';
 import FooterPart from './FooterPart';
 import HeaderPart from './HeaderPart';
 import { useTheme } from './useTheme';
@@ -20,6 +21,7 @@ export default function BaseLayout() {
       <a href={`#${MAIN_ID}`} className="skip-link">
         Skip to content
       </a>
+      <BannerPart />
       <HeaderPart />
       <main id={MAIN_ID} className="mx-auto w-full max-w-7xl grow px-4 py-10 sm:px-6 lg:px-8">
         <Suspense>

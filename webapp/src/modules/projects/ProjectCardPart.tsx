@@ -18,7 +18,17 @@ export default function ProjectCardPart({ project, icon, diagram }: Props) {
       </div>
       <h2 className="title-item">{project.title}</h2>
       <p className="text-accent mt-1">{project.role}</p>
-      <p className="text-muted mt-3 grow">{project.description}</p>
+      {project.outcomes && (
+        <dl className="bg-tint mt-4 grid gap-3 rounded-lg p-3 sm:grid-cols-3">
+          {project.outcomes.map((o) => (
+            <div key={o.label}>
+              <dd className="title-card">{o.value}</dd>
+              <dt className="text-faint text-xs">{o.label}</dt>
+            </div>
+          ))}
+        </dl>
+      )}
+      <p className="text-muted mt-4 grow">{project.description}</p>
       {diagram && <div className="mt-4">{diagram}</div>}
       <div className="mt-4 flex flex-wrap gap-2">
         {project.tags.map((t) => (

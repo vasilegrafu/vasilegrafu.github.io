@@ -48,7 +48,7 @@ export default function CareerPage() {
         </a>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
         {stats.map((s) => (
           <StatTilePart key={s.label} value={s.value} label={s.label} />
         ))}

@@ -25,6 +25,11 @@ export interface Role {
   about?: string;
   /** One line of company context for the resume, where `about` is too long. */
   aboutShort?: string;
+  /**
+   * The one line a skimming reader should take away — scope and result, with
+   * a number where there is one. Career page only; the PDF stays as it is.
+   */
+  impact?: string;
   /** What I did there. Optional — some roles are carried by their bullets alone. */
   summary?: string;
   /** Ordered most resume-worthy first — the PDF may show only the first few. */
@@ -48,6 +53,8 @@ export const experience: Role[] = [
     position: 'Engineering Manager',
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
+    impact:
+      'Lead the core Webservices Team behind services handling millions of requests a day — and the AI systems built on top of them.',
     aboutShort:
       'Global delivery-management platform — over 1,000 carriers across some 190 countries.',
     about:
@@ -80,6 +87,8 @@ export const experience: Role[] = [
     position: 'Team Manager',
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
+    impact:
+      'Ran two teams at once — Webservices and Integration — for a platform serving 10,000+ business customers.',
     aboutShort:
       'Scandinavia’s leading multi-carrier shipping software; 10,000+ business customers.',
     about:
@@ -108,6 +117,8 @@ export const experience: Role[] = [
     position: 'Technical Lead',
     period: '2009 – 2017',
     location: 'Bucharest, Romania',
+    impact:
+      'Led the team behind 50 web services serving 10,000+ business clients on AWS — while writing much of the code.',
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
@@ -131,6 +142,7 @@ export const experience: Role[] = [
     position: 'Team Leader',
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
+    impact: 'Owned Optimus ERP modules end to end, from specification through deployment.',
     aboutShort: 'Romanian technology and systems-integration company.',
     about:
       'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
@@ -146,6 +158,8 @@ export const experience: Role[] = [
     position: 'Game Programmer',
     period: 'January 2005 – June 2008',
     location: 'Bucharest, Romania',
+    impact:
+      'Shipped gameplay and platform modules on four titles, including Silent Hunter 4 and King Kong.',
     aboutShort: 'One of the world’s largest video game publishers.',
     about:
       'Ubisoft is a French video game publisher founded in 1986 by the Guillemot brothers and now one of the largest in the world, with studios across more than 45 locations behind franchises such as Assassin’s Creed, Far Cry, Rainbow Six and Prince of Persia. Ubisoft Bucharest, opened in 1992, was the company’s first production studio outside France and grew into one of its largest.',
@@ -268,6 +282,8 @@ export interface Project {
   title: string;
   role: string;
   description: string;
+  /** Three at most: what the system achieves, as a figure or a short word over a label. */
+  outcomes?: { value: string; label: string }[];
   tags: string[];
 }
 
@@ -277,6 +293,11 @@ export const projects: Project[] = [
     role: 'Engineering Manager & Architect · nShift',
     description:
       'A large-scale AI assistant built on an agentic architecture: LLMs combined with orchestration layers, RAG, and structured prompt engineering. Domain-specific agents for different departments — each with tailored prompts, tools, and data access — collaborate through an orchestration layer. A continuous ingestion pipeline indexes internal documentation, APIs, and business data into knowledge stores, so responses stay context-aware and grounded in company-specific information.',
+    outcomes: [
+      { value: 'Per department', label: 'agents with their own prompts, tools and data' },
+      { value: 'Continuous', label: 'ingestion of docs, APIs and business data' },
+      { value: 'Grounded', label: 'answers from company-specific knowledge' },
+    ],
     tags: ['LLMs', 'Agents', 'RAG', 'MCP', 'Orchestration', 'Python'],
   },
   {
@@ -284,6 +305,11 @@ export const projects: Project[] = [
     role: 'Independent R&D · Personal project',
     description:
       'An advanced Claude Code skill that builds applications from existing codebases instead of from imagination. It reads codebases of any size — Python, TypeScript, JavaScript, C# — through a structural snapshot built once and queried many times, then works in three modes: generating new code shaped like the code that already exists, migrating an application to another stack, or translating it to another technology while preserving its domain and structure. Every output is proven rather than assumed — contract conformance, entity preservation, and side-by-side behaviour parity — and every decision that shapes the result is put to the user, never guessed.',
+    outcomes: [
+      { value: '4', label: 'languages read: Python, TypeScript, JavaScript, C#' },
+      { value: '3', label: 'modes: generate, migrate, translate' },
+      { value: 'Proven', label: 'contract, entity and behaviour parity checks' },
+    ],
     tags: ['Claude Code', 'Agent Skills', 'Code Generation', 'Static Analysis', 'Python'],
   },
   {
@@ -291,6 +317,11 @@ export const projects: Project[] = [
     role: 'Engineering Manager · nShift',
     description:
       'The core web-services platform behind nShift’s delivery-management suite: dozens of services and full-stack applications distributed across AWS, serving the client components of business-critical delivery workflows around the clock.',
+    outcomes: [
+      { value: 'Millions', label: 'of requests a day' },
+      { value: 'Dozens', label: 'of services and full-stack apps on AWS' },
+      { value: '24/7', label: 'business-critical delivery workflows' },
+    ],
     tags: ['C# / .NET', 'AWS', 'SQL Server', 'PostgreSQL', 'Docker', 'CI/CD'],
   },
 ];

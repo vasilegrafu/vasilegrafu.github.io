@@ -22,6 +22,13 @@ export default function RoleItemPart({ role, icon }: Props) {
       <h2 className="title-item mt-2">
         {role.position} · {role.company}
       </h2>
+      {/* The takeaway for a skimming reader, before the company context. */}
+      {role.impact && (
+        <p className="text-ink mt-3 flex gap-2 font-medium">
+          <IconPart name="lucide:target" className="text-accent mt-1 h-4.5 w-4.5 shrink-0" />
+          <span>{role.impact}</span>
+        </p>
+      )}
       {role.about && (
         <p className="text-faint border-line-strong mt-3 border-s-2 ps-3.5">
           {role.about}
@@ -42,7 +49,7 @@ export default function RoleItemPart({ role, icon }: Props) {
               <span
                 className={cx(
                   'font-display pt-px font-bold tabular-nums',
-                  lead ? 'text-accent' : 'text-label/70',
+                  lead ? 'text-accent' : 'text-label',
                 )}
               >
                 {String(i + 1).padStart(2, '0')}

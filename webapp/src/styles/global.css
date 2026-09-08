@@ -176,8 +176,10 @@ body {
   .icon-tile {
     @apply bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-lg;
   }
+  /* Underlined, not colour-only, so a link inside a sentence is recognisable
+     without relying on contrast against the surrounding text. */
   .link-accent {
-    @apply text-accent hover:underline;
+    @apply text-accent decoration-accent/40 hover:decoration-accent underline underline-offset-2;
   }
 
   /* CSS-only tooltip: add .tip + data-tip="text"; .tip-end right-aligns the

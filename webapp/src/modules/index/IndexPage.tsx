@@ -94,10 +94,10 @@ export default function IndexPage() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap">
           <div className="max-w-3xl min-w-0">
-            <p className="text-accent font-medium">Hello, I’m</p>
-            <h1 className="title-hero mt-1">{site.name}</h1>
-            <p className="text-muted mt-3 text-xl">{site.title}</p>
-            <p className="mt-5">{site.intro}</p>
+            {/* The banner above already carries the name and title at full
+                size, so the hero greets rather than repeats. */}
+            <h1 className="title-page">Hello, I am {site.name}</h1>
+            <p className="mt-4">{site.intro}</p>
           </div>
           {/* Monogram: a solid gradient disc with the initials knocked out in
               the accent-ink colour, so it reads as a mark rather than a
@@ -123,7 +123,7 @@ export default function IndexPage() {
         {/* A strip between hairlines rather than a card grid, so the facts read
             differently from the capability cards below. */}
         <div className="border-line mt-6 border-y py-8">
-          <div className="grid grid-cols-3 gap-x-6 sm:gap-x-10">
+          <div className="grid gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-x-10">
             {scaleStats.map((s) => (
               <StatTilePart key={s.label} value={s.value} label={s.label} bare />
             ))}

@@ -11,7 +11,7 @@
   --t-chip: #f1f5f9;
   --t-ink: #0f172a;
   --t-muted: #475569;
-  --t-faint: #64748b;
+  --t-faint: #5b6b80; /* 5.4:1 on --t-bg, 4.8:1 on --t-bar */
   --t-line: #e2e8f0;
   --t-line-strong: #cbd5e1;
   --t-accent: #1e40af;
@@ -23,7 +23,7 @@
   --t-accent-line: #bfd0ee;
   --t-grad-a: #1e3a8a;
   --t-grad-b: #2563eb;
-  --t-label: #b45309;
+  --t-label: #a54a07; /* 5.9:1 on --t-bg, 5.2:1 on --t-bar */
   --t-label-strong: #92400e;
   --t-label-soft: #fffbeb;
   --t-blob-a: rgb(30 58 138 / 0.08);
