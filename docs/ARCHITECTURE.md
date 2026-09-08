@@ -76,6 +76,15 @@ pre-paint theme script live in `index.html`.
    patterns: `.title-*`, `.btn*`, `.card`, `.tag`, `.badge`, `.chip`,
    `.nav-pill`, `.menu-item`, `.icon-tile`, `.tip`, `.lede`, `.prose-article`…
    Extract a recipe only when a pattern repeats or has a clear name.
+
+   **Type scale.** Five sizes, one per role, defined in the `@theme` block of
+   `global.css`: caption 14 (`text-xs`: kicker, tags, badges, stat labels),
+   body 17 (the default; nav, buttons, meta and card text inherit it), title 22
+   (`.title-section`, `.title-item`, hero subtitle), heading 30 (`.title-page`,
+   stat numbers) and hero 44 (`.title-hero`). `.title-card` is a body-sized
+   title that stands out by weight only. The unused Tailwind steps alias to the
+   nearest role, so do not reach for `text-sm`, `text-lg` or arbitrary
+   `text-[15px]` values — pick a recipe, or leave the size to inherit.
 3. **Inline utilities** — everything else, directly in the markup. Conditional
    classes go through `cx()` from `@fx/lib/cx`.
 4. **`style=` attribute** — only for data-driven values Tailwind cannot know

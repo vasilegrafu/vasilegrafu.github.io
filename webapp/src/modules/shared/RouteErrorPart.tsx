@@ -10,9 +10,9 @@ export default function RouteErrorPart() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
       <PageMetaPart title="Something went wrong — Vasile Grafu" noindex />
-      <h1 className="font-display text-ink text-3xl font-bold">Something went wrong</h1>
+      <h1 className="title-page">Something went wrong</h1>
       <p className="text-muted mt-4">This page could not be loaded.</p>
-      <p className="text-faint mt-2 text-sm">{message}</p>
+      <p className="text-faint mt-2">{message}</p>
       <a href={pathname} className="link-accent mt-6 inline-block">
         Reload the page
       </a>

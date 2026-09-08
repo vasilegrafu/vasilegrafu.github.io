@@ -94,12 +94,12 @@ export default function IndexPage() {
             <p className="text-accent font-medium">Hello, I’m</p>
             <h1 className="title-hero mt-1">{site.name}</h1>
             <p className="text-muted mt-3 text-xl">{site.title}</p>
-            <p className="mt-5 text-lg leading-relaxed">{site.intro}</p>
+            <p className="mt-5">{site.intro}</p>
           </div>
           <div className="hidden shrink-0 items-center justify-center lg:flex" aria-hidden="true">
             <div className="from-grad-a to-grad-b shadow-accent-solid/20 rounded-full bg-gradient-to-br p-1 shadow-xl">
               <div className="bg-bg flex h-36 w-36 items-center justify-center rounded-full">
-                <span className="font-display from-grad-a to-grad-b bg-gradient-to-br bg-clip-text text-4xl font-bold text-transparent">
+                <span className="font-display from-grad-a to-grad-b bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent">
                   VG
                 </span>
               </div>
@@ -162,8 +162,8 @@ export default function IndexPage() {
               <div className="icon-tile">
                 <IconPart name={v.icon} className="h-5 w-5" />
               </div>
-              <h3 className="font-display text-ink mt-4 text-lg font-semibold">{v.title}</h3>
-              <p className="text-muted mt-1.5 text-sm leading-relaxed">{v.body}</p>
+              <h3 className="title-card mt-4">{v.title}</h3>
+              <p className="text-muted mt-1.5">{v.body}</p>
             </div>
           ))}
         </div>
@@ -179,8 +179,8 @@ export default function IndexPage() {
             <div key={p.title} className="flex gap-4">
               <IconPart name={p.icon} className="text-label mt-0.5 h-6 w-6 shrink-0" />
               <div>
-                <h3 className="font-display text-ink font-semibold">{p.title}</h3>
-                <p className="text-muted mt-1.5 text-sm leading-relaxed">{p.body}</p>
+                <h3 className="title-card">{p.title}</h3>
+                <p className="text-muted mt-1.5">{p.body}</p>
               </div>
             </div>
           ))}

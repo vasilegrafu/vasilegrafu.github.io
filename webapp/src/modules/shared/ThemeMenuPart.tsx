@@ -38,7 +38,7 @@ export default function ThemeMenuPart() {
         aria-expanded={open}
         data-tip="Change the site's color theme"
         onClick={() => setOpen((o) => !o)}
-        className="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
+        className="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-medium transition-colors"
       >
         <IconPart name="lucide:palette" className="h-4 w-4" />
         <span>{active.label}</span>
@@ -62,7 +62,7 @@ export default function ThemeMenuPart() {
                   setTheme(t.id);
                   setOpen(false);
                 }}
-                className="menu-item text-sm"
+                className="menu-item"
               >
                 <span
                   className="border-line-strong h-3.5 w-3.5 rounded-full border"

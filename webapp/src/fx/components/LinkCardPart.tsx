@@ -15,8 +15,8 @@ export default function LinkCardPart({ href, icon, title, subtitle }: Props) {
         <IconPart name={icon} className="h-5 w-5" />
       </span>
       <span className="min-w-0 grow">
-        <span className="font-display text-ink block font-semibold">{title}</span>
-        <span className="text-muted block truncate text-sm">{subtitle}</span>
+        <span className="title-card block">{title}</span>
+        <span className="text-muted block truncate">{subtitle}</span>
       </span>
       <span
         className="text-faint group-hover:text-accent shrink-0 transition-all group-hover:translate-x-1"

@@ -70,7 +70,7 @@ export default function CareerPage() {
         {education.map((e) => (
           <li key={e.degree}>
             <p className="text-ink font-medium">{e.degree}</p>
-            <p className="text-faint text-sm">
+            <p className="text-faint">
               {e.school} · {e.period}
             </p>
           </li>

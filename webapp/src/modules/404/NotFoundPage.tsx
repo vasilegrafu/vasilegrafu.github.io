@@ -6,7 +6,7 @@ export default function NotFoundPage() {
     <>
       <PageMetaPart title="Page not found — Vasile Grafu" noindex />
       <div className="py-20 text-center">
-        <h1 className="font-display text-ink text-5xl font-bold">404</h1>
+        <h1 className="title-hero">404</h1>
         <p className="text-muted mt-4">This page doesn’t exist.</p>
         <Link to="/" className="link-accent mt-6 inline-block">
           ← Back home

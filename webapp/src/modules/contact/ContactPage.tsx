@@ -43,7 +43,7 @@ export default function ContactPage() {
           </div>
 
           <aside className="card bg-tint h-fit p-6">
-            <ul className="text-muted space-y-4 text-sm">
+            <ul className="text-muted space-y-4">
               <li className="flex items-start gap-3">
                 <IconPart name="lucide:map-pin" className="text-label mt-0.5 h-4 w-4 shrink-0" />
                 <span>{site.location}</span>

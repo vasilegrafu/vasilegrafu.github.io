@@ -8,12 +8,12 @@ export default function FooterPart() {
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
-            <p className="font-display text-ink font-semibold">{site.name}</p>
-            <p className="text-faint mt-1 max-w-xs text-sm">
+            <p className="title-card">{site.name}</p>
+            <p className="text-faint mt-1 max-w-xs">
               Engineering leadership, software architecture, and applied AI.
             </p>
           </div>
-          <nav className="text-muted flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <nav className="text-muted flex flex-wrap gap-x-4 gap-y-1">
             {navItems.map((item) => (
               <Link key={item.href} to={item.href} className="hover:text-accent">
                 {item.label}
@@ -21,7 +21,7 @@ export default function FooterPart() {
             ))}
           </nav>
         </div>
-        <p className="text-faint mt-6 text-sm">
+        <p className="text-faint mt-6">
           © {new Date().getFullYear()} {site.name} ·{' '}
           <a href={site.github} className="hover:text-accent">
             GitHub

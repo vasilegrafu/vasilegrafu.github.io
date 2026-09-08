@@ -15,7 +15,7 @@ export default function RoleItemPart({ role, icon }: Props) {
       <span className="border-line bg-bg text-accent absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border">
         <IconPart name={icon} className="h-4 w-4" />
       </span>
-      <p className="text-faint flex flex-wrap items-center gap-2 text-sm">
+      <p className="text-faint flex flex-wrap items-center gap-2">
         <span className="badge">{role.period}</span>
         {role.location}
       </p>
@@ -23,11 +23,11 @@ export default function RoleItemPart({ role, icon }: Props) {
         {role.position} · {role.company}
       </h2>
       {role.about && (
-        <p className="text-faint border-line-strong mt-3 border-s-2 ps-3.5 text-sm leading-relaxed">
+        <p className="text-faint border-line-strong mt-3 border-s-2 ps-3.5">
           {role.about}
         </p>
       )}
-      {role.summary && <p className="text-muted mt-3 leading-relaxed">{role.summary}</p>}
+      {role.summary && <p className="text-muted mt-3">{role.summary}</p>}
       <div className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-2">
         {role.bullets.map((b, i) => {
           const idx = b.indexOf(': ');
@@ -41,15 +41,15 @@ export default function RoleItemPart({ role, icon }: Props) {
             <div key={b} className="flex gap-3">
               <span
                 className={cx(
-                  'font-display pt-px text-sm font-bold tabular-nums',
+                  'font-display pt-px font-bold tabular-nums',
                   lead ? 'text-accent' : 'text-label/70',
                 )}
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
-                {title && <p className="text-ink text-base font-semibold">{title}</p>}
-                <p className={cx('text-muted text-[15px] leading-relaxed', title && 'mt-0.5')}>
+                {title && <p className="title-card">{title}</p>}
+                <p className={cx('text-muted', title && 'mt-0.5')}>
                   {body}
                 </p>
               </div>

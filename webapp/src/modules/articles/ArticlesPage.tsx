@@ -27,7 +27,7 @@ export default function ArticlesPage() {
         {articles.map((article) => (
           <li key={article.id}>
             <Link to={`/articles/${article.id}`} className="group block">
-              <p className="text-faint text-sm">{formatDate(article.pubDate)}</p>
+              <p className="text-faint">{formatDate(article.pubDate)}</p>
               <h2 className="title-item group-hover:text-accent mt-1">{article.title}</h2>
               <p className="text-muted mt-2">{article.description}</p>
             </Link>

@@ -24,12 +24,12 @@ export default function SkillsPage() {
               <div className="icon-tile">
                 <IconPart name={cat.icon} className="h-5 w-5" />
               </div>
-              <h2 className="font-display text-ink font-semibold">{cat.group}</h2>
+              <h2 className="title-card">{cat.group}</h2>
             </div>
-            <p className="text-muted mt-3 text-sm">{cat.blurb}</p>
+            <p className="text-muted mt-3">{cat.blurb}</p>
             <ul className="mt-4 flex flex-wrap gap-2">
               {cat.items.map((item) => (
-                <li key={item} className="chip text-sm">
+                <li key={item} className="chip">
                   {item}
                 </li>
               ))}

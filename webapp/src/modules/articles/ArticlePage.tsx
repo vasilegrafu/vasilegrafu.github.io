@@ -27,7 +27,7 @@ export default function ArticlePage() {
       <PageMetaPart title={`${article.title} — Vasile Grafu`} description={article.description} />
 
       <article>
-        <p className="text-faint text-sm">{formatDate(article.pubDate)}</p>
+        <p className="text-faint">{formatDate(article.pubDate)}</p>
         <h1 className="title-page mt-2">{article.title}</h1>
         {article.tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
