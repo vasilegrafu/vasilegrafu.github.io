@@ -14,7 +14,7 @@ interface Props {
 export default function MobileMenuPart({ id, open, onNavigate }: Props) {
   if (!open) return null;
   return (
-    <div id={id} className="border-line border-t sm:hidden">
+    <div id={id} className="border-line bg-bg border-t sm:hidden">
       <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 sm:px-6 lg:px-8">
         {navItems.map((item) => (
           <NavLink

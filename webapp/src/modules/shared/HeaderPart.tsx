@@ -13,7 +13,10 @@ export default function HeaderPart() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="border-line bg-bg/90 sticky top-0 z-10 border-b backdrop-blur">
+    <header className="bg-bar/95 border-line-strong sticky top-0 z-10 border-b shadow-sm backdrop-blur">
+      {/* Brand stripe along the top edge; the strong border closes the bar
+          at the bottom, so the menu reads as its own band. */}
+      <div className="from-grad-a to-grad-b h-[3px] bg-gradient-to-r" aria-hidden="true" />
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6 lg:px-8">
         <MenuButtonPart
           open={menuOpen}

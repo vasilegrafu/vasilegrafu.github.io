@@ -5,6 +5,7 @@
 
    Token contract (every theme must define all of these):
      --t-bg            page ground
+     --t-bar           header / menu ground — a step darker than --t-bg
      --t-surface       raised panels / cards
      --t-tint          subtly tinted panels
      --t-chip          neutral chip / hover fill

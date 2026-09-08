@@ -44,6 +44,7 @@
    text-accent, from-grad-a … resolve to the active theme's values. */
 @theme inline {
   --color-bg: var(--t-bg);
+  --color-bar: var(--t-bar);
   --color-surface: var(--t-surface);
   --color-tint: var(--t-tint);
   --color-chip: var(--t-chip);
@@ -144,8 +145,10 @@ body {
   .skip-link {
     @apply bg-accent-solid text-accent-ink focus-visible:not-sr-only sr-only rounded-lg px-4 py-2 font-medium shadow-lg focus-visible:absolute focus-visible:top-3 focus-visible:left-3 focus-visible:z-50;
   }
+  /* Sits on the header bar, so hover lifts to the page ground rather than the
+     chip fill, which is too close to the bar to read. */
   .nav-pill {
-    @apply text-muted hover:bg-chip hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
+    @apply text-muted hover:bg-bg hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
   }
   .nav-pill-active {
     @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
