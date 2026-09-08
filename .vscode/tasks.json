@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "webapp: dev",
+      "type": "npm",
+      "script": "dev",
+      "path": "webapp",
+      "isBackground": true,
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": { "regexp": "^\\s*$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "VITE v",
+          "endsPattern": "Local:\\s+http://localhost:5173"
+        }
+      }
+    },
+    {
+      "label": "webapp: build",
+      "type": "npm",
+      "script": "build",
+      "path": "webapp",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "webapp: lint",
+      "type": "npm",
+      "script": "lint",
+      "path": "webapp",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "webapp: preview",
+      "type": "npm",
+      "script": "preview",
+      "path": "webapp",
+      "isBackground": true,
+      "dependsOn": ["webapp: build"],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": { "regexp": "^\\s*$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "vite",
+          "endsPattern": "Local:\\s+http://localhost:4173"
+        }
+      }
+    }
+  ]
+}

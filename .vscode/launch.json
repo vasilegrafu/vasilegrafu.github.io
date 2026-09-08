@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug site (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/webapp",
+      "preLaunchTask": "webapp: dev",
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug site (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/webapp",
+      "preLaunchTask": "webapp: dev",
+      "sourceMaps": true
+    },
+    {
+      "name": "Attach to running dev server (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/webapp",
+      "sourceMaps": true
+    }
+  ]
+}
