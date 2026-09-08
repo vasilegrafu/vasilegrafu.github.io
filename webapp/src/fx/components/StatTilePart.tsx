@@ -13,7 +13,7 @@ interface Props {
 export default function StatTilePart({ value, label, bare = false }: Props) {
   return (
     <div className={cx('text-center', bare ? 'px-2' : 'card p-4')}>
-      <p className="font-display from-grad-a to-grad-b bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent">
+      <p className="font-display from-grad-text-a to-grad-text-b bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent">
         {value}
       </p>
       <p className="text-faint mt-1 text-xs">{label}</p>

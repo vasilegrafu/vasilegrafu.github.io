@@ -87,7 +87,8 @@ export default function IndexPage() {
     <>
       <PageMetaPart title="Vasile Grafu — Engineering Manager & AI Systems Builder" />
 
-      <section className="relative py-10 sm:py-14">
+      {/* Main already pads the top, so the hero adds little of its own. */}
+      <section className="relative pt-2 pb-6 sm:pt-4 sm:pb-8">
         <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
           <div className="blob bg-blob-a -top-24 -right-24 h-80 w-80"></div>
           <div className="blob bg-blob-b top-32 -left-24 h-64 w-64"></div>
@@ -96,7 +97,7 @@ export default function IndexPage() {
           <div className="max-w-3xl min-w-0">
             {/* The banner above already carries the name and title at full
                 size, so the hero greets rather than repeats. */}
-            <h1 className="title-page">Hello, I am {site.name}</h1>
+            <h1 className="title-item">Hello, I am {site.name}</h1>
             <p className="mt-4">{site.intro}</p>
           </div>
           {/* Monogram: a solid gradient disc with the initials knocked out in
@@ -108,12 +109,21 @@ export default function IndexPage() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/career" className="btn btn-primary">
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link to="/career" className="btn btn-brand">
+            <IconPart name="lucide:briefcase" className="h-3.5 w-3.5" />
             My career story
+            <IconPart name="lucide:arrow-right" className="h-3.5 w-3.5" />
           </Link>
-          <Link to="/articles" className="btn btn-ghost">
+          <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
+            <IconPart name="lucide:download" className="h-3.5 w-3.5" />
+            Download resume
+            <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
+          </a>
+          <Link to="/articles" className="btn btn-brand">
+            <IconPart name="lucide:file-text" className="h-3.5 w-3.5" />
             Read my writing
+            <IconPart name="lucide:arrow-right" className="h-3.5 w-3.5" />
           </Link>
         </div>
       </section>

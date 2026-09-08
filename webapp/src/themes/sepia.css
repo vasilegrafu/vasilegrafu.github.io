@@ -19,6 +19,8 @@
   --t-accent-line: #f5cfae;
   --t-grad-a: #b45309;
   --t-grad-b: #9a3412;
+  --t-grad-text-a: #b45309;
+  --t-grad-text-b: #9a3412;
   --t-label: #0a5e57; /* 5.6:1 on --t-chip */
   --t-label-strong: #115e59;
   --t-label-soft: #ccfbf1;

@@ -23,6 +23,8 @@
   --t-accent-line: #bfd0ee;
   --t-grad-a: #1e3a8a;
   --t-grad-b: #2563eb;
+  --t-grad-text-a: #1e3a8a;
+  --t-grad-text-b: #2563eb;
   --t-label: #a54a07; /* 5.9:1 on --t-bg, 5.2:1 on --t-bar */
   --t-label-strong: #92400e;
   --t-label-soft: #fffbeb;

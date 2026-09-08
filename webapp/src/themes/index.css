@@ -21,7 +21,9 @@
      --t-accent-hover  hover state of the solid fill
      --t-accent-soft   soft accent fill (icon tiles, active pills)
      --t-accent-line   accent-tinted border
-     --t-grad-a/b      brand gradient stops
+     --t-grad-a/b      brand gradient stops — fills that carry accent-ink text
+     --t-grad-text-a/b gradient for text clipped to it (stat numbers); must
+                       read against --t-bg, so dark themes brighten it
      --t-label         secondary label color (kickers, badges)
      --t-label-strong  label text on label-soft
      --t-label-soft    soft label fill

@@ -42,9 +42,10 @@ export default function CareerPage() {
           <h1 className="title-page mt-2">Career</h1>
           <p className="lede">The roles I’ve held, the teams I’ve built, and what each chapter added.</p>
         </div>
-        <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-primary">
+        <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
           <IconPart name="lucide:download" className="h-3.5 w-3.5" />
-          Download resume (PDF)
+          Download resume
+          <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
         </a>
       </div>
 

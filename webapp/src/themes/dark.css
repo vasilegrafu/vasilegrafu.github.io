@@ -1,27 +1,30 @@
-/* Dark. */
+/* Dark — slate ground with a steel-blue accent: the light theme after hours,
+   not a neon variant. Warm gold labels stay, muted. */
 [data-theme='dark'] {
-  --t-bg: #020617;
-  --t-surface: #0f172a;
-  --t-tint: rgb(15 23 42 / 0.4);
-  --t-bar: #0b1224;
-  --t-chip: #1e293b;
-  --t-ink: #ffffff;
+  --t-bg: #0f172a;
+  --t-surface: #1e293b;
+  --t-tint: rgb(30 41 59 / 0.5);
+  --t-bar: #0b1120;
+  --t-chip: #283548;
+  --t-ink: #f1f5f9;
   --t-muted: #cbd5e1;
   --t-faint: #94a3b8;
-  --t-line: #1e293b;
-  --t-line-strong: #334155;
-  --t-accent: #818cf8;
-  --t-accent-strong: #a5b4fc;
+  --t-line: #253247;
+  --t-line-strong: #3b4a61;
+  --t-accent: #93c5fd;
+  --t-accent-strong: #bfdbfe;
   --t-accent-ink: #ffffff;
-  --t-accent-solid: #4f46e5;
-  --t-accent-hover: #4338ca;
-  --t-accent-soft: rgb(30 27 75 / 0.6);
-  --t-accent-line: #312e81;
-  --t-grad-a: #4f46e5;
-  --t-grad-b: #7c3aed;
-  --t-label: #fbbf24;
-  --t-label-strong: #fcd34d;
-  --t-label-soft: rgb(69 26 3 / 0.4);
-  --t-blob-a: rgb(99 102 241 / 0.1);
-  --t-blob-b: rgb(139 92 246 / 0.1);
+  --t-accent-solid: #2563eb;
+  --t-accent-hover: #1d4ed8;
+  --t-accent-soft: rgb(37 99 235 / 0.22);
+  --t-accent-line: #1e40af;
+  --t-grad-a: #1e3a8a;
+  --t-grad-b: #0369a1;
+  --t-grad-text-a: #60a5fa;
+  --t-grad-text-b: #38bdf8;
+  --t-label: #e5b85c;
+  --t-label-strong: #f4d48a;
+  --t-label-soft: rgb(229 184 92 / 0.14);
+  --t-blob-a: rgb(37 99 235 / 0.14);
+  --t-blob-b: rgb(3 105 161 / 0.12);
 }

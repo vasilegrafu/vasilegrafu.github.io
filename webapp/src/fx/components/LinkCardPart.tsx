@@ -19,7 +19,7 @@ export default function LinkCardPart({ href, icon, title, subtitle }: Props) {
         <span className="text-muted block truncate">{subtitle}</span>
       </span>
       <span
-        className="text-faint group-hover:text-accent shrink-0 transition-all group-hover:translate-x-1"
+        className="text-faint group-hover:text-accent shrink-0 transition-colors"
         aria-hidden="true"
       >
         →

@@ -16,9 +16,11 @@ export default function BannerPart() {
         <path d="M0 250C400 200 800 250 1200 150V250Z" fill="#fff" fillOpacity="0.14" />
         <path d="M0 250C600 280 900 100 1200 180V250Z" fill="#000" fillOpacity="0.16" />
       </svg>
-      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <p className="title-hero text-accent-ink tracking-wide uppercase">{site.name}</p>
-        <p className="text-accent-ink/85 mt-2 text-xl font-light text-balance">{site.title}</p>
+      <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <p className="font-display text-3xl font-bold tracking-wide uppercase">{site.name}</p>
+        <p className="font-display text-accent-ink/85 mt-1.5 font-medium tracking-wide text-balance">
+          {site.title}
+        </p>
       </div>
     </div>
   );

@@ -62,6 +62,8 @@
   --color-accent-line: var(--t-accent-line);
   --color-grad-a: var(--t-grad-a);
   --color-grad-b: var(--t-grad-b);
+  --color-grad-text-a: var(--t-grad-text-a);
+  --color-grad-text-b: var(--t-grad-text-b);
   --color-label: var(--t-label);
   --color-label-strong: var(--t-label-strong);
   --color-label-soft: var(--t-label-soft);
@@ -123,7 +125,7 @@ body {
 
   /* Buttons */
   .btn {
-    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium transition-colors;
+    @apply inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-medium transition-colors;
   }
   .btn-primary {
     @apply bg-accent-solid text-accent-ink hover:bg-accent-hover shadow-sm;
@@ -131,13 +133,19 @@ body {
   .btn-ghost {
     @apply border-line-strong text-ink hover:border-accent hover:text-accent border;
   }
+  /* The one call to action that should outrank the rest: brand gradient and
+     a deeper shadow on hover. Nothing moves — hover feedback on this site is
+     colour and shadow only. */
+  .btn-brand {
+    @apply from-grad-a to-grad-b text-accent-ink shadow-accent-solid/20 hover:shadow-accent-solid/35 bg-gradient-to-r shadow-sm transition-shadow hover:shadow-md;
+  }
 
   /* Surfaces */
   .card {
     @apply border-line rounded-xl border;
   }
   .card-lift {
-    @apply hover:shadow-accent/25 transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px];
+    @apply hover:shadow-accent/25 hover:border-accent-line transition-[box-shadow,border-color] duration-150 hover:shadow-[0_8px_24px_-12px];
   }
 
   /* Navigation */
@@ -147,17 +155,33 @@ body {
   }
   /* Sits on the header bar, so hover lifts to the page ground rather than the
      chip fill, which is too close to the bar to read. */
+  /* Tab-style menu: plain labels with a thin rule on the bar's bottom edge —
+     accent under the active page, faint under the hovered one. No fills, so
+     the menu never competes with the buttons in the content. */
   .nav-pill {
-    @apply text-muted hover:bg-bg hover:text-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors;
+    @apply text-muted hover:text-accent relative inline-flex items-center gap-1.5 px-2.5 py-4 font-medium transition-colors;
+    /* ::before — a wash of accent rising from the rule; ::after — the rule. */
+    @apply before:from-accent-soft before:absolute before:inset-0 before:rounded-t-lg before:bg-gradient-to-t before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-60;
+    @apply after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:rounded-full after:bg-transparent after:transition-[background-color,box-shadow] hover:after:bg-accent-line;
+  }
+  .nav-pill svg {
+    @apply text-accent relative;
+  }
+  .nav-pill > span,
+  .nav-pill > :not(svg) {
+    @apply relative;
   }
   .nav-pill-active {
-    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
+    @apply text-accent from-grad-a to-grad-b before:opacity-100 after:bg-gradient-to-r after:shadow-[0_0_12px] after:shadow-accent/60 hover:before:opacity-100 hover:after:bg-gradient-to-r;
   }
   .menu-item {
     @apply text-muted hover:bg-chip hover:text-ink flex w-full items-center gap-2.5 rounded-lg px-3 py-2 transition-colors;
   }
   .menu-item-active {
-    @apply bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong font-medium;
+    @apply from-accent-soft text-accent-strong hover:text-accent-strong border-accent-solid border-s-2 bg-gradient-to-r to-transparent font-medium;
+  }
+  .menu-item svg {
+    @apply text-accent;
   }
 
   /* Small pieces */
@@ -190,21 +214,16 @@ body {
   }
   .tip::after {
     content: attr(data-tip);
-    @apply bg-ink text-bg pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 rounded-md px-2.5 py-1 text-xs font-medium whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150;
-    transform: translateX(-50%) translateY(-2px);
+    @apply bg-ink text-bg pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 rounded-md px-2.5 py-1 text-xs font-medium whitespace-nowrap opacity-0 transition-opacity duration-150;
+    transform: translateX(-50%);
   }
   .tip:hover::after,
   .tip:focus-visible::after {
     @apply opacity-100;
-    transform: translateX(-50%) translateY(0);
   }
   .tip-end::after {
     @apply right-0 left-auto;
-    transform: translateY(-2px);
-  }
-  .tip-end:hover::after,
-  .tip-end:focus-visible::after {
-    transform: translateY(0);
+    transform: none;
   }
 
   /* Article body typography (rendered ArticlePart HTML) */

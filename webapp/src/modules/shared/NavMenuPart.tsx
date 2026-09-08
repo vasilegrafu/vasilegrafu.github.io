@@ -6,7 +6,7 @@ import { navItems } from './nav';
 
 export default function NavMenuPart() {
   return (
-    <nav className="hidden flex-wrap gap-1 sm:flex">
+    <nav className="hidden flex-wrap gap-x-1 sm:flex">
       {navItems.map((item) => (
         <NavLink
           key={item.href}

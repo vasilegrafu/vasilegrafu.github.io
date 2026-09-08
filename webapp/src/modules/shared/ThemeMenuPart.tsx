@@ -35,9 +35,8 @@ export default function ThemeMenuPart() {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        data-tip="Change the site's color theme"
         onClick={() => setOpen((o) => !o)}
-        className="tip tip-end border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-medium transition-colors"
+        className="border-line-strong text-muted hover:border-accent hover:text-accent inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-medium transition-colors"
       >
         <IconPart name="lucide:palette" className="h-4 w-4" />
         {/* The accessible name must contain the visible text, so the prefix
