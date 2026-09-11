@@ -89,7 +89,9 @@ export default function IndexPage() {
 
       {/* Main already pads the top, so the hero adds little of its own. */}
       <section className="relative pt-2 pb-6 sm:pt-4 sm:pb-8">
-        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        {/* overflow-hidden: the blooms hang past the section's edges, and an
+            unclipped one made the document wider than a tablet screen. */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
           <div className="blob bg-blob-a -top-24 -right-24 h-80 w-80"></div>
           <div className="blob bg-blob-b top-32 -left-24 h-64 w-64"></div>
         </div>

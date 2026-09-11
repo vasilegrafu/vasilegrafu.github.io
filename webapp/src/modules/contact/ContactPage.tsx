@@ -12,7 +12,7 @@ export default function ContactPage() {
       />
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
           <div className="blob bg-blob-a -top-16 -right-24 h-72 w-72"></div>
           <div className="blob bg-blob-b top-48 -left-24 h-56 w-56"></div>
         </div>
@@ -20,7 +20,9 @@ export default function ContactPage() {
         <h1 className="title-page">Contact</h1>
         <p className="lede">I read everything and reply to thoughtful messages.</p>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_20rem]">
+        {/* minmax(0, …): the link cards truncate their subtitle, and a plain
+            auto/1fr track would refuse to shrink below that untruncated width. */}
+        <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="space-y-4">
             <LinkCardPart
               href={`mailto:${site.email}`}
