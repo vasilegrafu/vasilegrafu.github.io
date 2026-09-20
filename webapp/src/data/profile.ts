@@ -2,12 +2,19 @@ export const site = {
   name: 'Vasile Grafu',
   title: 'Engineering Manager | Solutions Architect | Enterprise & AI Systems',
   // Short form. Feeds the meta/OG description and the resume PDF, where length
-  // is constrained — keep it near 160 characters. The home hero uses `intro`.
-  tagline:
-    'Engineering leader with 20+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.',
-  // Long form, home hero only — free to say more than the meta description can.
-  intro:
-    '20+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production.',
+  // is constrained — keep it near 160 characters.
+  //
+  // Getters rather than strings: the year count is derived, and vite.config.ts
+  // imports this module before Vite has substituted `__BUILD_YEAR__`. Nothing
+  // there reads either of these, so they are only evaluated inside the app.
+  get tagline() {
+    return `Engineering leader with ${yearsSince(careerStart)}+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.`;
+  },
+  // Long form, the summary at the top of the resume PDF — free to say more
+  // than the meta description can.
+  get intro() {
+    return `${yearsSince(careerStart)}+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production.`;
+  },
   location: 'Bucharest, Romania',
   email: 'vasilegrafu@gmail.com',
   phone: '+40 722 635 785',
@@ -155,6 +162,15 @@ export const experience: Role[] = [
       'Python',
       'AWS',
     ],
+  },
+  {
+    company: 'Consignor',
+    position: 'Senior Software Developer',
+    period: '2009 – 2010',
+    location: 'Bucharest, Romania',
+    summary:
+      'My first year at Consignor, writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
+    bullets: [],
   },
   {
     company: 'TeamNet',

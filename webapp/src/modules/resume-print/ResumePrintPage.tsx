@@ -7,7 +7,7 @@
 // This page renders outside the site shell, is noindex, and stays out of the sitemap.
 import { Fragment } from 'react';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { education, experience, projects, site, skills } from '@data/profile';
+import { careerStart, education, experience, projects, site, skills, yearsSince } from '@data/profile';
 import './resume-print.css';
 
 const keyProject = projects[0];
@@ -21,7 +21,7 @@ const highlights = [
   'Millions of requests served every day by the platform my team runs',
   '10,000+ business clients on the systems I have led',
   '50 web services in production, distributed across AWS',
-  '20+ years, from real-time game engines to agentic AI systems',
+  `${yearsSince(careerStart)}+ years, from real-time game engines to agentic AI systems`,
 ];
 
 /** Bullets are written as "Lead-in: detail" — split so the lead-in can be bold. */

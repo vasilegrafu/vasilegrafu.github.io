@@ -24,6 +24,7 @@ const roleIcons = [
   'lucide:sparkles', // nShift — AI era
   'lucide:globe', // Consignor Team Manager
   'lucide:layers', // Consignor Technical Lead
+  'lucide:code-xml', // Consignor Senior Software Developer
   'lucide:package', // TeamNet — ERP
   'lucide:gamepad-2', // Ubisoft
 ];
@@ -33,7 +34,7 @@ export default function CareerPage() {
     <>
       <PageMetaPart
         title="Career — Vasile Grafu"
-        description="20+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems."
+        description={`${yearsSince(careerStart)}+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems.`}
       />
 
       <div className="flex flex-wrap items-start justify-between gap-4">

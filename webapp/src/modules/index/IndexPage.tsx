@@ -85,9 +85,9 @@ export default function IndexPage() {
             <p className="mt-4">
               Thirteen of my years were spent at Consignor, the company {current.company} grew out
               of, first as Technical Lead and then as Team Manager running two teams. Before that,
-              ERP work at TeamNet and game programming at Ubisoft. The work today divides between
-              leadership — hiring, mentoring, engineering standards — and hands-on architecture,
-              including the agentic AI platform built on top of those services.
+              game programming at Ubisoft. The work today divides between leadership — hiring,
+              mentoring, engineering standards — and hands-on architecture, including the agentic
+              AI platform built on top of those services.
             </p>
           </div>
           {/* Monogram: a solid gradient disc with the initials knocked out in
@@ -160,9 +160,9 @@ export default function IndexPage() {
           {experience.map((r) => (
             <li
               key={`${r.company}-${r.position}`}
-              className="grid gap-x-6 gap-y-1 sm:grid-cols-[11rem_1fr]"
+              className="grid gap-x-6 gap-y-1 sm:grid-cols-[13rem_1fr]"
             >
-              <span className="text-faint text-xs sm:mt-1">{r.period}</span>
+              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{r.period}</span>
               <span>
                 <span className="text-ink font-medium">{r.position}</span>
                 <span className="text-muted"> · {r.company}</span>
@@ -174,8 +174,8 @@ export default function IndexPage() {
         <p className="kicker mt-10">Education</p>
         <ul className="mt-6 space-y-3">
           {education.map((e) => (
-            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[11rem_1fr]">
-              <span className="text-faint text-xs sm:mt-1">{e.period}</span>
+            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[13rem_1fr]">
+              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{e.period}</span>
               <span>
                 <span className="text-ink font-medium">{e.degree}</span>
                 <span className="text-muted"> · {e.school}</span>
