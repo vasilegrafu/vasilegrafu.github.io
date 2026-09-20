@@ -7,14 +7,13 @@ import type { Role } from '@data/profile';
 
 interface Props {
   role: Role;
-  icon: string;
 }
 
-export default function RoleItemPart({ role, icon }: Props) {
+export default function RoleItemPart({ role }: Props) {
   return (
     <li className="ms-6">
       <span className="border-line bg-bg text-accent absolute -start-3.5 mt-1 flex h-7 w-7 items-center justify-center rounded-full border">
-        <IconPart name={icon} className="h-4 w-4" />
+        <IconPart name={role.icon} className="h-4 w-4" />
       </span>
       <p className="text-faint flex flex-wrap items-center gap-2">
         <span className="badge tabular-nums">{yearsOnly(role.period)}</span>

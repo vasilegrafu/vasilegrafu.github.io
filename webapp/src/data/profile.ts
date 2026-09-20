@@ -82,6 +82,12 @@ export interface Role {
    */
   pdfBullets?: number;
   /**
+   * Lucide icon for this role, used on the Career timeline and the profile
+   * page's Background list. Lives on the role rather than in a positional
+   * array beside it, so inserting a role cannot shift every icon below it.
+   */
+  icon: string;
+  /**
    * Technologies in a fixed order — language and framework, data, frontend,
    * AI, cloud, delivery — then at most one practice chip last (Prince2,
    * AI-assisted engineering). Technologies only: activities and products
@@ -95,6 +101,7 @@ export const experience: Role[] = [
   {
     company: 'nShift (formerly Consignor)',
     position: 'Engineering Manager',
+    icon: 'lucide:sparkles', // nShift — AI era
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
     impact:
@@ -130,6 +137,7 @@ export const experience: Role[] = [
   {
     company: 'Consignor (formerly Edisoft)',
     position: 'Team Manager',
+    icon: 'lucide:globe', // two teams, e-commerce reach
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
     impact:
@@ -161,6 +169,7 @@ export const experience: Role[] = [
   {
     company: 'Consignor (formerly Edisoft)',
     position: 'Technical Lead',
+    icon: 'lucide:layers', // the platform applications
     period: '2010 – 2017',
     location: 'Bucharest, Romania',
     impact:
@@ -186,6 +195,7 @@ export const experience: Role[] = [
   {
     company: 'Edisoft',
     position: 'Senior Software Developer',
+    icon: 'lucide:code-xml', // hands-on developer
     period: '2009 – 2010',
     location: 'Bucharest, Romania',
     aboutShort: 'Later rebranded as Consignor; today part of nShift.',
@@ -209,6 +219,7 @@ export const experience: Role[] = [
   {
     company: 'TeamNet',
     position: 'Team Leader',
+    icon: 'lucide:package', // TeamNet — ERP
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
     impact: 'Owned Optimus ERP modules end to end, from specification through deployment.',
@@ -227,6 +238,7 @@ export const experience: Role[] = [
   {
     company: 'Ubisoft',
     position: 'Game Programmer',
+    icon: 'lucide:gamepad-2', // Ubisoft
     period: 'January 2005 – June 2008',
     location: 'Bucharest, Romania',
     impact:

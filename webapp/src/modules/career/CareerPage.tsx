@@ -20,16 +20,6 @@ const eras = [
   { label: 'nShift', note: '’22–now', weight: 4.7, highlight: true },
 ];
 
-// Lucide icon per role, in the same order as `experience`.
-const roleIcons = [
-  'lucide:sparkles', // nShift — AI era
-  'lucide:globe', // Consignor Team Manager
-  'lucide:layers', // Consignor Technical Lead
-  'lucide:code-xml', // Consignor Senior Software Developer
-  'lucide:package', // TeamNet — ERP
-  'lucide:gamepad-2', // Ubisoft
-];
-
 export default function CareerPage() {
   return (
     <>
@@ -60,8 +50,8 @@ export default function CareerPage() {
       <SegmentBarPart segments={eras} ariaLabel="Career timeline by company" />
 
       <ol className="border-line relative mt-10 space-y-12 border-s">
-        {experience.map((role, i) => (
-          <RoleItemPart key={`${role.company}-${role.position}`} role={role} icon={roleIcons[i]} />
+        {experience.map((role) => (
+          <RoleItemPart key={`${role.company}-${role.position}`} role={role} />
         ))}
       </ol>
 

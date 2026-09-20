@@ -6,9 +6,6 @@ import { experience, projects, skills } from '@data/profile';
 
 const current = experience[0];
 
-// Oldest role first, so the toolbox reads in the order it was built.
-const eras = [...experience].reverse();
-
 // Projects whose tags overlap a skill group's items, e.g. "RAG" or "C# / .NET".
 // Derived rather than declared, so a new project shows up here on its own.
 const relatedProjects = (items: string[]) => projects.filter((p) => sharesToken(items, p.tags));
@@ -85,14 +82,14 @@ export default function SkillsPage() {
         </div>
       </section>
 
-      {/* One row per role, oldest first: the same data the Career page tells
-          as a story, read here as what each chapter added to the toolbox. */}
+      {/* One row per role, newest first — the same order as the Career page
+          and the profile Background, read here as what each chapter added. */}
       <section className="mt-12">
         <p className="kicker">Over time</p>
         <h2 className="title-section mt-2">How the toolbox grew</h2>
         <ol className="border-line relative mt-6 space-y-8 border-s">
-          {eras.map((role, i) => {
-            const isCurrent = i === eras.length - 1;
+          {experience.map((role, i) => {
+            const isCurrent = i === 0;
             return (
               <li key={`${role.company}-${role.period}`} className="relative ps-6">
                 <span
