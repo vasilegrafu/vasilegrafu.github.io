@@ -24,12 +24,13 @@ export const site = {
 };
 
 /**
- * The years every tenure figure counts from: January 2005 at Ubisoft, and 2010
- * at Consignor, when I first led a team after my manager left. The Career and
- * home tiles count from these, so the two pages cannot drift apart or go stale.
+ * The years every tenure figure counts from: January 2005 at Ubisoft, and
+ * January 2017, the Team Manager role at Consignor — the first time the job was
+ * running people rather than leading the work. The Career and home tiles count
+ * from these, so the two pages cannot drift apart or go stale.
  */
 export const careerStart = 2005;
-export const leadershipStart = 2010;
+export const leadershipStart = 2017;
 
 /** Substituted at build time by `define` in vite.config.ts. */
 declare const __BUILD_YEAR__: number;
@@ -97,6 +98,7 @@ export const experience: Role[] = [
       'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
     ],
+    pdfBullets: 5,
     tech: [
       'AI-assisted development (Claude Code)',
       'LLMs, Agents, RAG, MCP',
@@ -129,6 +131,7 @@ export const experience: Role[] = [
       'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
       'Hands-on development: shared components, application structure, and database design across the Consignor suite.',
     ],
+    pdfBullets: 4,
     leadBullets: 2,
     tech: [
       'C# / .NET web services',
@@ -144,9 +147,9 @@ export const experience: Role[] = [
     period: '2010 – 2017',
     location: 'Bucharest, Romania',
     impact:
-      'Led the team behind 50 web services serving 10,000+ business clients on AWS — while writing much of the code.',
+      'Led the team behind 50 web services serving 10,000+ business clients — while writing much of the code.',
     summary:
-      'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite, distributed across Amazon Cloud. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
+      'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
       'End-to-end delivery: involved across the entire application development workflow.',
       'Module design: designed many modules of the business software to satisfy client requirements.',
@@ -154,23 +157,29 @@ export const experience: Role[] = [
       'Documentation: wrote detailed technical and user documentation.',
       'Cross-department liaison: connected the development team with other departments.',
     ],
+    pdfBullets: 3,
     tech: [
       'C# / .NET, ASP.NET MVC',
       'WCF web services',
       'SQL Server Enterprise',
       'JavaScript, jQuery, Bootstrap, LESS/SASS',
       'Python',
-      'AWS',
     ],
   },
   {
-    company: 'Consignor',
+    company: 'Edisoft',
     position: 'Senior Software Developer',
     period: '2009 – 2010',
     location: 'Bucharest, Romania',
     summary:
-      'My first year at Consignor, writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
+      'My first year with the company — Edisoft at the time, later Consignor — writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
     bullets: [],
+    tech: [
+      'C# / .NET, ASP.NET MVC',
+      'WCF web services',
+      'SQL Server Enterprise',
+      'JavaScript, jQuery, Bootstrap, LESS/SASS',
+    ],
   },
   {
     company: 'TeamNet',
@@ -188,6 +197,7 @@ export const experience: Role[] = [
       'Feature planning: built development plans for new features with the design department.',
       'Quality and maintenance: enhanced existing features, and triaged and resolved every defect raised by the Quality Department.',
     ],
+    pdfBullets: 2,
     tech: ['C# / .NET', 'Windows Forms', 'SQL Server'],
   },
   {
@@ -208,6 +218,7 @@ export const experience: Role[] = [
       'Blazing Angels (PC): Save/Load system and Media Center shell implementation.',
       'Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.',
     ],
+    pdfBullets: 3,
     tech: [
       'C++, STL',
       'Gameplay & platform modules',

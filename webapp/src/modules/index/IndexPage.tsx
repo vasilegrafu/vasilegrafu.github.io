@@ -5,6 +5,16 @@ import { careerStart, education, experience, leadershipStart, site, yearsSince }
 
 const current = experience[0];
 
+// This page lists roles for orientation, not verification, so it shows years
+// alone: "January 2017 – January 2022" reads as "2017 – 2022". The Career page
+// and the resume PDF render `period` in full, since those are the surfaces a
+// recruiter actually checks. A side with no year ("Present") is kept as-is.
+const yearsOnly = (period: string) =>
+  period
+    .split('–')
+    .map((part) => part.match(/\d{4}/)?.[0] ?? part.trim())
+    .join(' – ');
+
 // What I own right now, as a definition list rather than a card grid: this is
 // the block a recruiter reads to place the role, so it stays dense and factual.
 const scope = [
@@ -58,7 +68,7 @@ export default function IndexPage() {
     <>
       <PageMetaPart
         title={`${site.name} — Engineering Manager, Enterprise & AI Systems`}
-        description={`Engineering Manager at ${current.company}, leading the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} leading teams.`}
+        description={`Engineering Manager at ${current.company}, leading the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} years leading teams.`}
       />
 
       {/* Identity. The banner above already carries the name at full size, so
@@ -74,7 +84,7 @@ export default function IndexPage() {
             </h1>
             <p className="text-faint mt-3 text-xs">
               {site.location} · {yearsSince(careerStart)} years in software ·{' '}
-              {yearsSince(leadershipStart)} leading teams
+              {yearsSince(leadershipStart)} years leading teams
             </p>
 
             <p className="mt-6">
@@ -160,9 +170,9 @@ export default function IndexPage() {
           {experience.map((r) => (
             <li
               key={`${r.company}-${r.position}`}
-              className="grid gap-x-6 gap-y-1 sm:grid-cols-[13rem_1fr]"
+              className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]"
             >
-              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{r.period}</span>
+              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{yearsOnly(r.period)}</span>
               <span>
                 <span className="text-ink font-medium">{r.position}</span>
                 <span className="text-muted"> · {r.company}</span>
@@ -174,11 +184,13 @@ export default function IndexPage() {
         <p className="kicker mt-10">Education</p>
         <ul className="mt-6 space-y-3">
           {education.map((e) => (
-            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[13rem_1fr]">
-              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{e.period}</span>
+            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]">
+              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{yearsOnly(e.period)}</span>
+              {/* Degree and school on their own lines — the full degree titles
+                  are too long to sit on one. */}
               <span>
-                <span className="text-ink font-medium">{e.degree}</span>
-                <span className="text-muted"> · {e.school}</span>
+                <span className="text-ink block font-medium">{e.degree}</span>
+                <span className="text-muted block">{e.school}</span>
               </span>
             </li>
           ))}

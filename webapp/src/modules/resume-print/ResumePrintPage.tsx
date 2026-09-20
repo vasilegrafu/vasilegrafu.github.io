@@ -81,7 +81,7 @@ export default function ResumePrintPage() {
         return (
           <div
             key={`${role.company}-${role.position}`}
-            className={bullets.length > 5 ? 'role allow-break' : 'role'}
+            className={bullets.length > 3 ? 'role allow-break' : 'role'}
           >
             <div className="role-head">
               <h3>
