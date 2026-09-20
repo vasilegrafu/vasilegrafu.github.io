@@ -1,106 +1,94 @@
 import { Link } from 'react-router';
-import IconCardPart from '@fx/components/IconCardPart';
 import IconPart from '@fx/components/IconPart';
-import StatTilePart from '@fx/components/StatTilePart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { careerStart, experience, site, yearsSince } from '@data/profile';
+import { careerStart, education, experience, leadershipStart, site, yearsSince } from '@data/profile';
 
 const current = experience[0];
 
-// Reach: three figures, kept to numbers so the tiles keep their punch.
-const scaleStats = [
-  { value: `${yearsSince(careerStart)}+`, label: 'years in software development' },
-  { value: '50+', label: 'applications built or contributed to' },
-  { value: 'Millions', label: 'of requests a day on some applications' },
-];
-
-// Practice: how the work is actually done. Phrases, not figures, so they get
-// a row of chips under the numbers rather than tiles of their own. They
-// describe the systems and the practice, never me.
-const practice = [
-  { icon: 'lucide:layers', text: 'Every phase, specification through production' },
-  { icon: 'lucide:brain', text: 'AI systems built, not just used' },
-  { icon: 'lucide:sparkles', text: 'AI-assisted engineering, every day' },
-];
-
-// Written from the employer's point of view rather than mine — one line each,
-// stating a benefit rather than restating a fact the tiles above already carry.
-const valueProps = [
+// What I own right now, as a definition list rather than a card grid: this is
+// the block a recruiter reads to place the role, so it stays dense and factual.
+const scope = [
   {
-    icon: 'lucide:rocket',
-    title: 'Teams that ship',
-    body: 'Cohesive teams delivering business-critical software, year after year.',
+    term: 'Team',
+    detail: `The Webservices Team at ${current.company} — hiring, mentoring, and the engineering standards the team works to.`,
   },
   {
-    icon: 'lucide:wrench',
-    title: 'Leadership that builds',
-    body: 'An architect’s judgment, from someone who still writes the code.',
+    term: 'Systems',
+    detail:
+      'Dozens of services and full-stack applications distributed across AWS, carrying millions of requests a day.',
   },
   {
-    icon: 'lucide:workflow',
-    title: 'Fewer handoff gaps',
-    body: 'Someone who has worked every phase sees what falls between them.',
+    term: 'Architecture',
+    detail:
+      'Solution architecture, cloud environments and CI/CD pipelines for the applications the team owns.',
   },
   {
-    icon: 'lucide:lightbulb',
-    title: 'AI that pays off',
-    body: 'Grounded in production experience, not in hype.',
+    term: 'AI',
+    detail:
+      'Agentic platform work: LLM orchestration, RAG pipelines and MCP integrations, grounded in company data.',
   },
   {
-    icon: 'lucide:gauge',
-    title: 'Built for load',
-    body: 'Systems that stay up when the business depends on them.',
-  },
-  {
-    icon: 'lucide:sprout',
-    title: 'People who grow',
-    body: 'Engineers hired, mentored and kept — the team outlasts the system.',
+    term: 'Stack',
+    detail: 'C# / .NET, Python / FastAPI, SQL Server, PostgreSQL, AWS, TypeScript, React.',
   },
 ];
 
-// What keeps me in this work, as opposed to what I am paid to do.
-const principles = [
+// Three pieces of work, each stated as scope and result rather than as a claim
+// about me. The Projects page carries the long form.
+const selectedWork = [
   {
-    icon: 'lucide:telescope',
-    title: 'Curiosity',
-    body: 'I’m naturally driven to understand how things work and why they work the way they do. I enjoy going deep into a problem, learning from first principles, and connecting ideas across different areas. For me, the process of understanding is rewarding in itself.',
+    title: 'Conversational AI platform',
+    context: 'nShift',
+    body: 'Domain-specific agents per department — each with its own prompts, tools and data access — collaborating through an orchestration layer. A continuous pipeline indexes internal documentation, APIs and business data, so answers stay grounded in company-specific information.',
   },
   {
-    icon: 'lucide:trending-up',
-    title: 'Constant evolution',
-    body: 'I’m always looking for ways to improve how I think, work, and build. AI-assisted engineering has already reshaped my daily practice, and I actively explore new tools, ideas, and approaches that can make me more effective. I see change as an opportunity to rethink what’s possible rather than simply adapt to it.',
+    title: 'Webservices platform',
+    context: 'Consignor, then nShift',
+    body: 'The core services behind the delivery-management suite: dozens of services and full-stack applications on AWS, serving business-critical delivery workflows around the clock at millions of requests a day.',
   },
   {
-    icon: 'lucide:handshake',
-    title: 'Teams that discover',
-    body: 'I do my best work in supportive, collaborative teams where people learn from each other, challenge ideas constructively, and take pride in their craft. I value working toward a shared goal while giving everyone the space to contribute, experiment, and grow.',
-  },
-  {
-    icon: 'lucide:target',
-    title: 'Impact',
-    body: 'Technology is most interesting to me when it matters — when the systems we build carry real businesses, save people time, and open possibilities that weren’t there before. Understanding why the work matters shapes how I build it, and seeing an idea become something people rely on every day is the most satisfying part of engineering.',
+    title: 'Two teams at once',
+    context: 'Consignor · 2017 – 2022',
+    body: 'Ran the Webservices and Integration teams together for a platform serving more than 10,000 business customers — hiring and training the engineers, owning the architecture decisions, and running projects across both.',
   },
 ];
 
 export default function IndexPage() {
   return (
     <>
-      <PageMetaPart title="Vasile Grafu — Engineering Manager & AI Systems Builder" />
+      <PageMetaPart
+        title={`${site.name} — Engineering Manager, Enterprise & AI Systems`}
+        description={`Engineering Manager at ${current.company}, leading the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} leading teams.`}
+      />
 
-      {/* Main already pads the top, so the hero adds little of its own. */}
-      <section className="relative pt-2 pb-6 sm:pt-4 sm:pb-8">
-        {/* overflow-hidden: the blooms hang past the section's edges, and an
-            unclipped one made the document wider than a tablet screen. */}
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-          <div className="blob bg-blob-a -top-24 -right-24 h-80 w-80"></div>
-          <div className="blob bg-blob-b top-32 -left-24 h-64 w-64"></div>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-8 lg:flex-nowrap">
+      {/* Identity. The banner above already carries the name at full size, so
+          this opens with the role instead — the first thing a recruiter needs
+          in order to place me. No decorative blooms on this page: the sober
+          treatment is the point. */}
+      <section className="pt-2 pb-8 sm:pt-4">
+        <div className="flex flex-wrap items-start justify-between gap-8 lg:flex-nowrap">
           <div className="max-w-3xl min-w-0">
-            {/* The banner above already carries the name and title at full
-                size, so the hero greets rather than repeats. */}
-            <h1 className="title-item">Hello, I am {site.name}</h1>
-            <p className="mt-4">{site.intro}</p>
+            <p className="kicker">Profile</p>
+            <h1 className="title-page mt-2">
+              {current.position} at {current.company}
+            </h1>
+            <p className="text-faint mt-3 text-xs">
+              {site.location} · {yearsSince(careerStart)} years in software ·{' '}
+              {yearsSince(leadershipStart)} leading teams
+            </p>
+
+            <p className="mt-6">
+              I lead the Webservices Team at {current.company} — the services behind a
+              delivery-management platform that connects retailers, 3PLs and manufacturers to more
+              than 1,000 carriers across some 190 countries.
+            </p>
+            <p className="mt-4">
+              Thirteen of my years were spent at Consignor, the company {current.company} grew out
+              of, first as Technical Lead and then as Team Manager running two teams. Before that,
+              ERP work at TeamNet and game programming at Ubisoft. The work today divides between
+              leadership — hiring, mentoring, engineering standards — and hands-on architecture,
+              including the agentic AI platform built on top of those services.
+            </p>
           </div>
           {/* Monogram: a solid gradient disc with the initials knocked out in
               the accent-ink colour, so it reads as a mark rather than a
@@ -111,104 +99,98 @@ export default function IndexPage() {
             </div>
           </div>
         </div>
+        {/* One primary action — the resume — and two quiet ones, rather than
+            three competing gradient buttons. */}
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link to="/career" className="btn btn-brand">
-            <IconPart name="lucide:briefcase" className="h-3.5 w-3.5" />
-            My career story
-            <IconPart name="lucide:arrow-right" className="h-3.5 w-3.5" />
-          </Link>
           <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
             <IconPart name="lucide:download" className="h-3.5 w-3.5" />
             Download resume
             <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
           </a>
-          <Link to="/articles" className="btn btn-brand">
-            <IconPart name="lucide:file-text" className="h-3.5 w-3.5" />
-            Read my writing
-            <IconPart name="lucide:arrow-right" className="h-3.5 w-3.5" />
+          <Link to="/career" className="btn btn-ghost">
+            <IconPart name="lucide:briefcase" className="h-3.5 w-3.5" />
+            Full career
+          </Link>
+          <Link to="/contact" className="btn btn-ghost">
+            <IconPart name="lucide:at-sign" className="h-3.5 w-3.5" />
+            Contact
           </Link>
         </div>
       </section>
 
       <section className="py-8">
-        <p className="kicker">Reach and practice</p>
-        {/* A strip between hairlines rather than a card grid, so the facts read
-            differently from the capability cards below. */}
-        <div className="border-line mt-6 border-y py-8">
-          <div className="grid gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-x-10">
-            {scaleStats.map((s) => (
-              <StatTilePart key={s.label} value={s.value} label={s.label} bare />
-            ))}
-          </div>
-          <ul className="mt-8 flex flex-wrap justify-center gap-3">
-            {practice.map((p) => (
-              <li key={p.text} className="chip">
-                <IconPart name={p.icon} className="text-accent h-4 w-4 shrink-0" />
-                {p.text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="py-8">
-        <p className="kicker">What I do</p>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          <IconCardPart icon="lucide:code-xml" title="Hands-on engineering">
-            I still write the code: C#/.NET, Python, React, SQL, and the AWS infrastructure it runs
-            on. Specifications, architecture, cloud environments, CI/CD pipelines — I build them, not
-            just approve them.
-          </IconCardPart>
-          <IconCardPart icon="lucide:users" title="Engineering leadership">
-            Leading one of {current.company}’s core teams — hiring, mentoring, and setting the
-            standards behind business-critical delivery software.
-          </IconCardPart>
-          <IconCardPart icon="lucide:hammer" title="AI-assisted engineering">
-            Advanced Claude Code skills, including an app builder that reads existing codebases
-            through a structural snapshot and generates, migrates, or translates applications with
-            verified results.
-          </IconCardPart>
-          <IconCardPart icon="lucide:sparkles" title="AI systems">
-            Agentic AI platforms: LLM orchestration, RAG pipelines, and multi-agent architectures
-            grounded in real business data, integrated over MCP and answerable in production.
-          </IconCardPart>
-        </div>
-      </section>
-
-      <section className="py-8">
-        <p className="kicker">Working with me</p>
-        <h2 className="title-section mt-2">What I bring to an organization</h2>
-        {/* The only panel on a page of strips, cards and lists — that shape is
-            enough to mark the zone, so the colour stays out of it. */}
-        <div className="bg-tint border-line mt-6 grid gap-8 rounded-2xl border p-8 sm:grid-cols-2 lg:grid-cols-3">
-          {valueProps.map((v) => (
-            <div key={v.title}>
-              <div className="icon-tile">
-                <IconPart name={v.icon} className="h-5 w-5" />
-              </div>
-              <h3 className="title-card mt-4">{v.title}</h3>
-              <p className="text-muted mt-2">{v.body}</p>
+        <p className="kicker">Current scope</p>
+        <dl className="divide-line border-line mt-6 divide-y border-y">
+          {scope.map((s) => (
+            <div key={s.term} className="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-6">
+              <dt className="title-card">{s.term}</dt>
+              <dd className="text-muted">{s.detail}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
 
       <section className="py-8">
-        <p className="kicker">Principles</p>
-        <h2 className="title-section mt-2">What drives me</h2>
-        {/* A numbered manifesto rather than another card grid — principles are not
-            features, and the form should say so before the words do. */}
-        <div className="mt-6 grid gap-x-12 gap-y-9 sm:grid-cols-2">
-          {principles.map((p) => (
-            <div key={p.title} className="flex gap-4">
-              <IconPart name={p.icon} className="text-label mt-0.5 h-6 w-6 shrink-0" />
-              <div>
-                <h3 className="title-card">{p.title}</h3>
-                <p className="text-muted mt-2">{p.body}</p>
+        <p className="kicker">Selected work</p>
+        <ol className="mt-6 space-y-8">
+          {selectedWork.map((w) => (
+            <li key={w.title}>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 className="title-item">{w.title}</h2>
+                <span className="text-faint text-xs">{w.context}</span>
               </div>
-            </div>
+              <p className="text-muted mt-2 max-w-3xl">{w.body}</p>
+            </li>
           ))}
-        </div>
+        </ol>
+        <p className="text-muted mt-6">
+          Longer write-ups on the{' '}
+          <Link to="/projects" className="link-accent">
+            Projects
+          </Link>{' '}
+          page.
+        </p>
+      </section>
+
+      {/* Roles and degrees straight from the profile data, so this list cannot
+          drift from the Career page. */}
+      <section className="py-8">
+        <p className="kicker">Background</p>
+        <ul className="mt-6 space-y-3">
+          {experience.map((r) => (
+            <li
+              key={`${r.company}-${r.position}`}
+              className="grid gap-x-6 gap-y-1 sm:grid-cols-[11rem_1fr]"
+            >
+              <span className="text-faint text-xs sm:mt-1">{r.period}</span>
+              <span>
+                <span className="text-ink font-medium">{r.position}</span>
+                <span className="text-muted"> · {r.company}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="kicker mt-10">Education</p>
+        <ul className="mt-6 space-y-3">
+          {education.map((e) => (
+            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[11rem_1fr]">
+              <span className="text-faint text-xs sm:mt-1">{e.period}</span>
+              <span>
+                <span className="text-ink font-medium">{e.degree}</span>
+                <span className="text-muted"> · {e.school}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="text-muted mt-8">
+          Role by role, with what each chapter added, on the{' '}
+          <Link to="/career" className="link-accent">
+            Career
+          </Link>{' '}
+          page.
+        </p>
       </section>
     </>
   );
