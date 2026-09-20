@@ -32,6 +32,16 @@ export const site = {
 export const careerStart = 2005;
 export const leadershipStart = 2017;
 
+/**
+ * The AWS services in use today. The nShift role and the Skills list are the
+ * same stack by definition — Skills is what I use now — so they share one
+ * string and cannot drift apart. The earlier roles carry their own, smaller
+ * lists: the stack grew over the years and the entries should show that.
+ *
+ * Services only, never sub-resources: no load balancers, no target groups.
+ */
+export const awsStack = 'AWS (EC2, ECS, RDS, S3, CloudFormation, CDK)';
+
 /** Substituted at build time by `define` in vite.config.ts. */
 declare const __BUILD_YEAR__: number;
 
@@ -104,7 +114,8 @@ export const experience: Role[] = [
       'C# / .NET / ASP.NET Core',
       'Python / FastAPI / SQLAlchemy',
       'SQL Server / PostgreSQL',
-      'AWS (EC2, ECS, RDS, S3)',
+      awsStack,
+      'Git, GitHub Actions',
       'Docker, CI/CD',
       'JavaScript / TypeScript / ReactJS / Material UI',
     ],
@@ -132,11 +143,11 @@ export const experience: Role[] = [
     ],
     leadBullets: 2,
     tech: [
-      'C# / .NET web services',
-      'E-commerce platforms (WooCommerce, Klarna, Magento)',
-      'APIs & integrations',
-      'AWS',
-      'Project management (Prince2)',
+      'C# / .NET, ASP.NET Core',
+      'REST APIs & integrations',
+      'AWS (EC2, ECS, S3, CloudFormation)',
+      'Git, Bitbucket, GitLab',
+      'Project Management (Prince2)',
     ],
   },
   {
@@ -149,7 +160,7 @@ export const experience: Role[] = [
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
-      'Applications at the core of the platform: built Routing Codes, Address Lookup and EDIFACT Sending — all still part of the nShift ecosystem today.',
+      'Applications at the core of the platform: built Routing Codes, Address Lookup and Sending Edifacts — all still part of the nShift ecosystem today.',
       'Custom Price Calculation Engine: kept developing the engine I had built the year before, as its use spread across the platform.',
       'Software architecture and solution design: owned the design decisions across the Consignor suite, from service boundaries to data model.',
       'Hands-on throughout: wrote a large share of the code myself, alongside the team rather than above it.',
@@ -157,10 +168,11 @@ export const experience: Role[] = [
     ],
     leadBullets: 2,
     tech: [
-      'C# / .NET, ASP.NET MVC',
-      'WCF web services',
+      'C# / .NET, ASP.NET MVC, WCF',
       'SQL Server',
-      'JavaScript, jQuery, Bootstrap, LESS/SASS',
+      'JavaScript, jQuery',
+      'AWS (EC2, S3)',
+      'Git, Bitbucket, GitLab',
     ],
   },
   {
@@ -181,10 +193,9 @@ export const experience: Role[] = [
       'Outgrew one developer: the application became large enough to need its own team, first at Edisoft and later Consignor, building price sheets with customers and training them on it.',
     ],
     tech: [
-      'C# / .NET, ASP.NET MVC',
-      'WCF web services',
+      'C# / .NET, ASP.NET Web Forms, WCF',
       'SQL Server',
-      'JavaScript, jQuery, Bootstrap, LESS/SASS',
+      'SVN',
     ],
   },
   {
@@ -203,7 +214,7 @@ export const experience: Role[] = [
       'Feature planning: built development plans for new features with the design department.',
       'Quality and maintenance: enhanced existing features, and triaged and resolved every defect raised by the Quality Department.',
     ],
-    tech: ['C# / .NET', 'Windows Forms', 'SQL Server'],
+    tech: ['C# / .NET, WinForms', 'SQL Server'],
   },
   {
     company: 'Ubisoft',
@@ -218,16 +229,13 @@ export const experience: Role[] = [
     summary:
       'I designed, developed, and optimized gameplay and platform modules on four shipped and in-development titles.',
     bullets: [
-      'Silent Hunter 4: designed and built the framework managing the evolution of the Crew, Weapons, and Equipment of the U-Boat simulator, plus the Career module.',
+      'Silent Hunter 4: designed and built the framework managing the evolution of the Crew, Weapons, and Equipment of the U-Boat simulator.',
       'King Kong (PC): Windows Media Center integration, multithreaded rendering, and the security module.',
       'Blazing Angels (PC): Save/Load system and Media Center shell implementation.',
       'Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.',
     ],
     tech: [
       'C++, STL',
-      'Gameplay & platform modules',
-      'Multithreaded rendering',
-      'Software optimization',
       'Linear algebra, calculus, probabilities',
     ],
   },
@@ -284,7 +292,8 @@ export const skills: SkillCategory[] = [
     icon: 'lucide:cloud',
     blurb: 'Running systems reliably on AWS, from database to pipeline.',
     items: [
-      'AWS (EC2, ECS, RDS, S3, CloudFormation)',
+      awsStack,
+      'Git, GitHub Actions',
       'Docker, CI/CD',
       'SQL Server, PostgreSQL',
       'Database Design, Relational Databases',
