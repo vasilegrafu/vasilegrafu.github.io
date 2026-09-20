@@ -1,19 +1,10 @@
 import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
+import { yearsOnly } from '@fx/lib/yearsOnly';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { careerStart, education, experience, leadershipStart, site, yearsSince } from '@data/profile';
 
 const current = experience[0];
-
-// This page lists roles for orientation, not verification, so it shows years
-// alone: "January 2017 – January 2022" reads as "2017 – 2022". The Career page
-// and the resume PDF render `period` in full, since those are the surfaces a
-// recruiter actually checks. A side with no year ("Present") is kept as-is.
-const yearsOnly = (period: string) =>
-  period
-    .split('–')
-    .map((part) => part.match(/\d{4}/)?.[0] ?? part.trim())
-    .join(' – ');
 
 // What I own right now, as a definition list rather than a card grid: this is
 // the block a recruiter reads to place the role, so it stays dense and factual.
@@ -172,7 +163,7 @@ export default function IndexPage() {
               key={`${r.company}-${r.position}`}
               className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]"
             >
-              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{yearsOnly(r.period)}</span>
+              <span className="text-faint text-xs whitespace-nowrap tabular-nums sm:mt-1">{yearsOnly(r.period)}</span>
               <span>
                 <span className="text-ink font-medium">{r.position}</span>
                 <span className="text-muted"> · {r.company}</span>
@@ -185,7 +176,7 @@ export default function IndexPage() {
         <ul className="mt-6 space-y-3">
           {education.map((e) => (
             <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]">
-              <span className="text-faint text-xs whitespace-nowrap sm:mt-1">{yearsOnly(e.period)}</span>
+              <span className="text-faint text-xs whitespace-nowrap tabular-nums sm:mt-1">{yearsOnly(e.period)}</span>
               {/* Degree and school on their own lines — the full degree titles
                   are too long to sit on one. */}
               <span>

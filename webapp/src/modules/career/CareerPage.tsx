@@ -1,6 +1,7 @@
 import IconPart from '@fx/components/IconPart';
 import SegmentBarPart from '@fx/components/SegmentBarPart';
 import StatTilePart from '@fx/components/StatTilePart';
+import { yearsOnly } from '@fx/lib/yearsOnly';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { careerStart, education, experience, leadershipStart, yearsSince } from '@data/profile';
 import RoleItemPart from './RoleItemPart';
@@ -73,7 +74,7 @@ export default function CareerPage() {
           <li key={e.degree}>
             <p className="text-ink font-medium">{e.degree}</p>
             <p className="text-faint">
-              {e.school} · {e.period}
+              {e.school} · {yearsOnly(e.period)}
             </p>
           </li>
         ))}

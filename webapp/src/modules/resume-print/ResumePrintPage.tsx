@@ -3,7 +3,12 @@
 //   npm run build
 //   npm run preview   (note the port it prints)
 //   & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+//     --virtual-time-budget=10000 `
 //     --no-pdf-header-footer --print-to-pdf="<repo>\webapp\public\cv.pdf" "http://localhost:4173/resume-print"
+// --virtual-time-budget is not optional: without it Chrome prints before the
+// web fonts have loaded, roughly half the time, and the fallback metrics
+// rewrap every line and add a page. The page count is the tell — this resume
+// is 3 pages; a 4-page render is a bad one, throw it away and rerun.
 // This page renders outside the site shell, is noindex, and stays out of the sitemap.
 import { Fragment } from 'react';
 import PageMetaPart from '@modules/shared/PageMetaPart';
@@ -81,7 +86,7 @@ export default function ResumePrintPage() {
         return (
           <div
             key={`${role.company}-${role.position}`}
-            className={bullets.length > 3 ? 'role allow-break' : 'role'}
+            className={bullets.length > 5 ? 'role allow-break' : 'role'}
           >
             <div className="role-head">
               <h3>

@@ -30,7 +30,9 @@ export default function SegmentBarPart({ segments, ariaLabel }: Props) {
         >
           {s.label}{' '}
           {s.note && (
-            <span className={s.highlight ? 'text-accent-ink/80' : 'text-faint'}>{s.note}</span>
+            <span className={cx('tabular-nums', s.highlight ? 'text-accent-ink/80' : 'text-faint')}>
+              {s.note}
+            </span>
           )}
         </div>
       ))}

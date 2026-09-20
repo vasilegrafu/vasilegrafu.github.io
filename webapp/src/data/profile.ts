@@ -76,7 +76,7 @@ export interface Role {
 
 export const experience: Role[] = [
   {
-    company: 'nShift',
+    company: 'nShift (formerly Consignor)',
     position: 'Engineering Manager',
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
@@ -98,9 +98,8 @@ export const experience: Role[] = [
       'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
     ],
-    pdfBullets: 5,
     tech: [
-      'AI-assisted development (Claude Code)',
+      'AI-assisted engineering',
       'LLMs, Agents, RAG, MCP',
       'C# / .NET / ASP.NET Core',
       'Python / FastAPI / SQLAlchemy',
@@ -111,7 +110,7 @@ export const experience: Role[] = [
     ],
   },
   {
-    company: 'Consignor',
+    company: 'Consignor (formerly Edisoft)',
     position: 'Team Manager',
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
@@ -131,7 +130,6 @@ export const experience: Role[] = [
       'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
       'Hands-on development: shared components, application structure, and database design across the Consignor suite.',
     ],
-    pdfBullets: 4,
     leadBullets: 2,
     tech: [
       'C# / .NET web services',
@@ -142,7 +140,7 @@ export const experience: Role[] = [
     ],
   },
   {
-    company: 'Consignor',
+    company: 'Consignor (formerly Edisoft)',
     position: 'Technical Lead',
     period: '2010 – 2017',
     location: 'Bucharest, Romania',
@@ -157,11 +155,10 @@ export const experience: Role[] = [
       'Documentation: wrote detailed technical and user documentation.',
       'Cross-department liaison: connected the development team with other departments.',
     ],
-    pdfBullets: 3,
     tech: [
       'C# / .NET, ASP.NET MVC',
       'WCF web services',
-      'SQL Server Enterprise',
+      'SQL Server',
       'JavaScript, jQuery, Bootstrap, LESS/SASS',
       'Python',
     ],
@@ -171,13 +168,16 @@ export const experience: Role[] = [
     position: 'Senior Software Developer',
     period: '2009 – 2010',
     location: 'Bucharest, Romania',
+    aboutShort: 'Later rebranded as Consignor; today part of nShift.',
+    about:
+      'Edisoft was later rebranded as Consignor — the Scandinavian multi-carrier shipping software business that merged with Unifaun and Transsmart in 2021 to become nShift. The name changed; the platform and the team did not.',
     summary:
-      'My first year with the company — Edisoft at the time, later Consignor — writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
+      'My first year with the company, writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
     bullets: [],
     tech: [
       'C# / .NET, ASP.NET MVC',
       'WCF web services',
-      'SQL Server Enterprise',
+      'SQL Server',
       'JavaScript, jQuery, Bootstrap, LESS/SASS',
     ],
   },
@@ -197,7 +197,6 @@ export const experience: Role[] = [
       'Feature planning: built development plans for new features with the design department.',
       'Quality and maintenance: enhanced existing features, and triaged and resolved every defect raised by the Quality Department.',
     ],
-    pdfBullets: 2,
     tech: ['C# / .NET', 'Windows Forms', 'SQL Server'],
   },
   {
@@ -218,7 +217,6 @@ export const experience: Role[] = [
       'Blazing Angels (PC): Save/Load system and Media Center shell implementation.',
       'Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.',
     ],
-    pdfBullets: 3,
     tech: [
       'C++, STL',
       'Gameplay & platform modules',
@@ -255,7 +253,7 @@ export const skills: SkillCategory[] = [
     icon: 'lucide:brain',
     blurb: 'Agentic systems in production — and the theory underneath them.',
     items: [
-      'AI-Assisted Software Development (Claude Code)',
+      'AI-Assisted Software Development',
       'Advanced Agent Skills & Prompt Engineering',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
@@ -269,10 +267,10 @@ export const skills: SkillCategory[] = [
     blurb: 'Designing and building the services that carry the business.',
     items: [
       'C#, .NET, ASP.NET Core, Entity Framework, LINQ',
-      'Python, FastAPI, SQLAlchemy',
+      'Python, FastAPI, Flask, SQLAlchemy',
       'Solution & Software Architecture',
       'Framework Design',
-      'API Design (REST, gRPC, SOAP/WCF)',
+      'API Design (REST, SOAP/WCF)',
     ],
   },
   {
@@ -291,11 +289,11 @@ export const skills: SkillCategory[] = [
     icon: 'lucide:monitor',
     blurb: 'Interfaces for the platforms and tools I build.',
     items: [
-      'JavaScript, TypeScript',
+      'JavaScript, TypeScript, jQuery',
       'ReactJS, Material UI',
       'HTML, CSS, SASS',
       'Astro, Tailwind CSS, HTMX',
-      'Server-Rendered Web (ASP.NET MVC, FastAPI)',
+      'Server-Rendered Web (ASP.NET MVC + Razor, Flask + Jinja)',
     ],
   },
   {

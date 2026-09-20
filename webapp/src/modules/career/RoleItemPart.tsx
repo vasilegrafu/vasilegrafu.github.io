@@ -2,6 +2,7 @@
 // role summary, a numbered list of what I did, and tech chips.
 import IconPart from '@fx/components/IconPart';
 import { cx } from '@fx/lib/cx';
+import { yearsOnly } from '@fx/lib/yearsOnly';
 import type { Role } from '@data/profile';
 
 interface Props {
@@ -16,7 +17,7 @@ export default function RoleItemPart({ role, icon }: Props) {
         <IconPart name={icon} className="h-4 w-4" />
       </span>
       <p className="text-faint flex flex-wrap items-center gap-2">
-        <span className="badge">{role.period}</span>
+        <span className="badge tabular-nums">{yearsOnly(role.period)}</span>
         {role.location}
       </p>
       <h2 className="title-item mt-2">
