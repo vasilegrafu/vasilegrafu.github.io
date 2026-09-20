@@ -80,6 +80,12 @@ function staticSiteFiles(): Plugin {
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    // Fixed at build time so the prerendered HTML and the page that hydrates it
+    // agree on the tenure figures. Reading the clock at render would let the two
+    // disagree across a New Year — see the hydration rule in docs/SEO.md.
+    __BUILD_YEAR__: new Date().getFullYear(),
+  },
   plugins: [react(), tailwindcss(), staticSiteFiles()],
   resolve: {
     // Mirrors the "paths" in tsconfig.app.json.

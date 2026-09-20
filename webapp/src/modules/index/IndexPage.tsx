@@ -3,13 +3,13 @@ import IconCardPart from '@fx/components/IconCardPart';
 import IconPart from '@fx/components/IconPart';
 import StatTilePart from '@fx/components/StatTilePart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { experience, site } from '@data/profile';
+import { careerStart, experience, site, yearsSince } from '@data/profile';
 
 const current = experience[0];
 
 // Reach: three figures, kept to numbers so the tiles keep their punch.
 const scaleStats = [
-  { value: '20+', label: 'years in software development' },
+  { value: `${yearsSince(careerStart)}+`, label: 'years in software development' },
   { value: '50+', label: 'applications built or contributed to' },
   { value: 'Millions', label: 'of requests a day on some applications' },
 ];

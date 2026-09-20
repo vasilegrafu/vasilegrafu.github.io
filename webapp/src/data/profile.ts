@@ -16,6 +16,25 @@ export const site = {
   url: 'https://vasilegrafu.github.io',
 };
 
+/**
+ * The years every tenure figure counts from: January 2005 at Ubisoft, and 2010
+ * at Consignor, when I first led a team after my manager left. The Career and
+ * home tiles count from these, so the two pages cannot drift apart or go stale.
+ */
+export const careerStart = 2005;
+export const leadershipStart = 2010;
+
+/** Substituted at build time by `define` in vite.config.ts. */
+declare const __BUILD_YEAR__: number;
+
+/**
+ * Whole years since `year`, taken from the build year rather than the clock at
+ * render time — the prerendered HTML and the page hydrating it have to agree
+ * (docs/SEO.md). A function on purpose: vite.config.ts imports this module for
+ * `site`, and `__BUILD_YEAR__` only exists once Vite has substituted it.
+ */
+export const yearsSince = (year: number) => __BUILD_YEAR__ - year;
+
 export interface Role {
   company: string;
   position: string;
@@ -115,7 +134,7 @@ export const experience: Role[] = [
   {
     company: 'Consignor',
     position: 'Technical Lead',
-    period: '2009 – 2017',
+    period: '2010 – 2017',
     location: 'Bucharest, Romania',
     impact:
       'Led the team behind 50 web services serving 10,000+ business clients on AWS — while writing much of the code.',
@@ -146,6 +165,8 @@ export const experience: Role[] = [
     aboutShort: 'Romanian technology and systems-integration company.',
     about:
       'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
+    summary:
+      'The title here covered module ownership rather than people: I took Optimus ERP modules end to end, from specification through testing and deployment. Leading a team came later, at Consignor.',
     bullets: [
       'Optimus ERP modules: managed them through every development step, from specification to testing and deployment.',
       'Feature planning: built development plans for new features with the design department.',

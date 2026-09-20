@@ -2,12 +2,12 @@ import IconPart from '@fx/components/IconPart';
 import SegmentBarPart from '@fx/components/SegmentBarPart';
 import StatTilePart from '@fx/components/StatTilePart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { education, experience } from '@data/profile';
+import { careerStart, education, experience, leadershipStart, yearsSince } from '@data/profile';
 import RoleItemPart from './RoleItemPart';
 
 const stats = [
-  { value: '20+', label: 'years in software' },
-  { value: '18', label: 'years leading teams' },
+  { value: `${yearsSince(careerStart)}+`, label: 'years in software' },
+  { value: `${yearsSince(leadershipStart)}`, label: 'years leading teams' },
   { value: '4', label: 'companies' },
 ];
 
