@@ -1,11 +1,13 @@
-// Mail / GitHub / LinkedIn icon links shown in the header.
+// Phone / Mail / GitHub / LinkedIn icon links shown in the header.
 import IconPart from '@fx/components/IconPart';
+import { bareUrl } from '@fx/lib/bareUrl';
 import { site } from '@data/profile';
 
 const links = [
-  { href: `mailto:${site.email}`, label: 'Email', tip: 'Send me an email', icon: 'lucide:mail' },
-  { href: site.github, label: 'GitHub', tip: 'My code on GitHub', icon: 'lucide:github' },
-  { href: site.linkedin, label: 'LinkedIn', tip: 'My LinkedIn profile', icon: 'lucide:linkedin' },
+  { href: `tel:${site.phone.replace(/\s/g, '')}`, label: 'Phone', tip: site.phone, icon: 'lucide:phone' },
+  { href: `mailto:${site.email}`, label: 'Email', tip: site.email, icon: 'lucide:mail' },
+  { href: site.github, label: 'GitHub', tip: bareUrl(site.github), icon: 'lucide:github' },
+  { href: site.linkedin, label: 'LinkedIn', tip: bareUrl(site.linkedin), icon: 'lucide:linkedin' },
 ];
 
 export default function SocialLinksPart() {

@@ -7,8 +7,10 @@
 //     --no-pdf-header-footer --print-to-pdf="<repo>\webapp\public\cv.pdf" "http://localhost:4173/resume-print"
 // --virtual-time-budget is not optional: without it Chrome prints before the
 // web fonts have loaded, roughly half the time, and the fallback metrics
-// rewrap every line and add a page. The page count is the tell — this resume
-// is 3 pages; a 4-page render is a bad one, throw it away and rerun.
+// rewrap every line and change the pagination. With the flag the output is
+// byte-identical run to run, so if two renders of the same content differ,
+// the flag was missing. Type size is set for readability, not page count —
+// this resume runs long on purpose.
 // This page renders outside the site shell, is noindex, and stays out of the sitemap.
 import { Fragment } from 'react';
 import PageMetaPart from '@modules/shared/PageMetaPart';

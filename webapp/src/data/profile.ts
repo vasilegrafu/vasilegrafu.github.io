@@ -145,22 +145,22 @@ export const experience: Role[] = [
     period: '2010 – 2017',
     location: 'Bucharest, Romania',
     impact:
-      'Led the team behind 50 web services serving 10,000+ business clients — while writing much of the code.',
+      'Led the Webservices Team behind 50 web services serving 10,000+ business clients — and built the applications the platform still runs on.',
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
     bullets: [
-      'End-to-end delivery: involved across the entire application development workflow.',
-      'Module design: designed many modules of the business software to satisfy client requirements.',
-      'Mentoring: guided both junior and senior developers.',
-      'Documentation: wrote detailed technical and user documentation.',
-      'Cross-department liaison: connected the development team with other departments.',
+      'Applications at the core of the platform: built Routing Codes, Address Lookup and EDIFACT Sending — all still part of the nShift ecosystem today.',
+      'Custom Price Calculation Engine: kept developing the engine I had built the year before, as its use spread across the platform.',
+      'Software architecture and solution design: owned the design decisions across the Consignor suite, from service boundaries to data model.',
+      'Hands-on throughout: wrote a large share of the code myself, alongside the team rather than above it.',
+      'Mentoring: brought on junior and senior developers, and helped hire the people who joined.',
     ],
+    leadBullets: 2,
     tech: [
       'C# / .NET, ASP.NET MVC',
       'WCF web services',
       'SQL Server',
       'JavaScript, jQuery, Bootstrap, LESS/SASS',
-      'Python',
     ],
   },
   {
@@ -171,9 +171,15 @@ export const experience: Role[] = [
     aboutShort: 'Later rebranded as Consignor; today part of nShift.',
     about:
       'Edisoft was later rebranded as Consignor — the Scandinavian multi-carrier shipping software business that merged with Unifaun and Transsmart in 2021 to become nShift. The name changed; the platform and the team did not.',
+    impact:
+      'Designed and built the Custom Price Calculation Engine — it prices every shipment from the rates customers agree with their carriers, and is still in production at nShift today.',
     summary:
-      'My first year with the company, writing the web services behind the shipping suite. When the manager left the following year, I took over the Webservices Team as Technical Lead.',
-    bullets: [],
+      'I designed and built the Custom Price Calculation Engine, and when the manager left the following year I took over the Webservices Team as Technical Lead.',
+    bullets: [
+      'Custom Price Calculation Engine: designed and built it — customers upload the rates they have agreed with their carriers, the engine parses that price sheet, and it calculates the price of each shipment from it.',
+      'Still in production: written in 2009 and running today across nShift, where thousands of customers depend on it.',
+      'Outgrew one developer: the application became large enough to need its own team, first at Edisoft and later Consignor, building price sheets with customers and training them on it.',
+    ],
     tech: [
       'C# / .NET, ASP.NET MVC',
       'WCF web services',

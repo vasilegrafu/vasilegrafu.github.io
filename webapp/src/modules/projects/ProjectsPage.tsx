@@ -1,4 +1,3 @@
-import FlowDiagramPart from '@fx/components/FlowDiagramPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { projects, site } from '@data/profile';
 import ProjectCardPart from './ProjectCardPart';
@@ -8,23 +7,6 @@ const projectIcons = [
   'lucide:bot-message-square', // conversational AI platform
   'lucide:hammer', // AI app builder skill
   'lucide:server', // high-throughput webservices
-];
-
-// Architecture flow per project, in the same order as `projects`.
-const projectFlows: { steps: string[]; ariaLabel: string }[] = [
-  {
-    steps: ['Departments', 'Agents', 'Orchestration', 'LLMs + RAG'],
-    ariaLabel: 'Department agents collaborate through an orchestration layer over LLMs and RAG',
-  },
-  {
-    steps: ['Codebase', 'Structural snapshot', 'Generate · Migrate · Translate', 'Proven app'],
-    ariaLabel:
-      'A structural snapshot of a codebase drives generation, migration, or translation into a proven application',
-  },
-  {
-    steps: ['Clients', 'Web services', 'Databases', 'AWS'],
-    ariaLabel: 'Client applications call web services backed by databases, distributed on AWS',
-  },
 ];
 
 export default function ProjectsPage() {
@@ -44,12 +26,7 @@ export default function ProjectsPage() {
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         {projects.map((p, i) => (
-          <ProjectCardPart
-            key={p.title}
-            project={p}
-            icon={projectIcons[i]}
-            diagram={<FlowDiagramPart {...projectFlows[i]} />}
-          />
+          <ProjectCardPart key={p.title} project={p} icon={projectIcons[i]} />
         ))}
       </div>
 

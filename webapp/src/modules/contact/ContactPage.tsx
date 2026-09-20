@@ -18,12 +18,17 @@ export default function ContactPage() {
         </div>
 
         <h1 className="title-page">Contact</h1>
-        <p className="lede">I read everything and reply to thoughtful messages.</p>
 
         {/* minmax(0, …): the link cards truncate their subtitle, and a plain
             auto/1fr track would refuse to shrink below that untruncated width. */}
         <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="space-y-4">
+            <LinkCardPart
+              href={`tel:${site.phone.replace(/\s/g, '')}`}
+              icon="lucide:phone"
+              title="Phone"
+              subtitle={site.phone}
+            />
             <LinkCardPart
               href={`mailto:${site.email}`}
               icon="lucide:mail"
