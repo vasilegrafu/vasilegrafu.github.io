@@ -81,6 +81,13 @@ export interface Role {
    * Lets the Career page carry full detail while the PDF stays at two pages.
    */
   pdfBullets?: number;
+  /**
+   * Technologies in a fixed order — language and framework, data, frontend,
+   * AI, cloud, delivery — then at most one practice chip last (Prince2,
+   * AI-assisted engineering). Technologies only: activities and products
+   * belong in the bullets. Commas inside a chip; the slash in `C# / .NET`
+   * is part of the name, not a separator.
+   */
   tech?: string[];
 }
 
@@ -109,15 +116,15 @@ export const experience: Role[] = [
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
     ],
     tech: [
-      'AI-assisted engineering',
+      'C# / .NET, ASP.NET Core',
+      'Python, FastAPI, SQLAlchemy',
+      'SQL Server, PostgreSQL',
+      'JavaScript, TypeScript, ReactJS, Material UI',
       'LLMs, Agents, RAG, MCP',
-      'C# / .NET / ASP.NET Core',
-      'Python / FastAPI / SQLAlchemy',
-      'SQL Server / PostgreSQL',
       awsStack,
       'Git, GitHub Actions',
-      'Docker, CI/CD',
-      'JavaScript / TypeScript / ReactJS / Material UI',
+      'Docker',
+      'AI-assisted engineering',
     ],
   },
   {
@@ -135,7 +142,7 @@ export const experience: Role[] = [
       'I led two teams — the Webservices Team and the Integration Team — and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself.',
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
-      'Integration Team: brought Consignor functionality to the major e-commerce platforms.',
+      'Integration Team: brought Consignor functionality to the major e-commerce and checkout platforms — WooCommerce, Magento and Klarna.',
       'Team leadership: set goals and direction for both teams, keeping two groups with very different missions pulling toward one platform.',
       'Technical guidance and architecture: made the critical design decisions and worked through the hard problems alongside the developers.',
       'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
@@ -144,9 +151,10 @@ export const experience: Role[] = [
     leadBullets: 2,
     tech: [
       'C# / .NET, ASP.NET Core',
-      'REST APIs & integrations',
+      'PHP',
       'AWS (EC2, ECS, S3, CloudFormation)',
       'Git, Bitbucket, GitLab',
+      'Docker',
       'Project Management (Prince2)',
     ],
   },
@@ -172,7 +180,7 @@ export const experience: Role[] = [
       'SQL Server',
       'JavaScript, jQuery',
       'AWS (EC2, S3)',
-      'Git, Bitbucket, GitLab',
+      'SVN and Git (Bitbucket, GitLab)',
     ],
   },
   {
@@ -236,7 +244,7 @@ export const experience: Role[] = [
     ],
     tech: [
       'C++, STL',
-      'Linear algebra, calculus, probabilities',
+      'Linear algebra, Calculus, Probability',
     ],
   },
 ];
@@ -268,7 +276,7 @@ export const skills: SkillCategory[] = [
     blurb: 'Agentic systems in production — and the theory underneath them.',
     items: [
       'AI-Assisted Software Development',
-      'Advanced Agent Skills & Prompt Engineering',
+      'Claude Code (skills, subagents, commands, hooks)',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
       'MCP Gateways, Servers & Integrations',
@@ -372,17 +380,5 @@ export const projects: Project[] = [
       { value: 'Proven', label: 'contract, entity and behaviour parity checks' },
     ],
     tags: ['Claude Code', 'Agent Skills', 'Code Generation', 'Static Analysis', 'Python'],
-  },
-  {
-    title: 'High-Throughput Webservices Platform',
-    role: 'Engineering Manager · nShift',
-    description:
-      'The core web-services platform behind nShift’s delivery-management suite: dozens of services and full-stack applications distributed across AWS, serving the client components of business-critical delivery workflows around the clock.',
-    outcomes: [
-      { value: 'Millions', label: 'of requests a day' },
-      { value: 'Dozens', label: 'of services and full-stack apps on AWS' },
-      { value: '24/7', label: 'business-critical delivery workflows' },
-    ],
-    tags: ['C# / .NET', 'AWS', 'SQL Server', 'PostgreSQL', 'Docker', 'CI/CD'],
   },
 ];

@@ -6,7 +6,6 @@ import ProjectCardPart from './ProjectCardPart';
 const projectIcons = [
   'lucide:bot-message-square', // conversational AI platform
   'lucide:hammer', // AI app builder skill
-  'lucide:server', // high-throughput webservices
 ];
 
 export default function ProjectsPage() {
