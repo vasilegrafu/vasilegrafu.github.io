@@ -2,12 +2,6 @@ import PageMetaPart from '@modules/shared/PageMetaPart';
 import { projects, site } from '@data/profile';
 import ProjectCardPart from './ProjectCardPart';
 
-// Lucide icon per project, in the same order as `projects` in profile.ts
-const projectIcons = [
-  'lucide:bot-message-square', // conversational AI platform
-  'lucide:hammer', // AI app builder skill
-];
-
 export default function ProjectsPage() {
   return (
     <>
@@ -24,8 +18,8 @@ export default function ProjectsPage() {
       </p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {projects.map((p, i) => (
-          <ProjectCardPart key={p.title} project={p} icon={projectIcons[i]} />
+        {projects.map((p) => (
+          <ProjectCardPart key={p.title} project={p} />
         ))}
       </div>
 

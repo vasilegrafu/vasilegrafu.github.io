@@ -4,14 +4,13 @@ import type { Project } from '@data/profile';
 
 interface Props {
   project: Project;
-  icon: string;
 }
 
-export default function ProjectCardPart({ project, icon }: Props) {
+export default function ProjectCardPart({ project }: Props) {
   return (
     <article className="card card-lift flex flex-col p-6">
       <div className="icon-tile mb-3">
-        <IconPart name={icon} className="h-5 w-5" />
+        <IconPart name={project.icon} className="h-5 w-5" />
       </div>
       <h2 className="title-item">{project.title}</h2>
       <p className="text-accent mt-1">{project.role}</p>

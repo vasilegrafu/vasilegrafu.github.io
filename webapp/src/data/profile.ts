@@ -175,7 +175,7 @@ export const experience: Role[] = [
     impact:
       'Led the Webservices Team behind 50 web services serving 10,000+ business clients — and built the applications the platform still runs on.',
     summary:
-      'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite. My role was to find sound technical solutions, mentor and train developers, help hire the people who joined us, and — not least — write a great deal of the code myself.',
+      'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite.',
     bullets: [
       'Applications at the core of the platform: built Routing Codes, Address Lookup and Sending Edifacts — all still part of the nShift ecosystem today.',
       'Custom Price Calculation Engine: kept developing the engine I had built the year before, as its use spread across the platform.',
@@ -288,7 +288,6 @@ export const skills: SkillCategory[] = [
     blurb: 'Agentic systems in production — and the theory underneath them.',
     items: [
       'AI-Assisted Software Development',
-      'Claude Code (skills, subagents, commands, hooks)',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
       'MCP Gateways, Servers & Integrations',
@@ -361,6 +360,8 @@ export const education = [
 
 export interface Project {
   title: string;
+  /** Lucide icon, on the project rather than in a positional array. */
+  icon: string;
   role: string;
   description: string;
   /** Three at most: what the system achieves, as a figure or a short word over a label. */
@@ -371,6 +372,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'Conversational AI Platform',
+    icon: 'lucide:bot-message-square',
     role: 'Engineering Manager & Architect · nShift',
     description:
       'A large-scale AI assistant built on an agentic architecture: LLMs combined with orchestration layers, RAG, and structured prompt engineering. Domain-specific agents for different departments — each with tailored prompts, tools, and data access — collaborate through an orchestration layer. A continuous ingestion pipeline indexes internal documentation, APIs, and business data into knowledge stores, so responses stay context-aware and grounded in company-specific information.',
@@ -383,6 +385,7 @@ export const projects: Project[] = [
   },
   {
     title: 'AI App Builder — Claude Code Skill',
+    icon: 'lucide:hammer',
     role: 'Independent R&D · Personal project',
     description:
       'An advanced Claude Code skill that builds applications from existing codebases instead of from imagination. It reads codebases of any size — Python, TypeScript, JavaScript, C# — through a structural snapshot built once and queried many times, then works in three modes: generating new code shaped like the code that already exists, migrating an application to another stack, or translating it to another technology while preserving its domain and structure. Every output is proven rather than assumed — contract conformance, entity preservation, and side-by-side behaviour parity — and every decision that shapes the result is put to the user, never guessed.',

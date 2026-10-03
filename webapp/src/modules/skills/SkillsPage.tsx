@@ -86,7 +86,7 @@ export default function SkillsPage() {
           and the profile Background, read here as what each chapter added. */}
       <section className="mt-12">
         <p className="kicker">Over time</p>
-        <h2 className="title-section mt-2">How the toolbox grew</h2>
+        <h2 className="title-section mt-2">What each role added</h2>
         <ol className="border-line relative mt-6 space-y-8 border-s">
           {experience.map((role, i) => {
             const isCurrent = i === 0;
