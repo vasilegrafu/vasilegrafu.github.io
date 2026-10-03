@@ -37,6 +37,12 @@ jobs:
         run: npm run build
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          # Create the Pages site if it is missing. Turning the repository
+          # private deletes it, and making the repository public again does
+          # not bring it back — without this the build passes and the deploy
+          # step fails, until someone re-enables Pages by hand.
+          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
