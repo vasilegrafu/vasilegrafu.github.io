@@ -18,6 +18,7 @@ const pages: Record<PageId, LazyExoticComponent<ComponentType>> = {
   article: lazy(() => import('@modules/articles/ArticlePage')),
   contact: lazy(() => import('@modules/contact/ContactPage')),
   'resume-print': lazy(() => import('@modules/resume-print/ResumePrintPage')),
+  version: lazy(() => import('@modules/version/VersionPage')),
   'not-found': lazy(() => import('@modules/404/NotFoundPage')),
 };
 

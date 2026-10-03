@@ -13,6 +13,7 @@ export type PageId =
   | 'article'
   | 'contact'
   | 'resume-print'
+  | 'version'
   | 'not-found';
 
 export interface RouteDef {
@@ -33,6 +34,7 @@ export const routes: RouteDef[] = [
   { path: '/articles/:id', page: 'article', sitemap: true },
   { path: '/contact', page: 'contact', sitemap: true },
   { path: '/resume-print', page: 'resume-print', sitemap: false, bare: true },
+  { path: '/version', page: 'version', sitemap: false },
   { path: '*', page: 'not-found', sitemap: false },
 ];
 
