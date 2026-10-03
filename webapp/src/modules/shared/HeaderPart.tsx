@@ -1,9 +1,11 @@
 // Sticky site header: nav pills (desktop) / hamburger (mobile) on the left,
-// social links and theme toggle on the right, mobile dropdown panel below.
+// social links and theme toggle on the right, mobile dropdown panel below,
+// and the phone-only pager under it all.
 import { useState } from 'react';
 import MenuButtonPart from '@fx/components/MenuButtonPart';
 import MobileMenuPart from './MobileMenuPart';
 import NavMenuPart from './NavMenuPart';
+import PagerPart from './PagerPart';
 import SocialLinksPart from './SocialLinksPart';
 import ThemeMenuPart from './ThemeMenuPart';
 
@@ -35,6 +37,7 @@ export default function HeaderPart() {
         </div>
       </div>
       <MobileMenuPart id={MOBILE_MENU_ID} open={menuOpen} onNavigate={() => setMenuOpen(false)} />
+      <PagerPart />
     </header>
   );
 }
