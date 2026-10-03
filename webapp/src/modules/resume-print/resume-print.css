@@ -157,6 +157,26 @@
   background: var(--accent);
 }
 
+/* The one line a skimming reader should take away, leading the role. Set in
+   the ink colour and medium weight so it carries more than the summary
+   beneath it — this is the sentence the resume is read for. */
+.resume-print .role .impact {
+  margin-top: 2px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* The blurb that heads each skill group on the Skills page. */
+.resume-print .skills .blurb {
+  color: var(--muted);
+}
+
+/* The figures a project is measured by, from its outcome tiles. */
+.resume-print .role .outcomes {
+  margin-top: 2px;
+  color: var(--muted);
+}
+
 /* One line of company context under a role heading. */
 .resume-print .role .about {
   margin-top: 1px;

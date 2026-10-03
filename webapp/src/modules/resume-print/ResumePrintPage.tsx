@@ -14,10 +14,18 @@
 // This page renders outside the site shell, is noindex, and stays out of the sitemap.
 import { Fragment } from 'react';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { careerStart, education, experience, projects, site, skills, yearsSince } from '@data/profile';
+import {
+  careerStart,
+  education,
+  experience,
+  leadershipStart,
+  projects,
+  site,
+  skills,
+  yearsSince,
+} from '@data/profile';
 import './resume-print.css';
 
-const keyProject = projects[0];
 
 const linkedinLabel = site.linkedin.replace('https://www.', '');
 const siteLabel = site.url.replace('https://', '');
@@ -29,6 +37,7 @@ const highlights = [
   '10,000+ business clients on the systems I have led',
   '50 web services in production, distributed across AWS',
   `${yearsSince(careerStart)}+ years, from real-time game engines to agentic AI systems`,
+  `${yearsSince(leadershipStart)} years leading teams, two of them running two at once`,
 ];
 
 /** Bullets are written as "Lead-in: detail" — split so the lead-in can be bold. */
@@ -75,16 +84,14 @@ export default function ResumePrintPage() {
       <div className="skills">
         {skills.map((s) => (
           <p key={s.group}>
-            <b>{s.group}:</b> {s.items.join(', ')}
+            <b>{s.group}:</b> <span className="blurb">{s.blurb}</span> {s.items.join(', ')}
           </p>
         ))}
       </div>
 
       <h2>Experience</h2>
       {experience.map((role) => {
-        // The Career page carries every bullet; the PDF takes the leading few
-        // when a role sets pdfBullets, which caps how long the resume can grow.
-        const bullets = role.pdfBullets ? role.bullets.slice(0, role.pdfBullets) : role.bullets;
+        const bullets = role.bullets;
         return (
           <div
             key={`${role.company}-${role.position}`}
@@ -96,7 +103,10 @@ export default function ResumePrintPage() {
               </h3>
               <span className="period">{role.period}</span>
             </div>
-            {role.aboutShort && <p className="about">{role.aboutShort}</p>}
+            {role.impact && <p className="impact">{role.impact}</p>}
+            {(role.about ?? role.aboutShort) && (
+              <p className="about">{role.about ?? role.aboutShort}</p>
+            )}
             {role.summary && <p className="summary">{role.summary}</p>}
             <ul>
               {bullets.map((b) => {
@@ -124,14 +134,25 @@ export default function ResumePrintPage() {
         );
       })}
 
-      <h2>Key Project</h2>
-      <div className="role">
-        <div className="role-head">
-          <h3>{keyProject.title}</h3>
-          <span className="period">{keyProject.role}</span>
+      <h2>Projects</h2>
+      {projects.map((p) => (
+        <div key={p.title} className="role">
+          <div className="role-head">
+            <h3>{p.title}</h3>
+            <span className="period">{p.role}</span>
+          </div>
+          <p className="summary">{p.description}</p>
+          {p.outcomes && (
+            <p className="outcomes">
+              {p.outcomes.map((o) => `${o.value} — ${o.label}`).join(' · ')}
+            </p>
+          )}
+          <p className="tech">
+            <span className="tech-label">Tech</span>
+            {p.tags.join(' · ')}
+          </p>
         </div>
-        <p className="summary">{keyProject.description}</p>
-      </div>
+      ))}
 
       <h2>Education</h2>
       {education.map((e) => (
