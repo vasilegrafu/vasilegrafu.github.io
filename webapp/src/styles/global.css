@@ -7,28 +7,35 @@
     Arial, sans-serif;
   --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
-  /* Type scale: five sizes, one per role. The root stays at 16px so
+  /* Type scale: six sizes, one per role. The root stays at 16px so
      rem-based spacing is unchanged; body text is set to the base step below.
 
        xs   14px  caption   kicker, tags, badges, tooltip, stat labels
-       base 17px  body      everything readable, incl. nav, buttons, meta
-       xl   22px  title     section, item, card and role titles
-       3xl  30px  heading   page and article titles, stat numbers
-       5xl  44px  hero      the name on the home page, 404
+       base 15px  body      everything readable, incl. nav, buttons, meta
+       card 16px  card      .title-card — one step over body, not a title size
+       xl   20px  title     section, item and role titles
+       3xl  26px  heading   page and article titles, stat numbers
+       5xl  40px  hero      the name on the home page, 404
+
+     Line heights fall out of the sizes rather than being chosen again: each
+     keeps the ratio the scale had before it was tightened, so the vertical
+     rhythm is unchanged and only the type is smaller.
 
      The other Tailwind steps alias to their nearest role so a stray
-     text-sm / text-lg / text-2xl / text-4xl cannot introduce a sixth size.
+     text-sm / text-lg / text-2xl / text-4xl cannot introduce a seventh size.
      Prefer the recipes (.title-*, .kicker …) over raw size utilities. */
   --text-xs: 0.875rem;
   --text-xs--line-height: calc(20 / 14);
-  --text-base: 1.0625rem;
-  --text-base--line-height: calc(26 / 17);
-  --text-xl: 1.375rem;
-  --text-xl--line-height: calc(28 / 22);
-  --text-3xl: 1.875rem;
-  --text-3xl--line-height: calc(36 / 30);
-  --text-5xl: 2.75rem;
-  --text-5xl--line-height: calc(48 / 44);
+  --text-base: 0.9375rem;
+  --text-base--line-height: calc(23 / 15);
+  --text-card: 1rem;
+  --text-card--line-height: calc(24 / 16);
+  --text-xl: 1.25rem;
+  --text-xl--line-height: calc(26 / 20);
+  --text-3xl: 1.625rem;
+  --text-3xl--line-height: calc(31 / 26);
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: calc(44 / 40);
 
   --text-sm: var(--text-base);
   --text-sm--line-height: var(--text-base--line-height);
@@ -113,7 +120,7 @@ body {
   /* Body-sized title for cards, footer brand and skill groups: stands out by
      weight and face only, not by size. */
   .title-card {
-    @apply font-display text-ink font-semibold;
+    @apply font-display text-ink text-card font-semibold;
   }
   .kicker {
     @apply text-label text-xs font-semibold uppercase;
