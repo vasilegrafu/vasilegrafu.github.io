@@ -2,6 +2,7 @@ import IconPart from '@fx/components/IconPart';
 import SegmentBarPart from '@fx/components/SegmentBarPart';
 import StatTilePart from '@fx/components/StatTilePart';
 import { yearsOnly } from '@fx/lib/yearsOnly';
+import IdentityPart from '@modules/shared/IdentityPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { careerStart, education, experience, leadershipStart, yearsSince } from '@data/profile';
 import RoleItemPart from './RoleItemPart';
@@ -28,12 +29,9 @@ export default function CareerPage() {
         description={`${yearsSince(careerStart)}+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to software architecture, agentic AI and engineering management.`}
       />
 
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="kicker">Journey</p>
-          <h1 className="title-page mt-2">Career</h1>
-          <p className="lede">The roles I’ve held, the teams I’ve built, and what each chapter added.</p>
-        </div>
+      <IdentityPart />
+
+      <div className="flex flex-wrap items-start justify-end gap-4">
         <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
           <IconPart name="lucide:download" className="h-3.5 w-3.5" />
           Download resume

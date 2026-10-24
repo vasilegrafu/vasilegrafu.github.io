@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import { sharesToken } from '@fx/lib/tokens';
+import IdentityPart from '@modules/shared/IdentityPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { experience, projects, skills } from '@data/profile';
 
@@ -18,16 +19,13 @@ export default function SkillsPage() {
         description="Skills across AI and machine learning, backend architecture, cloud, engineering leadership, and the fundamentals beneath them."
       />
 
-      <p className="kicker">Toolbox</p>
-      <h1 className="title-page mt-2">Skills</h1>
-      <p className="lede">
-        What I reach for and the ground it stands on — from leading teams to the math under the
-        models.
-      </p>
+      <IdentityPart />
 
       {/* The current stack, pulled straight from the latest role rather than
-          curated by hand — so it is the same list the Career page shows. */}
-      <section className="border-line mt-8 border-y py-6">
+          curated by hand — so it is the same list the Career page shows.
+          Bottom rule only: the identity block above already closes with one,
+          and border-y here drew a second line right under it. */}
+      <section className="border-line mt-8 border-b pb-6">
         <p className="kicker">In daily use</p>
         <p className="text-muted mt-2">
           The stack behind my current work as {current.position} at {current.company}.
