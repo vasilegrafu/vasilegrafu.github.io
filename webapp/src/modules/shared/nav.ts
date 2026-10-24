@@ -4,11 +4,14 @@ export interface NavItem {
   icon: string;
 }
 
+// Order is the argument the site makes about itself: what I am working on and
+// thinking about comes first, and the record of where I have been comes after.
+// "Now" rather than "Profile" because the front page is a dated snapshot of
+// current work, not a biography — the biography is on Career.
 export const navItems: NavItem[] = [
-  { href: '/', label: 'Profile', icon: 'lucide:user' },
-  { href: '/career', label: 'Career', icon: 'lucide:briefcase' },
-  { href: '/skills', label: 'Skills', icon: 'lucide:wrench' },
-  { href: '/projects', label: 'Projects', icon: 'lucide:layers' },
+  { href: '/', label: 'Now', icon: 'lucide:sprout' },
   { href: '/articles', label: 'Articles', icon: 'lucide:file-text' },
+  { href: '/projects', label: 'Projects', icon: 'lucide:layers' },
+  { href: '/career', label: 'Career', icon: 'lucide:briefcase' },
   { href: '/contact', label: 'Contact', icon: 'lucide:at-sign' },
 ];

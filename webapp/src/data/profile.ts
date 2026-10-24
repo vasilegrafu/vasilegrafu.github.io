@@ -4,7 +4,7 @@ export const site = {
   // The line under the name in the banner, on every page. Deliberately not
   // the job title: `title` above still carries that, on the Career and Skills
   // pages and in the resume.
-  strapline: 'Pursuing software development',
+  strapline: 'Pursuing ideas',
   // Short form. Feeds the meta/OG description and the resume PDF, where length
   // is constrained — keep it near 160 characters.
   //

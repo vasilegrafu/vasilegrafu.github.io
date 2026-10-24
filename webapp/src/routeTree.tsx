@@ -12,7 +12,6 @@ import { routes, type PageId } from './routes';
 const pages: Record<PageId, LazyExoticComponent<ComponentType>> = {
   index: lazy(() => import('@modules/index/IndexPage')),
   career: lazy(() => import('@modules/career/CareerPage')),
-  skills: lazy(() => import('@modules/skills/SkillsPage')),
   projects: lazy(() => import('@modules/projects/ProjectsPage')),
   articles: lazy(() => import('@modules/articles/ArticlesPage')),
   article: lazy(() => import('@modules/articles/ArticlePage')),

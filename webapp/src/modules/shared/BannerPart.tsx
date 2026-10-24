@@ -17,7 +17,7 @@ export default function BannerPart() {
         <path d="M0 250C600 280 900 100 1200 180V250Z" fill="#000" fillOpacity="0.16" />
       </svg>
       <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        {/* The strapline alone. The name is on the Career and Skills pages, in
+        {/* The strapline alone. The name is on the Career page, in
             the footer and on the resume; repeating it above every page was the
             loudest thing on the screen and said the least. Set at the size the
             name used to be, so the banner keeps its weight, but not in capitals

@@ -1,226 +1,135 @@
 import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
-import { yearsOnly } from '@fx/lib/yearsOnly';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { careerStart, education, experience, leadershipStart, site, yearsSince } from '@data/profile';
+import { careerStart, leadershipStart, site, yearsSince } from '@data/profile';
 
-const current = experience[0];
+// A Now page, not a profile: what I am working on and thinking about this
+// month. The biography lives on the Career page, one click away.
+//
+const companyName = 'nShift';
 
-// The role entries carry the rename in the company name — "nShift (formerly
-// Consignor)" — which belongs in a list of roles but reads as noise in prose,
-// three times on one screen. The Background list below still shows it in full.
-const companyName = current.company.replace(/\s*\([^)]*\)\s*$/, '');
-
-// What I own right now, as a labelled list rather than a card grid: this is
-// the block a recruiter reads to place the role, so it stays dense and factual.
-// The icons are here to make it scannable, not to decorate it.
-const scope = [
+// Two projects, stated at length. A Now page that lists everything is a
+// portfolio wearing a different hat; two things described properly say more
+// about how someone thinks than ten things listed.
+const work = [
   {
-    icon: 'lucide:server',
-    term: 'Systems',
-    detail:
-      'Dozens of services and full-stack applications distributed across AWS, carrying millions of requests a day.',
+    n: '01',
+    kicker: 'Application Builder',
+    title: 'Give the model a shape to follow',
+    icon: 'lucide:hammer',
+    body: [
+      'Vibe coding lets a model invent an application, and it invents a different one every time you ask. The builder takes the invention out of the structure and leaves it only in the subject.',
+      'You hand it a template — an application whose shape is already known and already works — and the agent builds that same shape in another domain. The architecture is given; the domain is the variable. What comes back is predictable, because the only thing the model decided was the part you wanted it to decide.',
+    ],
+    points: [
+      'Templates carry the shape: structure, boundaries, the way the pieces fit.',
+      'The agent follows the shape and changes the domain, not the architecture.',
+      'Predictable output, because the model is choosing far less than it looks.',
+    ],
+    note: 'An article on this is on the way.',
   },
   {
+    n: '02',
+    kicker: 'Product Specs Builder',
+    title: 'Specifications as a graph',
     icon: 'lucide:workflow',
-    term: 'Architecture',
-    detail:
-      'Solution architecture, cloud environments and CI/CD pipelines for the applications the team owns.',
-  },
-  {
-    icon: 'lucide:brain',
-    term: 'AI',
-    detail:
-      'Agentic platform work: LLM orchestration, RAG pipelines and MCP integrations, grounded in company data.',
-  },
-  {
-    icon: 'lucide:users',
-    term: 'Team',
-    detail: `The Webservices Team at ${companyName} — hiring, mentoring, and the engineering standards the team works to.`,
-  },
-  {
-    icon: 'lucide:layers',
-    term: 'Roles',
-    detail:
-      'Software architect, software engineer, AI engineer and engineering manager, concurrently.',
-  },
-  {
-    icon: 'lucide:code-xml',
-    term: 'Stack',
-    detail: 'C# / .NET, Python, SQL Server, PostgreSQL, AWS, TypeScript, React.',
+    body: [
+      'A specification is not a document. It is one problem looked at from several angles at once — the requirements, the components, the screens, a prototype you can click. Each is a different point of view on the same thing.',
+      'The trouble is that they drift. Change a requirement and the screens still describe the old one. The skill I am building holds all of it as a single graph, so a change made in one view propagates to the others instead of quietly leaving them wrong. You write a specification to solve a problem; the graph is what keeps every view of that problem telling the same story.',
+    ],
+    points: [
+      'Requirements, components, screens and prototype as one connected graph.',
+      'Edit one view and the AI carries the change through the rest.',
+      'No silent drift between what was asked for and what was drawn.',
+    ],
+    note: null,
   },
 ];
 
-// Three pieces of work, each stated as scope and result rather than as a claim
-// about me. The Projects page carries the long form.
-const selectedWork = [
-  {
-    icon: 'lucide:bot-message-square',
-    title: 'Conversational AI platform',
-    context: 'nShift',
-    body: 'Domain-specific agents per department, collaborating through an orchestration layer, with a pipeline that keeps their answers grounded in company data.',
-  },
-  {
-    icon: 'lucide:server',
-    title: 'Webservices platform',
-    context: 'Consignor, then nShift',
-    body: 'The core services behind the delivery-management suite: dozens of services on AWS, carrying millions of requests a day.',
-  },
-  {
-    icon: 'lucide:users',
-    title: 'Two teams at once',
-    context: 'Consignor · 2017 – 2022',
-    body: 'Ran the Webservices and Integration teams together for a platform serving more than 10,000 business customers.',
-  },
+// Open questions, stated as questions. These are the invitation: an unfinished
+// thought is far easier to reply to than a finished claim.
+const onMyMind = [
+  'How much of a specification can be checked mechanically, and where does judgement have to stay human?',
+  'What does engineering management look like when the manager still writes a large share of the code?',
+  'Whether MCP holds up as an integration surface once it meets enterprise data.',
+  'What thirteen years of carrier-integration infrastructure already knew that AI tooling keeps rediscovering.',
 ];
 
 export default function IndexPage() {
   return (
     <>
       <PageMetaPart
-        title={`${site.name} — Engineering Manager, Software Architecture & Agentic AI`}
-        description={`Software architecture, cloud and agentic AI at ${companyName}, where I lead the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} leading teams.`}
+        title={`${site.name} — Controlling vibe coding`}
+        description="Two projects: an application builder that holds agents to a known shape, and specifications kept as a graph so every view of a problem stays in step."
       />
 
-      {/* Identity. The banner above already carries the name at full size, so
-          this opens with the role instead — the first thing a recruiter needs
-          in order to place me. No decorative blooms on this page: the sober
-          treatment is the point. */}
-      <section className="pt-2 pb-8 sm:pt-4">
-        <div className="flex flex-wrap items-start justify-between gap-8 lg:flex-nowrap">
-          <div className="max-w-3xl min-w-0">
-            <p className="kicker">Profile</p>
-            <h1 className="title-page mt-2">
-              {current.position} at {companyName}
-            </h1>
-            <p className="text-faint mt-3 text-xs">
-              {site.location} · {yearsSince(careerStart)} years in software ·{' '}
-              {yearsSince(leadershipStart)} years leading teams
-            </p>
-
-            <p className="mt-6">
-              I lead the Webservices Team at {companyName} — the services behind a
-              delivery-management platform that connects retailers, 3PLs and manufacturers to more
-              than 1,000 carriers across some 190 countries.
-            </p>
-            <p className="mt-4">
-              Thirteen of those years were at Consignor, the company {companyName} grew out of, as
-              Technical Lead and then Team Manager. Today the work divides between leadership and
-              hands-on architecture, including the agentic AI platform built on those services.
-            </p>
+      {work.map((w, i) => (
+        // No rule above the first one: with the page opening straight into it,
+        // a top border would draw a line directly under the nav bar.
+        <section
+          key={w.n}
+          className={i === 0 ? 'pt-2 pb-8 sm:pt-4' : 'border-line border-t pt-10 pb-8'}
+        >
+          <div className="flex items-baseline gap-3">
+            <span className="text-faint font-display text-xs tabular-nums">{w.n}</span>
+            <p className="kicker">{w.kicker}</p>
           </div>
-          {/* Monogram: a solid gradient disc with the initials knocked out in
-              the accent-ink colour, so it reads as a mark rather than a
-              placeholder for a photo. */}
-          <div className="hidden shrink-0 items-center justify-center lg:flex" aria-hidden="true">
-            <div className="from-grad-a to-grad-b text-accent-ink shadow-accent-solid/30 ring-accent-line flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br shadow-xl ring-4">
-              <span className="font-display text-5xl font-bold tracking-tight">VG</span>
-            </div>
+          <h2 className="title-section mt-3 flex items-start gap-2.5">
+            <IconPart name={w.icon} className="text-accent mt-1 h-5 w-5 shrink-0" />
+            {w.title}
+          </h2>
+          <div className="mt-4 max-w-3xl space-y-3">
+            {w.body.map((p) => (
+              <p key={p.slice(0, 24)} className="text-muted">
+                {p}
+              </p>
+            ))}
           </div>
-        </div>
-        {/* One primary action — the resume — and two quiet ones, rather than
-            three competing gradient buttons. */}
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
-            <IconPart name="lucide:download" className="h-3.5 w-3.5" />
-            Download resume
-            <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
-          </a>
-          <Link to="/career" className="btn btn-ghost">
-            <IconPart name="lucide:briefcase" className="h-3.5 w-3.5" />
-            Full career
-          </Link>
-          <Link to="/contact" className="btn btn-ghost">
-            <IconPart name="lucide:at-sign" className="h-3.5 w-3.5" />
-            Contact
-          </Link>
-        </div>
-      </section>
-
-      {/* Sections 2–4 sit under a hairline so the page reads as bands rather
-          than one column. Rules, not cards: cards were the landing-page look. */}
-      <section className="border-line border-t pt-10 pb-8">
-        <p className="kicker">Current scope</p>
-        <dl className="divide-line border-line mt-6 divide-y border-y">
-          {scope.map((s) => (
-            <div key={s.term} className="grid gap-1 py-4 sm:grid-cols-[10rem_1fr] sm:gap-6">
-              <dt className="title-card flex items-center gap-2">
-                <IconPart name={s.icon} className="text-accent h-4 w-4 shrink-0" />
-                {s.term}
-              </dt>
-              <dd className="text-muted">{s.detail}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+          <ul className="mt-5 space-y-2">
+            {w.points.map((pt) => (
+              <li key={pt} className="flex gap-2.5">
+                <IconPart name="lucide:check" className="text-accent mt-1 h-4 w-4 shrink-0" />
+                <span className="text-muted">{pt}</span>
+              </li>
+            ))}
+          </ul>
+          {w.note && (
+            <p className="mt-5">
+              <span className="badge">{w.note}</span>
+            </p>
+          )}
+        </section>
+      ))}
 
       <section className="border-line border-t pt-10 pb-8">
-        <p className="kicker">Selected work</p>
-        <ol className="mt-6 space-y-6">
-          {selectedWork.map((w) => (
-            <li key={w.title} className="border-line-strong border-s-2 ps-4">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h2 className="title-item flex items-center gap-2">
-                  <IconPart name={w.icon} className="text-accent h-4.5 w-4.5 shrink-0" />
-                  {w.title}
-                </h2>
-                <span className="text-faint text-xs">{w.context}</span>
-              </div>
-              <p className="text-muted mt-2 max-w-3xl">{w.body}</p>
+        <p className="kicker">Also on my mind</p>
+        <ul className="mt-6 space-y-4">
+          {onMyMind.map((q) => (
+            <li key={q} className="border-line-strong flex gap-3 border-s-2 ps-4">
+              <IconPart name="lucide:lightbulb" className="text-accent mt-1 h-4 w-4 shrink-0" />
+              <span className="text-muted">{q}</span>
             </li>
           ))}
-        </ol>
+        </ul>
         <p className="text-muted mt-6">
-          Longer write-ups on the{' '}
-          <Link to="/projects" className="link-accent">
-            Projects
-          </Link>{' '}
-          page.
+          If you are working on any of this, I’d like to hear from you —{' '}
+          <Link to="/contact" className="link-accent">
+            say hello
+          </Link>
+          .
         </p>
       </section>
 
-      {/* Roles and degrees straight from the profile data, so this list cannot
-          drift from the Career page. */}
-      <section className="border-line border-t pt-10 pb-8">
-        <p className="kicker">Background</p>
-        <ul className="mt-6 space-y-3">
-          {experience.map((r) => (
-            <li
-              key={`${r.company}-${r.position}`}
-              className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]"
-            >
-              <span className="text-faint text-xs whitespace-nowrap tabular-nums sm:mt-1">{yearsOnly(r.period)}</span>
-              <span className="flex items-start gap-2">
-                <IconPart name={r.icon} className="text-accent mt-1 h-4 w-4 shrink-0" />
-                <span>
-                  <span className="text-ink font-medium">{r.position}</span>
-                  <span className="text-muted"> · {r.company}</span>
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      </section>
-
-      <section className="border-line border-t pt-10 pb-8">
-        <p className="kicker">Education</p>
-        <ul className="mt-6 space-y-3">
-          {education.map((e) => (
-            <li key={e.degree} className="grid gap-x-6 gap-y-1 sm:grid-cols-[8rem_1fr]">
-              <span className="text-faint text-xs whitespace-nowrap tabular-nums sm:mt-1">{yearsOnly(e.period)}</span>
-              {/* Degree and school on their own lines — the full degree titles
-                  are too long to sit on one. */}
-              <span>
-                <span className="text-ink block font-medium">{e.degree}</span>
-                <span className="text-muted block">{e.school}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <p className="text-muted mt-8">
-          Role by role, with what each chapter added, on the{' '}
+      {/* One quiet factual line. The home page carries the most inbound weight
+          of any page on the site; stripping the identity out of it entirely
+          would throw that away. The full story is on the Career page. */}
+      <section className="border-line border-t pt-6 pb-8">
+        <p className="text-faint text-xs">
+          {site.name} · Engineering Manager at {companyName} · {yearsSince(careerStart)} years in
+          software · {yearsSince(leadershipStart)} years leading teams · {site.location}
+        </p>
+        <p className="text-muted mt-3">
+          The record is on the{' '}
           <Link to="/career" className="link-accent">
             Career
           </Link>{' '}

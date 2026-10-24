@@ -5,8 +5,7 @@
 // does the work instead — it marks this line as the present tense, against the
 // roles below it that run back to 2005.
 //
-// Career and Skills both render this, so the headline cannot say one thing on
-// one page and something else on the other.
+// Rendered by the Career page, which is the only page that states the title.
 import { site } from '@data/profile';
 
 export default function IdentityPart() {

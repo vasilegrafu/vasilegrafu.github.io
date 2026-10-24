@@ -1,11 +1,28 @@
+import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import SegmentBarPart from '@fx/components/SegmentBarPart';
 import StatTilePart from '@fx/components/StatTilePart';
+import { sharesToken } from '@fx/lib/tokens';
 import { yearsOnly } from '@fx/lib/yearsOnly';
 import IdentityPart from '@modules/shared/IdentityPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { careerStart, education, experience, leadershipStart, yearsSince } from '@data/profile';
+import {
+  careerStart,
+  education,
+  experience,
+  leadershipStart,
+  projects,
+  skills,
+  yearsSince,
+} from '@data/profile';
 import RoleItemPart from './RoleItemPart';
+
+const current = experience[0];
+
+// Projects whose tags overlap a skill group's items, e.g. "RAG" or "C# / .NET".
+// Derived rather than declared, so a project shows up here on its own once the
+// projects list has entries again.
+const relatedProjects = (items: string[]) => projects.filter((p) => sharesToken(items, p.tags));
 
 const stats = [
   { value: `${yearsSince(careerStart)}+`, label: 'years in software' },
@@ -74,6 +91,65 @@ export default function CareerPage() {
           </li>
         ))}
       </ul>
+
+      {/* The stack, from the Skills page that used to hold it. It belongs after
+          the roles: the roles say where the work was done, these say what it was
+          done with. The page's own “what each role added” timeline is not
+          repeated — every role above already lists its own stack. */}
+      <section className="border-line mt-14 border-t pt-10">
+        <p className="kicker">Skills in daily use</p>
+        <p className="text-muted mt-2 text-xs">
+          The stack behind my current work as {current.position} at {current.company}.
+        </p>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {current.tech?.map((t) => (
+            <li key={t} className="chip">
+              <IconPart name="lucide:check" className="text-accent h-4 w-4 shrink-0" />
+              {t}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-10">
+        <p className="kicker">Skills by area</p>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {skills.map((cat) => {
+            const related = relatedProjects(cat.items);
+            return (
+              <section key={cat.group} className="card card-lift flex flex-col p-5">
+                <div className="flex items-center gap-3">
+                  <div className="icon-tile">
+                    <IconPart name={cat.icon} className="h-5 w-5" />
+                  </div>
+                  <h3 className="title-card">{cat.group}</h3>
+                </div>
+                <p className="text-muted mt-2">{cat.blurb}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {cat.items.map((item) => (
+                    <li key={item} className="chip">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {related.length > 0 && (
+                  <p className="text-faint mt-auto pt-4">
+                    Applied in{' '}
+                    {related.map((pr, i) => (
+                      <span key={pr.title}>
+                        {i > 0 && ' · '}
+                        <Link to="/projects" className="link-accent">
+                          {pr.title}
+                        </Link>
+                      </span>
+                    ))}
+                  </p>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }

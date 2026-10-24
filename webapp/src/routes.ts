@@ -7,7 +7,6 @@ import { articlesByDate } from './modules/articles/registry.ts';
 export type PageId =
   | 'index'
   | 'career'
-  | 'skills'
   | 'projects'
   | 'articles'
   | 'article'
@@ -28,7 +27,6 @@ export interface RouteDef {
 export const routes: RouteDef[] = [
   { path: '/', page: 'index', sitemap: true },
   { path: '/career', page: 'career', sitemap: true },
-  { path: '/skills', page: 'skills', sitemap: true },
   { path: '/projects', page: 'projects', sitemap: true },
   { path: '/articles', page: 'articles', sitemap: true },
   { path: '/articles/:id', page: 'article', sitemap: true },
