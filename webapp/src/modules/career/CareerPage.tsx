@@ -31,7 +31,14 @@ export default function CareerPage() {
 
       <IdentityPart />
 
-      <div className="flex flex-wrap items-start justify-end gap-4">
+      {/* Two ways to the same resume: read it here, or take the PDF away. The
+          print view renders bare — no banner, no nav, no way back — so it opens
+          in a tab of its own rather than stranding the reader on a dead end. */}
+      <div className="flex flex-wrap items-start justify-end gap-3">
+        <a href="/resume-print" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+          <IconPart name="lucide:file-text" className="h-3.5 w-3.5" />
+          View resume
+        </a>
         <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
           <IconPart name="lucide:download" className="h-3.5 w-3.5" />
           Download resume
