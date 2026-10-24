@@ -32,6 +32,7 @@ HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent.parent                       # .claude/skills/rich-content
 THEMES = SKILL / "themes"
 FONTS = THEMES / "fonts.json"
+FALLBACKS = THEMES / "fallbacks.json"            # what tools.webfonts measures: not a style either
 DEFAULT = "technical"
 MODES = ("light", "dark")
 PROJECT_FILE = "rich-content.json"
@@ -113,7 +114,7 @@ class Theme:
 
 def styles() -> list[str]:
     """The styles the skill carries."""
-    return sorted(p.stem for p in THEMES.glob("*.json") if p != FONTS)
+    return sorted(p.stem for p in THEMES.glob("*.json") if p not in (FONTS, FALLBACKS))
 
 
 def names() -> list[str]:

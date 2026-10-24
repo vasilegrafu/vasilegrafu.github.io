@@ -1,0 +1,134 @@
+{
+  "_comment": "Written by `python -m tools.webfonts` (tools/webfonts.py says how): per family, its x-height per em, and for each system font fonts.json puts behind it, the size-adjust that makes its average letter as wide as the family's and the ascent, descent and line-gap overrides that make its lines as tall, in per cent.",
+  "Geist": {
+    "x_height": 0.53,
+    "fallbacks": {
+      "Segoe UI": {
+        "size_adjust": 105.17,
+        "ascent": 95.56,
+        "descent": 28.05,
+        "line_gap": 0.0
+      },
+      "Arial": {
+        "size_adjust": 105.52,
+        "ascent": 95.24,
+        "descent": 27.96,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "Geist Mono": {
+    "x_height": 0.53,
+    "fallbacks": {
+      "Consolas": {
+        "size_adjust": 109.13,
+        "ascent": 92.09,
+        "descent": 27.03,
+        "line_gap": 0.0
+      },
+      "Menlo": {
+        "size_adjust": 99.66,
+        "ascent": 100.84,
+        "descent": 29.6,
+        "line_gap": 0.0
+      },
+      "Courier New": {
+        "size_adjust": 99.98,
+        "ascent": 100.52,
+        "descent": 29.5,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "Public Sans": {
+    "x_height": 0.517,
+    "fallbacks": {
+      "Segoe UI": {
+        "size_adjust": 104.88,
+        "ascent": 90.58,
+        "descent": 21.45,
+        "line_gap": 0.0
+      },
+      "Arial": {
+        "size_adjust": 105.23,
+        "ascent": 90.28,
+        "descent": 21.38,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "Crimson Pro": {
+    "x_height": 0.4199,
+    "fallbacks": {
+      "Georgia": {
+        "size_adjust": 100.0,
+        "ascent": 102.78,
+        "descent": 24.63,
+        "line_gap": 0.0
+      },
+      "Times New Roman": {
+        "size_adjust": 100.0,
+        "ascent": 95.49,
+        "descent": 22.88,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "EB Garamond": {
+    "x_height": 0.4,
+    "fallbacks": {
+      "Georgia": {
+        "size_adjust": 100.0,
+        "ascent": 121.2,
+        "descent": 35.87,
+        "line_gap": 0.0
+      },
+      "Times New Roman": {
+        "size_adjust": 100.0,
+        "ascent": 112.6,
+        "descent": 33.32,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "Atkinson Hyperlegible Next": {
+    "x_height": 0.496,
+    "fallbacks": {
+      "Verdana": {
+        "size_adjust": 86.79,
+        "ascent": 113.37,
+        "descent": 36.41,
+        "line_gap": 0.0
+      },
+      "DejaVu Sans": {
+        "size_adjust": 87.16,
+        "ascent": 112.9,
+        "descent": 36.26,
+        "line_gap": 0.0
+      }
+    }
+  },
+  "Atkinson Hyperlegible Mono": {
+    "x_height": 0.496,
+    "fallbacks": {
+      "Consolas": {
+        "size_adjust": 114.95,
+        "ascent": 85.6,
+        "descent": 27.49,
+        "line_gap": 0.0
+      },
+      "Menlo": {
+        "size_adjust": 104.97,
+        "ascent": 93.74,
+        "descent": 30.1,
+        "line_gap": 0.0
+      },
+      "Courier New": {
+        "size_adjust": 105.32,
+        "ascent": 93.43,
+        "descent": 30.0,
+        "line_gap": 0.0
+      }
+    }
+  }
+}

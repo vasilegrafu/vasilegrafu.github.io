@@ -1,6 +1,6 @@
 """An HTML page with several kinds of object: the orders service's week, with stat tiles, an
 architecture diagram, two charts side by side, a sequence diagram, a callout and a table. One
-self-contained file, report.html, with the figures inlined and the fonts embedded:
+file, report.html, with the figures inlined and the fonts linked:
 
     .venv\\Scripts\\python.exe .claude\\skills\\rich-content\\examples\\html\\build.py
 """

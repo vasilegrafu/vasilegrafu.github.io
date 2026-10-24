@@ -368,17 +368,22 @@ site = Site("Using the product", "docs/manual")           # the folder it writes
 home = site.page("index", "Welcome", lead="…")             # the first page is the home
 one = site.page("01-start", "Start here", eyebrow="Chapter 1")
 one.h2("…"); one.chat(…); one.annotated(…)                 # each is a Page, with every block above
-site.save(footer="…")                                      # every page, and fonts.css
+site.save(footer="…")                                      # every page
 ```
 
-Each page carries the site's navigation -- the home page, then every other page numbered, the one being read open on its own sections, folded into a button on a narrow screen -- and a link to the page before and after it. The fonts are written once, into `fonts.css` beside the pages, cut to the characters every page uses, and each page links it: a site of twelve pages carries its fonts once, and the browser keeps them between pages. The folder is the deliverable; a page taken out of it alone shows in the reader's own fonts.
+Each page carries the site's navigation -- the home page, then every other page numbered, the one being read open on its own sections, folded into a button on a narrow screen -- and a link to the page before and after it. Each page links its fonts as a single page does, so the browser fetches them once for the whole site. The folder is the deliverable.
 
-The file is self-contained: figures inline, the theme as CSS variables, the
-fonts embedded as WOFF cut down to the characters the page uses (a typical
-page is about 400 KB). The OFL counts a cut-down font as a modified one; the
-kit's families reserve no name, so each is embedded under its own, and each cut
-keeps its copyright and licence records (name IDs 0, 13, 14), as the licence
-asks of every copy.
+The file is one file: figures inline, the theme as CSS variables, and the
+fonts linked from Google Fonts (`display=swap`, so the text shows at once). Behind
+each family stand similar system fonts, declared as fallback faces (`src: local(…)`)
+and sized -- size-adjust, ascent-, descent- and line-gap-override -- so their average
+letter is as wide as the family's and their lines as tall: offline, or with Google
+Fonts blocked, the page is set in them and the diagrams measured in the web font keep
+their room (tools.webfonts; `python -m tools.webfonts` measures them again into
+`themes/fallbacks.json`). An inline SVG, whose text names its family alone, gets the
+same fallbacks from a rule of the page. A family set larger than its size (fonts.json
+`scale`) is enlarged by font-size-adjust. A page carries no font; only a PDF embeds
+its fonts.
 
 ## `python -m tools.render`
 

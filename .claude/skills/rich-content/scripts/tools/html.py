@@ -2,8 +2,8 @@
 html — a self-contained HTML page in the same look as the diagrams, charts and PDFs.
 
 Diagrams and charts are inlined as SVG, the theme becomes CSS variables, and the fonts are
-embedded, cut down to the characters the page uses: one file that opens the same anywhere,
-offline, with nothing beside it.
+linked from Google Fonts, with system fonts behind them sized to take the same room (tools.webfonts):
+one file with nothing beside it, which offline is set in those system fonts.
 
     from tools.html import Page
     page = Page("Orders service", "Week 42")
@@ -24,7 +24,7 @@ offline, with nothing beside it.
 
     site = Site("The manual", "docs/manual")                          # pages that share their navigation:
     page = site.page("index", "Welcome")                              # each a Page; site.save() writes them
-    site.save()                                                       # all, with one fonts.css they share
+    site.save()                                                       # all of them
     page.save(__file__)                               # -> <name>.html beside the script
 
     Page("Title", contents=True)                      # a contents bar of the h2 headings
@@ -33,9 +33,7 @@ A page with steps or contents carries one small script of its own: the steps tur
 under Previous and Next, the contents mark the section being read. Without it -- printed, or with
 scripts off -- every step stands one under the other and the contents are a plain list of links.
 
-A font cut down is, to its licence (the SIL OFL), a modified font. The kit's families reserve no
-name and claim no trademark, so each is embedded under its own name; and each cut keeps its
-copyright and licence records (name IDs 0, 13 and 14), which the OFL asks every copy to carry.
+A page carries no font: only a PDF embeds its fonts (tools.render).
 """
 from __future__ import annotations
 
@@ -46,8 +44,9 @@ from html import escape
 from pathlib import Path
 from typing import Any
 
+from . import webfonts
 from .svgkit import Canvas, out_path
-from .theme import Theme, current, families, font_file
+from .theme import Theme, current, families
 
 
 def tones(th: Theme) -> dict[str, tuple[str, str]]:
@@ -60,40 +59,32 @@ def tones(th: Theme) -> dict[str, tuple[str, str]]:
 # ----------------------------------------------------------------------------------------------
 # Fonts
 # ----------------------------------------------------------------------------------------------
-def _woff(path: Path, codepoints: set[int]) -> str:
-    import logging
-
-    from fontTools import subset
-    from fontTools.ttLib import TTFont
-    logging.getLogger("fontTools.subset").setLevel(logging.ERROR)   # not "meta NOT subset" for each face
-    font = TTFont(str(path), recalcTimestamp=False)  # no time in it: a rebuilt page is the same file
-    options = subset.Options()
-    options.name_IDs = [0, 1, 2, 3, 4, 5, 6, 13, 14]   # the subsetter's default, and the licence and its URL
-    sub = subset.Subsetter(options)
-    sub.populate(unicodes=codepoints)
-    sub.subset(font)
-    font.flavor = "woff"                            # zlib-compressed; woff2 would need brotli
-    buf = io.BytesIO()
-    font.save(buf)
-    return base64.b64encode(buf.getvalue()).decode("ascii")
-
-
-def font_faces(text: str, fams: list[str]) -> str:
-    """@font-face rules with every weight of each family embedded, holding only the characters in
-    `text` (and printable ASCII, so a later edit by hand still renders)."""
-    cps = {ord(ch) for ch in text if ord(ch) > 0x7E} | set(range(0x20, 0x7F))
+def font_head(fams: list[str]) -> tuple[str, str]:
+    """What a page's <head> needs for its fonts: the <link> tags, and CSS -- the fallback faces, and
+    the fallbacks for an inline SVG, whose text names its family alone (font-family="Geist", or
+    matplotlib's style="… font-family: 'Geist'; …"), which an author rule outranks."""
+    links, faces = webfonts.head(fams)
     rules = []
-    for family in fams:
-        scale = families()[family].get("scale", 1)
-        adjust = f"size-adjust:{scale * 100:g}%;" if scale != 1 else ""
-        for key in families()[family]["files"]:
-            italic = key.endswith("i")
-            weight = int(key.rstrip("i"))
-            data = _woff(font_file(family, weight, italic), cps)
-            rules.append(f'@font-face{{font-family:"{family}";font-weight:{weight};'
-                         f'font-style:{"italic" if italic else "normal"};'
-                         f'font-display:block;{adjust}src:url(data:font/woff;base64,{data}) format("woff")}}')
-    return "\n".join(rules)
+    for fam in sorted(fams, key=len, reverse=True):
+        sel = (f'svg [font-family="{fam}"],svg [style*="font-family: \'{fam}\';"],'
+               f'svg [style$="font-family: \'{fam}\'"]')
+        rules.append(f"{sel}{{font-family:{webfonts.stack(fam)}!important}}")
+    return links, faces + "\n" + "\n".join(rules) + "\n"
+
+
+_ROLE_FONT = re.compile(r'(?<![-\w])(font(?:-family)?\s*:[^;{}"]*var\(--(text|head|label|mono)\))')
+
+
+def sized(css: str, th: Theme) -> str:
+    """The CSS with font-size-adjust after each rule that sets a role's family, where the theme has a
+    family set larger than its size (fonts.json `scale`): it follows the family as size-adjust did when
+    the fonts were embedded, and `font` resets it, so it is said after each. Inline SVG is set as drawn."""
+    adj = {"text": webfonts.adjust(th.text), "head": webfonts.adjust(th.heading),
+           "label": webfonts.adjust(th.label), "mono": webfonts.adjust(th.mono)}
+    if all(v == "none" for v in adj.values()):
+        return css
+    css = _ROLE_FONT.sub(lambda m: f"{m.group(1)};font-size-adjust:{adj[m.group(2)]}", css)
+    return css + "\nsvg{font-size-adjust:none}\n"
 
 
 _FONT_DECL = re.compile(r'(font-family\s*=\s*"[^"]*"|font-family\s*:\s*[^;"]*|font\s*:\s*[^;"]*)')
@@ -374,13 +365,9 @@ if(links.length&&"IntersectionObserver" in window){
 })();
 """
 
-_FALLBACK = {"serif": "Georgia,serif", "sans-serif": "system-ui,sans-serif", "monospace": "ui-monospace,monospace"}
-
-
 def stylesheet(th: Theme) -> str:
     def stack(role: str) -> str:
-        fam = th.fonts[role]
-        return f'"{fam}",{_FALLBACK[families()[fam]["generic"]]}'
+        return webfonts.stack(th.fonts[role])
     serif_text = families()[th.text]["generic"] == "serif"
     return CSS % {
         **th.colour, **{k: th.signal[k] for k in ("good", "warn", "bad", "info")},
@@ -696,9 +683,8 @@ class Page:
                 extra_css += css
         return body, extra_css, script_wanted
 
-    def render(self, footer: str | None = None, fonts_href: str | None = None) -> str:
-        """The whole page. With `fonts_href` the page links that stylesheet for its fonts, as the pages of a
-        site share one, in place of carrying them itself."""
+    def render(self, footer: str | None = None) -> str:
+        """The whole page, its fonts linked (font_head)."""
         th = self.th
         body, extra_css, script_wanted = self.body(footer)
         script, head_script = "", ""
@@ -713,13 +699,12 @@ class Page:
         sig = th.signal
         tone_css += (f":root{{--good:{sig['good']};--good-fill:{sig['good_fill']};--bad:{sig['bad']};"
                      f"--bad-fill:{sig['bad_fill']}}}") if self.diffed else ""
-        fonts = (f'<link rel="stylesheet" href="{escape(fonts_href)}">' if fonts_href else "")
-        faces = "" if fonts_href else font_faces(body, fams) + "\n"
+        links, faces = font_head(fams)
         title = f"{self.title} -- {self.site.title}" if self.site and self.slug != self.site.home_slug else self.title
         return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\">"
                 '<meta name="viewport" content="width=device-width,initial-scale=1">'
-                f"<title>{escape(title)}</title>{head_script}{fonts}<style>{faces}{stylesheet(th)}"
-                f"{tone_css}{extra_css}</style></head><body>{body}{script}</body></html>\n")
+                f"<title>{escape(title)}</title>{head_script}{links}<style>{faces}"
+                f"{sized(stylesheet(th) + tone_css + extra_css, th)}</style></head><body>{body}{script}</body></html>\n")
 
     def save(self, target: str | Path, footer: str | None = None) -> Path:
         p = out_path(target, ".html")
@@ -730,8 +715,7 @@ class Page:
 class Site:
     """Pages that belong together, written as a folder: each a Page with the site's navigation -- every
     chapter by its title, the one being read open on its own sections -- a link to the one before and after
-    it, and one stylesheet of fonts, fonts.css, which every page links, so that the fonts are carried once
-    for the whole site and cached by the browser, cut down to the characters every page uses.
+    it, each linking its fonts as a single page does, so the browser fetches them once for the whole site.
 
         site = Site("Using the skill", "docs/manual")
         home = site.page("index", "Welcome", lead="…")    # the first page added is the home
@@ -782,17 +766,12 @@ class Site:
         return f'<nav class="pager" aria-label="Pages">{links}</nav>'
 
     def save(self, footer: str | None = None) -> list[Path]:
-        """Every page, and fonts.css with every face they use, cut to the characters of all of them."""
-        th = self.theme or current()
+        """Every page."""
         self.folder.mkdir(parents=True, exist_ok=True)
-        bodies = [page.body(footer)[0] for page in self.pages]
-        text = "".join(bodies)
-        fams = list(dict.fromkeys(th.families_used() + families_in(text)))
-        (self.folder / "fonts.css").write_text(font_faces(text, fams) + "\n", encoding="utf-8")
         written = []
         for page in self.pages:
             out = self.folder / f"{page.slug}.html"
-            out.write_text(page.render(footer, fonts_href="fonts.css"), encoding="utf-8")
+            out.write_text(page.render(footer), encoding="utf-8")
             written.append(out)
         return written
 
@@ -1024,11 +1003,12 @@ class Deck:
                     .replace("{heading_weight}", str(th.fonts.get("heading_weight", 700))))
         script = (SCRIPT if any(p.stepped for p in pages) else "") + DECK_SCRIPT
         fams = list(dict.fromkeys(th.families_used() + families_in(body)))
+        links, faces = font_head(fams)
         return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\">"
                 '<meta name="viewport" content="width=device-width,initial-scale=1">'
                 f"<title>{escape(self.title)}</title>"
-                '<script>document.documentElement.classList.add("js")</script>'
-                f"<style>{font_faces(body, fams)}\n{stylesheet(th)}{tone_css}{extra}{deck_css}</style></head>"
+                f'<script>document.documentElement.classList.add("js")</script>{links}'
+                f"<style>{faces}{sized(stylesheet(th) + tone_css + extra + deck_css, th)}</style></head>"
                 f"<body>{body}<script>{script}</script></body></html>\n")
 
     def save(self, target: str | Path) -> Path:
@@ -1037,4 +1017,4 @@ class Deck:
         return p
 
 
-__all__ = ["Page", "Site", "Deck", "Slide", "inline_svg", "svg_markup", "font_faces", "stylesheet", "tones"]
+__all__ = ["Page", "Site", "Deck", "Slide", "inline_svg", "svg_markup", "font_head", "sized", "stylesheet", "tones"]

@@ -172,8 +172,9 @@ reader turns through one step at a time. A manual shows what someone says and
 what comes back with `chat`, and a screenshot with `image`, as WebP cut to the
 width it is shown at -- or `annotated`, with numbered markers and their
 legend; `diff` shows a file before and after a change. Several pages that
-belong together, a manual's chapters, are a `Site`: one navigation, one
-fonts.css they share.
+belong together, a manual's chapters, are a `Site`: one navigation they
+share. A page links its fonts from Google Fonts, with similar system fonts
+behind them sized to take the same room; only a PDF embeds its fonts.
 
 **From data.** Read the file with pandas (`read_csv`, `read_excel`), keep the
 data file beside the build script as its source, and chart with seaborn after
@@ -246,6 +247,7 @@ it writes; previews and temporary files are never committed.
 | `scripts/tools/code.py` | code highlighted in the theme's colours, for pages and PDFs |
 | `scripts/tools/chartstyle.py` | charts: `plt` styled, `C` and `C_SERIES` colours, `sequential`, `diverging`, `save_chart` |
 | `scripts/tools/html.py` | HTML: `Page` |
+| `scripts/tools/webfonts.py` | how a page links its fonts, and the system fonts behind them (`python -m tools.webfonts` measures them into `themes/fallbacks.json`) |
 | `scripts/tools/render.py` | `python -m tools.render pdf / md / png / sheet / check` |
 | `scripts/tools/check.py` | the overlap check behind all of them |
 | `scripts/tools/theme.py` | which theme: `use_theme`, `current`, `load`; contrast and colour-vision checks |

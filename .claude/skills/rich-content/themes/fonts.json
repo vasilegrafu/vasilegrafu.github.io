@@ -1,8 +1,9 @@
 {
-  "_comment": "Every font family a theme may name: its files under <venv>/share/fonts/<folder>/ by weight ('400i' is italic), its licence, its CSS generic family (the fallback a page names after it), its `scale` when it is set larger than its nominal size (a face with a small x-height, so its text reads as large as the others'), and where setup.py downloads it from -- a pinned release `url`, from which only files matching `take` are copied, or a pinned `raw` folder each named file is fetched from. Only OFL-1.1 families whose licence reserves no name and whose files claim no trademark belong here: free to use, embed, cut down and share under their own names, commercially too. The selftest reads each file to hold that.",
+  "_comment": "Every font family a theme may name: its files under <venv>/share/fonts/<folder>/ by weight ('400i' is italic), its licence, its CSS generic family (the fallback a page names last), the system fonts a page falls back to when Google Fonts does not answer, in order (`fallbacks`, keys of LOCALS in tools/webfonts.py, measured into fallbacks.json), its `scale` when it is set larger than its nominal size (a face with a small x-height, so its text reads as large as the others': size-adjust in a PDF, font-size-adjust on a page), and where setup.py downloads it from -- a pinned release `url`, from which only files matching `take` are copied, or a pinned `raw` folder each named file is fetched from. Only OFL-1.1 families whose licence reserves no name and whose files claim no trademark belong here: free to use, embed, cut down and share under their own names, commercially too. The selftest reads each file to hold that.",
 
   "Geist": {
     "folder": "geist", "licence": "OFL-1.1", "generic": "sans-serif",
+    "fallbacks": ["Segoe UI", "Arial"],
     "url": "https://github.com/vercel/geist-font/releases/download/v1.7.2/geist-font-v1.7.2.zip",
     "take": "^Geist-(Regular|Medium|SemiBold|Bold|Italic)\\.otf$",
     "files": { "400": "Geist-Regular.otf", "500": "Geist-Medium.otf", "600": "Geist-SemiBold.otf",
@@ -10,6 +11,7 @@
   },
   "Geist Mono": {
     "folder": "geist-mono", "licence": "OFL-1.1", "generic": "monospace",
+    "fallbacks": ["Consolas", "Menlo", "Courier New"],
     "url": "https://github.com/vercel/geist-font/releases/download/v1.7.2/geist-font-v1.7.2.zip",
     "take": "^GeistMono-(Regular|Medium|SemiBold|Bold)\\.otf$",
     "files": { "400": "GeistMono-Regular.otf", "500": "GeistMono-Medium.otf", "600": "GeistMono-SemiBold.otf",
@@ -17,6 +19,7 @@
   },
   "Public Sans": {
     "folder": "public-sans", "licence": "OFL-1.1", "generic": "sans-serif",
+    "fallbacks": ["Segoe UI", "Arial"],
     "url": "https://github.com/uswds/public-sans/releases/download/v2.001/public-sans-v2.001.zip",
     "take": "^PublicSans-(Regular|Medium|SemiBold|Bold|Italic)\\.otf$",
     "files": { "400": "PublicSans-Regular.otf", "500": "PublicSans-Medium.otf", "600": "PublicSans-SemiBold.otf",
@@ -24,18 +27,21 @@
   },
   "Crimson Pro": {
     "folder": "crimson-pro", "licence": "OFL-1.1", "generic": "serif", "scale": 1.12,
+    "fallbacks": ["Georgia", "Times New Roman"],
     "raw": "https://raw.githubusercontent.com/Fonthausen/CrimsonPro/475ca6a0469ba2bd9c2a3bbf038957099392c04d/fonts/otf/",
     "files": { "400": "CrimsonPro-Regular.otf", "500": "CrimsonPro-Medium.otf", "600": "CrimsonPro-SemiBold.otf",
                "700": "CrimsonPro-Bold.otf", "400i": "CrimsonPro-Italic.otf" }
   },
   "EB Garamond": {
     "folder": "eb-garamond", "licence": "OFL-1.1", "generic": "serif", "scale": 1.15,
+    "fallbacks": ["Georgia", "Times New Roman"],
     "raw": "https://raw.githubusercontent.com/octaviopardo/EBGaramond12/106a4a6d377987459ae5e68673a4570f13b957fb/fonts/otf/",
     "files": { "400": "EBGaramond-Regular.otf", "500": "EBGaramond-Medium.otf", "600": "EBGaramond-SemiBold.otf",
                "700": "EBGaramond-Bold.otf", "400i": "EBGaramond-Italic.otf" }
   },
   "Atkinson Hyperlegible Next": {
     "folder": "atkinson-hyperlegible-next", "licence": "OFL-1.1", "generic": "sans-serif",
+    "fallbacks": ["Verdana", "DejaVu Sans"],
     "raw": "https://raw.githubusercontent.com/googlefonts/atkinson-hyperlegible-next/7925f50f649b3813257faf2f4c0b381011f434f1/fonts/otf/",
     "files": { "400": "AtkinsonHyperlegibleNext-Regular.otf", "500": "AtkinsonHyperlegibleNext-Medium.otf",
                "600": "AtkinsonHyperlegibleNext-SemiBold.otf", "700": "AtkinsonHyperlegibleNext-Bold.otf",
@@ -43,6 +49,7 @@
   },
   "Atkinson Hyperlegible Mono": {
     "folder": "atkinson-hyperlegible-mono", "licence": "OFL-1.1", "generic": "monospace",
+    "fallbacks": ["Consolas", "Menlo", "Courier New"],
     "raw": "https://raw.githubusercontent.com/googlefonts/atkinson-hyperlegible-next-mono/154d50362016cc3e873eb21d242cd0772384c8f9/fonts/otf/",
     "files": { "400": "AtkinsonHyperlegibleMono-Regular.otf", "500": "AtkinsonHyperlegibleMono-Medium.otf",
                "600": "AtkinsonHyperlegibleMono-SemiBold.otf", "700": "AtkinsonHyperlegibleMono-Bold.otf" }

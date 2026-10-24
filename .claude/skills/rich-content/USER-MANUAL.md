@@ -36,7 +36,8 @@ Back comes a folder: `build.py`, the `.typ` source, each figure, and the PDF.
 
 > a weekly ops report as one HTML page: KPI tiles, the architecture, two charts, the endpoint table
 
-Back comes one self-contained `.html` file (figures inline, fonts embedded),
+Back comes one `.html` file (figures inline, fonts linked from Google Fonts,
+with similar system fonts behind them for when that link does not answer),
 looked at in a browser at desktop and phone width.
 
 **Fix one.** "The labels overlap in latency.svg", "make this chart match the
@@ -167,8 +168,8 @@ kind and part of the selftest:
 
 What they write sits beside them and is committed, so it can be opened
 without running anything. A rebuild writes it byte for byte the same unless
-what it shows has changed -- charts get the same ids every run, PDFs and
-embedded fonts carry no time -- so the outputs change in git only when the
+what it shows has changed -- charts get the same ids every run, PDFs carry
+no time -- so the outputs change in git only when the
 examples do. Only previews (`_preview/`) are ignored.
 
 ## Extending the kit

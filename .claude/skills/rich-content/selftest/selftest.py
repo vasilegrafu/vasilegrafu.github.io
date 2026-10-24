@@ -10,12 +10,13 @@ selftest — prove the rich-content kit, from the venv that will use it:
               table from a CSV (pandas, seaborn), and a Markdown handout as a PDF
               and a page (cmarker, markdown-it-py) with highlighted code (Pygments) and a QR code
               (segno); the PDFs pass `render check` and render to their pages, in _preview/; the
-              HTML pages are one file each, figures inline, fonts embedded, nothing fetched; an
+              HTML pages are one file each, figures inline, fonts linked from Google Fonts with
+              fallback faces behind them and none embedded, nothing else fetched; an
               Excel file reads back as it was written (openpyxl).
    specs      tools.make: every kind says what it is for, what it writes and its fields, and has an
               example; every example spec in examples/make makes its files, strict (impact and
               spec-graph only where the product-specs skill is beside this one), the PDFs pass
-              `render check`, the pages fetch nothing; a key a kind does not know is refused with
+              `render check`, the pages fetch nothing but their fonts; a key a kind does not know is refused with
               the nearest one it does; a block of a page only is refused in a PDF.
 3. golden     the example diagrams come out byte for byte as golden/ holds them, so a change to the
               kit that moves a pixel is seen. --update-golden takes what they are now, after you
@@ -29,8 +30,9 @@ selftest — prove the rich-content kit, from the venv that will use it:
               first four chart colours apart for typical, protan, deutan and tritan vision; a
               project's rich-content.json (with a mode), RICH_CONTENT_THEME and "extends" choose
               and make a theme; examples/themes builds every example in every theme, strict, each
-              one-pager on one page; every font an HTML page embeds is a registered family that
-              keeps its copyright and licence records.
+              one-pager on one page; every HTML page links registered families, each with its
+              fallback faces, and embeds none; themes/fallbacks.json is as the fonts measure (on
+              Windows, where the system fonts it measures are).
 6. licences   every package the kit imports, and each Typst package, is under a licence free for
               any use, PyMuPDF (AGPL) is neither imported nor installed, Graphviz (EPL, with LGPL
               libraries) is not in the venv, every font -- by
@@ -68,6 +70,21 @@ def ok(name: str, good: bool, why: str = "") -> bool:
     (passed if good else failed).append(name)
     print(f"  {'pass' if good else 'FAIL'}  {name}" + (f" -- {why}" if why and not good else ""), flush=True)
     return good
+
+
+FONT_HOSTS = ("https://fonts.googleapis.com", "https://fonts.gstatic.com")
+
+
+def fetched(html: str) -> list[str]:
+    """What a page loads from elsewhere, its fonts from Google Fonts aside."""
+    urls = [a or b for a, b in re.findall(r'(?:src|href)="(https?:[^"]+)"|url\((https?:[^)]+)\)', html)]
+    return [u for u in urls if not u.startswith(FONT_HOSTS)]
+
+
+def links_fonts(html: str) -> bool:
+    """The page links its fonts from Google Fonts, with fallback faces, and embeds none."""
+    return ('href="https://fonts.googleapis.com/css2?' in html and "fallback" in html and "src:local(" in html
+            and "data:font/" not in html)
 
 
 def run(*args: str | Path, strict: bool = False) -> subprocess.CompletedProcess[str]:
@@ -122,19 +139,19 @@ pages = sorted(preview.glob("report-p*.png"))
 ok("report.pdf renders to 2 pages", r.returncode == 0 and len(pages) == 2, f"{len(pages)} pages; {r.stderr[-200:]}")
 
 html = (EX / "html" / "report.html").read_text(encoding="utf-8")
-external = re.findall(r'(?:src|href)="(https?:[^"]+)"|url\((https?:[^)]+)\)', html)
-ok("report.html fetches nothing", not external, f"{external[:3]}")
-ok("report.html embeds its 14 font faces as WOFF", html.count("data:font/woff;base64,") == 14,
-   f"{html.count('data:font/woff;base64,')} faces")
+external = fetched(html)
+ok("report.html fetches nothing but its fonts", not external, f"{external[:3]}")
+ok("report.html links its fonts from Google Fonts, with fallback faces, and embeds none", links_fonts(html),
+   f"{html.count('data:font/')} embedded")
 ok("report.html inlines its 4 figures", html.count("<svg") == 4, f"{html.count('<svg')} svg elements")
 
 handout = EX / "markdown" / "handout.pdf"
 r = run("-m", "tools.render", "check", handout)
 ok("handout.pdf (Markdown, set by cmarker) passes render check", r.returncode == 0, r.stdout.strip())
 page = (EX / "markdown" / "handout.html").read_text(encoding="utf-8")
-ok("handout.html: code highlighted, its figure and QR code inline, a table, nothing fetched",
+ok("handout.html: code highlighted, its figure and QR code inline, a table, nothing fetched but its fonts",
    'class="code"' in page and '<span class="k">def</span>' in page and page.count("<svg") == 2
-   and "<table>" in page and not re.findall(r'(?:src|href)="(https?:[^"]+)"', page),
+   and "<table>" in page and not fetched(page),
    f"code: {'class="code"' in page}, svgs: {page.count('<svg')}, table: {'<table>' in page}")
 explainer = (EX / "explainer" / "explainer.html").read_text(encoding="utf-8")
 anchors = re.findall(r'<h2 id="([^"]+)">', explainer)
@@ -145,7 +162,7 @@ ok("explainer.html: a contents bar that lists each h2 by its anchor",
 ok("explainer.html: three steps, each its figure inline, with Previous, Next and a button each, and the script",
    explainer.count('class="step"') == 3 and explainer.count("<svg") == 3 and 'data-step="next"' in explainer
    and len(re.findall(r'aria-label="Step \d of 3: ', explainer)) == 3 and "classList.add(\"js\")" in explainer
-   and not re.findall(r'(?:src|href)="(https?:[^"]+)"', explainer),
+   and not fetched(explainer),
    f"steps {explainer.count('class=\"step\"')}, svgs {explainer.count('<svg')}")
 ok("a page with neither contents nor steps carries no script", "<script" not in html)
 r = run("-c", r'''
@@ -184,9 +201,10 @@ with tempfile.TemporaryDirectory() as tmp:
     two.h2("End")
     written = site.save(footer="f")
     pages = {p.name: p.read_text(encoding="utf-8") for p in written}
-    fonts = (folder / "fonts.css").read_text(encoding="utf-8")
+    nothing_else = sorted(p.name for p in pathlib.Path(folder).iterdir()) == sorted(pages)
 assert sorted(pages) == ["01-one.html", "02-two.html", "index.html"], sorted(pages)
-assert "@font-face" in fonts and all("@font-face" not in t and 'href="fonts.css"' in t for t in pages.values()), "fonts"
+assert nothing_else and all('href="https://fonts.googleapis.com/css2?' in t and "data:font/" not in t
+                            for t in pages.values()), "fonts"
 t = pages["01-one.html"]
 assert 'class="home-link"' in t and '<ol class="chapters">' in t and t.count('aria-current="page"') == 1, "the navigation"
 assert 'class="prev" href="index.html"' in t and 'class="next" href="02-two.html"' in t, "previous and next"
@@ -196,7 +214,7 @@ assert t.count('class="pin"') == 1 and 'left:50.00%;top:50.00%' in t and "the on
 assert 'class="tile" href="01-one.html"' in pages["index.html"], "the cards"
 print("ok")
 ''')
-ok("a site: pages sharing one fonts.css, the navigation with the page open, previous and next, a diff, a marked "
+ok("a site: pages that each link their fonts, nothing beside them, the navigation with the page open, previous and next, a diff, a marked "
    "screenshot, cards", r.returncode == 0 and r.stdout.strip().endswith("ok"), (r.stderr or r.stdout)[-300:])
 data_page = (EX / "data" / "report.html").read_text(encoding="utf-8")
 ok("data report: a DataFrame as a table, numbers right-aligned and grouped",
@@ -257,9 +275,10 @@ for f in made:
         rc = run("-m", "tools.render", "check", f)
         ok(f"{f.name} passes render check", rc.returncode == 0, rc.stdout.strip()[-200:])
 pages = [f for f in made if f.suffix == ".html"]
-fetching = [f.name for f in pages if re.findall(r'(?:src|href)="(https?:[^"]+)"|url\((https?:[^)]+)\)',
-                                               f.read_text(encoding="utf-8"))]
-ok(f"the pages specs make fetch nothing ({len(pages)} pages)", bool(pages) and not fetching, ", ".join(fetching))
+fetching = [f.name for f in pages if fetched(f.read_text(encoding="utf-8"))
+            or not links_fonts(f.read_text(encoding="utf-8"))]
+ok(f"the pages specs make fetch nothing but their fonts, linked ({len(pages)} pages)", bool(pages) and not fetching,
+   ", ".join(fetching))
 r = run("-c", r'''
 import pathlib, tempfile
 from tools.make import SpecError, make
@@ -457,28 +476,33 @@ for d in theme_dirs:
     ok(f"{d.name}: the one-pager is one page", (d / "onepager.png").exists() and not list(d.glob("onepager-p*.png")),
        "more than one page")
 
-r = run("-c", r'''
-import base64, io, re, sys
+r = run("-c", r"""
+import re, sys
 from pathlib import Path
-from fontTools.ttLib import TTFont
 from tools.theme import families
-bad, faces = [], 0
+from tools.webfonts import measured
+bad, linked = [], 0
 for page in sys.argv[1:]:
     html = Path(page).read_text(encoding="utf-8")
-    for fam, data in re.findall(r'font-family:"([^"]+)";[^}]*base64,([A-Za-z0-9+/=]+)', html):
-        faces += 1
-        name = TTFont(io.BytesIO(base64.b64decode(data)))["name"]
-        where = f"{Path(page).parent.name}/{Path(page).name} {fam}"
-        if fam not in families():
-            bad.append(f"{where}: not a family fonts.json lists")
-        if "Copyright" not in (name.getDebugName(0) or ""):
-            bad.append(f"{where}: no copyright record")
-        if "Open Font License" not in (name.getDebugName(13) or "") or not name.getDebugName(14):
-            bad.append(f"{where}: no licence record")
-print(len(bad), faces, "; ".join(sorted(set(bad))[:5]))
-''', EX / "html" / "report.html", gallery / "themes.html", *[d / "page.html" for d in theme_dirs])
-ok("every font an HTML page embeds is a registered family that keeps its copyright and licence records",
+    where = f"{Path(page).parent.name}/{Path(page).name}"
+    if "data:font/" in html:
+        bad.append(f"{where}: embeds a font")
+    for query in re.findall(r'href="https://fonts\.googleapis\.com/css2\?([^"]+)"', html):
+        for fam in (f.replace("+", " ") for f in re.findall(r"family=([^:&]+)", query)):
+            linked += 1
+            if fam not in families():
+                bad.append(f"{where}: {fam} is not a family fonts.json lists")
+            for local in measured()[fam]["fallbacks"]:
+                if f'font-family:"{fam} fallback {local}"' not in html:
+                    bad.append(f"{where}: no fallback face {local} for {fam}")
+print(len(bad), linked, "; ".join(sorted(set(bad))[:5]))
+""", EX / "html" / "report.html", gallery / "themes.html", *[d / "page.html" for d in theme_dirs])
+ok("every HTML page links registered families from Google Fonts, each with its fallback faces, and embeds none",
    r.stdout.startswith("0 ") and r.stdout.split()[1] != "0", r.stdout.strip() + r.stderr.strip()[-300:])
+if Path("C:/Windows/Fonts/arial.ttf").exists():
+    r = run("-c", "from tools.webfonts import measure, measured; print(measure() == measured())")
+    ok("themes/fallbacks.json is as the fonts measure (python -m tools.webfonts writes it)",
+       r.stdout.strip() == "True", r.stdout.strip() + r.stderr.strip()[-300:])
 
 # 6 ---------------------------------------------------------------------------------------------
 step("6 licences")
