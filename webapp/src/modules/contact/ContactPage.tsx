@@ -8,7 +8,7 @@ export default function ContactPage() {
     <>
       <PageMetaPart
         title="Contact — Vasile Grafu"
-        description="Get in touch with Vasile Grafu to exchange ideas on engineering leadership, AI systems, and research."
+        description="Get in touch with Vasile Grafu to exchange ideas on software architecture, agentic AI, and engineering leadership."
       />
 
       <div className="relative">

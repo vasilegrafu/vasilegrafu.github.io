@@ -9,7 +9,7 @@ export default function ArticlesPage() {
     <>
       <PageMetaPart
         title="Articles — Vasile Grafu"
-        description="Writing on engineering leadership, software architecture, and applied AI."
+        description="Writing on software architecture, applied AI, and engineering leadership."
       />
 
       <p className="kicker">Writing</p>

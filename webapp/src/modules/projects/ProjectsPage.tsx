@@ -7,7 +7,7 @@ export default function ProjectsPage() {
     <>
       <PageMetaPart
         title="Projects — Vasile Grafu"
-        description="Selected systems: enterprise AI platforms, AI-assisted engineering tooling, and high-throughput web services."
+        description="Selected systems: an enterprise agentic AI platform, and AI-assisted engineering tooling built on Claude Code."
       />
 
       <p className="kicker">Selected systems</p>

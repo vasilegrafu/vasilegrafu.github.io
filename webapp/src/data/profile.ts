@@ -1,6 +1,6 @@
 export const site = {
   name: 'Vasile Grafu',
-  title: 'Engineering Manager | Solutions Architect | Enterprise & AI Systems',
+  title: 'Engineering Manager | Solutions Architect | Software Architecture, Cloud & Agentic AI',
   // Short form. Feeds the meta/OG description and the resume PDF, where length
   // is constrained — keep it near 160 characters.
   //
@@ -8,7 +8,7 @@ export const site = {
   // imports this module before Vite has substituted `__BUILD_YEAR__`. Nothing
   // there reads either of these, so they are only evaluated inside the app.
   get tagline() {
-    return `Engineering leader with ${yearsSince(careerStart)}+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.`;
+    return `Engineer and architect with ${yearsSince(careerStart)}+ years in software — from game programming to cloud platforms handling millions of requests a day, now building agentic AI systems.`;
   },
   // Long form, the summary at the top of the resume PDF — free to say more
   // than the meta description can.
@@ -111,15 +111,15 @@ export const experience: Role[] = [
     about:
       'nShift is a global leader in delivery and experience management software, formed in 2021 from the merger of Consignor, Unifaun and Transsmart. Its cloud platform covers the whole parcel journey — checkout delivery options, rule-based carrier selection, label and document generation, tracking, and returns — connecting retailers, 3PLs and manufacturers to a network of over 1,000 carriers across some 190 countries, with integrations into 450+ OMS, ERP and WMS systems.',
     summary:
-      'I lead the Webservices Team — one of the company’s core teams — building web services that handle millions of requests per day and support multiple business-critical applications. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
+      'I lead the Webservices Team — one of the company’s core teams — building applications that handle millions of requests per day and support multiple business-critical systems. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
     bullets: [
+      'Software architecture: design and implementation of scalable, secure, and maintainable systems.',
+      'Hands-on development: shared components, application structure, data flow, database design, security, and infrastructure — plus the AI systems built on top, with LLMs, agent orchestration, RAG, and MCP-style tool integration.',
+      'Solution Architect: cloud environments on AWS, and the CI/CD pipelines that deliver to them.',
+      'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
       'Lead and manage the Webservices Team: setting clear goals, providing direction, and keeping every member motivated and effective.',
       'Establish engineering processes and standards: consistent development practices that improve collaboration, maintain quality, and accelerate delivery.',
       'Recruit and develop engineers: active role in hiring, onboarding, and mentoring to build a skilled, cohesive team.',
-      'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
-      'Contribute to software architecture: design and implementation of scalable, secure, and maintainable systems.',
-      'Hands-on development: shared components, application structure, data flow, database design, security, and infrastructure — plus the AI systems built on top, with LLMs, agent orchestration, RAG, and MCP-style tool integration.',
-      'Solution Architect for our applications: designing and managing cloud environments on AWS and implementing CI/CD pipelines.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
     ],
     tech: [
@@ -151,10 +151,10 @@ export const experience: Role[] = [
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce and checkout platforms — WooCommerce, Magento and Klarna.',
-      'Team leadership: set goals and direction for both teams, keeping two groups with very different missions pulling toward one platform.',
       'Technical guidance and architecture: made the critical design decisions and worked through the hard problems alongside the developers.',
-      'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
       'Hands-on development: shared components, application structure, and database design across the Consignor suite.',
+      'Team leadership: set goals and direction for both teams, keeping two groups with very different missions pulling toward one platform.',
+      'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
     ],
     leadBullets: 2,
     tech: [
@@ -270,19 +270,6 @@ export interface SkillCategory {
 
 export const skills: SkillCategory[] = [
   {
-    group: 'Leadership & Management',
-    icon: 'lucide:users',
-    blurb: 'Building, growing, and running engineering teams.',
-    items: [
-      'Engineering Management',
-      'Team & Technical Leadership',
-      'Hiring & Mentoring',
-      'Agile / Scrum',
-      'Project Management (Prince2)',
-      'Strategic Planning',
-    ],
-  },
-  {
     group: 'AI & Machine Learning',
     icon: 'lucide:brain',
     blurb: 'Agentic systems in production — and the theory underneath them.',
@@ -290,7 +277,7 @@ export const skills: SkillCategory[] = [
       'AI-Assisted Software Development',
       'Agentic Architectures & LLM Orchestration',
       'RAG (Retrieval-Augmented Generation)',
-      'MCP Gateways, Servers & Integrations',
+      'MCP Gateways, MCP Servers & tool integrations',
       'Machine Learning, Neural Networks & Deep Learning Foundations',
     ],
   },
@@ -316,6 +303,19 @@ export const skills: SkillCategory[] = [
       'Docker, CI/CD',
       'SQL Server, PostgreSQL',
       'Database Design, Relational Databases',
+    ],
+  },
+  {
+    group: 'Leadership & Management',
+    icon: 'lucide:users',
+    blurb: 'Building, growing, and running engineering teams.',
+    items: [
+      'Engineering Management',
+      'Team & Technical Leadership',
+      'Hiring & Mentoring',
+      'Agile / Scrum',
+      'Project Management (Prince2)',
+      'Strategic Planning',
     ],
   },
   {

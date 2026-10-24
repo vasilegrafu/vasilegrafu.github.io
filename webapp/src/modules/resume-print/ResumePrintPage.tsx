@@ -34,7 +34,7 @@ const telHref = `tel:${site.phone.replace(/\s/g, '')}`;
 // Read in the first few seconds, so it leads with figures rather than prose.
 const highlights = [
   'Millions of requests served every day by the platform my team runs',
-  '10,000+ business clients on the systems I have led',
+  '10,000+ business clients on the systems I have built and led',
   '50 web services in production, distributed across AWS',
   `${yearsSince(careerStart)}+ years, from real-time game engines to agentic AI systems`,
   `${yearsSince(leadershipStart)} years leading teams, two of them running two at once`,

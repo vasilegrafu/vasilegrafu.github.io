@@ -25,7 +25,7 @@ export default function CareerPage() {
     <>
       <PageMetaPart
         title="Career — Vasile Grafu"
-        description={`${yearsSince(careerStart)}+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to engineering management and AI systems.`}
+        description={`${yearsSince(careerStart)}+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to software architecture, agentic AI and engineering management.`}
       />
 
       <div className="flex flex-wrap items-start justify-between gap-4">

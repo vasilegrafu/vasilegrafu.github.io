@@ -16,11 +16,6 @@ const companyName = current.company.replace(/\s*\([^)]*\)\s*$/, '');
 // The icons are here to make it scannable, not to decorate it.
 const scope = [
   {
-    icon: 'lucide:users',
-    term: 'Team',
-    detail: `The Webservices Team at ${companyName} — hiring, mentoring, and the engineering standards the team works to.`,
-  },
-  {
     icon: 'lucide:server',
     term: 'Systems',
     detail:
@@ -37,6 +32,11 @@ const scope = [
     term: 'AI',
     detail:
       'Agentic platform work: LLM orchestration, RAG pipelines and MCP integrations, grounded in company data.',
+  },
+  {
+    icon: 'lucide:users',
+    term: 'Team',
+    detail: `The Webservices Team at ${companyName} — hiring, mentoring, and the engineering standards the team works to.`,
   },
   {
     icon: 'lucide:code-xml',
@@ -72,8 +72,8 @@ export default function IndexPage() {
   return (
     <>
       <PageMetaPart
-        title={`${site.name} — Engineering Manager, Enterprise & AI Systems`}
-        description={`Engineering Manager at ${current.company}, leading the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} years leading teams.`}
+        title={`${site.name} — Engineering Manager, Software Architecture & Agentic AI`}
+        description={`Software architecture, cloud and agentic AI at ${companyName}, where I lead the Webservices Team behind services handling millions of requests a day. ${yearsSince(careerStart)} years in software, ${yearsSince(leadershipStart)} leading teams.`}
       />
 
       {/* Identity. The banner above already carries the name at full size, so

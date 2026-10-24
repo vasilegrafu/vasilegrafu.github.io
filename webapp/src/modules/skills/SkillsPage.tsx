@@ -15,7 +15,7 @@ export default function SkillsPage() {
     <>
       <PageMetaPart
         title="Skills — Vasile Grafu"
-        description="Skills across leadership, AI and machine learning, backend architecture, cloud, and the fundamentals beneath them."
+        description="Skills across AI and machine learning, backend architecture, cloud, engineering leadership, and the fundamentals beneath them."
       />
 
       <p className="kicker">Toolbox</p>

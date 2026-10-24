@@ -15,7 +15,7 @@ export default function FooterPart() {
           <div>
             <p className="title-card">{site.name}</p>
             <p className="text-muted mt-2 max-w-xs">
-              Engineering leadership, software architecture, and applied AI.
+              Software architecture, applied AI, and engineering leadership.
             </p>
             <p className="text-faint mt-4 flex items-center gap-1.5">
               <IconPart name="lucide:map-pin" className="h-4 w-4 shrink-0" />
