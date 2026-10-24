@@ -378,7 +378,7 @@ export const projects: Project[] = [
     icon: 'lucide:hammer',
     role: 'Independent R&D · Personal project',
     description:
-      'An advanced Claude Code skill that builds applications from existing codebases instead of from imagination. It reads codebases of any size — Python, TypeScript, JavaScript, C# — through a structural snapshot built once and queried many times, then works in three modes: generating new code shaped like the code that already exists, migrating an application to another stack, or translating it to another technology while preserving its domain and structure. Every output is proven rather than assumed — contract conformance, entity preservation, and side-by-side behaviour parity — and every decision that shapes the result is put to the user, never guessed.',
+      'A Claude Code skill that builds applications from existing codebases rather than from imagination, reading them through a structural snapshot built once and queried many times. Every decision that shapes the result is put to the user, never guessed.',
     outcomes: [
       { value: '4', label: 'languages read: Python, TypeScript, JavaScript, C#' },
       { value: '3', label: 'modes: generate, migrate, translate' },

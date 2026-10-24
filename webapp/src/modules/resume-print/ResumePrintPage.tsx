@@ -37,7 +37,7 @@ const highlights = [
   '10,000+ business clients on the systems I have built and led',
   '50 web services in production, distributed across AWS',
   `${yearsSince(careerStart)}+ years, from real-time game engines to agentic AI systems`,
-  `${yearsSince(leadershipStart)} years leading teams, two of them running two at once`,
+  `${yearsSince(leadershipStart)} years leading teams, five of them running two at once`,
 ];
 
 /** Bullets are written as "Lead-in: detail" — split so the lead-in can be bold. */
@@ -84,7 +84,7 @@ export default function ResumePrintPage() {
       <div className="skills">
         {skills.map((s) => (
           <p key={s.group}>
-            <b>{s.group}:</b> <span className="blurb">{s.blurb}</span> {s.items.join(', ')}
+            <b>{s.group}:</b> {s.items.join(', ')}
           </p>
         ))}
       </div>
@@ -93,10 +93,7 @@ export default function ResumePrintPage() {
       {experience.map((role) => {
         const bullets = role.bullets;
         return (
-          <div
-            key={`${role.company}-${role.position}`}
-            className={bullets.length > 5 ? 'role allow-break' : 'role'}
-          >
+          <div key={`${role.company}-${role.position}`} className="role">
             <div className="role-head">
               <p className="meta">
                 <span className="period">{role.period}</span>
@@ -158,9 +155,13 @@ export default function ResumePrintPage() {
           </div>
           <p className="summary">{p.description}</p>
           {p.outcomes && (
-            <p className="outcomes">
-              {p.outcomes.map((o) => `${o.value} — ${o.label}`).join(' · ')}
-            </p>
+            <ul className="outcomes">
+              {p.outcomes.map((o) => (
+                <li key={o.label}>
+                  <b>{o.value}</b> — {o.label}
+                </li>
+              ))}
+            </ul>
           )}
           <p className="tech">
             <span className="block-label">Tech</span>

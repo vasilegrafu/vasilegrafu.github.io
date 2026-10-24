@@ -74,12 +74,16 @@
 .resume-print .skills b {
   color: var(--ink);
 }
+/* Entries break freely. Holding a whole role together sounds tidier, but an
+   entry that will not fit jumps the page whole and leaves a third of a page
+   blank - which is how this resume reached five pages for three and a half
+   pages of content. What must not split is a heading from the lines under it,
+   and that is handled by break-after on the parts, not by freezing the role. */
 .resume-print .role {
   margin-top: 14px;
   margin-bottom: 16px;
   border-top: 1px solid var(--line);
   padding-top: 10px;
-  page-break-inside: avoid;
 }
 /* The first entry of a section sits under the section's own rule already. */
 .resume-print h2 + .role {
@@ -87,8 +91,11 @@
   border-top: 0;
   padding-top: 0;
 }
-.resume-print .role.allow-break {
-  page-break-inside: auto;
+.resume-print .role-head,
+.resume-print .role .about,
+.resume-print .role .summary {
+  break-after: avoid;
+  page-break-after: avoid;
 }
 .resume-print .role-head {
   display: flex;
@@ -192,15 +199,15 @@
   background: var(--accent);
 }
 
-/* The blurb that heads each skill group on the Skills page. */
-.resume-print .skills .blurb {
+/* The figures a project is measured by. These are tiles on the web - a value
+   over a label - so joined into a sentence they read as fragments. */
+.resume-print .role .outcomes {
+  margin: 4px 0 0 15px;
+  list-style: disc;
   color: var(--muted);
 }
-
-/* The figures a project is measured by, from its outcome tiles. */
-.resume-print .role .outcomes {
-  margin-top: 2px;
-  color: var(--muted);
+.resume-print .role .outcomes b {
+  color: var(--ink);
 }
 
 /* One line of company context under a role heading. */
