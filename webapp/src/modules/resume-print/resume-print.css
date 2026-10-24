@@ -10,20 +10,20 @@
   background: #ffffff;
   color: var(--ink);
   font-family: 'Segoe UI', ui-sans-serif, system-ui, Arial, sans-serif;
-  font-size: 11pt;
+  font-size: 10.25pt;
   line-height: 1.5;
   flex-grow: 1;
 }
 @page {
   size: A4;
-  margin: 16mm 16mm;
+  margin: 13mm 13mm;
 }
 /* On screen, show the page the way it prints. */
 @media screen {
   .resume-print {
     max-width: 210mm;
     margin: 0 auto;
-    padding: 16mm;
+    padding: 13mm;
   }
 }
 .resume-print header {
@@ -31,12 +31,12 @@
   padding-bottom: 12px;
 }
 .resume-print h1 {
-  font-size: 24pt;
+  font-size: 22.5pt;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 .resume-print .subtitle {
-  font-size: 12pt;
+  font-size: 11.25pt;
   color: var(--accent);
   font-weight: 600;
   margin-top: 2px;
@@ -44,7 +44,7 @@
 .resume-print .contact {
   margin-top: 6px;
   color: var(--muted);
-  font-size: 9.5pt;
+  font-size: 9pt;
 }
 .resume-print .contact span + span::before {
   content: ' · ';
@@ -54,7 +54,7 @@
   text-decoration: none;
 }
 .resume-print h2 {
-  font-size: 11.5pt;
+  font-size: 10.75pt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -69,7 +69,7 @@
   gap: 7px 18px;
 }
 .resume-print .skills p {
-  font-size: 9.5pt;
+  font-size: 9pt;
 }
 .resume-print .skills b {
   color: var(--ink);
@@ -109,11 +109,11 @@
 }
 .resume-print .role-head .meta {
   color: var(--muted);
-  font-size: 9.5pt;
+  font-size: 9pt;
   font-variant-numeric: tabular-nums;
 }
 .resume-print .role-head h3 {
-  font-size: 11.5pt;
+  font-size: 10.75pt;
   font-weight: 700;
 }
 /* The position is what a recruiter scans for, so it keeps the weight; the
@@ -124,7 +124,7 @@
 }
 .resume-print .role-head .period {
   color: var(--muted);
-  font-size: 9.5pt;
+  font-size: 9pt;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -154,7 +154,7 @@
 .resume-print .tech {
   margin-top: 6px;
   color: var(--ink);
-  font-size: 10pt;
+  font-size: 9.5pt;
 }
 /* The label on Company, Role and Tech. Inline rather than stacked: on a
    resume the vertical space costs more than the alignment buys. */
@@ -162,7 +162,7 @@
   display: inline-block;
   margin-right: 7px;
   color: var(--accent);
-  font-size: 8.5pt;
+  font-size: 8pt;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -172,7 +172,7 @@
 }
 .resume-print .edu .period {
   color: var(--muted);
-  font-size: 9.5pt;
+  font-size: 9pt;
   font-variant-numeric: tabular-nums;
 }
 
@@ -186,7 +186,7 @@
 .resume-print .highlights div {
   position: relative;
   padding-left: 13px;
-  font-size: 10.5pt;
+  font-size: 9.75pt;
 }
 .resume-print .highlights div::before {
   content: '';
@@ -214,5 +214,5 @@
 .resume-print .role .about {
   margin-top: 1px;
   color: var(--muted);
-  font-size: 9.5pt;
+  font-size: 9pt;
 }
