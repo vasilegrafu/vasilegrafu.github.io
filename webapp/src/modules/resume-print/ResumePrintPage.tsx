@@ -98,15 +98,31 @@ export default function ResumePrintPage() {
             className={bullets.length > 5 ? 'role allow-break' : 'role'}
           >
             <div className="role-head">
+              <p className="meta">
+                <span className="period">{role.period}</span>
+                {' · '}
+                {role.location}
+              </p>
               <h3>
-                {role.position} · {role.company}, {role.location}
+                {role.position}
+                <span className="where">
+                  {' · '}
+                  {role.company}
+                </span>
               </h3>
-              <span className="period">{role.period}</span>
             </div>
-            {(role.about ?? role.aboutShort) && (
-              <p className="about">{role.about ?? role.aboutShort}</p>
+            {role.aboutShort && (
+              <p className="about">
+                <span className="block-label">Company</span>
+                {role.aboutShort}
+              </p>
             )}
-            {role.summary && <p className="summary">{role.summary}</p>}
+            {role.summary && (
+              <p className="summary">
+                <span className="block-label">Role</span>
+                {role.summary}
+              </p>
+            )}
             <ul>
               {bullets.map((b) => {
                 const { title, rest } = splitBullet(b);
@@ -125,7 +141,7 @@ export default function ResumePrintPage() {
             </ul>
             {role.tech && (
               <p className="tech">
-                <span className="tech-label">Tech</span>
+                <span className="block-label">Tech</span>
                 {role.tech.join(' · ')}
               </p>
             )}
@@ -147,7 +163,7 @@ export default function ResumePrintPage() {
             </p>
           )}
           <p className="tech">
-            <span className="tech-label">Tech</span>
+            <span className="block-label">Tech</span>
             {p.tags.join(' · ')}
           </p>
         </div>

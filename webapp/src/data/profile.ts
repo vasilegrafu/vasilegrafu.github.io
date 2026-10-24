@@ -141,7 +141,7 @@ export const experience: Role[] = [
     about:
       'Founded in Oslo in 1997, Consignor grew into one of the largest suppliers of transport administration and multi-carrier shipping software in Scandinavia, serving more than 10,000 business customers from offices in Norway, Sweden, Denmark, Finland, Romania and the UK. In 2021 it merged with Unifaun and Transsmart to become nShift.',
     summary:
-      'I led two teams — the Webservices Team and the Integration Team — and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself.',
+      'I led two teams — the Webservices Team and the Integration Team — and wore the hat each situation demanded: Team Manager, Technical Lead, Project Manager (Prince2), or Software Developer. In practice that meant hiring and training the people who joined, owning the critical architecture decisions, running projects across team boundaries — and still writing code myself. These years also spanned the 2021 merger with Unifaun and Transsmart that turned Consignor into nShift.',
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce and checkout platforms — WooCommerce, Magento and Klarna.',
@@ -174,7 +174,7 @@ export const experience: Role[] = [
       'Applications at the core of the platform: built Routing Codes, Address Lookup and Sending Edifacts — all still part of the nShift ecosystem today.',
       'Custom Price Calculation Engine: kept developing the engine I had built the year before, as its use spread across the platform.',
       'Software architecture and solution design: owned the design decisions across the Consignor suite, from service boundaries to data model.',
-      'Hands-on throughout: wrote a large share of the code myself, alongside the team rather than above it.',
+      'Software engineering: wrote a large share of the code myself, alongside the team rather than above it.',
       'Mentoring: brought on junior and senior developers, and helped hire the people who joined.',
     ],
     leadBullets: 2,

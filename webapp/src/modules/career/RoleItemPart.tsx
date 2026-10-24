@@ -24,18 +24,19 @@ export default function RoleItemPart({ role }: Props) {
       </h2>
       {/* Three labelled blocks: what the role was, who the employer is, what
           it was built with. Each label marks a change of voice. */}
+      {/* Labels run inline with the first line, as they do on the resume:
+          the block is identified without spending a line on saying so. */}
       {role.about && (
-        <div className="mt-4">
-          <p className="kicker text-accent">Company</p>
-          {/* Caption step: this is the employer's boilerplate, not my record. */}
-          <p className="text-faint mt-2">{role.about}</p>
-        </div>
+        <p className="text-faint mt-4">
+          <span className="kicker text-accent me-2">Company</span>
+          {role.about}
+        </p>
       )}
       {role.summary && (
-        <div className="mt-4">
-          <p className="kicker text-accent">Role</p>
-          <p className="text-ink mt-2">{role.summary}</p>
-        </div>
+        <p className="text-ink mt-4">
+          <span className="kicker text-accent me-2">Role</span>
+          {role.summary}
+        </p>
       )}
       <div className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-2">
         {role.bullets.map((b, i) => {
