@@ -201,7 +201,7 @@ body {
     @apply bg-label-soft text-label-strong rounded-full px-2.5 py-0.5 text-xs font-medium;
   }
   .chip {
-    @apply border-line bg-surface/60 text-muted inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5;
+    @apply border-line bg-surface/60 text-muted inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs;
   }
   .blob {
     @apply absolute rounded-full blur-3xl;

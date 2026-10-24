@@ -27,7 +27,7 @@ export default function SkillsPage() {
           and border-y here drew a second line right under it. */}
       <section className="border-line mt-8 border-b pb-6">
         <p className="kicker">In daily use</p>
-        <p className="text-muted mt-2">
+        <p className="text-muted mt-2 text-xs">
           The stack behind my current work as {current.position} at {current.company}.
         </p>
         <ul className="mt-4 flex flex-wrap gap-2">
