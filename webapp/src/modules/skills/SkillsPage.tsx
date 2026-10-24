@@ -1,7 +1,6 @@
 import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import { sharesToken } from '@fx/lib/tokens';
-import IdentityPart from '@modules/shared/IdentityPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
 import { experience, projects, skills } from '@data/profile';
 
@@ -19,13 +18,11 @@ export default function SkillsPage() {
         description="Skills across AI and machine learning, backend architecture, cloud, engineering leadership, and the fundamentals beneath them."
       />
 
-      <IdentityPart />
-
       {/* The current stack, pulled straight from the latest role rather than
           curated by hand — so it is the same list the Career page shows.
-          Bottom rule only: the identity block above already closes with one,
-          and border-y here drew a second line right under it. */}
-      <section className="border-line mt-8 border-b pb-6">
+          Bottom rule only: this is the first thing on the page now, and a rule
+          above it would sit right under the nav. */}
+      <section className="border-line border-b pb-6">
         <p className="kicker">In daily use</p>
         <p className="text-muted mt-2 text-xs">
           The stack behind my current work as {current.position} at {current.company}.
