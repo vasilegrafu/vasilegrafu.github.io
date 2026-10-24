@@ -1,0 +1,23 @@
+# A new HTTPS request: three round trips before the page starts to arrive.
+make: sequence
+actors:
+  browser: Browser
+  server: Server
+  db: {label: Database}
+messages:
+  - "== TCP"
+  - "browser -> server: SYN"
+  - "server --> browser: SYN-ACK"
+  - "== TLS 1.3"
+  - "browser -> server: ClientHello + key share"
+  - "server --> browser: ServerHello, certificate, Finished"
+  - "== The request"
+  - "browser -> server: `GET /product/42`"
+  - "server -> db: `SELECT … WHERE id = 42` | the slow one"
+  - "db --> server: 1 row"
+  - "server -> server: render"
+  - "server --> browser: 200 OK + the page [good]"
+spans: [[server, 5, 8]]
+brackets:
+  - {actor: browser, from: 1, to: 2, text: 1 RTT}
+  - {actor: browser, from: 3, to: 4, text: 1 RTT}

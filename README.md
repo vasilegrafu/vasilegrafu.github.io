@@ -2,9 +2,9 @@
 
 Source of my personal website, live at **https://vasilegrafu.github.io**.
 
-I'm **Vasile Grafu** — Engineering Manager, Solutions Architect, Enterprise &
-AI Systems. The site is where I keep my career story, skills, selected projects
-and the occasional article, plus a printable resume.
+I'm **Vasile Grafu** — Engineering Manager, Solutions Architect, Software
+Architecture, Cloud & Agentic AI. The site is where I keep my career story,
+skills, selected projects and the occasional article, plus a printable resume.
 
 ## What's here
 

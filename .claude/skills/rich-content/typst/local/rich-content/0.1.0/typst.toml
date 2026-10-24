@@ -1,0 +1,7 @@
+[package]
+name = "rich-content"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["ai-workbench-dev"]
+license = "MIT"
+description = "The rich-content skill's house style for PDFs: page, type, callouts and tables in the palette its diagrams and charts are drawn with."

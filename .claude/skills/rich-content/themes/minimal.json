@@ -1,0 +1,161 @@
+{
+  "name": "minimal",
+  "about": "One-pagers, summaries and anything shown on a screen: Geist alone, black and greys with one orange accent, square corners, boxes drawn as outlines whose kind is told by their icon and a coloured bar.",
+  "fonts": {
+    "text": "Geist",
+    "heading": "Geist",
+    "heading_weight": 700,
+    "label": "Geist",
+    "mono": "Geist Mono"
+  },
+  "shape": {
+    "radius": 0,
+    "region_radius": 0,
+    "stroke": 1.2,
+    "shadow": null,
+    "nodes": "bar",
+    "pills": false
+  },
+  "chart": {
+    "grid": "y",
+    "frame": "bottom"
+  },
+  "modes": {
+    "light": {
+      "colour": {
+        "ink": "#111111",
+        "muted": "#555555",
+        "faint": "#9E9E9E",
+        "rule": "#E3E3E3",
+        "paper": "#FFFFFF",
+        "wash": "#F6F6F6",
+        "heading": "#111111",
+        "accent": "#C2410C",
+        "on": "#FFFFFF"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#5C5C5C",
+          "fill": "#F2F2F2",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#3D3D3D",
+          "fill": "#EFEFEF",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#C2410C",
+          "fill": "#FDF0E8",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#707070",
+          "fill": "#F4F4F4",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#111111",
+          "fill": "#EDEDED",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#4F4F4F",
+          "fill": "#F0F0F0",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#767676",
+          "fill": "#F7F7F7",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#C92A2A",
+        "bad_fill": "#FCECEC",
+        "good": "#237032",
+        "good_fill": "#EBF6EE",
+        "warn": "#A85500",
+        "warn_fill": "#FFF4E5",
+        "info": "#111111",
+        "info_fill": "#F2F2F2"
+      },
+      "series": [
+        "#111111",
+        "#C2410C",
+        "#737373",
+        "#7C2D12",
+        "#404040",
+        "#9A3412"
+      ]
+    },
+    "dark": {
+      "colour": {
+        "ink": "#F2F2F2",
+        "muted": "#B0B0B0",
+        "faint": "#6A6A6A",
+        "rule": "#2C2C2C",
+        "paper": "#161616",
+        "wash": "#0E0E0E",
+        "heading": "#FFFFFF",
+        "accent": "#FF8A4C",
+        "on": "#0E0E0E"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#A8A8A8",
+          "fill": "#1E1E1E",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#D0D0D0",
+          "fill": "#222222",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#FF8A4C",
+          "fill": "#2A1A10",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#BDBDBD",
+          "fill": "#1E1E1E",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#F2F2F2",
+          "fill": "#242424",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#C8C8C8",
+          "fill": "#202020",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#9A9A9A",
+          "fill": "#1C1C1C",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#FF6B6B",
+        "bad_fill": "#3A1616",
+        "good": "#5FD37A",
+        "good_fill": "#13281A",
+        "warn": "#FFB347",
+        "warn_fill": "#33260F",
+        "info": "#F2F2F2",
+        "info_fill": "#242424"
+      },
+      "series": [
+        "#F2F2F2",
+        "#FF8A4C",
+        "#8C8C8C",
+        "#FFC7A6",
+        "#BDBDBD",
+        "#E0662B"
+      ]
+    }
+  }
+}

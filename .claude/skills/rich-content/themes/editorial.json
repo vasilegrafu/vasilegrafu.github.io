@@ -1,0 +1,161 @@
+{
+  "name": "editorial",
+  "about": "Essays, analyses and white papers: Crimson Pro for headings and text, Public Sans for labels and charts, warm near-black ink, a deep red accent, and charts with nothing but horizontal gridlines.",
+  "fonts": {
+    "text": "Crimson Pro",
+    "heading": "Crimson Pro",
+    "heading_weight": 600,
+    "label": "Public Sans",
+    "mono": "Geist Mono"
+  },
+  "shape": {
+    "radius": 3,
+    "region_radius": 4,
+    "stroke": 1.3,
+    "shadow": null,
+    "nodes": "tint",
+    "pills": true
+  },
+  "chart": {
+    "grid": "y",
+    "frame": "bottom"
+  },
+  "modes": {
+    "light": {
+      "colour": {
+        "ink": "#1F1D1A",
+        "muted": "#5E5850",
+        "faint": "#A39C90",
+        "rule": "#E3DDD2",
+        "paper": "#FFFFFF",
+        "wash": "#F8F5EF",
+        "heading": "#1F1D1A",
+        "accent": "#8C1C13",
+        "on": "#FFFFFF"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#5A6472",
+          "fill": "#F2F3F5",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#6B3F7A",
+          "fill": "#F5EFF7",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#1F4E79",
+          "fill": "#EDF2F8",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#2A6F6B",
+          "fill": "#EAF4F3",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#3F6B2F",
+          "fill": "#EFF5EC",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#A4471C",
+          "fill": "#FAEFE8",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#7A746A",
+          "fill": "#F4F2EE",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#A61B1B",
+        "bad_fill": "#F9ECEA",
+        "good": "#3F6B2F",
+        "good_fill": "#EFF5EC",
+        "warn": "#8A5A00",
+        "warn_fill": "#FBF3E2",
+        "info": "#1F4E79",
+        "info_fill": "#EDF2F8"
+      },
+      "series": [
+        "#1F4E79",
+        "#A4471C",
+        "#5A6472",
+        "#7A746A",
+        "#3F6B2F",
+        "#6B3F7A"
+      ]
+    },
+    "dark": {
+      "colour": {
+        "ink": "#EDE6DA",
+        "muted": "#B8AE9F",
+        "faint": "#6F675C",
+        "rule": "#34302A",
+        "paper": "#1E1C19",
+        "wash": "#161412",
+        "heading": "#F5EFE4",
+        "accent": "#E8907F",
+        "on": "#161412"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#B4BCC8",
+          "fill": "#262A30",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#C9A3D6",
+          "fill": "#2A2230",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#8DB4DE",
+          "fill": "#1C2733",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#7CC2BC",
+          "fill": "#18292A",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#A3C78F",
+          "fill": "#1E2A1A",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#E3A07A",
+          "fill": "#2E2219",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#B8B0A4",
+          "fill": "#27241F",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#EE8A7E",
+        "bad_fill": "#3A1E1B",
+        "good": "#A3C78F",
+        "good_fill": "#1E2A1A",
+        "warn": "#E8C27A",
+        "warn_fill": "#332A16",
+        "info": "#8DB4DE",
+        "info_fill": "#1C2733"
+      },
+      "series": [
+        "#8DB4DE",
+        "#EBA373",
+        "#B5D39E",
+        "#9C948A",
+        "#7CC2BC",
+        "#C9A3D6"
+      ]
+    }
+  }
+}

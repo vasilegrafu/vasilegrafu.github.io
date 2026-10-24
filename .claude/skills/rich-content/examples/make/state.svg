@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="938.93" height="264.5" viewBox="0 0 938.93 264.5">
+<path d="M194,126.72 L212,126.72 L212,72.72 L327.41,72.72" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="327.41,72.72 318.99,67.84 318.99,77.6" fill="#5E6779"/>
+<path d="M194,137.28 L212,137.28 L212,186 L327.41,186" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="327.41,186 318.99,181.12 318.99,190.88" fill="#5E6779"/>
+<path d="M441.41,78 L587.4,78" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="587.4,78 578.98,73.12 578.98,82.88" fill="#5E6779"/>
+<path d="M364.41,54 L364.41,32 L408.41,32 L408.41,50" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="408.41,50 413.29,41.58 403.53,41.58" fill="#5E6779"/>
+<path d="M701.4,78 L809.93,78" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="809.93,78 801.51,73.12 801.51,82.88" fill="#5E6779"/>
+<path d="M646.4,102 L646.4,242.5 L313.41,242.5 L313.41,83.28 L327.41,83.28" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="327.41,83.28 318.99,78.4 318.99,88.16" fill="#5E6779"/>
+<path d="M28,132 L80,132" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="80,132 71.58,127.12 71.58,136.88" fill="#5E6779"/>
+<rect x="85.5" y="110" width="110" height="48" rx="9" fill="#E3E7EE"/>
+<rect x="84" y="108" width="110" height="48" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="332.91" y="56" width="110" height="48" rx="9" fill="#E3E7EE"/>
+<rect x="331.41" y="54" width="110" height="48" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="592.9" y="56" width="110" height="48" rx="9" fill="#E3E7EE"/>
+<rect x="591.4" y="54" width="110" height="48" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="808.93" y="49" width="120" height="58" rx="14" fill="none" stroke="#15803D" stroke-width="1.4"/>
+<rect x="815.43" y="56" width="110" height="48" rx="9" fill="#E3E7EE"/>
+<rect x="813.93" y="54" width="110" height="48" rx="9" fill="#EAF6EE" stroke="#15803D" stroke-width="1.6"/>
+<rect x="326.41" y="157" width="120" height="58" rx="14" fill="none" stroke="#9AA2B1" stroke-width="1.4"/>
+<rect x="332.91" y="164" width="110" height="48" rx="9" fill="none"/>
+<rect x="331.41" y="162" width="110" height="48" rx="9" fill="#F4F6F9" stroke="#9AA2B1" stroke-width="1.2"/>
+<circle cx="19" cy="132" r="9" fill="#1B2130"/>
+<text x="96" y="135.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Placed</text>
+<text x="343.41" y="81.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Paid</text>
+<text x="603.4" y="81.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Shipped</text>
+<text x="825.93" y="81.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Delivered</text>
+<text x="343.41" y="189.19" font-family="Geist" font-size="13" font-weight="600" fill="#9AA2B1" text-anchor="start">Cancelled</text>
+<rect x="227.25" y="55.22" width="83.41" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="268.95" y="65.72" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">payment taken</text>
+<rect x="241.04" y="168.5" width="55.9" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="268.99" y="179" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">timed out</text>
+<rect x="466.41" y="60.5" width="95.99" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="514.41" y="71" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">handed to courier</text>
+<rect x="349.16" y="14.5" width="70.51" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="384.41" y="25" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">retry receipt</text>
+<rect x="726.4" y="60.5" width="58.53" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="755.66" y="71" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">signed for</text>
+<rect x="433.65" y="225" width="96.29" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="481.79" y="235.5" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">returned to depot</text>
+<circle cx="921.93" cy="56" r="10" fill="#15803D"/>
+<path d="M917.43,56.5 L920.73,59.8 L926.73,52.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,17 @@
+# An order's life: placed, paid, shipped and delivered, with the ways back and out.
+make: state
+states:
+  placed: Placed
+  paid: Paid
+  shipped: Shipped
+  delivered: {label: Delivered, state: good}
+  cancelled: {label: Cancelled, state: dim}
+transitions:
+  - "placed -> paid: payment taken"
+  - "placed -> cancelled: timed out"
+  - "paid -> shipped: handed to courier"
+  - "paid -> paid: retry receipt"
+  - "shipped -> delivered: signed for"
+  - "shipped --> paid: returned to depot"
+initial: placed
+final: [delivered, cancelled]

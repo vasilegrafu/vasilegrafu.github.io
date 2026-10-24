@@ -1,0 +1,7 @@
+# The examples' outputs are committed, beside the scripts that make them, so they can be opened
+# without running anything; a rebuild writes them byte for byte the same unless something changed.
+# Previews and the pages set while rendering go into _preview/ folders, wherever the skill is used;
+# each holds a .gitignore of its own that ignores all of it (scripts/tools/render.py).
+
+.ruff_cache/
+.playwright-mcp/

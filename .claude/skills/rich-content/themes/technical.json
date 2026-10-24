@@ -1,0 +1,164 @@
+{
+  "name": "technical",
+  "about": "Design notes, architecture and engineering documents: the System Design manual's look, Crimson Pro to read and Geist to label, tinted boxes with soft corners.",
+  "fonts": {
+    "text": "Crimson Pro",
+    "heading": "Geist",
+    "heading_weight": 700,
+    "label": "Geist",
+    "mono": "Geist Mono"
+  },
+  "shape": {
+    "radius": 9,
+    "region_radius": 12,
+    "stroke": 1.6,
+    "shadow": null,
+    "nodes": "tint",
+    "pills": true
+  },
+  "chart": {
+    "grid": "both",
+    "frame": "left-bottom"
+  },
+  "modes": {
+    "light": {
+      "colour": {
+        "ink": "#1B2130",
+        "muted": "#5E6779",
+        "faint": "#9AA2B1",
+        "rule": "#D8DDE6",
+        "paper": "#FFFFFF",
+        "wash": "#F4F6F9",
+        "heading": "#111A2E",
+        "accent": "#2F5BEA",
+        "on": "#FFFFFF"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#475569",
+          "fill": "#F1F4F8",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#7C3AED",
+          "fill": "#F4EFFF",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#2563EB",
+          "fill": "#EDF3FF",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#0F766E",
+          "fill": "#E7F6F4",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#15803D",
+          "fill": "#EBF7EE",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#C2410C",
+          "fill": "#FFF2EA",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#6B7280",
+          "fill": "#F5F5F6",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#C81E1E",
+        "bad_fill": "#FDEDED",
+        "good": "#15803D",
+        "good_fill": "#EAF6EE",
+        "warn": "#B45309",
+        "warn_fill": "#FFF5E3",
+        "info": "#2563EB",
+        "info_fill": "#EDF3FF"
+      },
+      "series": [
+        "#2563EB",
+        "#C2410C",
+        "#15803D",
+        "#475569",
+        "#7C3AED",
+        "#0F766E"
+      ],
+      "shape": {
+        "shadow": "#E3E7EE"
+      }
+    },
+    "dark": {
+      "colour": {
+        "ink": "#E5E7EB",
+        "muted": "#A3AAB8",
+        "faint": "#6B7385",
+        "rule": "#2A3344",
+        "paper": "#111827",
+        "wash": "#0B1020",
+        "heading": "#F3F4F6",
+        "accent": "#7AA2FF",
+        "on": "#0B1020"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#94A3B8",
+          "fill": "#1A2333",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#A78BFA",
+          "fill": "#221A3A",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#60A5FA",
+          "fill": "#132338",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#2DD4BF",
+          "fill": "#0F2A2A",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#4ADE80",
+          "fill": "#10291A",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#FB923C",
+          "fill": "#2E1D10",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#9CA3AF",
+          "fill": "#1C2230",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#F87171",
+        "bad_fill": "#3A1517",
+        "good": "#4ADE80",
+        "good_fill": "#0F2A1A",
+        "warn": "#FBBF24",
+        "warn_fill": "#33270B",
+        "info": "#60A5FA",
+        "info_fill": "#132338"
+      },
+      "series": [
+        "#60A5FA",
+        "#FB923C",
+        "#4ADE80",
+        "#94A3B8",
+        "#A78BFA",
+        "#2DD4BF"
+      ]
+    }
+  }
+}

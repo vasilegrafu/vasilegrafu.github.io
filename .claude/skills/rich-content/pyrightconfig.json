@@ -1,0 +1,32 @@
+{
+  // This skill is its own pyright project, like the other skills:
+  //
+  //   .venv/Scripts/python.exe -m pyright -p .claude/skills/rich-content
+  //
+  // Pyright appends `**/.*` to `exclude` whatever a config says, and `.claude` matches, so
+  // the skill cannot be checked from the checkout root; a config here makes this folder the
+  // project root. Unlike the other skills it imports third-party packages (typst, matplotlib,
+  // pymupdf, fontTools), so it names the checkout's venv to find them.
+  "include": [
+    "scripts",
+    "examples",
+    "selftest"
+  ],
+
+  "exclude": [
+    "**/__pycache__"
+  ],
+
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": ["scripts"]
+    }
+  ],
+
+  "venvPath": "../../..",
+  "venv": ".venv",
+
+  "pythonVersion": "3.14",
+  "typeCheckingMode": "standard"
+}

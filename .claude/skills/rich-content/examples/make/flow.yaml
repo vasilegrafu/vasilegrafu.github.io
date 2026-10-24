@@ -1,0 +1,17 @@
+# A read of one order: through the API to its cache, the database on a miss, emails on a queue.
+make: flow
+nodes:
+  user: Browser
+  api: {label: API, sub: FastAPI}
+  cache: Cache
+  db: Database
+  queue: Email queue
+  mail: Mail provider
+edges:
+  - "user -> api: GET /orders"
+  - "api -> cache: 1 · look up"
+  - "api --> db: 2 · on a miss"
+  - api -> queue
+  - "queue -> mail: send"
+groups:
+  - {title: Our service, nodes: [api, queue], icon: cloud}

@@ -1,0 +1,37 @@
+# ADR-012: the queue chosen for order events, recorded once the decision was taken.
+make: adr
+number: 12
+title: Use SQS FIFO for order events
+status: accepted
+date: 2026-11-07
+deciders: [Platform lead, Billing lead, Orders team]
+supersedes: ADR-004
+footer: Orders platform · decision records
+format: [pdf, html]
+context: |
+  Order events reach billing, email and analytics through a table polled every five seconds. The
+  polling costs more than the reads it serves, and billing sees an order up to ten seconds late.
+drivers:
+  - The events of one order arrive in the order they happened.
+  - Nothing new for the team to run at night.
+  - Under 500 $ a month at today's volume.
+options:
+  - name: Kafka
+    pros: [Replays any day of events, Analytics reads it directly]
+    cons: [Brokers to size and watch, Three times the cost]
+  - name: SQS FIFO
+    pros: [Nothing to run, Billing already reads SQS]
+    cons: [No replay once a message is read]
+  - name: Keep polling
+    pros: [No new system]
+    cons: [Five times the load on the database]
+decision:
+  option: SQS FIFO
+  why: It meets every driver; replay, the one thing it lacks, no consumer needs today.
+consequences:
+  good: [Billing sees an order within a second, The polled table can be dropped]
+  bad: [A consumer that fails mid-group holds that order's later events]
+  neutral: [Events older than four days are gone; analytics keeps its own copy]
+links:
+  - "Decision paper: decision.html"
+  - {text: ADR-004 (polling the orders table), url: adr-004.html}

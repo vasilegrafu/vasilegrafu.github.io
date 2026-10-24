@@ -1,0 +1,28 @@
+# The orders platform's week: tiles worked out from last week and the targets, risks, milestones, asks.
+make: status
+title: Orders platform
+period: Week 43 · 20–24 October 2026
+overall: at-risk
+summary: Reads are under their latency budget for the first full week. The move to queued order events is a week behind, because billing's consumer needs a second review.
+format: [html, pdf]
+kpis:
+  - {label: p99 latency, value: 166, unit: " ms", previous: 182, target: 200, better: lower}
+  - {label: Cache hits, value: 91, unit: " %", previous: 94, target: 95}
+  - {label: Orders a day, value: 18420, previous: 17100}
+highlights:
+  - The cache warms in 40 seconds after a deploy, down from 6 minutes.
+  - Email reads order events from the queue; the polled table serves billing and analytics only.
+risks:
+  - {risk: Billing's consumer is reviewed late, severity: high, owner: Billing lead, mitigation: Pair on the review on Monday}
+  - {risk: Cache hit rate keeps falling, severity: medium, owner: Platform, mitigation: Find which keys miss}
+milestones:
+  - {name: Cache in front of order reads, due: 10 Oct, state: done}
+  - {name: Email on the queue, due: 24 Oct, state: done}
+  - {name: Billing on the queue, due: 31 Oct, state: at-risk, note: a week behind; review moved to Monday}
+  - {name: Polled table retired, due: 14 Nov, state: on-track}
+figures:
+  - figure: chart.yaml
+    caption: p99 fell under its budget on Wednesday, when the cache had warmed.
+asks:
+  - Agree that analytics may keep its own copy of events (decision by Friday).
+  - Lend one billing engineer for Monday's review.

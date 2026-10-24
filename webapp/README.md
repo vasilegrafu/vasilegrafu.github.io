@@ -1,6 +1,6 @@
 # vasilegrafu.github.io
 
-Personal website of **Vasile Grafu** — Engineering Manager, Solutions Architect, Enterprise & AI Systems.
+Personal website of **Vasile Grafu** — Engineering Manager, Solutions Architect, Software Architecture, Cloud & Agentic AI.
 
 Live at **https://vasilegrafu.github.io**
 

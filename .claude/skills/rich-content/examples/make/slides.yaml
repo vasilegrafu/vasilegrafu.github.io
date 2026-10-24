@@ -1,0 +1,48 @@
+# A short deck for the orders platform review: a cover, a divider, points, figures, two columns, a statement.
+make: slides
+title: Order events on a queue
+subtitle: Why the polled table goes, what replaces it, and when
+eyebrow: Orders platform review · November 2026
+footer: Orders platform · November 2026
+slides:
+  - title: What polling costs today
+    kicker: The problem
+    blocks:
+      - kpis:
+          - [Reads a day, 612 000, of the orders table, neutral]
+          - [Polls a day, 1.7 M, more than the reads, bad]
+          - [Billing waits, 10 s, for a new order, warn]
+    points:
+      - Billing, email and analytics each poll the table every five seconds.
+      - The polling costs more than the reads it serves.
+  - layout: section
+    kicker: Part 2
+    title: The options
+  - title: Reads are fast now; events are next
+    figure: chart.yaml
+    caption: p99 under budget since the cache warmed; the queue is the next step.
+  - title: Kafka or SQS FIFO
+    layout: two-column
+    left:
+      - h3: Kafka
+      - md: |
+          - Replays any day of events
+          - Brokers to size and watch
+          - Three times the cost
+    right:
+      - h3: SQS FIFO
+      - md: |
+          - Nothing to run
+          - Order kept per message group
+          - No replay once read
+  - layout: statement
+    title: 2 weeks
+    subtitle: to move email, billing and analytics onto SQS FIFO
+    notes: Email first, then billing, then analytics.
+  - title: The path, after the move
+    figure: flow.yaml
+  - title: What we ask today
+    blocks:
+      - callout: Agree SQS FIFO for order events, and lend one billing engineer for Monday's review.
+        title: Decision needed
+        tone: warn

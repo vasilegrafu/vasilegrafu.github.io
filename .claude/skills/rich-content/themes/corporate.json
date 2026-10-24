@@ -1,0 +1,161 @@
+{
+  "name": "corporate",
+  "about": "Client deliverables, board and status reports: Public Sans throughout, deep navy with a teal accent, quieter colours for the kinds, near-square corners and thin flat lines.",
+  "fonts": {
+    "text": "Public Sans",
+    "heading": "Public Sans",
+    "heading_weight": 600,
+    "label": "Public Sans",
+    "mono": "Geist Mono"
+  },
+  "shape": {
+    "radius": 4,
+    "region_radius": 6,
+    "stroke": 1.3,
+    "shadow": null,
+    "nodes": "tint",
+    "pills": true
+  },
+  "chart": {
+    "grid": "y",
+    "frame": "bottom"
+  },
+  "modes": {
+    "light": {
+      "colour": {
+        "ink": "#1F2933",
+        "muted": "#52606D",
+        "faint": "#9AA5B1",
+        "rule": "#D9E2EC",
+        "paper": "#FFFFFF",
+        "wash": "#F5F7FA",
+        "heading": "#0B2545",
+        "accent": "#0E7C86",
+        "on": "#FFFFFF"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#486581",
+          "fill": "#F0F4F8",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#5B4B8A",
+          "fill": "#F3F0FA",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#1D5A9E",
+          "fill": "#EAF1F9",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#0E7C86",
+          "fill": "#E6F4F5",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#2F7D4F",
+          "fill": "#EAF5EE",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#A2550F",
+          "fill": "#FBF1E7",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#616E7C",
+          "fill": "#F5F7FA",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#C0392B",
+        "bad_fill": "#FBEDEB",
+        "good": "#2F7D4F",
+        "good_fill": "#EAF5EE",
+        "warn": "#9C6500",
+        "warn_fill": "#FDF6E7",
+        "info": "#1D5A9E",
+        "info_fill": "#EAF1F9"
+      },
+      "series": [
+        "#1D5A9E",
+        "#A2550F",
+        "#2F7D4F",
+        "#616E7C",
+        "#0E7C86",
+        "#5B4B8A"
+      ]
+    },
+    "dark": {
+      "colour": {
+        "ink": "#E4E9F0",
+        "muted": "#A7B3C2",
+        "faint": "#5D6B7D",
+        "rule": "#22324A",
+        "paper": "#0F1A2A",
+        "wash": "#0A1320",
+        "heading": "#F2F5F9",
+        "accent": "#3CC6CF",
+        "on": "#0A1320"
+      },
+      "kinds": {
+        "client": {
+          "stroke": "#9FB3C8",
+          "fill": "#1A2738",
+          "label": "Client"
+        },
+        "edge": {
+          "stroke": "#B3A6E0",
+          "fill": "#211E36",
+          "label": "Network / edge"
+        },
+        "compute": {
+          "stroke": "#6FA8E8",
+          "fill": "#13233A",
+          "label": "Compute"
+        },
+        "cache": {
+          "stroke": "#3CC6CF",
+          "fill": "#0E2A2E",
+          "label": "Cache"
+        },
+        "data": {
+          "stroke": "#6CCB8F",
+          "fill": "#11291C",
+          "label": "Data / storage"
+        },
+        "async": {
+          "stroke": "#E8A15C",
+          "fill": "#2E2012",
+          "label": "Queue / stream"
+        },
+        "external": {
+          "stroke": "#A4B0BE",
+          "fill": "#1B2533",
+          "label": "External"
+        }
+      },
+      "signal": {
+        "bad": "#F2837B",
+        "bad_fill": "#3A1A1A",
+        "good": "#6CCB8F",
+        "good_fill": "#11291C",
+        "warn": "#F0C060",
+        "warn_fill": "#33280F",
+        "info": "#6FA8E8",
+        "info_fill": "#13233A"
+      },
+      "series": [
+        "#6FA8E8",
+        "#E8A15C",
+        "#6CCB8F",
+        "#9FB3C8",
+        "#3CC6CF",
+        "#B3A6E0"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# How a month's cloud bill moved from September to October.
+make: chart
+type: waterfall
+title: The bill rose by the database, and fell by less on compute
+steps: {September: 41200, Database: +6800, Storage: +1900, Compute: -3100, Network: -600, October: total}
+unit: " $"

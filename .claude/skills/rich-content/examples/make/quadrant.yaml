@@ -1,0 +1,13 @@
+# Next quarter's candidate work, by what it is worth and what it costs.
+make: quadrant
+x: {label: Effort, low: days, high: months}
+y: {label: Value to customers, low: little, high: a lot}
+quadrants: [Quick wins, Big bets, Fill-ins, Money pits]
+items:
+  - {label: Cache order reads, x: 0.18, y: 0.82, tone: good}
+  - {label: One-click reorder, x: 0.3, y: 0.7}
+  - {label: New checkout, x: 0.78, y: 0.86}
+  - {label: Search by SKU, x: 0.22, y: 0.36}
+  - {label: Dark mode, x: 0.35, y: 0.22}
+  - {label: Rewrite billing, x: 0.86, y: 0.3, tone: bad}
+  - {label: Multi-currency, x: 0.68, y: 0.62}

@@ -1,0 +1,30 @@
+# Ten cards on caching a read: print both sides, flip on the long edge, cut along the dashed lines.
+make: flashcards
+title: Caching
+cards:
+  - front: What is a cache **hit**?
+    back: A read the cache answers itself; the database is not asked.
+  - front: What is a cache **miss**?
+    back: A read the cache cannot answer; it goes on to the store behind it.
+  - front: What does a **TTL** set?
+    back: How long a value may live in the cache before it is dropped.
+  - front: Why give every key a TTL, even with invalidation on write?
+    back: "A safety net: a delete that was missed leaves a value wrong for minutes, not forever."
+  - front: |
+      What does this print?
+
+      ```python
+      cache = {"42": "shipped"}
+      print(cache.get("43", "miss"))
+      ```
+    back: "`miss` -- `get` returns its default on a missing key."
+  - front: What is **read-through**?
+    back: On a miss the value is loaded from the store and kept, so the next read hits.
+  - front: 90 % of reads hit at 2 ms, the rest take 40 ms. What is the average?
+    back: "**5.8 ms** -- 0.9 × 2 + 0.1 × 40. The few misses are most of it."
+  - front: What is a **stale** value?
+    back: A copy the store has moved on from without telling the cache.
+  - front: What is **cache warm-up**?
+    back: Filling the cache before the traffic comes, so the first reads do not all miss.
+  - front: Name two ways a key is **evicted**.
+    back: Least recently used (LRU) when memory is full, and expiry when its TTL runs out.

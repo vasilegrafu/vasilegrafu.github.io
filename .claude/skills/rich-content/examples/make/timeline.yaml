@@ -1,0 +1,15 @@
+# The checkout rewrite this quarter: who builds what when, and the dates it answers to.
+make: timeline
+milestones:
+  - {date: 2026-10-12, label: Design agreed}
+  - {date: 2026-11-02, label: Beta to staff}
+  - {date: 2026-11-06, label: Load test passed, tone: good}
+  - {date: 2026-11-30, label: All customers}
+  - {date: 2026-12-14, label: Old checkout off}
+phases:
+  - {start: 2026-10-05, end: 2026-10-30, label: API, lane: Backend}
+  - {start: 2026-11-02, end: 2026-11-27, label: Payments, lane: Backend}
+  - {start: 2026-10-12, end: 2026-11-13, label: New checkout pages, lane: Web}
+  - {start: 2026-11-02, end: 2026-11-20, label: Load tests, lane: Platform}
+  - {start: 2026-11-30, end: 2026-12-14, label: Both run, lane: Platform}
+today: 2026-11-04

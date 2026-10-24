@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330">
+<line x1="84" y1="66" x2="84" y2="320" stroke="#475569" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="268" y1="66" x2="268" y2="320" stroke="#2563EB" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="452" y1="66" x2="452" y2="320" stroke="#0F766E" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="636" y1="66" x2="636" y2="320" stroke="#15803D" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<path d="M90,92 L266,92" fill="none" stroke="#1B2130" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="266,92 257.7,87.2 257.7,96.8" fill="#1B2130"/>
+<path d="M274,130 L450,130" fill="none" stroke="#1B2130" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="450,130 441.7,125.2 441.7,134.8" fill="#1B2130"/>
+<path d="M446,162 L270,162" fill="none" stroke="#B45309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="270,162 278.3,166.8 278.3,157.2" fill="#B45309"/>
+<path d="M274,200 L634,200" fill="none" stroke="#1B2130" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="634,200 625.7,195.2 625.7,204.8" fill="#1B2130"/>
+<path d="M630,232 L270,232" fill="none" stroke="#5E6779" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="270,232 278.3,236.8 278.3,227.2" fill="#5E6779"/>
+<path d="M274,268 L450,268" fill="none" stroke="#1B2130" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="450,268 441.7,263.2 441.7,272.8" fill="#1B2130"/>
+<path d="M262,306 L86,306" fill="none" stroke="#15803D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="86,306 94.3,310.8 94.3,301.2" fill="#15803D"/>
+<rect x="264" y="92" width="8" height="214" rx="2" fill="#EDF3FF" stroke="#2563EB" stroke-width="1"/>
+<rect x="19.5" y="18" width="132" height="46" rx="9" fill="#E3E7EE"/>
+<rect x="18" y="16" width="132" height="46" rx="9" fill="#F1F4F8" stroke="#475569" stroke-width="1.6"/>
+<rect x="203.5" y="18" width="132" height="46" rx="9" fill="#E3E7EE"/>
+<rect x="202" y="16" width="132" height="46" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="387.5" y="18" width="132" height="46" rx="9" fill="#E3E7EE"/>
+<rect x="386" y="16" width="132" height="46" rx="9" fill="#E7F6F4" stroke="#0F766E" stroke-width="1.6"/>
+<rect x="571.5" y="18" width="132" height="46" rx="9" fill="#E3E7EE"/>
+<rect x="570" y="16" width="132" height="46" rx="9" fill="#EBF7EE" stroke="#15803D" stroke-width="1.6"/>
+<g transform="translate(30.00,28.00) scale(0.9167)" fill="none" stroke="#475569" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/> <path d="M12 16.5v4M8 20.5h8"/></g>
+<text x="60" y="42.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Browser</text>
+<g transform="translate(214.00,28.00) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="7" rx="1.5"/> <rect x="3" y="13.5" width="18" height="7" rx="1.5"/> <path d="M7 7h.01M7 17h.01M13 7h4M13 17h4"/></g>
+<text x="244" y="42.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">API</text>
+<g transform="translate(398.00,28.00) scale(0.9167)" fill="none" stroke="#0F766E" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.5 5 13.5h6.5l-1 8 8.5-11h-6.5z"/></g>
+<text x="428" y="42.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Redis</text>
+<g transform="translate(582.00,28.00) scale(0.9167)" fill="none" stroke="#15803D" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/> <path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/> <path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></g>
+<text x="612" y="42.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Postgres</text>
+<rect x="140.75" y="74" width="86.51" height="14" rx="3" fill="#FFFFFF"/>
+<text x="184" y="85" font-family="Geist" font-size="10.5" font-weight="500" fill="#1B2130" text-anchor="middle">GET /orders/42</text>
+<rect x="326.2" y="112" width="83.6" height="14" rx="3" fill="#FFFFFF"/>
+<text x="368" y="123" font-family="Geist Mono" font-size="10.5" font-weight="500" fill="#1B2130" text-anchor="middle">GET order:42</text>
+<rect x="321.88" y="144" width="60.24" height="14" rx="3" fill="#FFFFFF"/>
+<text x="352" y="155" font-family="Geist" font-size="10.5" font-weight="500" fill="#B45309" text-anchor="middle">nil (a miss)</text>
+<rect x="478.7" y="182" width="146.6" height="14" rx="3" fill="#FFFFFF"/>
+<text x="552" y="193" font-family="Geist Mono" font-size="10.5" font-weight="500" fill="#1B2130" text-anchor="middle">SELECT … WHERE id = 42</text>
+<rect x="519.09" y="214" width="33.83" height="14" rx="3" fill="#FFFFFF"/>
+<text x="536" y="225" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">1 row</text>
+<rect x="307.3" y="250" width="121.4" height="14" rx="3" fill="#FFFFFF"/>
+<text x="368" y="261" font-family="Geist Mono" font-size="10.5" font-weight="500" fill="#1B2130" text-anchor="middle">SET order:42 EX 60</text>
+<text x="368" y="283" font-family="Geist" font-size="9.5" font-weight="400" fill="#5E6779" text-anchor="middle" font-style="italic">the next read is a hit</text>
+<rect x="144.96" y="288" width="46.07" height="14" rx="3" fill="#FFFFFF"/>
+<text x="168" y="299" font-family="Geist" font-size="10.5" font-weight="500" fill="#15803D" text-anchor="middle">200 OK</text>
+<circle cx="104" cy="92" r="10.5" fill="#FFFFFF"/>
+<circle cx="104" cy="92" r="9" fill="#1B2130"/>
+<text x="104" y="95.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<circle cx="288" cy="130" r="10.5" fill="#FFFFFF"/>
+<circle cx="288" cy="130" r="9" fill="#1B2130"/>
+<text x="288" y="133.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<circle cx="432" cy="162" r="10.5" fill="#FFFFFF"/>
+<circle cx="432" cy="162" r="9" fill="#B45309"/>
+<text x="432" y="165.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<circle cx="288" cy="200" r="10.5" fill="#FFFFFF"/>
+<circle cx="288" cy="200" r="9" fill="#1B2130"/>
+<text x="288" y="203.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<circle cx="616" cy="232" r="10.5" fill="#FFFFFF"/>
+<circle cx="616" cy="232" r="9" fill="#5E6779"/>
+<text x="616" y="235.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<circle cx="288" cy="268" r="10.5" fill="#FFFFFF"/>
+<circle cx="288" cy="268" r="9" fill="#1B2130"/>
+<text x="288" y="271.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<circle cx="248" cy="306" r="10.5" fill="#FFFFFF"/>
+<circle cx="248" cy="306" r="9" fill="#15803D"/>
+<text x="248" y="309.42" font-family="Geist" font-size="10.35" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+</svg>

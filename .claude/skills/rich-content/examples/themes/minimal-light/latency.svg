@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="299.262596pt" height="195.8125pt" viewBox="0 0 299.262596 195.8125" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 195.8125 
+L 299.262596 195.8125 
+L 299.262596 -0 
+L 0 -0 
+L 0 195.8125 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 39.3475 162.0325 
+L 296.0275 162.0325 
+L 296.0275 23.4325 
+L 39.3475 23.4325 
+L 39.3475 162.0325 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="44.283654" y="174.075" transform="rotate(-0 44.283654 174.075)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="93.645192" y="174.075" transform="rotate(-0 93.645192 174.075)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="143.006731" y="174.075" transform="rotate(-0 143.006731 174.075)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="192.368269" y="174.075" transform="rotate(-0 192.368269 174.075)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="241.729808" y="174.075" transform="rotate(-0 241.729808 174.075)">20</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="291.091346" y="174.075" transform="rotate(-0 291.091346 174.075)">25</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-weight: 500; font-size: 9.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="167.6875" y="190.13" transform="rotate(-0 167.6875 190.13)">hour</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <path d="M 39.3475 162.0325 
+L 296.0275 162.0325 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="166.30375" transform="rotate(-0 35.8475 166.30375)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <path d="M 39.3475 135.378654 
+L 296.0275 135.378654 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_9">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="139.649904" transform="rotate(-0 35.8475 139.649904)">50</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11">
+      <path d="M 39.3475 108.724808 
+L 296.0275 108.724808 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_10">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="112.996058" transform="rotate(-0 35.8475 112.996058)">100</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13">
+      <path d="M 39.3475 82.070962 
+L 296.0275 82.070962 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_11">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="86.342212" transform="rotate(-0 35.8475 86.342212)">150</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <path d="M 39.3475 55.417115 
+L 296.0275 55.417115 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_12">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="59.688365" transform="rotate(-0 35.8475 59.688365)">200</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_17">
+      <path d="M 39.3475 28.763269 
+L 296.0275 28.763269 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #e3e3e3; stroke-opacity: 0.9; stroke-width: 0.6; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_13">
+      <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: end; fill: #555555" x="35.8475" y="33.034519" transform="rotate(-0 35.8475 33.034519)">250</text>
+     </g>
+    </g>
+    <g id="text_14">
+     <text style="font-weight: 500; font-size: 9.5px; font-family: 'Geist'; text-anchor: middle; fill: #555555" x="12.4275" y="92.7325" transform="rotate(-90 12.4275 92.7325)">ms</text>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <path d="M 44.283654 92.625885 
+L 54.155962 90.973346 
+L 64.028269 89.320808 
+L 73.900577 87.668269 
+L 83.772885 86.015731 
+L 93.645192 92.625885 
+L 103.5175 90.973346 
+L 113.389808 89.320808 
+L 123.262115 57.922577 
+L 133.134423 56.270038 
+L 143.006731 62.880192 
+L 152.879038 61.227654 
+L 162.751346 38.252038 
+L 172.623654 36.5995 
+L 182.495962 56.270038 
+L 192.368269 62.880192 
+L 202.240577 61.227654 
+L 212.112885 59.575115 
+L 221.985192 57.922577 
+L 231.8575 34.946962 
+L 241.729808 62.880192 
+L 251.602115 90.973346 
+L 261.474423 89.320808 
+L 271.346731 87.668269 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #4f4f4f; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 44.283654 139.643269 
+L 54.155962 139.110192 
+L 64.028269 138.577115 
+L 73.900577 138.044038 
+L 83.772885 137.510962 
+L 93.645192 139.643269 
+L 103.5175 139.110192 
+L 113.389808 138.577115 
+L 123.262115 128.448654 
+L 133.134423 127.915577 
+L 143.006731 130.047885 
+L 152.879038 129.514808 
+L 162.751346 128.981731 
+L 172.623654 128.448654 
+L 182.495962 127.915577 
+L 192.368269 130.047885 
+L 202.240577 129.514808 
+L 212.112885 128.981731 
+L 221.985192 128.448654 
+L 231.8575 127.915577 
+L 241.729808 130.047885 
+L 251.602115 139.110192 
+L 261.474423 138.577115 
+L 271.346731 138.044038 
+" clip-path="url(#peda9741918)" style="fill: none; stroke: #c2410c; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 39.3475 55.417115 
+L 296.0275 55.417115 
+" clip-path="url(#peda9741918)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #c92a2a"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 39.3475 162.0325 
+L 296.0275 162.0325 
+" style="fill: none; stroke: #9e9e9e; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 8.5px; font-family: 'Geist'; text-anchor: start; fill: #c92a2a" x="44.283654" y="50.777308" transform="rotate(-0 44.283654 50.777308)">budget 200 ms</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 600; font-size: 8.5px; font-family: 'Geist'; text-anchor: start; fill: #4f4f4f" x="275.295654" y="90.685769" transform="rotate(-0 275.295654 90.685769)">p99</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 600; font-size: 8.5px; font-family: 'Geist'; text-anchor: start; fill: #c2410c" x="275.295654" y="141.061538" transform="rotate(-0 275.295654 141.061538)">p50</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 600; font-size: 10.5px; font-family: 'Geist'; text-anchor: start; fill: #111111" x="39.3475" y="13.4325" transform="rotate(-0 39.3475 13.4325)">Response time over a day</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="peda9741918">
+   <rect x="39.3475" y="23.4325" width="256.68" height="138.6"/>
+  </clipPath>
+ </defs>
+</svg>

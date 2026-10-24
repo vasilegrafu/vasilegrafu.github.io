@@ -1,0 +1,48 @@
+# Which queue should carry order events: three options scored, one recommended.
+make: decision
+title: Which queue carries order events
+eyebrow: Decision · orders platform
+question: Which message queue should carry order events from the start of next quarter?
+format: [html, pdf]
+decide_by: 7 November 2026
+owner: the platform lead
+context: |
+  Order events go from the orders API to billing, email and analytics through a table polled every
+  five seconds. At 612 000 reads a day the polling costs more than the reads, and billing sees an
+  order up to ten seconds late. Whatever replaces it must keep the events of one order in order.
+criteria:
+  Keeps order per order: 3
+  Little to run: 3
+  Cost a month: 2
+  Team knows it: 1
+options:
+  - name: Kafka
+    summary: A managed Kafka cluster, three brokers.
+    effort: 6 weeks
+    scores: {Keeps order per order: 5, Little to run: 2, Cost a month: 2, Team knows it: 3}
+    pros: [Order kept per partition key, Replays any day of events, Analytics can read it directly]
+    cons: [Brokers and partitions to size and watch, The most expensive at our volume]
+  - name: SQS FIFO
+    summary: Amazon's FIFO queues, one message group per order.
+    effort: 2 weeks
+    scores: {Keeps order per order: 5, Little to run: 5, Cost a month: 4, Team knows it: 4}
+    pros: [Nothing to run, Order kept per message group, Billing already reads SQS]
+    cons: [No replay after a message is read, 300 messages a second per group]
+  - name: Keep polling
+    summary: The table as it is, polled every second instead of five.
+    effort: 2 days
+    scores: {Keeps order per order: 4, Little to run: 4, Cost a month: 1, Team knows it: 5}
+    pros: [No new system]
+    cons: [Five times the load on the database, Still a second late]
+recommendation:
+  option: SQS FIFO
+  why: It keeps each order's events in order with nothing to run, at a third of Kafka's cost, and billing already reads SQS.
+change_mind:
+  - Analytics needs to replay events older than four days.
+  - Order events pass 300 a second for a single order (bulk imports).
+risks:
+  - A consumer that fails mid-group holds that order's later events until it recovers.
+next:
+  - Agree the message group key (the order ID) with billing.
+  - Move email first, then billing, then analytics.
+  - Retire the polled table once all three read the queue.

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="727.8" height="336" viewBox="0 0 727.8 336">
+<rect x="566.8" y="158" width="148" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="566.8" y="200" width="148" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="305.2" y="223.5" width="194.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="305.2" y="265.5" width="194.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="31.3" y="61" width="170.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="31.3" y="103" width="170.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="317.2" y="71.5" width="170.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="317.2" y="113.5" width="170.6" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="13" y="234" width="207.2" height="21" rx="0" fill="#F4F6F9"/>
+<rect x="13" y="276" width="207.2" height="21" rx="0" fill="#F4F6F9"/>
+<path d="M202.9,74.5 L243.2,74.5 L243.2,216 L304.2,216" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M213.90,74.50 L202.90,68.50 M213.90,74.50 L202.90,74.50 M213.90,74.50 L202.90,80.50" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M297.20,210.00 L297.20,222.00" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M202.9,95.5 L252.2,95.5 L252.2,64 L316.2,64" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M213.90,95.50 L202.90,89.50 M213.90,95.50 L202.90,95.50 M213.90,95.50 L202.90,101.50" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M309.20,58.00 L309.20,70.00" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M221.2,247.5 L252.2,247.5 L252.2,216 L304.2,216" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M232.20,247.50 L221.20,241.50 M232.20,247.50 L221.20,247.50 M232.20,247.50 L221.20,253.50" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M297.20,210.00 L297.20,222.00" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500.8,237 L522.8,237 L522.8,150.5 L565.8,150.5" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M511.80,237.00 L500.80,231.00 M511.80,237.00 L500.80,237.00 M511.80,237.00 L500.80,243.00" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M558.80,144.50 L558.80,156.50" fill="none" stroke="#5E6779" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="565.8" y="109" width="150" height="118" rx="6" fill="#FFFFFF" stroke="#9AA2B1" stroke-width="1.1"/>
+<rect x="565.8" y="109" width="150" height="28" rx="6" fill="#15803D"/>
+<rect x="565.8" y="131" width="150" height="6" rx="0" fill="#15803D"/>
+<rect x="304.2" y="174.5" width="196.6" height="139" rx="6" fill="#FFFFFF" stroke="#9AA2B1" stroke-width="1.1"/>
+<rect x="304.2" y="174.5" width="196.6" height="28" rx="6" fill="#15803D"/>
+<rect x="304.2" y="196.5" width="196.6" height="6" rx="0" fill="#15803D"/>
+<rect x="30.3" y="12" width="172.6" height="139" rx="6" fill="#FFFFFF" stroke="#9AA2B1" stroke-width="1.1"/>
+<rect x="30.3" y="12" width="172.6" height="28" rx="6" fill="#15803D"/>
+<rect x="30.3" y="34" width="172.6" height="6" rx="0" fill="#15803D"/>
+<rect x="316.2" y="22.5" width="172.6" height="118" rx="6" fill="#FFFFFF" stroke="#9AA2B1" stroke-width="1.1"/>
+<rect x="316.2" y="22.5" width="172.6" height="28" rx="6" fill="#15803D"/>
+<rect x="316.2" y="44.5" width="172.6" height="6" rx="0" fill="#15803D"/>
+<rect x="12" y="185" width="209.2" height="139" rx="6" fill="#FFFFFF" stroke="#9AA2B1" stroke-width="1.1"/>
+<rect x="12" y="185" width="209.2" height="28" rx="6" fill="#15803D"/>
+<rect x="12" y="207" width="209.2" height="6" rx="0" fill="#15803D"/>
+<text x="575.8" y="127.5" font-family="Geist" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="start">customers</text>
+<text x="575.8" y="151" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#B45309" text-anchor="start">PK</text>
+<text x="595.8" y="151.5" font-family="Geist Mono" font-size="11" font-weight="600" fill="#1B2130" text-anchor="start">id</text>
+<text x="705.8" y="151.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="595.8" y="172.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">email</text>
+<text x="705.8" y="172.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text</text>
+<text x="595.8" y="193.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">name</text>
+<text x="705.8" y="193.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text</text>
+<text x="595.8" y="214.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">phone</text>
+<text x="705.8" y="214.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text?</text>
+<text x="314.2" y="193" font-family="Geist" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="start">orders</text>
+<text x="314.2" y="216.5" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#B45309" text-anchor="start">PK</text>
+<text x="334.2" y="217" font-family="Geist Mono" font-size="11" font-weight="600" fill="#1B2130" text-anchor="start">id</text>
+<text x="490.8" y="217" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="314.2" y="237.5" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#2563EB" text-anchor="start">FK</text>
+<text x="334.2" y="238" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">customer_id</text>
+<text x="490.8" y="238" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="334.2" y="259" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">placed_at</text>
+<text x="490.8" y="259" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">timestamptz</text>
+<text x="334.2" y="280" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">status</text>
+<text x="490.8" y="280" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text</text>
+<text x="334.2" y="301" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">total_cents</text>
+<text x="490.8" y="301" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">integer</text>
+<text x="40.3" y="30.5" font-family="Geist" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="start">order_lines</text>
+<text x="40.3" y="54" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#B45309" text-anchor="start">PK</text>
+<text x="60.3" y="54.5" font-family="Geist Mono" font-size="11" font-weight="600" fill="#1B2130" text-anchor="start">id</text>
+<text x="192.9" y="54.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="40.3" y="75" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#2563EB" text-anchor="start">FK</text>
+<text x="60.3" y="75.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">order_id</text>
+<text x="192.9" y="75.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="40.3" y="96" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#2563EB" text-anchor="start">FK</text>
+<text x="60.3" y="96.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">product_id</text>
+<text x="192.9" y="96.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="60.3" y="117.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">quantity</text>
+<text x="192.9" y="117.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">integer</text>
+<text x="60.3" y="138.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">price_cents</text>
+<text x="192.9" y="138.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">integer</text>
+<text x="326.2" y="41" font-family="Geist" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="start">products</text>
+<text x="326.2" y="64.5" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#B45309" text-anchor="start">PK</text>
+<text x="346.2" y="65" font-family="Geist Mono" font-size="11" font-weight="600" fill="#1B2130" text-anchor="start">id</text>
+<text x="478.8" y="65" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="346.2" y="86" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">sku</text>
+<text x="478.8" y="86" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text</text>
+<text x="346.2" y="107" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">name</text>
+<text x="478.8" y="107" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text</text>
+<text x="346.2" y="128" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">price_cents</text>
+<text x="478.8" y="128" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">integer</text>
+<text x="22" y="203.5" font-family="Geist" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="start">payments</text>
+<text x="22" y="227" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#B45309" text-anchor="start">PK</text>
+<text x="42" y="227.5" font-family="Geist Mono" font-size="11" font-weight="600" fill="#1B2130" text-anchor="start">id</text>
+<text x="211.2" y="227.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="22" y="248" font-family="Geist Mono" font-size="8.5" font-weight="700" fill="#2563EB" text-anchor="start">FK</text>
+<text x="42" y="248.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">order_id</text>
+<text x="211.2" y="248.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">uuid</text>
+<text x="42" y="269.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">provider_ref</text>
+<text x="211.2" y="269.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">text?</text>
+<text x="42" y="290.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">amount_cents</text>
+<text x="211.2" y="290.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">integer</text>
+<text x="42" y="311.5" font-family="Geist Mono" font-size="11" font-weight="500" fill="#1B2130" text-anchor="start">paid_at</text>
+<text x="211.2" y="311.5" font-family="Geist Mono" font-size="10" font-weight="400" fill="#5E6779" text-anchor="end">timestamptz?</text>
+</svg>

@@ -1,0 +1,17 @@
+# Where things are in the orders service: its folders, and what each holds.
+make: tree
+style: folder
+text: |
+  orders/
+    src/                 # the service itself
+      api/               # HTTP endpoints, one file per resource
+        orders.py
+        health.py
+      domain/            # the rules of an order, no I/O
+        order.py
+        pricing.py
+      store/             # Postgres and Redis, behind two small interfaces
+    tests/               # one test file per module
+    docs/
+      design-note.yaml   # a spec: python -m tools.make builds it
+    pyproject.toml

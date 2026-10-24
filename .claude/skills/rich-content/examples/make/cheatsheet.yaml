@@ -1,0 +1,42 @@
+# Git, the commands of a working week: a two-column PDF, and the same as a page of cards.
+make: cheatsheet
+title: Git, the commands of a working week
+eyebrow: Cheat sheet
+lead: What each does, in the order a change goes through them.
+format: [pdf, html]
+footer: Git cheat sheet
+sections:
+  - title: Start
+    items:
+      - [git switch main, Go to the main branch]
+      - [git pull --rebase, "Bring it up to date, your commits replayed on top"]
+      - [git switch -c fix/total, Start a branch for one change]
+  - title: Look
+    items:
+      - [git status, What changed and what is staged]
+      - [git diff, The changes not yet staged]
+      - [git diff --staged, The changes the next commit holds]
+      - [git log --oneline -10, The last ten commits, one line each]
+  - title: Commit
+    items:
+      - [git add -p, "Stage a change hunk by hunk, saying yes or no to each"]
+      - [git commit, "Commit what is staged; the editor opens for the message"]
+      - {term: git commit --amend --no-edit, text: "Add what is staged to the last commit; only before it is pushed"}
+  - title: Share
+    items:
+      - [git push -u origin HEAD, Push the branch and track it]
+      - [git push --force-with-lease, Push a rewritten branch unless someone else pushed to it]
+  - title: Undo
+    items:
+      - [git restore file, Throw away a file's unstaged changes]
+      - [git restore --staged file, Unstage it and keep the changes]
+      - [git revert abc123, A new commit that undoes abc123]
+    md: "**Never** rewrite a branch others have pulled: revert instead."
+  - title: Branch tidy-up
+    items:
+      - [git branch -d fix/total, Delete a merged branch]
+      - [git fetch --prune, Forget branches deleted on the server]
+    code: |
+      # every local branch already merged into main
+      git branch --merged main
+    lang: sh

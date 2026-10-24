@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="250" viewBox="0 0 720 250">
+<rect x="240" y="14" width="290" height="222" rx="12" fill="none" stroke="#9AA2B1" stroke-width="1.1" stroke-dasharray="4 4"/>
+<g transform="translate(252.00,21.00) scale(0.5417)" fill="none" stroke="#5E6779" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 19A4 4 0 0 1 5.51 11.12 5.5 5.5 0 0 1 16.48 11.03 4 4 0 1 1 17 19Z"/></g>
+<text x="270" y="31.5" font-family="Geist" font-size="9" font-weight="700" fill="#5E6779" text-anchor="start" letter-spacing="0.8">OUR SERVICE</text>
+<path d="M134,126 L258,126" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="258,126 249.58,121.12 249.58,130.88" fill="#5E6779"/>
+<path d="M412,126 L566.4,51.73" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="566.4,51.73 556.69,50.99 560.92,59.78" fill="#5E6779"/>
+<path d="M412,126 L566.4,200.27" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="566.4,200.27 560.92,192.22 556.69,201.01" fill="#5E6779"/>
+<path d="M337,154 L337,170" fill="none" stroke="#5E6779" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="337,170 341.88,161.58 332.12,161.58" fill="#5E6779"/>
+<rect x="5.5" y="100" width="130" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="4" y="98" width="130" height="56" rx="9" fill="#F1F4F8" stroke="#475569" stroke-width="1.6"/>
+<rect x="263.5" y="100" width="150" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="262" y="98" width="150" height="56" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="571.5" y="24" width="144" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="570" y="22" width="144" height="56" rx="9" fill="#E7F6F4" stroke="#0F766E" stroke-width="1.6"/>
+<path d="M571.5,183 L571.5,225 A72,7 0 0 0 715.5,225 L715.5,183 Z" fill="#E3E7EE"/>
+<path d="M570,181 L570,223 A72,7 0 0 0 714,223 L714,181 A72,7 0 0 0 570,181 Z" fill="#EBF7EE" stroke="#15803D" stroke-width="1.6"/>
+<ellipse cx="642" cy="181" rx="72" ry="7" fill="#EBF7EE" stroke="#15803D" stroke-width="1.6"/>
+<rect x="263.5" y="176" width="150" height="50" rx="9" fill="#E3E7EE"/>
+<rect x="262" y="174" width="150" height="50" rx="9" fill="#FFF2EA" stroke="#C2410C" stroke-width="1.6"/>
+<g transform="translate(16.00,115.00) scale(0.9167)" fill="none" stroke="#475569" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/> <path d="M12 16.5v4M8 20.5h8"/></g>
+<text x="46" y="129.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Browser</text>
+<g transform="translate(274.00,115.00) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="7" rx="1.5"/> <rect x="3" y="13.5" width="18" height="7" rx="1.5"/> <path d="M7 7h.01M7 17h.01M13 7h4M13 17h4"/></g>
+<text x="304" y="121.94" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">API</text>
+<text x="304" y="137.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#5E6779" text-anchor="start">FastAPI</text>
+<g transform="translate(582.00,39.00) scale(0.9167)" fill="none" stroke="#0F766E" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.5 5 13.5h6.5l-1 8 8.5-11h-6.5z"/></g>
+<text x="612" y="53.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Cache</text>
+<g transform="translate(582.00,194.50) scale(0.9167)" fill="none" stroke="#15803D" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/> <path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/> <path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></g>
+<text x="612" y="208.69" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Database</text>
+<g transform="translate(274.00,188.00) scale(0.9167)" fill="none" stroke="#C2410C" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/> <path d="m3 6.5 9 6.5 9-6.5"/></g>
+<text x="304" y="202.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Email queue</text>
+<rect x="161.95" y="108.5" width="68.1" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="196" y="119" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">GET /orders</text>
+<rect x="461" y="71.37" width="56.39" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="489.2" y="81.87" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">1 · look up</text>
+<rect x="454.88" y="145.63" width="68.63" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="489.2" y="156.13" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">2 · on a miss</text>
+</svg>

@@ -1,0 +1,13 @@
+# p99 latency of the orders API over a week, against its 200 ms budget.
+make: chart
+type: line
+title: p99 stayed under budget once the cache was warm
+x: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+series:
+  p99: [238, 221, 182, 176, 171, 168, 166]
+  p50: [52, 50, 45, 44, 44, 43, 43]
+ylabel: ms
+ylim: [0, 280]
+marks:
+  - {y: 200, label: budget 200 ms}
+  - {x: Wed, label: cache warmed}

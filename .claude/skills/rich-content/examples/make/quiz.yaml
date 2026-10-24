@@ -1,0 +1,141 @@
+# A quiz on caching a read, one question in each of the eleven formats, then its answer key.
+make: quiz
+title: Caching a read
+eyebrow: Quiz · orders service
+lead: Eleven questions, one in each format. Answer on the paper; the key starts on a new page.
+footer: Orders service · quiz
+questions:
+  - id: c-01
+    level: beginner
+    format: choice-one
+    q: A read finds the key in the cache. What is this called?
+    options:
+      - {t: A hit, ok: true, why: "The value was in the cache, so the database is not asked."}
+      - {t: A miss, why: "A miss is the opposite: the key was not there, and the read goes on to the database."}
+      - {t: An eviction, why: "An eviction removes a key to make room; it is not a read."}
+      - {t: A write-through, why: "Write-through is a way of writing, to the cache and the store together."}
+    takeaway: A hit is answered by the cache; a miss goes on to the store behind it.
+  - id: c-02
+    level: intermediate
+    format: choice-many
+    q: Which of these make a cached value **stale**?
+    options:
+      - {t: The order is updated in the database, ok: true, why: "The cache still holds the old row until it is evicted or refreshed."}
+      - {t: The key's TTL is long and the data changes often, ok: true, why: "The longer a value lives, the longer it can lag behind the store."}
+      - {t: A second API instance reads the same key, why: "Reading a value does not change it."}
+      - {t: The cache is restarted, why: "A restart empties the cache: the next read misses, but nothing stale is served."}
+      - {t: An update skips the step that deletes the key, ok: true, why: "Deleting the key on write is what keeps the cache honest."}
+    takeaway: A value is stale when the store moved on and the cache was not told.
+  - id: c-03
+    level: beginner
+    format: short-answer
+    material:
+      kind: code
+      lang: python
+      text: |
+        cache = {"42": "shipped"}
+        print(cache.get("43", "miss"))
+    q: Type exactly what this prints.
+    accept: [miss]
+    compare: exact
+    traps:
+      - {text: None, why: "`get` returns its second argument when the key is not there, not `None`."}
+    why: Key `"43"` is not in the dictionary, so `get` returns the default it was given.
+    takeaway: "`dict.get(key, default)` never raises: it returns the default on a miss."
+  - id: c-04
+    level: intermediate
+    format: numeric
+    material: {kind: text, text: "A cache answers 90 % of 1 000 reads at 2 ms each; the other reads go to a database at 40 ms."}
+    q: What is the average time of a read, in milliseconds?
+    answer: 5.8
+    unit: ms
+    tolerance: {kind: absolute, value: 0.05}
+    why: "0.9 × 2 + 0.1 × 40 = 1.8 + 4 = 5.8 ms."
+    takeaway: The misses, though few, are most of the average.
+  - id: c-05
+    level: intermediate
+    format: spot
+    material:
+      kind: code
+      lang: python
+      text: |
+        def read(order_id):
+            hit = cache.get(order_id)
+            if hit:
+                return hit
+            row = db.load(order_id)
+            return row
+    q: Every read of the same order goes to the database. Write the number of the line that causes it.
+    faulty: [6]
+    notes:
+      6: "The row is returned but never put in the cache, so the next read misses again."
+      5: "Loading on a miss is right; the problem is what happens after."
+    why: A read-through cache fills itself on the way back from a miss.
+    takeaway: A miss that does not fill the cache will miss again.
+  - id: c-06
+    level: beginner
+    format: fill-gaps
+    material: {kind: text, text: "On a miss the API reads the {{1}} and then writes the value into the {{2}}."}
+    q: Choose the word for each gap.
+    gaps:
+      - {choices: [database, cache, queue], answer: database, why: "The store of record answers what the cache cannot."}
+      - {choices: [cache, database, log], answer: cache, why: "Writing it back is what makes the next read a hit."}
+  - id: c-07
+    level: intermediate
+    format: order
+    q: Put the steps of a read that misses in order.
+    items:
+      - The API asks the cache for the key
+      - The cache answers that it does not have it
+      - The API reads the row from the database
+      - The API writes the row into the cache
+      - The API answers the client
+    orderBy: first step to last
+    why: Each step needs the one before it; the client is answered last, once the value is known.
+  - id: c-08
+    level: beginner
+    format: classify
+    q: Sort each into what it holds.
+    groups:
+      - {name: Cache, items: [A copy that may be evicted, Answers in a millisecond or two]}
+      - {name: Database, items: [The record of what is true, Survives a restart]}
+    why: The cache is a fast copy; the database is the truth it copies.
+  - id: c-09
+    level: beginner
+    format: match
+    q: Match each term with what it means.
+    pairs:
+      - [TTL, How long a value may live in the cache]
+      - [Eviction, A value removed to make room]
+      - [Hit rate, The share of reads the cache answers]
+      - [Warm-up, Filling the cache before the traffic comes]
+    why: Each term names one part of a cache's life.
+  - id: c-10
+    level: advanced
+    format: free-response
+    q: An interviewer asks *"How do you keep a cache from serving stale data?"* Answer as you would out loud.
+    model: |
+      Delete or update the key whenever the data changes, and give every key a TTL as a safety net, so a missed
+      delete is wrong for minutes, not forever. Where the data must never be stale, read it from the store.
+    points:
+      - Invalidate on write (delete or update the key)
+      - A TTL as a safety net
+      - Some reads should bypass the cache
+  - id: c-11
+    level: advanced
+    format: case
+    q: Work through a slow day in two steps.
+    scenario: After a deploy, p99 latency doubles for an hour and then returns to normal.
+    steps:
+      - format: choice-one
+        q: What is the most likely cause?
+        options:
+          - {t: The deploy emptied the cache, ok: true, why: "Every read missed until the cache had filled again."}
+          - {t: The database lost an index, why: "That would not fix itself after an hour."}
+          - {t: Clients sent bigger requests, why: "Nothing in the scenario changed the clients."}
+      - format: short-answer
+        q: Name the practice that fills a cache before traffic arrives (one word).
+        accept: [warm-up, warmup]
+        compare: ignore-case-and-spaces
+        why: Warming the cache moves the misses to before the traffic.
+    takeaway: An empty cache is a slow cache; warm it before the traffic comes back.

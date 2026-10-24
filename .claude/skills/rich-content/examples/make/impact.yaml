@@ -1,0 +1,4 @@
+# What a change to R4 (add a product to the cart) turns stale in the shop example, read from its specification.
+make: impact
+specs: ../../../product-specs/examples/shop/specs
+id: R4

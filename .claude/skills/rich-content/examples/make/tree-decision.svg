@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="886" height="342" viewBox="0 0 886 342">
+<path d="M443,72 L443,88 L221,88 L221,142" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="221,142 225.72,133.82 216.28,133.82" fill="#5E6779"/>
+<path d="M221,202 L221,218 L110,218 L110,272" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="110,272 114.72,263.82 105.28,263.82" fill="#5E6779"/>
+<path d="M221,202 L221,218 L332,218 L332,272" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="332,272 336.72,263.82 327.28,263.82" fill="#5E6779"/>
+<path d="M443,72 L443,88 L665,88 L665,142" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="665,142 669.72,133.82 660.28,133.82" fill="#5E6779"/>
+<path d="M665,202 L665,218 L554,218 L554,272" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="554,272 558.72,263.82 549.28,263.82" fill="#5E6779"/>
+<path d="M665,202 L665,218 L776,218 L776,272" fill="none" stroke="#5E6779" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="776,272 780.72,263.82 771.28,263.82" fill="#5E6779"/>
+<rect x="344.5" y="18" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="343" y="16" width="200" height="56" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="122.5" y="148" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="121" y="146" width="200" height="56" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="11.5" y="278" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="10" y="276" width="200" height="56" rx="9" fill="#EAF6EE" stroke="#15803D" stroke-width="1.6"/>
+<rect x="233.5" y="278" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="232" y="276" width="200" height="56" rx="9" fill="#EBF7EE" stroke="#15803D" stroke-width="1.6"/>
+<rect x="566.5" y="148" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="565" y="146" width="200" height="56" rx="9" fill="#EDF3FF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="455.5" y="278" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="454" y="276" width="200" height="56" rx="9" fill="#EAF6EE" stroke="#15803D" stroke-width="1.6"/>
+<rect x="677.5" y="278" width="200" height="56" rx="9" fill="#E3E7EE"/>
+<rect x="676" y="276" width="200" height="56" rx="9" fill="#EBF7EE" stroke="#15803D" stroke-width="1.6"/>
+<text x="355" y="47.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Must it survive a restart?</text>
+<text x="133" y="177.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Is it read on every request?</text>
+<text x="22" y="299.94" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">In-process cache</text>
+<text x="22" y="315.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#5E6779" text-anchor="start">per instance</text>
+<text x="244" y="307.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Leave it in memory</text>
+<text x="577" y="177.19" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Is it a fact others query?</text>
+<text x="466" y="299.94" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Postgres</text>
+<text x="466" y="315.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#5E6779" text-anchor="start">a table, with its rules</text>
+<text x="688" y="299.94" font-family="Geist" font-size="13" font-weight="600" fill="#1B2130" text-anchor="start">Redis</text>
+<text x="688" y="315.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#5E6779" text-anchor="start">with a TTL</text>
+<rect x="210.81" y="107.89" width="20.38" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="221" y="118.39" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">no</text>
+<rect x="97.25" y="238.13" width="25.49" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="110" y="248.63" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">yes</text>
+<rect x="321.81" y="238.13" width="20.38" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="332" y="248.63" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">no</text>
+<rect x="652.25" y="107.89" width="25.49" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="665" y="118.39" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">yes</text>
+<rect x="541.25" y="238.13" width="25.49" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="554" y="248.63" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">yes</text>
+<rect x="765.81" y="238.13" width="20.38" height="15.5" rx="3" fill="#FFFFFF"/>
+<text x="776" y="248.63" font-family="Geist" font-size="10.5" font-weight="500" fill="#5E6779" text-anchor="middle">no</text>
+<circle cx="208" cy="278" r="10" fill="#15803D"/>
+<path d="M203.5,278.5 L206.8,281.8 L212.8,274.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="652" cy="278" r="10" fill="#15803D"/>
+<path d="M647.5,278.5 L650.8,281.8 L656.8,274.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

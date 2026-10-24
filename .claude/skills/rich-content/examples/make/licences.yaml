@@ -1,0 +1,2 @@
+# This checkout's third-party licences, as third_party.py finds them; it moves when a package changes, so --check calls it stale until it is made again.
+make: licences

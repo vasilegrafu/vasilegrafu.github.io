@@ -1,0 +1,52 @@
+# How one read misses the cache and fills it, stepped through over a single diagram.
+make: explainer
+title: A read that misses, and fills the cache
+eyebrow: How it works
+lead: Five steps, one diagram. Each step lights what it is about; the boxes never move.
+diagram:
+  nodes:
+    user: Browser
+    api: {label: API, sub: FastAPI}
+    cache: Cache
+    db: Database
+  edges:
+    - "user -> api: GET /orders/42"
+    - "api -> cache: look up"
+    - "api --> db: on a miss"
+    - "api -> user: 200 OK"
+intro: |
+  The API keeps a copy of each order it has read in a cache. A read **hits** when the copy is there;
+  when it is not, it **misses**, reads the database, and leaves a copy behind for the next read.
+frames:
+  - title: The request
+    text: The browser asks the API for order 42.
+    focus: [api]
+    highlight: [1]
+    rest: dim
+  - title: The look-up
+    text: The API asks the cache first, since a cache answers in a millisecond or two.
+    focus: [cache]
+    highlight: ["api -> cache"]
+    rest: dim
+  - title: A miss
+    text: Order 42 is not in the cache; nothing is wrong, the read is only slower.
+    warn: [cache]
+    highlight: ["api -> cache"]
+    tone: warn
+    rest: dim
+  - title: The database answers
+    text: The API reads the row from the database, and writes a copy into the cache on its way back.
+    focus: [db]
+    good: [cache]
+    highlight: [3]
+    rest: dim
+  - title: The answer
+    text: The browser gets its order; the next read of order 42 will be a hit.
+    good: [user, cache]
+    highlight: [4]
+    tone: good
+caption: Use the arrow keys, or the numbered buttons, to step through.
+after:
+  - callout: A miss that does not leave a copy behind will miss again on the next read.
+    title: Watch
+    tone: warn

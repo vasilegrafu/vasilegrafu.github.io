@@ -1,0 +1,36 @@
+# A design note made from blocks: two figures drawn from their own specs, tiles, a table and code.
+make: doc
+title: How the orders service serves a read
+eyebrow: Design note · week 42
+lead: A read of one order is answered from the cache when it can be, and from **Postgres** when it cannot.
+footer: Orders service · design note
+format: [html, pdf]
+blocks:
+  - kpis:
+      - [Reads a day, 612 000, +8 % on week 41, good]
+      - [Cache hits, 91 %, down from 94 %, warn]
+      - [p99, 166 ms, under the 200 ms budget, good]
+  - h2: The path
+  - figure: flow.yaml
+    caption: The API asks the cache first and the database only on a miss (the dashed arrow).
+  - callout: A miss is not an error, only a slower read; the API fills the cache on its way back.
+    title: Key idea
+  - h2: One request, message by message
+  - figure: sequence.yaml
+    caption: Two round trips go to TCP and TLS before the request itself is sent.
+  - h2: What it costs
+  - figure: chart.yaml
+    caption: p99 fell under its budget on Wednesday, when the cache had warmed.
+  - table:
+      header: [Endpoint, Reads a day, p50, p99]
+      rows:
+        - ["`GET /orders/{id}`", 612 000, 44 ms, 212 ms]
+        - ["`GET /orders?customer=`", 148 000, 61 ms, 180 ms]
+      numeric: [1, 2, 3]
+    caption: The two busiest reads last week.
+  - code: |
+      def read(order_id):
+          hit = cache.get(order_id)
+          return hit if hit else fill(order_id)
+    lang: python
+    caption: The read, in three lines.

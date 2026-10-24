@@ -1,0 +1,31 @@
+# The tables behind an order: who placed it, what is in it, and how it was paid.
+make: erd
+tables:
+  customers:
+    id: uuid pk
+    email: text
+    name: text
+    phone: text null
+  orders:
+    id: uuid pk
+    customer_id: uuid fk customers.id
+    placed_at: timestamptz
+    status: text
+    total_cents: integer
+  order_lines:
+    id: uuid pk
+    order_id: uuid fk orders.id
+    product_id: uuid fk products.id
+    quantity: integer
+    price_cents: integer
+  products:
+    id: uuid pk
+    sku: text
+    name: text
+    price_cents: integer
+  payments:
+    id: uuid pk
+    order_id: uuid fk orders.id
+    provider_ref: text null
+    amount_cents: integer
+    paid_at: timestamptz null

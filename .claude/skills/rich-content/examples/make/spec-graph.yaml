@@ -1,0 +1,5 @@
+# What the shop example's screen SC3 (a product) is tied to, read from its specification's model.
+make: spec-graph
+specs: ../../../product-specs/examples/shop/specs
+around: SC3
+leave: [has, became]

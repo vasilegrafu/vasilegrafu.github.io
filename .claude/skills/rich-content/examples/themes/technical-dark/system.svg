@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="884" height="300" viewBox="0 0 884 300">
+<rect width="884" height="300" fill="#111827"/>
+<rect x="256" y="14" width="438" height="272" rx="12" fill="none" stroke="#6B7385" stroke-width="1.1" stroke-dasharray="4 4"/>
+<g transform="translate(268.00,21.00) scale(0.5417)" fill="none" stroke="#A3AAB8" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 19A4 4 0 0 1 5.51 11.12 5.5 5.5 0 0 1 16.48 11.03 4 4 0 1 1 17 19Z"/></g>
+<text x="286" y="31.5" font-family="Geist" font-size="9" font-weight="700" fill="#A3AAB8" text-anchor="start" letter-spacing="0.8">ORDERS SERVICE</text>
+<path d="M136,160 L278,160" fill="none" stroke="#A3AAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="278,160 269.58,155.12 269.58,164.88" fill="#A3AAB8"/>
+<path d="M424,160 L552.72,70.29" fill="none" stroke="#A3AAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="552.72,70.29 543.02,71.1 548.6,79.11" fill="#A3AAB8"/>
+<path d="M424,160 L552,160" fill="none" stroke="#A3AAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polygon points="552,160 543.58,155.12 543.58,164.88" fill="#A3AAB8"/>
+<path d="M424,160 L548.7,245.73" fill="none" stroke="#A3AAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="548.7,245.73 544.53,236.94 539,244.99" fill="#A3AAB8"/>
+<path d="M684,248 L726,248" fill="none" stroke="#A3AAB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="726,248 717.58,243.12 717.58,252.88" fill="#A3AAB8"/>
+<rect x="12" y="136" width="124" height="48" rx="9" fill="#1A2333" stroke="#94A3B8" stroke-width="1.6"/>
+<rect x="292" y="122" width="132" height="56" rx="9" fill="#111827" stroke="#60A5FA" stroke-width="1"/>
+<rect x="287" y="127" width="132" height="56" rx="9" fill="#111827" stroke="#60A5FA" stroke-width="1"/>
+<rect x="282" y="132" width="132" height="56" rx="9" fill="#132338" stroke="#60A5FA" stroke-width="1.6"/>
+<rect x="556" y="40" width="124" height="56" rx="9" fill="#0F2A2A" stroke="#2DD4BF" stroke-width="1.6"/>
+<path d="M556,139 L556,181 A62,7 0 0 0 680,181 L680,139 A62,7 0 0 0 556,139 Z" fill="#10291A" stroke="#4ADE80" stroke-width="1.6"/>
+<ellipse cx="618" cy="139" rx="62" ry="7" fill="#10291A" stroke="#4ADE80" stroke-width="1.6"/>
+<rect x="552" y="224" width="132" height="48" rx="9" fill="#2E1D10" stroke="#FB923C" stroke-width="1.6"/>
+<rect x="730" y="224" width="144" height="48" rx="9" fill="#1C2230" stroke="#9CA3AF" stroke-width="1.6"/>
+<g transform="translate(24.00,149.00) scale(0.9167)" fill="none" stroke="#94A3B8" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/> <path d="M12 16.5v4M8 20.5h8"/></g>
+<text x="54" y="163.19" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Browser</text>
+<g transform="translate(294.00,149.00) scale(0.9167)" fill="none" stroke="#60A5FA" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="7" rx="1.5"/> <rect x="3" y="13.5" width="18" height="7" rx="1.5"/> <path d="M7 7h.01M7 17h.01M13 7h4M13 17h4"/></g>
+<text x="324" y="155.94" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Orders API</text>
+<text x="324" y="171.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#A3AAB8" text-anchor="start">3 instances</text>
+<g transform="translate(568.00,57.00) scale(0.9167)" fill="none" stroke="#2DD4BF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.5 5 13.5h6.5l-1 8 8.5-11h-6.5z"/></g>
+<text x="598" y="63.94" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Redis</text>
+<text x="598" y="79.44" font-family="Geist" font-size="10.5" font-weight="400" fill="#A3AAB8" text-anchor="start">TTL 60 s</text>
+<g transform="translate(568.00,152.50) scale(0.9167)" fill="none" stroke="#4ADE80" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/> <path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/> <path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></g>
+<text x="598" y="166.69" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Postgres</text>
+<g transform="translate(564.00,237.00) scale(0.9167)" fill="none" stroke="#FB923C" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/> <path d="m3 6.5 9 6.5 9-6.5"/></g>
+<text x="594" y="251.19" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Email queue</text>
+<g transform="translate(742.00,237.00) scale(0.9167)" fill="none" stroke="#9CA3AF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 3 10.5l7.5 3 3 7.5zM10.5 13.5 21 3"/></g>
+<text x="772" y="251.19" font-family="Geist" font-size="13" font-weight="600" fill="#E5E7EB" text-anchor="start">Mail provider</text>
+<rect x="163.75" y="142.5" width="86.51" height="15.5" rx="3" fill="#111827"/>
+<text x="207" y="153" font-family="Geist" font-size="10.5" font-weight="500" fill="#A3AAB8" text-anchor="middle">GET /orders/42</text>
+<rect x="460.16" y="97.64" width="56.39" height="15.5" rx="3" fill="#111827"/>
+<text x="488.36" y="108.14" font-family="Geist" font-size="10.5" font-weight="500" fill="#A3AAB8" text-anchor="middle">1 · look up</text>
+<rect x="453.69" y="142.5" width="68.63" height="15.5" rx="3" fill="#111827"/>
+<text x="488" y="153" font-family="Geist" font-size="10.5" font-weight="500" fill="#A3AAB8" text-anchor="middle">2 · on a miss</text>
+<rect x="388.6" y="116" width="21.4" height="16.5" rx="8.25" fill="#60A5FA"/>
+<text x="399.3" y="127.3" font-family="Geist Mono" font-size="9.5" font-weight="700" fill="#0B1020" text-anchor="middle">×3</text>
+</svg>

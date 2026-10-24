@@ -1,0 +1,11 @@
+# Where a new piece of state should live, as a decision tree.
+make: tree
+style: decision
+text: |
+  Must it survive a restart?
+    [no] Is it read on every request?
+      [yes] In-process cache | per instance !good
+      [no] Leave it in memory
+    [yes] Is it a fact others query?
+      [yes] Postgres | a table, with its rules !good
+      [no] Redis | with a TTL
