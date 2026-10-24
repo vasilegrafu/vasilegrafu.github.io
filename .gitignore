@@ -1,0 +1,11 @@
+# The Python environment the skills run in. Rebuilt by following SETUP.md.
+.venv/
+
+# Python bytecode.
+__pycache__/
+*.py[cod]
+
+# Rendered previews written beside a figure or a PDF: for looking at, never
+# deliverables.
+_preview/
+

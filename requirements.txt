@@ -1,0 +1,38 @@
+# The Python packages this repository's tooling needs.
+#
+# Install them, and everything else SETUP.md describes, by following SETUP.md.
+# Nothing here is needed to build the website: webapp/ is Node, and
+# webapp/package-lock.json pins that.
+#
+# Every version is pinned, transitive dependencies included, so an install
+# from this file reproduces the environment these versions were proven in
+# rather than whatever pip resolves on the day.
+
+# --- asked for by the rich-content skill ----------------------------------
+
+typst==0.15.0          # compiles the .typ sources to PDF
+matplotlib==3.11.2     # charts
+pypdfium2==5.13.0      # renders a PDF page to PNG, so a result can be looked at
+seaborn==0.13.2        # statistical charts over matplotlib
+pandas==3.1.0          # reads CSV and Excel for data-driven figures
+openpyxl==3.1.5        # the Excel half of that
+Pygments==2.21.0       # syntax highlighting, in the theme's colours
+markdown-it-py==4.2.0  # Markdown to a PDF or a page
+segno==1.6.6           # QR codes
+PyYAML==6.0.3          # reads the spec files `python -m tools.make` takes
+
+# --- pulled in by those, pinned so a rebuild matches ----------------------
+
+contourpy==1.4.0
+cycler==0.12.1
+et_xmlfile==2.0.0
+fonttools==4.67.0
+kiwisolver==1.5.1
+mdurl==0.1.2
+numpy==2.5.4
+packaging==26.3
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==3.0.0
+six==1.17.0
+tzdata==2026.5
