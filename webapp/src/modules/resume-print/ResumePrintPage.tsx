@@ -103,7 +103,6 @@ export default function ResumePrintPage() {
               </h3>
               <span className="period">{role.period}</span>
             </div>
-            {role.impact && <p className="impact">{role.impact}</p>}
             {(role.about ?? role.aboutShort) && (
               <p className="about">{role.about ?? role.aboutShort}</p>
             )}

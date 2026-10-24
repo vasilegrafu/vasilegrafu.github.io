@@ -62,11 +62,6 @@ export interface Role {
   about?: string;
   /** One line of company context for the resume, where `about` is too long. */
   aboutShort?: string;
-  /**
-   * The one line a skimming reader should take away — scope and result, with
-   * a number where there is one. Career page only; the PDF stays as it is.
-   */
-  impact?: string;
   /** What I did there. Optional — some roles are carried by their bullets alone. */
   summary?: string;
   /** Ordered most resume-worthy first — the PDF may show only the first few. */
@@ -104,8 +99,6 @@ export const experience: Role[] = [
     icon: 'lucide:sparkles', // nShift — AI era
     period: 'January 2022 – Present',
     location: 'Bucharest, Romania',
-    impact:
-      'Lead the core Webservices Team behind services handling millions of requests a day — and the AI systems built on top of them.',
     aboutShort:
       'Global delivery-management platform — over 1,000 carriers across some 190 countries.',
     about:
@@ -143,8 +136,6 @@ export const experience: Role[] = [
     icon: 'lucide:globe', // two teams, e-commerce reach
     period: 'January 2017 – January 2022',
     location: 'Bucharest, Romania',
-    impact:
-      'Ran two teams at once — Webservices and Integration — for a platform serving 10,000+ business customers.',
     aboutShort:
       'Scandinavia’s leading multi-carrier shipping software; 10,000+ business customers.',
     about:
@@ -177,8 +168,6 @@ export const experience: Role[] = [
     icon: 'lucide:layers', // the platform applications
     period: '2010 – 2017',
     location: 'Bucharest, Romania',
-    impact:
-      'Led the Webservices Team behind 50 web services serving 10,000+ business clients — and built the applications the platform still runs on.',
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite.',
     bullets: [
@@ -206,8 +195,6 @@ export const experience: Role[] = [
     aboutShort: 'Later rebranded as Consignor; today part of nShift.',
     about:
       'Edisoft was later rebranded as Consignor — the Scandinavian multi-carrier shipping software business that merged with Unifaun and Transsmart in 2021 to become nShift. The name changed; the platform and the team did not.',
-    impact:
-      'Designed and built the Custom Price Calculation Engine — it prices every shipment from the rates customers agree with their carriers, and is still in production at nShift today.',
     summary:
       'I designed and built the Custom Price Calculation Engine, and when the manager left the following year I took over the Webservices Team as Technical Lead.',
     bullets: [
@@ -227,7 +214,6 @@ export const experience: Role[] = [
     icon: 'lucide:package', // TeamNet — ERP
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
-    impact: 'Owned Optimus ERP modules end to end, from specification through deployment.',
     aboutShort: 'Romanian technology and systems-integration company.',
     about:
       'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
@@ -246,8 +232,6 @@ export const experience: Role[] = [
     icon: 'lucide:gamepad-2', // Ubisoft
     period: 'January 2005 – June 2008',
     location: 'Bucharest, Romania',
-    impact:
-      'Shipped gameplay and platform modules on four titles, including Silent Hunter 4 and King Kong.',
     aboutShort: 'One of the world’s largest video game publishers.',
     about:
       'Ubisoft is a French video game publisher founded in 1986 by the Guillemot brothers and now one of the largest in the world, with studios across more than 45 locations behind franchises such as Assassin’s Creed, Far Cry, Rainbow Six and Prince of Persia. Ubisoft Bucharest, opened in 1992, was the company’s first production studio outside France and grew into one of its largest.',

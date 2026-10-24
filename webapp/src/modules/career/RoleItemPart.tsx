@@ -22,19 +22,21 @@ export default function RoleItemPart({ role }: Props) {
       <h2 className="title-item mt-2">
         {role.position} · {role.company}
       </h2>
-      {/* The takeaway for a skimming reader, before the company context. */}
-      {role.impact && (
-        <p className="text-ink mt-3 flex gap-2 font-medium">
-          <IconPart name="lucide:target" className="text-accent mt-1 h-4.5 w-4.5 shrink-0" />
-          <span>{role.impact}</span>
-        </p>
-      )}
+      {/* Three labelled blocks: what the role was, who the employer is, what
+          it was built with. Each label marks a change of voice. */}
       {role.about && (
-        <p className="text-faint border-line-strong mt-3 border-s-2 ps-3.5">
-          {role.about}
-        </p>
+        <div className="mt-4">
+          <p className="kicker text-accent">Company</p>
+          {/* Caption step: this is the employer's boilerplate, not my record. */}
+          <p className="text-faint mt-2">{role.about}</p>
+        </div>
       )}
-      {role.summary && <p className="text-muted mt-3">{role.summary}</p>}
+      {role.summary && (
+        <div className="mt-4">
+          <p className="kicker text-accent">Role</p>
+          <p className="text-ink mt-2">{role.summary}</p>
+        </div>
+      )}
       <div className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-2">
         {role.bullets.map((b, i) => {
           const idx = b.indexOf(': ');
@@ -64,8 +66,11 @@ export default function RoleItemPart({ role }: Props) {
           );
         })}
       </div>
+      {/* Chips, with a label so the strip reads as a deliberate block rather
+          than a loose row at the foot of the entry. */}
       {role.tech && (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="border-line mt-5 flex flex-wrap items-center gap-2 border-t pt-3">
+          <span className="kicker text-accent me-1">Tech</span>
           {role.tech.map((t) => (
             <span key={t} className="tag">
               {t}
