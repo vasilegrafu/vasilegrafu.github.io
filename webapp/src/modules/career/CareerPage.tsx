@@ -46,24 +46,30 @@ export default function CareerPage() {
         description={`${yearsSince(careerStart)}+ years in software: Ubisoft, TeamNet, Consignor, and nShift — from game programming to software architecture, agentic AI and engineering management.`}
       />
 
-      <IdentityPart />
+      {/* Two ways to the same resume, on the same line as the name they belong
+          to: read it here, or take the PDF away. The print view renders bare —
+          no banner, no nav, no way back — so it opens in a tab of its own
+          rather than stranding the reader on a dead end. */}
+      <IdentityPart>
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="/resume-print"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            <IconPart name="lucide:file-text" className="h-3.5 w-3.5" />
+            View resume
+          </a>
+          <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
+            <IconPart name="lucide:download" className="h-3.5 w-3.5" />
+            Download resume
+            <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
+          </a>
+        </div>
+      </IdentityPart>
 
-      {/* Two ways to the same resume: read it here, or take the PDF away. The
-          print view renders bare — no banner, no nav, no way back — so it opens
-          in a tab of its own rather than stranding the reader on a dead end. */}
-      <div className="flex flex-wrap items-start justify-end gap-3">
-        <a href="/resume-print" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-          <IconPart name="lucide:file-text" className="h-3.5 w-3.5" />
-          View resume
-        </a>
-        <a href="/cv.pdf" download="Vasile-Grafu-Resume.pdf" className="btn btn-brand">
-          <IconPart name="lucide:download" className="h-3.5 w-3.5" />
-          Download resume
-          <span className="badge bg-accent-ink/20 text-accent-ink">PDF</span>
-        </a>
-      </div>
-
-      <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {stats.map((s) => (
           <StatTilePart key={s.label} value={s.value} label={s.label} />
         ))}
