@@ -39,6 +39,12 @@ const scope = [
     detail: `The Webservices Team at ${companyName} — hiring, mentoring, and the engineering standards the team works to.`,
   },
   {
+    icon: 'lucide:layers',
+    term: 'Roles',
+    detail:
+      'Software architect, software engineer, AI engineer and engineering manager, concurrently.',
+  },
+  {
     icon: 'lucide:code-xml',
     term: 'Stack',
     detail: 'C# / .NET, Python, SQL Server, PostgreSQL, AWS, TypeScript, React.',

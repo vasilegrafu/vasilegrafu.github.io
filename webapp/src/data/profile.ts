@@ -13,7 +13,7 @@ export const site = {
   // Long form, the summary at the top of the resume PDF — free to say more
   // than the meta description can.
   get intro() {
-    return `${yearsSince(careerStart)}+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production.`;
+    return `${yearsSince(careerStart)}+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production. Usually several of those at once.`;
   },
   location: 'Bucharest, Romania',
   email: 'vasilegrafu@gmail.com',
@@ -40,7 +40,7 @@ export const leadershipStart = 2017;
  *
  * Services only, never sub-resources: no load balancers, no target groups.
  */
-export const awsStack = 'AWS (EC2, ECS, RDS, S3, CloudFormation, CDK)';
+export const awsStack = 'AWS (EC2, ECS, Fargate, RDS, S3, CloudFormation, CDK)';
 
 /** Substituted at build time by `define` in vite.config.ts. */
 declare const __BUILD_YEAR__: number;
@@ -111,14 +111,16 @@ export const experience: Role[] = [
     about:
       'nShift is a global leader in delivery and experience management software, formed in 2021 from the merger of Consignor, Unifaun and Transsmart. Its cloud platform covers the whole parcel journey — checkout delivery options, rule-based carrier selection, label and document generation, tracking, and returns — connecting retailers, 3PLs and manufacturers to a network of over 1,000 carriers across some 190 countries, with integrations into 450+ OMS, ERP and WMS systems.',
     summary:
-      'I lead the Webservices Team — one of the company’s core teams — building applications that handle millions of requests per day and support multiple business-critical systems. I combine hands-on development with leadership: contributing to coding, architecture, and decision-making while ensuring alignment across teams.',
+      'I lead the Webservices Team — one of the company’s core teams — building applications that handle millions of requests per day and support multiple business-critical systems. Most weeks I wear several hats at once: software architect, software engineer, AI engineer and engineering manager. In practice that means owning the architecture, writing a large share of the code, building the AI systems on top of it, and still setting direction for the team.',
     bullets: [
       'Software architecture: design and implementation of scalable, secure, and maintainable systems.',
-      'Hands-on development: shared components, application structure, data flow, database design, security, and infrastructure — plus the AI systems built on top, with LLMs, agent orchestration, RAG, and MCP-style tool integration.',
+      'Software engineering: shared components, application structure, data flow, database design, security, and infrastructure.',
+      'AI engineering: the agentic systems built on top — LLMs, agent orchestration, RAG, and MCP servers and tool integrations.',
       'Solution Architect: cloud environments on AWS, and the CI/CD pipelines that deliver to them.',
-      'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
+      'Test automation: helped build the end-to-end test framework covering the APIs and the UI, and the tests that run on it.',
       'Lead and manage the Webservices Team: setting clear goals, providing direction, and keeping every member motivated and effective.',
       'Establish engineering processes and standards: consistent development practices that improve collaboration, maintain quality, and accelerate delivery.',
+      'Provide technical guidance: solving complex issues alongside developers, reviewing designs, and making critical decisions on challenging topics.',
       'Recruit and develop engineers: active role in hiring, onboarding, and mentoring to build a skilled, cohesive team.',
       'Act as Scrum Master: stand-ups, planning, retrospectives, and effective communication between Product Owners and developers.',
     ],
@@ -129,8 +131,9 @@ export const experience: Role[] = [
       'JavaScript, TypeScript, ReactJS, Material UI',
       'LLMs, Agents, RAG, MCP',
       awsStack,
-      'Git, GitHub Actions',
+      'Git, GitHub, GitHub Actions',
       'Docker',
+      'pytest, Playwright',
       'AI-assisted engineering',
     ],
   },
@@ -151,16 +154,18 @@ export const experience: Role[] = [
     bullets: [
       'Webservices Team: ran the web services serving the client components of the Consignor business.',
       'Integration Team: brought Consignor functionality to the major e-commerce and checkout platforms — WooCommerce, Magento and Klarna.',
-      'Technical guidance and architecture: made the critical design decisions and worked through the hard problems alongside the developers.',
-      'Hands-on development: shared components, application structure, and database design across the Consignor suite.',
+      'Software architecture: the design decisions across the Consignor suite — service boundaries, shared components and the data model.',
+      'Software engineering: shared components, application structure and database design across the suite, and the PHP integrations into the e-commerce platforms.',
+      'Solution Architect: the AWS environments the platform ran on, from EC2 to Docker containers on ECS and Fargate, and the CI/CD pipelines that deployed to them.',
       'Team leadership: set goals and direction for both teams, keeping two groups with very different missions pulling toward one platform.',
+      'Technical guidance: worked through the hard problems alongside the developers.',
       'Recruit and develop engineers: hiring, onboarding, and training the people who joined either team.',
     ],
     leadBullets: 2,
     tech: [
       'C# / .NET, ASP.NET Core',
       'PHP',
-      'AWS (EC2, ECS, S3, CloudFormation)',
+      'AWS (EC2, ECS, Fargate, S3, CloudFormation)',
       'Git, Bitbucket, GitLab',
       'Docker',
       'Project Management (Prince2)',
@@ -299,8 +304,9 @@ export const skills: SkillCategory[] = [
     blurb: 'Running systems reliably on AWS, from database to pipeline.',
     items: [
       awsStack,
-      'Git, GitHub Actions',
+      'Git, GitHub, GitHub Actions',
       'Docker, CI/CD',
+      'End-to-end testing (pytest, Playwright)',
       'SQL Server, PostgreSQL',
       'Database Design, Relational Databases',
     ],
