@@ -1,13 +1,11 @@
 import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { careerStart, leadershipStart, site, yearsSince } from '@data/profile';
+import { site } from '@data/profile';
 
 // A Now page, not a profile: what I am working on and thinking about this
 // month. The biography lives on the Career page, one click away.
 //
-const companyName = 'nShift';
-
 // Two projects, stated at length. A Now page that lists everything is a
 // portfolio wearing a different hat; two things described properly say more
 // about how someone thinks than ten things listed.
@@ -44,15 +42,6 @@ const work = [
     ],
     note: null,
   },
-];
-
-// Open questions, stated as questions. These are the invitation: an unfinished
-// thought is far easier to reply to than a finished claim.
-const onMyMind = [
-  'How much of a specification can be checked mechanically, and where does judgement have to stay human?',
-  'What does engineering management look like when the manager still writes a large share of the code?',
-  'Whether MCP holds up as an integration surface once it meets enterprise data.',
-  'What thirteen years of carrier-integration infrastructure already knew that AI tooling keeps rediscovering.',
 ];
 
 export default function IndexPage() {
@@ -101,18 +90,9 @@ export default function IndexPage() {
         </section>
       ))}
 
-      <section className="border-line border-t pt-10 pb-8">
-        <p className="kicker">Also on my mind</p>
-        <ul className="mt-6 space-y-4">
-          {onMyMind.map((q) => (
-            <li key={q} className="border-line-strong flex gap-3 border-s-2 ps-4">
-              <IconPart name="lucide:lightbulb" className="text-accent mt-1 h-4 w-4 shrink-0" />
-              <span className="text-muted">{q}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-muted mt-6">
-          If you are working on any of this, I’d like to hear from you —{' '}
+      <section className="border-line border-t pt-8 pb-8">
+        <p className="text-muted">
+          If you are working on anything like this, I’d like to hear from you —{' '}
           <Link to="/contact" className="link-accent">
             say hello
           </Link>
@@ -120,22 +100,6 @@ export default function IndexPage() {
         </p>
       </section>
 
-      {/* One quiet factual line. The home page carries the most inbound weight
-          of any page on the site; stripping the identity out of it entirely
-          would throw that away. The full story is on the Career page. */}
-      <section className="border-line border-t pt-6 pb-8">
-        <p className="text-faint text-xs">
-          {site.name} · Engineering Manager at {companyName} · {yearsSince(careerStart)} years in
-          software · {yearsSince(leadershipStart)} years leading teams · {site.location}
-        </p>
-        <p className="text-muted mt-3">
-          The record is on the{' '}
-          <Link to="/career" className="link-accent">
-            Career
-          </Link>{' '}
-          page.
-        </p>
-      </section>
     </>
   );
 }

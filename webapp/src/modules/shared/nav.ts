@@ -11,7 +11,7 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   { href: '/', label: 'Now', icon: 'lucide:sprout' },
   { href: '/articles', label: 'Articles', icon: 'lucide:file-text' },
-  { href: '/projects', label: 'Projects', icon: 'lucide:layers' },
   { href: '/career', label: 'Career', icon: 'lucide:briefcase' },
+  { href: '/projects', label: 'Projects', icon: 'lucide:layers' },
   { href: '/contact', label: 'Contact', icon: 'lucide:at-sign' },
 ];

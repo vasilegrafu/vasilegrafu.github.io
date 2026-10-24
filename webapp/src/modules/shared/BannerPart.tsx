@@ -1,31 +1,39 @@
-// Brand banner above the menu on every page: name and strapline over the theme's
-// gradient, with two soft waves behind. The text is HTML, not SVG, so it wraps
-// on narrow screens and scales with the type scale; only the waves are SVG,
-// stretched to the banner's box so they follow every width.
-import { site } from '@data/profile';
+// Brand banner above the menu on every page: a wall of terms from my own work,
+// set over the theme's gradient. The waves that used to sit behind it are gone
+// — two textures in one strip argued with each other.
+//
+// `slice`, not `none`: stretching the viewBox to the banner's shape would
+// squash the letterforms, badly so on a phone. Slicing scales it evenly and
+// crops instead, so the type keeps its proportions at every width.
+//
+// The whole thing is aria-hidden. It is a texture, not a list of skills: those
+// are on the Career page, where they can be read.
+import { bannerWords } from './bannerWords';
 
 export default function BannerPart() {
   return (
-    <div className="from-grad-a to-grad-b text-accent-ink relative overflow-hidden bg-gradient-to-r">
+    <div className="from-grad-a to-grad-b relative h-24 overflow-hidden bg-gradient-to-r sm:h-28">
       <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 1200 250"
-        preserveAspectRatio="none"
+        className="font-sans absolute inset-0 h-full w-full"
+        viewBox="0 0 1200 96"
+        preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-        <path d="M0 250C400 200 800 250 1200 150V250Z" fill="#fff" fillOpacity="0.14" />
-        <path d="M0 250C600 280 900 100 1200 180V250Z" fill="#000" fillOpacity="0.16" />
+        {bannerWords.map((w, i) => (
+          <text
+            key={`${w.t}-${i}`}
+            x={w.x}
+            y={w.y}
+            fontSize={w.s}
+            fontWeight={w.w}
+            fill={w.d ? '#000' : '#fff'}
+            fillOpacity={w.o}
+            xmlSpace="preserve"
+          >
+            {w.t}
+          </text>
+        ))}
       </svg>
-      <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        {/* The strapline alone. The name is on the Career page, in
-            the footer and on the resume; repeating it above every page was the
-            loudest thing on the screen and said the least. Set at the size the
-            name used to be, so the banner keeps its weight, but not in capitals
-            — this is a sentence, not a wordmark. */}
-        <p className="font-display text-3xl font-bold tracking-tight text-balance">
-          {site.strapline}
-        </p>
-      </div>
     </div>
   );
 }
