@@ -19,7 +19,6 @@ import {
   education,
   experience,
   leadershipStart,
-  projects,
   site,
   skills,
   yearsSince,
@@ -146,29 +145,6 @@ export default function ResumePrintPage() {
         );
       })}
 
-      <h2>Projects</h2>
-      {projects.map((p) => (
-        <div key={p.title} className="role">
-          <div className="role-head">
-            <h3>{p.title}</h3>
-            <span className="period">{p.role}</span>
-          </div>
-          <p className="summary">{p.description}</p>
-          {p.outcomes && (
-            <ul className="outcomes">
-              {p.outcomes.map((o) => (
-                <li key={o.label}>
-                  <b>{o.value}</b> — {o.label}
-                </li>
-              ))}
-            </ul>
-          )}
-          <p className="tech">
-            <span className="block-label">Tech</span>
-            {p.tags.join(' · ')}
-          </p>
-        </div>
-      ))}
 
       <h2>Education</h2>
       {education.map((e) => (

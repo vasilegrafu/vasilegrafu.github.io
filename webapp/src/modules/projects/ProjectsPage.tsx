@@ -1,35 +1,15 @@
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import { projects, site } from '@data/profile';
-import ProjectCardPart from './ProjectCardPart';
 
+// A placeholder, for now. The write-ups are being redone: they render from
+// `projects` in src/data/profile.ts, which is empty, and the card that renders
+// one is still in ProjectCardPart.tsx. Put entries back and restore the list
+// that git history holds to bring this page to life again.
 export default function ProjectsPage() {
   return (
     <>
-      <PageMetaPart
-        title="Projects — Vasile Grafu"
-        description="Selected systems: an enterprise agentic AI platform, and AI-assisted engineering tooling built on Claude Code."
-      />
+      <PageMetaPart title="Projects — Vasile Grafu" description="Selected systems — on the way." />
 
-      <p className="kicker">Selected systems</p>
-      <h1 className="title-page mt-2">Projects</h1>
-      <p className="lede">
-        The systems I’m proudest of — what they do, the scale they run at, and the architecture
-        behind them.
-      </p>
-
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCardPart key={p.title} project={p} />
-        ))}
-      </div>
-
-      <p className="text-muted mt-10">
-        Open-source experiments and AI demos are coming to this page — watch{' '}
-        <a href={site.github} className="link-accent">
-          my GitHub
-        </a>
-        .
-      </p>
+      <p className="text-muted">Nothing here yet. Write-ups are on the way.</p>
     </>
   );
 }

@@ -9,16 +9,12 @@ export interface ArticleMeta {
   tags: string[];
 }
 
-export const articles: ArticleMeta[] = [
-  {
-    id: 'why-i-built-this-site',
-    title: 'Why I built this site',
-    description:
-      'A home for what I’ve learned in 20 years of software — engineering leadership, architecture, and the AI systems I’m building now.',
-    pubDate: new Date('2026-08-31'),
-    tags: ['meta'],
-  },
-];
+// Deliberately empty, for now. The article that was here still lives under
+// content/why-i-built-this-site/, so putting its entry back is all it takes to
+// publish it again. While this list is empty the listing page shows a
+// placeholder, /articles/:id prerenders nothing and returns the 404 page, and
+// rss.xml and sitemap.xml are generated with no items but stay valid.
+export const articles: ArticleMeta[] = [];
 
 export const articlesByDate = () =>
   [...articles].sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());

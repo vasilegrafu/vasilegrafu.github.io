@@ -1,6 +1,10 @@
 export const site = {
   name: 'Vasile Grafu',
   title: 'Engineering Manager | Solutions Architect | Software Architecture, Cloud & Agentic AI',
+  // The line under the name in the banner, on every page. Deliberately not
+  // the job title: `title` above still carries that, on the Career and Skills
+  // pages and in the resume.
+  strapline: 'Pursuing software development',
   // Short form. Feeds the meta/OG description and the resume PDF, where length
   // is constrained — keep it near 160 characters.
   //
@@ -359,31 +363,9 @@ export interface Project {
   tags: string[];
 }
 
-export const projects: Project[] = [
-  {
-    title: 'Conversational AI Platform',
-    icon: 'lucide:bot-message-square',
-    role: 'Engineering Manager & Architect · nShift',
-    description:
-      'A large-scale AI assistant built on an agentic architecture: LLMs combined with orchestration layers, RAG, and structured prompt engineering. Domain-specific agents for different departments — each with tailored prompts, tools, and data access — collaborate through an orchestration layer. A continuous ingestion pipeline indexes internal documentation, APIs, and business data into knowledge stores, so responses stay context-aware and grounded in company-specific information.',
-    outcomes: [
-      { value: 'Per department', label: 'agents with their own prompts, tools and data' },
-      { value: 'Continuous', label: 'ingestion of docs, APIs and business data' },
-      { value: 'Grounded', label: 'answers from company-specific knowledge' },
-    ],
-    tags: ['LLMs', 'Agents', 'RAG', 'MCP', 'Orchestration', 'Python'],
-  },
-  {
-    title: 'AI App Builder — Claude Code Skill',
-    icon: 'lucide:hammer',
-    role: 'Independent R&D · Personal project',
-    description:
-      'A Claude Code skill that builds applications from existing codebases rather than from imagination, reading them through a structural snapshot built once and queried many times. Every decision that shapes the result is put to the user, never guessed.',
-    outcomes: [
-      { value: '4', label: 'languages read: Python, TypeScript, JavaScript, C#' },
-      { value: '3', label: 'modes: generate, migrate, translate' },
-      { value: 'Proven', label: 'contract, entity and behaviour parity checks' },
-    ],
-    tags: ['Claude Code', 'Agent Skills', 'Code Generation', 'Static Analysis', 'Python'],
-  },
-];
+// Deliberately empty, for now: the projects are being rewritten and will go
+// back here. Everything that reads this list copes with it being empty — the
+// Projects page says so plainly, the Skills page drops its "applied in" lines,
+// and the printable resume leaves the section out — so adding entries back is
+// the only change needed to bring them all to life again.
+export const projects: Project[] = [];
