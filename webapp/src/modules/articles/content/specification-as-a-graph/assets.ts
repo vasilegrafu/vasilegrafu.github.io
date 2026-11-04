@@ -1,7 +1,14 @@
-// Where this article's pictures live. They sit in public/ rather than in this
-// directory because they are referenced by absolute path and never processed:
-// the diagrams are SVG straight from the tool that drew them, and the
-// screenshots were taken at 2560px and written out at 1600px as WebP.
+// Where this article's pictures live.
+//
+// The screenshots sit in public/ and are referenced by absolute path, at the
+// 2560px they were taken at and in PNG. They were shipped downscaled and as
+// WebP at first, which is a quarter of the weight and looks identical until
+// you open one: these are pictures of an application, and the fine print
+// inside them is the thing worth looking at.
+//
+// The diagrams sit in diagrams/ next to this file, because they are not
+// loaded as images at all — DiagramPart reads them at build time and draws
+// them into the page so the theme can colour them.
 export const BASE = '/articles/specification-as-a-graph';
 
 export const asset = (name: string) => `${BASE}/${name}`;
@@ -38,7 +45,7 @@ export const DIAGRAMS: Record<string, [number, number]> = {
 };
 
 /** Every screenshot was written out at the same size. */
-export const SHOT: [number, number] = [1600, 1000];
+export const SHOT: [number, number] = [2560, 1600];
 
 export const sizeOf = (name: string): [number, number] => DIAGRAMS[name] ?? SHOT;
 
@@ -48,6 +55,20 @@ const LABEL = 10;
 /** What the diagrams set their labels at, in their own units. */
 const LABEL_UNITS = 10.5;
 
-/** The width to draw a diagram at, so its labels come out at LABEL px. */
-export const diagramWidth = (name: string) =>
-  Math.round((DIAGRAMS[name]?.[0] ?? 0) * (LABEL / LABEL_UNITS));
+/** The width to draw a diagram at, so its labels come out at LABEL px.
+ *
+ *  A caller can ask for smaller labels where a diagram has to earn its room —
+ *  see STEP_LABEL. */
+export const diagramWidth = (name: string, label: number = LABEL) =>
+  Math.round((DIAGRAMS[name]?.[0] ?? 0) * (label / LABEL_UNITS));
+
+/** The five change diagrams run smaller than the rest.
+ *
+ *  They are one drawing shown five times — the boxes never move, only their
+ *  colours — so at the standard size that one section is two and a half
+ *  thousand pixels of the same picture, and the step it illustrates has
+ *  scrolled off the top before the picture arrives. At 8.5 they are a third
+ *  smaller in area, the step and its diagram are on screen together, and the
+ *  labels still read: the drawing's own titles land at 10.5px, which is what
+ *  every other diagram's body labels measure. */
+export const STEP_LABEL = 8.5;

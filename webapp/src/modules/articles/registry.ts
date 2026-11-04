@@ -16,7 +16,7 @@ export interface ArticleMeta {
 export const articles: ArticleMeta[] = [
   {
     id: 'specification-as-a-graph',
-    title: 'Specification as a graph',
+    title: 'Specifications as a graph',
     description:
       'A product specification held as a graph of small, linked facts: an AI assistant writes it with you, people read it in a browser, agents build from it, and every change shows what it touches before it is made.',
     pubDate: new Date('2026-11-04'),

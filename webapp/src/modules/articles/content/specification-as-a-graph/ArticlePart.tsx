@@ -1,9 +1,14 @@
 import CardsPart from './CardsPart';
+import ContentsPart from './ContentsPart';
 import FaqPart from './FaqPart';
 import FigurePart from './FigurePart';
 import GalleryPart, { type Shot } from './GalleryPart';
 import KeyIdeaPart from './KeyIdeaPart';
 import MarksPart from './MarksPart';
+import ScenarioPart from './ScenarioPart';
+import SectionPart from './SectionPart';
+import { SECTIONS } from './sections';
+import SidesPart from './SidesPart';
 import StepsPart, { type Step } from './StepsPart';
 import TablePart from './TablePart';
 
@@ -13,7 +18,7 @@ import TablePart from './TablePart';
 // what a change looks like from the inside.
 const shots: Shot[] = [
   {
-    name: 'overview.webp',
+    name: 'overview.png',
     kicker: 'Document',
     title: 'The front page',
     alt: 'The front page of the Voltline specification',
@@ -21,7 +26,7 @@ const shots: Shot[] = [
       'Where every reader starts. What the product is, how big the specification is, and what is still open.',
   },
   {
-    name: 'graph.webp',
+    name: 'graph.png',
     kicker: 'Graph',
     title: 'The whole specification',
     alt: 'The graph view, with one bubble per kind of node',
@@ -29,7 +34,7 @@ const shots: Shot[] = [
       'Each bubble is one kind of node, sized by how many there are. Each line shows how many links join two kinds.',
   },
   {
-    name: 'graph-card.webp',
+    name: 'graph-card.png',
     kicker: 'Graph',
     title: 'A right-click opens a card',
     alt: 'A summary card for one node, opened from the graph',
@@ -37,7 +42,7 @@ const shots: Shot[] = [
       'A short summary without leaving the graph. Every ID in the card opens the next card, so you can walk from fact to fact.',
   },
   {
-    name: 'layers.webp',
+    name: 'layers.png',
     kicker: 'Graph',
     title: 'The layers',
     alt: 'Every node arranged in layers, goals on the left and components on the right',
@@ -45,7 +50,7 @@ const shots: Shot[] = [
       'All of it in layers, goals on the left and components on the right. You can follow one goal to every part that serves it.',
   },
   {
-    name: 'layers-flow.webp',
+    name: 'layers-flow.png',
     kicker: 'Graph',
     title: 'The layers of one flow',
     alt: 'The layer view narrowed to a single flow',
@@ -53,7 +58,7 @@ const shots: Shot[] = [
       'One flow — buying a product — selected. Only the goals, requirements, endpoints and screens that flow uses.',
   },
   {
-    name: 'requirement.webp',
+    name: 'requirement.png',
     kicker: 'Requirements',
     title: 'One requirement',
     alt: 'Requirement R4 in full, with its evidence and open question',
@@ -61,7 +66,7 @@ const shots: Shot[] = [
       'R4 in full: what it says, where it came from, how sure the specification is, and the question still open about it.',
   },
   {
-    name: 'criteria.webp',
+    name: 'criteria.png',
     kicker: 'Requirements',
     title: 'Its tests, in plain words',
     alt: 'Acceptance criteria written as given, when, then',
@@ -69,7 +74,7 @@ const shots: Shot[] = [
       'Each acceptance criterion is given, when, then. Builder agents turn these lines straight into automated tests.',
   },
   {
-    name: 'design.webp',
+    name: 'design.png',
     kicker: 'Design',
     title: 'The design system',
     alt: 'The design system: colours, fonts and spacing',
@@ -77,7 +82,7 @@ const shots: Shot[] = [
       'The colours, fonts and spacing every screen follows. Agents read the same thing as a file of design tokens.',
   },
   {
-    name: 'prototype.webp',
+    name: 'prototype.png',
     kicker: 'Design',
     title: 'A working prototype',
     alt: 'A working prototype of a product page',
@@ -85,7 +90,7 @@ const shots: Shot[] = [
       'A real page, built from the screen’s description and the design system. Viewable at phone, tablet or desktop size.',
   },
   {
-    name: 'wireframe.webp',
+    name: 'wireframe.png',
     kicker: 'Design',
     title: 'Every element explained',
     alt: 'The same page with every element labelled',
@@ -93,7 +98,7 @@ const shots: Shot[] = [
       'The same page with every element labelled: which component it is, and which requirement it serves.',
   },
   {
-    name: 'matrix.webp',
+    name: 'matrix.png',
     kicker: 'Matrix',
     title: 'What links to what',
     alt: 'A matrix of every kind of node against every other kind',
@@ -101,7 +106,7 @@ const shots: Shot[] = [
       'Every kind of node against every other, each cell counting the links. An empty cell is often a gap.',
   },
   {
-    name: 'stale.webp',
+    name: 'stale.png',
     kicker: 'Change',
     title: 'After a change, what needs review',
     alt: 'The list of nodes that need review after a change',
@@ -113,32 +118,37 @@ const shots: Shot[] = [
 const steps: Step[] = [
   {
     name: 'change-1.svg',
-    title: 'You ask, and see the impact',
-    text: 'You tell Claude Code “six, not five” for requirement R4. Before anything changes it shows what will need review — the product page, the product card, the buying flow — and then waits for your yes.',
+    title: 'You ask, and the graph answers before anything moves',
+    text: 'You tell Claude Code what you want in plain words: six, not five, for requirement R4. Nothing changes yet. The first thing it does is walk the links outward from R4 and report what hangs off it — the product page that shows the requirement, the product card that shows it too, and the buying flow that runs through it. That list is not inferred from the wording, and it is not somebody’s recollection of where things are. It is the links themselves, which is why it is complete. Then it stops and waits for your yes. This is the step that has no equivalent in a document: you are being told the size of the change while you can still decide not to make it.',
+    watch: 'R4 in the middle, and the three nodes a change to it would reach. Nothing is marked yet — this is the graph answering a question, not carrying out an instruction.',
     alt: 'Step one: the impact of the change, before it is made',
   },
   {
     name: 'change-2.svg',
-    title: 'The change is made, and the neighbours are warned',
-    text: 'R4 now says six. The three nodes that depend on it are marked needs review, each showing the old words and the new. The visitor role is not marked, because its link to R4 did not change. Claude Code also notices that rule B1 still says five, and says so.',
+    title: 'The change lands, and everything leaning on it is told',
+    text: 'R4 now says six. The three nodes that depend on it are marked needs review, and each carries the old wording beside the new, so a reviewer sees what actually moved instead of being told that something did. The visitor role is not marked, and that is worth a moment: U1 can add a product to the cart whether the limit is five or six, so the meaning of its link to R4 did not change, and marking it would be noise. Then Claude Code raises something you did not ask about. Rule B1 still says five, and R4 is supposed to follow B1 — the specification now contradicts itself, and it says so rather than letting you find out later.',
+    watch: 'Three boxes turn amber, R4 turns green, and the visitor stays grey. The amber is not a warning about the change; it is a list of what has not been read yet.',
     alt: 'Step two: the change is made and dependent nodes are marked',
   },
   {
     name: 'change-3.svg',
-    title: 'Each marked node is reviewed',
-    text: 'You change B1 too. Then every marked node is read again and confirmed. Confirming takes a short code shown next to the new words — it proves the latest wording was actually read, so nothing is waved through. Only the prototype is left.',
+    title: 'Every marked node is read again, by a person',
+    text: 'You change B1 too, and the contradiction goes. Then the marked nodes have to be reviewed one at a time: the product page, the product card, the buying flow. Confirming one is deliberately not a button you can click through. The application prints a short code next to the new wording and asks for it back — a small mechanism with a large effect, because it means nobody can approve a node without having the new words in front of them. It is the one part of this that is not automated, and it is the part that should not be: a machine can tell you what a change touches, but only a person can say whether the new wording is right.',
+    watch: 'The amber clears one box at a time as each is confirmed. By the end only the prototype is still outstanding.',
     alt: 'Step three: the marked nodes are reviewed and confirmed',
   },
   {
     name: 'change-4.svg',
     title: 'The prototype catches up',
-    text: 'The prototype page is updated where it needs to be, and checked. Now only the product’s code is behind: it was built when R4 still said five. The agents see exactly that when they next ask what changed.',
+    text: 'The prototype is built from the screens, so it goes stale the moment a screen does — and it is the thing people actually look at when they want to know what the product does, which makes a stale one worse than no prototype at all. The page is updated where it needs to be: the quantity field offers six now. It is checked and confirmed like everything else. That leaves one thing behind, and it is the big one — the product’s own code, written back when R4 said five. Nobody has told the developers. Nobody has to.',
+    watch: 'The prototype turns green. The code is the last box still grey, and it is grey because nothing has rebuilt it yet.',
     alt: 'Step four: the prototype is updated',
   },
   {
     name: 'change-5.svg',
-    title: 'The code catches up',
-    text: 'The builder agents rebuild only what R4 touches, from the specification as it now stands. Nothing is left behind, and who changed what, and why, stays in the log.',
+    title: 'The code catches up, and the trail is kept',
+    text: 'A builder agent opens by asking the specification one question: what has changed since the version I last built from? It gets back R4, B1 and the nodes that depend on them — not the whole specification, and not a list of files to re-read. It rebuilds that much, writes the tests from the acceptance criteria as they now stand, names each test after the criterion it came from, and records the version it built against so the next question has an answer. What is left behind is the trail: who changed the number, when, why, what it touched, and who read it. In six months, when somebody asks why the limit is six, the answer is in the specification rather than in whoever happens to remember.',
+    watch: 'Everything is green. The same five boxes you started with, in the same places — which is the point of the sequence: nothing moved, the state travelled.',
     alt: 'Step five: the code is rebuilt from the new specification',
   },
 ];
@@ -185,29 +195,113 @@ const faq: [string, string][] = [
 export default function ArticlePart() {
   return (
     <>
+      <ContentsPart />
+
+      {/* The article's premise, said in two lines before anything else. The
+          site's blockquote recipe sets it off with a rule and italics, which
+          is the right weight for an epigraph. */}
+      <blockquote className="text-ink">
+        A document is a container of information.
+        <br />A specification is a structured representation of a problem.
+      </blockquote>
+
       <p className="text-ink">
-        Write what the product must do once. See what every change touches, before you make it. Then
-        let people and AI agents build from the same facts.
+        They are not the same kind of thing, and keeping the second inside the first is where the
+        trouble starts. A specification is one problem looked at from several sides at once — what
+        the product must do, the rules it follows, the people who use it, the screens that show it,
+        a prototype you can click, the code and the tests built from all of that. Every side is
+        describing the same thing. Every side keeps its own copy of the facts.
       </p>
 
       <p>
-        A product owner changes one number. A shopping cart could hold five of a product; now it can
-        hold six. Typing the change takes ten seconds.
+        And the sides are not joined to each other. The requirements document does not know which
+        screen shows which requirement. The prototype does not know which rule it is obeying. The
+        tests know a name and nothing else. Each one is written on its own and read on its own, so
+        following a single fact across them means knowing, from memory, where its copies are — and
+        nothing will tell you when your memory is wrong. It looks like this:
+      </p>
+
+      <SidesPart />
+
+      <p>To see why that matters, start with how it goes today.</p>
+
+      <ScenarioPart
+        beats={[
+          {
+            text: (
+              <>
+                A team has its specification in exactly those six places, and the rule above sits in
+                all of them: a cart holds up to five of one product. It has been true for a year.
+                Nobody has had to think about where it is written down.
+              </>
+            ),
+          },
+          {
+            when: 'The change',
+            text: (
+              <>
+                The product manager changes it. Five becomes six, typed into the requirement that
+                says so, and the decision is made. Ten seconds. Every other copy of that fact now
+                has to be found and changed by hand — and nothing anywhere knows how many there are,
+                or where.
+              </>
+            ),
+          },
+          {
+            when: 'Two weeks later',
+            text: (
+              <>
+                The product page still stops at five. A test still expects five. The help article
+                says five. And an agent, asked that morning for a bulk-order screen, read the
+                requirement, found five, and built five — correctly, from what it was given, in
+                about four minutes.
+              </>
+            ),
+          },
+        ]}
+      >
+        Nobody did anything wrong. Nobody skipped a step or missed a meeting. The fact was written
+        down in five places, the person who changed it could see one, and nothing in the toolchain
+        was able to say which four were left behind.
+      </ScenarioPart>
+
+      <SectionPart title={SECTIONS.problem} />
+
+      <p>
+        A team writes its requirements in a document. Then the same facts are copied into tickets,
+        designs, code and tests. Every copy is made by hand.
       </p>
 
       <p>
-        Two weeks later the product page still stops at five. A test still expects five. An agent
-        has just built a new screen, and it says five too. Nobody did anything wrong. The number was
-        simply written in too many places, and nobody could see them all.
+        Go back to the change at the top: a cart could hold five, and now it can hold six. Someone
+        edits the document. But who updates the ticket, the design, the code and the tests? Usually
+        nobody knows all the places. Some copies still say five, and nobody is warned.
+      </p>
+
+      <FigurePart name="drift.svg" alt="One rule written in five places, only one of them updated">
+        One rule, five places. The change reaches the place someone edited. The others still say
+        five.
+      </FigurePart>
+
+      <p>
+        The real cost is not the edit. It is the search for every place, and the mistakes that come
+        from the places that were missed. A tester finds the product page still stops at five. A
+        developer asks which number is right. A meeting goes on a fact that was settled weeks ago.
       </p>
 
       <p>
-        Every software team knows this story. It costs time, it costs trust, and it lets bugs reach
-        real users. Agents write code in minutes now, so it happens faster than it ever did: an
-        agent builds exactly what it reads, even when what it reads is out of date.
+        Coding agents make this worse, not better. They build fast, but only from what they are
+        given. Give them a specification that is out of date and they will build the wrong thing,
+        quickly.
       </p>
 
-      <p>
+      <SectionPart title={SECTIONS.solution} />
+
+      {/* The thesis, in the same accent panel the key idea gets at the far end
+          of the article — the claim and the proof of it, dressed alike. One
+          step up in size from the body, which is as much as the scale allows
+          without reaching for a title. */}
+      <p className="border-accent-line bg-accent-soft/60 text-ink text-card my-8 rounded-xl border p-5 sm:p-6">
         This article is about another way to hold a specification. Instead of pages of prose, it is
         a <strong>graph</strong>: many small facts, each written once, each linked to the facts that
         depend on it. You write it by talking to an AI assistant in plain words. People read it in a
@@ -221,7 +315,7 @@ export default function ArticlePart() {
       </p>
 
       <FigurePart
-        name="around.webp"
+        name="around.png"
         alt="One requirement in the graph, with the rule, roles, screens and evidence linked to it"
       >
         One requirement from a real example, with everything linked to it. Each box is one small
@@ -272,37 +366,7 @@ export default function ArticlePart() {
         ]}
       />
 
-      <h2>The problem today</h2>
-
-      <p>
-        A team writes its requirements in a document. Then the same facts are copied into tickets,
-        designs, code and tests. Every copy is made by hand.
-      </p>
-
-      <p>
-        Go back to the change at the top: a cart could hold five, and now it can hold six. Someone
-        edits the document. But who updates the ticket, the design, the code and the tests? Usually
-        nobody knows all the places. Some copies still say five, and nobody is warned.
-      </p>
-
-      <FigurePart name="drift.svg" alt="One rule written in five places, only one of them updated">
-        One rule, five places. The change reaches the place someone edited. The others still say
-        five.
-      </FigurePart>
-
-      <p>
-        The real cost is not the edit. It is the search for every place, and the mistakes that come
-        from the places that were missed. A tester finds the product page still stops at five. A
-        developer asks which number is right. A meeting goes on a fact that was settled weeks ago.
-      </p>
-
-      <p>
-        Coding agents make this worse, not better. They build fast, but only from what they are
-        given. Give them a specification that is out of date and they will build the wrong thing,
-        quickly.
-      </p>
-
-      <h2>The idea: small facts, linked</h2>
+      <SectionPart title={SECTIONS.idea} />
 
       <p>
         Instead of long pages of text, the specification is a <strong>graph</strong> — a set of
@@ -379,7 +443,7 @@ export default function ArticlePart() {
         ]}
       />
 
-      <h2>Three parts: a skill, an application, two interfaces</h2>
+      <SectionPart title={SECTIONS.parts} />
 
       <p>
         specs-builder is not one program. It is three parts, and each is used by someone different.
@@ -441,7 +505,7 @@ export default function ArticlePart() {
         an inbox, and a person answers it.
       </p>
 
-      <h2>See it working</h2>
+      <SectionPart title={SECTIONS.tour} />
 
       <p>
         These are screens from <strong>Voltline</strong>, a made-up electronics shop that ships with
@@ -452,7 +516,7 @@ export default function ArticlePart() {
 
       <GalleryPart shots={shots} />
 
-      <h2>How it works</h2>
+      <SectionPart title={SECTIONS.how} />
 
       <p>There are four steps, and you only do the first one yourself.</p>
 
@@ -558,16 +622,28 @@ export default function ArticlePart() {
         it asks what has changed since then, and rebuilds only that.
       </p>
 
-      <h2>A change, step by step</h2>
+      <SectionPart title={SECTIONS.change} />
 
       <p>
         This is the part that matters, and the reason a specification is worth holding as a graph at
-        all. Here is one real change, followed through: a cart can now hold <strong>six</strong> of
-        a product, not five.
+        all. Everything above is arrangement; this is what the arrangement is for.
+      </p>
+
+      <p>
+        Here is the change from the top of this article, followed all the way through: a cart can
+        now hold <strong>six</strong> of a product, not five. The same ten-second edit, in the same
+        product, with the same six places holding a copy of the rule. What is different is that the
+        copies are now linked to the thing they came from, and a link is something a computer can
+        follow.
+      </p>
+
+      <p>
+        It runs in five steps, and only the first and third need a person. Before any of them, the
+        application will show you what you are about to be let in for.
       </p>
 
       <FigurePart
-        name="impact.webp"
+        name="impact.png"
         alt="The application showing the six nodes that depend on rule B1"
       >
         Before anything changes, the application shows what a change to rule B1 would touch.
@@ -590,15 +666,29 @@ export default function ArticlePart() {
       <StepsPart steps={steps} />
 
       <p>
-        How does the graph know what to mark? Each link remembers the version of the node it points
-        at, as of the last time the link was reviewed. When that node changes, the two versions stop
-        matching, and the node at the other end is marked <em>needs review</em>. Nothing is inferred
-        from the words, so nothing that depends on the change is missed — and nothing else is
-        dragged in.
+        How does the graph know what to mark? Not by reading. Each link remembers the version of
+        the node it points at, as of the last time somebody reviewed that link. When the node
+        changes, its version moves on, the two no longer match, and the node at the other end of
+        the link is marked <em>needs review</em>. That is the whole mechanism — a comparison of two
+        numbers, per link.
+      </p>
+
+      <p>
+        Being that dumb is the point. Nothing is inferred from the wording, so it cannot miss a
+        dependency because the rule was phrased differently in two places — the failure that made
+        the six tiles at the top of this article impossible to search. And it cannot over-report
+        either: a node whose link did not change is not marked, so the review list is short enough
+        that people actually work through it. A list that cries wolf gets approved in bulk, and
+        then it is worth nothing.
+      </p>
+
+      <p>
+        What a reviewer sees is not a notification saying something changed somewhere. It is the
+        node itself, with the old words struck out and the new ones beside them:
       </p>
 
       <FigurePart
-        name="stale-node.webp"
+        name="stale-node.png"
         alt="One element of the product page marked as needing review, with the words that changed"
       >
         What a reviewer sees in the application after the change.
@@ -624,7 +714,7 @@ export default function ArticlePart() {
         change means.
       </KeyIdeaPart>
 
-      <h2>What each role gets</h2>
+      <SectionPart title={SECTIONS.roles} />
 
       <CardsPart
         cards={[
@@ -656,10 +746,10 @@ export default function ArticlePart() {
         ]}
       />
 
-      <h2>Compared with what you use today</h2>
+      <SectionPart title={SECTIONS.compare} />
 
       <TablePart
-        header={['', 'Documents', 'Tickets', 'Design files', 'Specification as a graph']}
+        header={['', 'Documents', 'Tickets', 'Design files', 'Specifications as a graph']}
         rows={[
           [
             <strong>Each fact is written</strong>,
@@ -714,11 +804,11 @@ export default function ArticlePart() {
         caption="Documents means Word or Confluence, tickets means Jira, design files means Figma. The graph does not replace a task tracker; it replaces the requirements that get copied into one."
       />
 
-      <h2>Questions people ask</h2>
+      <SectionPart title={SECTIONS.questions} />
 
       <FaqPart items={faq} />
 
-      <h2>Try it</h2>
+      <SectionPart title={SECTIONS.try} />
 
       <p>
         The tool is free and open source. You can open the finished Voltline example in a few

@@ -242,6 +242,41 @@ body {
     transform: none;
   }
 
+  /* Inlined article diagrams.
+     Each one was drawn in a fixed palette of fourteen colours, on a white
+     page. Every colour in the files is now a --dg-* variable with the
+     original as its fallback, so the diagram takes the theme here and still
+     looks as it was drawn if the file is opened on its own.
+     Most map onto a theme token and follow it everywhere. The two that do not
+     carry meaning rather than style — reviewed, and needs review — so they
+     are stated outright, and restated for the one dark theme, where the
+     drawn-for-paper green and amber go muddy. */
+  .diagram {
+    --dg-ink: var(--t-ink);
+    --dg-text: var(--t-muted);
+    --dg-text-soft: var(--t-faint);
+    --dg-line: var(--t-line-strong);
+    --dg-line-soft: var(--t-line);
+    --dg-surface: var(--t-surface);
+    --dg-surface-warm: var(--t-tint);
+    --dg-surface-cool: var(--t-chip);
+    --dg-accent: var(--t-accent);
+    --dg-accent-bg: var(--t-accent-soft);
+    --dg-ok: #3f6b2f;
+    --dg-ok-bg: #eff5ec;
+    --dg-warn: #8a5a00;
+    --dg-warn-bg: #fbf3e2;
+  }
+  [data-theme='dark'] .diagram {
+    --dg-ok: #86c06a;
+    --dg-ok-bg: rgb(63 107 47 / 0.22);
+    --dg-warn: #e0a942;
+    --dg-warn-bg: rgb(138 90 0 / 0.26);
+  }
+  .diagram svg {
+    @apply block h-auto w-full;
+  }
+
   /* Article body typography (rendered ArticlePart HTML) */
   .prose-article {
     @apply text-muted [&_h2]:text-ink [&_h3]:text-ink [&_a]:text-accent [&_code]:bg-chip [&_blockquote]:border-line-strong max-w-none space-y-4 [&_a]:underline [&_blockquote]:border-s-4 [&_blockquote]:ps-4 [&_blockquote]:italic [&_code]:rounded [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-[0.9em] [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_ol]:list-decimal [&_ol]:ps-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4 [&_ul]:list-disc [&_ul]:ps-5;

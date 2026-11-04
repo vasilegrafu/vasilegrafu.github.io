@@ -46,6 +46,8 @@ import {
   Workflow,
   Wrench,
   X,
+  ZoomIn,
+  ZoomOut,
 } from 'lucide-react';
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -131,6 +133,8 @@ const registry: Record<string, IconComponent> = {
   'lucide:workflow': Workflow,
   'lucide:wrench': Wrench,
   'lucide:x': X,
+  'lucide:zoom-in': ZoomIn,
+  'lucide:zoom-out': ZoomOut,
 };
 
 interface Props extends SVGProps<SVGSVGElement> {
