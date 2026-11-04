@@ -9,7 +9,7 @@
 // The diagrams sit in diagrams/ next to this file, because they are not
 // loaded as images at all — DiagramPart reads them at build time and draws
 // them into the page so the theme can colour them.
-export const BASE = '/articles/specification-as-a-graph';
+export const BASE = '/articles/specifications-as-a-graph';
 
 export const asset = (name: string) => `${BASE}/${name}`;
 

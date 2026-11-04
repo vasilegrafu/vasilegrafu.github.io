@@ -26,7 +26,7 @@ const work = [
       'The impact of a change, shown before the change is made.',
       'One source for people and for the agents doing the building.',
     ],
-    article: 'specification-as-a-graph',
+    article: 'specifications-as-a-graph',
     note: null,
   },
   {
