@@ -15,10 +15,10 @@
 // still — see assets.ts for what sets it.
 import { useState } from 'react';
 import type { ReactNode } from 'react';
+import ViewerPart from '@fx/components/ViewerPart';
 import { plainClick } from '@fx/lib/plainClick';
 import { asset, sizeOf } from './assets';
 import DiagramPart from './DiagramPart';
-import ViewerPart from './ViewerPart';
 
 interface Props {
   /** File name inside the article's asset directory. .svg means a diagram. */
@@ -57,7 +57,7 @@ export default function FigurePart({ name, alt, children }: Props) {
         </div>
       )}
       <figcaption className="text-faint mt-3 text-xs">{children}</figcaption>
-      {open && <ViewerPart src={src} alt={alt} onClose={() => setOpen(false)} />}
+      {open && <ViewerPart pics={[{ src, alt }]} onClose={() => setOpen(false)} />}
     </figure>
   );
 }

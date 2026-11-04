@@ -1,10 +1,15 @@
-// One screenshot, filling the screen, with zoom and drag.
+// A set of pictures, one at a time, filling the screen, with zoom and drag.
 //
 // These are pictures of an application and the fine print inside them is the
 // thing worth looking at, so the article needs a way to look closely. A new
 // tab was that way until now; it loses the page, hands the zooming to the
 // browser, and comes back scrolled somewhere else. This keeps the reader where
 // they were.
+//
+// It takes a list rather than one picture, so wherever a reader comes in from
+// — a tile in the tour, a thumbnail beside the title, a figure in the text —
+// they can walk the whole set without going back for it. A list of one shows
+// no arrows and no counter, which is how an inline figure uses it.
 //
 // It is mounted only while it is open, which is why there is no context, no
 // provider and nothing global: the parent holds one piece of state and renders
@@ -60,16 +65,25 @@ const BAR = 'border border-black/10 bg-white/90 shadow-md shadow-black/40 backdr
 const CLOSE =
   'absolute top-3 right-3 rounded-full bg-white/90 p-1.5 text-neutral-900 shadow-md shadow-black/40 backdrop-blur transition-colors hover:bg-white';
 
-export default function ViewerPart({
-  src,
-  alt,
-  onClose,
-}: {
+export interface Pic {
   src: string;
   alt: string;
+}
+
+export default function ViewerPart({
+  pics,
+  start = 0,
+  onClose,
+}: {
+  pics: Pic[];
+  /** Which one to open on. */
+  start?: number;
   onClose: () => void;
 }) {
+  const [which, setWhich] = useState(start);
   const [v, setV] = useState<View>(FIT);
+  const many = pics.length > 1;
+  const pic_ = pics[Math.min(which, pics.length - 1)];
   const stage = useRef<HTMLDivElement>(null);
   const pic = useRef<HTMLImageElement>(null);
 
@@ -140,10 +154,26 @@ export default function ViewerPart({
     return () => el.removeEventListener('wheel', wheel);
   }, [at, zoomBy]);
 
-  // Escape closes, and the page behind holds its place while this is open.
+  /** Move through the set, wrapping at both ends.
+   *
+   *  The new picture opens fitted: carrying the previous one's zoom and offset
+   *  over would land the reader in a corner of a picture they have not seen
+   *  whole yet. */
+  const step = useCallback(
+    (d: number) => {
+      setWhich((p) => (p + d + pics.length) % pics.length);
+      setV(FIT);
+    },
+    [pics.length],
+  );
+
+  // Escape closes, the arrows walk the set, and the page behind holds its
+  // place while this is open.
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      else if (many && e.key === 'ArrowRight') step(1);
+      else if (many && e.key === 'ArrowLeft') step(-1);
     };
     const had = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -156,7 +186,7 @@ export default function ViewerPart({
       document.body.style.overflow = had;
       document.removeEventListener('keydown', key);
     };
-  }, [onClose]);
+  }, [onClose, many, step]);
 
   const down = (e: ReactPointerEvent<HTMLImageElement>) => {
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -207,7 +237,7 @@ export default function ViewerPart({
       ref={stage}
       role="dialog"
       aria-modal="true"
-      aria-label={alt}
+      aria-label={pic_.alt}
       tabIndex={-1}
       // A click that lands on the scrim itself closes. Clicks on the picture
       // belong to the picture, and so does a drag, which the pointer capture
@@ -219,8 +249,9 @@ export default function ViewerPart({
     >
       <img
         ref={pic}
-        src={src}
-        alt={alt}
+        key={pic_.src}
+        src={pic_.src}
+        alt={pic_.alt}
         draggable={false}
         onPointerDown={down}
         onPointerMove={move}
@@ -237,6 +268,20 @@ export default function ViewerPart({
           and close, like anywhere else outside the picture. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-2 p-4">
         <div className={`pointer-events-auto flex items-center gap-0.5 rounded-full p-0.5 ${BAR}`}>
+          {many && (
+            <>
+              <button type="button" onClick={() => step(-1)} aria-label="Previous" className={BTN}>
+                <IconPart name="lucide:chevron-left" className="h-4 w-4" />
+              </button>
+              <span className="min-w-12 text-center text-[11px] font-semibold text-neutral-900 tabular-nums">
+                {which + 1} / {pics.length}
+              </span>
+              <button type="button" onClick={() => step(1)} aria-label="Next" className={BTN}>
+                <IconPart name="lucide:chevron-right" className="h-4 w-4" />
+              </button>
+              <span className="mx-1 h-5 w-px bg-black/15" />
+            </>
+          )}
           <button
             type="button"
             onClick={() => zoomBy(1 / STEP)}
@@ -258,7 +303,8 @@ export default function ViewerPart({
           </button>
         </div>
         <p className={`rounded-full px-2.5 py-0.5 text-[11px] text-neutral-700 ${BAR}`}>
-          Scroll or pinch to zoom · drag to move · Esc to close
+          Scroll or pinch to zoom · drag to move
+          {many && ' · ← → for the next picture'} · Esc to close
         </p>
       </div>
       <button

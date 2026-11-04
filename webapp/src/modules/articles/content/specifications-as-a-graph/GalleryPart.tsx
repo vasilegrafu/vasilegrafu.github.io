@@ -4,15 +4,16 @@
 // text inside one of these screenshots is too small to read and only the shape
 // comes through — so the tile shows the shape, the caption says what to look
 // for, and a click opens the picture full screen, where it can be zoomed into
-// and dragged around. A modified or middle click still opens the file itself in
-// a tab — see plainClick.
+// and dragged around, and walked to the next one. A modified or middle click
+// still opens the file itself in a tab — see plainClick.
 //
 // One piece of state for the whole grid rather than one per tile: there is only
 // ever one picture open, and holding it here keeps each tile a plain figure.
 import { useState } from 'react';
+import ViewerPart from '@fx/components/ViewerPart';
 import { plainClick } from '@fx/lib/plainClick';
 import { asset, SHOT } from './assets';
-import ViewerPart from './ViewerPart';
+import { PICS } from './shots';
 
 export interface Shot {
   name: string;
@@ -23,16 +24,16 @@ export interface Shot {
 }
 
 export default function GalleryPart({ shots }: { shots: Shot[] }) {
-  const [shown, setShown] = useState<Shot | null>(null);
+  const [at, setAt] = useState<number | null>(null);
   return (
     <div className="my-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {shots.map((s) => (
+      {shots.map((s, i) => (
         <figure key={s.name}>
           <a
             href={asset(s.name)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={plainClick(() => setShown(s))}
+            onClick={plainClick(() => setAt(i))}
             className="card card-lift block cursor-zoom-in overflow-hidden no-underline"
           >
             <img
@@ -51,9 +52,7 @@ export default function GalleryPart({ shots }: { shots: Shot[] }) {
           </figcaption>
         </figure>
       ))}
-      {shown && (
-        <ViewerPart src={asset(shown.name)} alt={shown.alt} onClose={() => setShown(null)} />
-      )}
+      {at !== null && <ViewerPart pics={PICS} start={at} onClose={() => setAt(null)} />}
     </div>
   );
 }

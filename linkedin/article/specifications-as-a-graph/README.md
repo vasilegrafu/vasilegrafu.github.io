@@ -9,7 +9,7 @@ Source: `https://vasilegrafu.github.io/articles/specifications-as-a-graph`
 ```
 article/
   article.md    the full article, paste-ready, with [IMAGE nn] markers
-  cover.png     1920×1080 header
+  cover.png     1920×820 header, built from the app screenshots
   images/       17 pictures, numbered in the order they appear
 post/
   post.md       the feed post that carries the link, with a shorter variant

@@ -32,12 +32,12 @@ export default function ContentsPart() {
     history.replaceState(null, '', `#${id}`);
   };
   return (
-    <nav aria-label="Sections of this article" className="card bg-tint/40 my-8 p-5">
+    <nav aria-label="Sections of this article" className="card bg-tint/40 min-w-0 flex-1 p-5">
       <p className="kicker">Contents</p>
-      {/* Two columns read down, not across: six rows, then the flow turns the
-          corner. Numbered in one sequence either way, but a contents list is
-          scanned top to bottom. */}
-      <ol className="mt-3 grid list-none grid-cols-1 gap-x-8 gap-y-2 ps-0 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-6">
+      {/* One column, read straight down: it is the left half of a two-column
+          row, with the article's pictures in the right half, and splitting it
+          again would make a reader scan in two directions at once. */}
+      <ol className="mt-3 grid list-none grid-cols-1 gap-y-2 ps-0">
         {titles.map((t, i) => (
           <li key={t} className="flex gap-2.5">
             <span className="text-faint font-display text-xs tabular-nums">

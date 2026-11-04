@@ -2,118 +2,17 @@ import CardsPart from './CardsPart';
 import ContentsPart from './ContentsPart';
 import FaqPart from './FaqPart';
 import FigurePart from './FigurePart';
-import GalleryPart, { type Shot } from './GalleryPart';
+import GalleryPart from './GalleryPart';
 import KeyIdeaPart from './KeyIdeaPart';
 import MarksPart from './MarksPart';
 import ScenarioPart from './ScenarioPart';
 import SectionPart from './SectionPart';
 import { SECTIONS } from './sections';
+import { SHOTS } from './shots';
 import SidesPart from './SidesPart';
 import StepsPart, { type Step } from './StepsPart';
 import TablePart from './TablePart';
-
-// The tour of the application, in the order a first visit takes. You start on
-// the front page and open the whole graph; then you follow one requirement
-// through its links, its tests and the screens that show it; the last two show
-// what a change looks like from the inside.
-const shots: Shot[] = [
-  {
-    name: 'overview.png',
-    kicker: 'Document',
-    title: 'The front page',
-    alt: 'The front page of the Voltline specification',
-    caption:
-      'Where every reader starts. What the product is, how big the specification is, and what is still open.',
-  },
-  {
-    name: 'graph.png',
-    kicker: 'Graph',
-    title: 'The whole specification',
-    alt: 'The graph view, with one bubble per kind of node',
-    caption:
-      'Each bubble is one kind of node, sized by how many there are. Each line shows how many links join two kinds.',
-  },
-  {
-    name: 'graph-card.png',
-    kicker: 'Graph',
-    title: 'A right-click opens a card',
-    alt: 'A summary card for one node, opened from the graph',
-    caption:
-      'A short summary without leaving the graph. Every ID in the card opens the next card, so you can walk from fact to fact.',
-  },
-  {
-    name: 'layers.png',
-    kicker: 'Graph',
-    title: 'The layers',
-    alt: 'Every node arranged in layers, goals on the left and components on the right',
-    caption:
-      'All of it in layers, goals on the left and components on the right. You can follow one goal to every part that serves it.',
-  },
-  {
-    name: 'layers-flow.png',
-    kicker: 'Graph',
-    title: 'The layers of one flow',
-    alt: 'The layer view narrowed to a single flow',
-    caption:
-      'One flow — buying a product — selected. Only the goals, requirements, endpoints and screens that flow uses.',
-  },
-  {
-    name: 'requirement.png',
-    kicker: 'Requirements',
-    title: 'One requirement',
-    alt: 'Requirement R4 in full, with its evidence and open question',
-    caption:
-      'R4 in full: what it says, where it came from, how sure the specification is, and the question still open about it.',
-  },
-  {
-    name: 'criteria.png',
-    kicker: 'Requirements',
-    title: 'Its tests, in plain words',
-    alt: 'Acceptance criteria written as given, when, then',
-    caption:
-      'Each acceptance criterion is given, when, then. Builder agents turn these lines straight into automated tests.',
-  },
-  {
-    name: 'design.png',
-    kicker: 'Design',
-    title: 'The design system',
-    alt: 'The design system: colours, fonts and spacing',
-    caption:
-      'The colours, fonts and spacing every screen follows. Agents read the same thing as a file of design tokens.',
-  },
-  {
-    name: 'prototype.png',
-    kicker: 'Design',
-    title: 'A working prototype',
-    alt: 'A working prototype of a product page',
-    caption:
-      'A real page, built from the screen’s description and the design system. Viewable at phone, tablet or desktop size.',
-  },
-  {
-    name: 'wireframe.png',
-    kicker: 'Design',
-    title: 'Every element explained',
-    alt: 'The same page with every element labelled',
-    caption:
-      'The same page with every element labelled: which component it is, and which requirement it serves.',
-  },
-  {
-    name: 'matrix.png',
-    kicker: 'Matrix',
-    title: 'What links to what',
-    alt: 'A matrix of every kind of node against every other kind',
-    caption:
-      'Every kind of node against every other, each cell counting the links. An empty cell is often a gap.',
-  },
-  {
-    name: 'stale.png',
-    kicker: 'Change',
-    title: 'After a change, what needs review',
-    alt: 'The list of nodes that need review after a change',
-    caption:
-      'Five became six. Everything that depends on what changed is listed, with the old and the new words, until someone reviews it.',
-  },
-];
+import TeasersPart from './TeasersPart';
 
 const steps: Step[] = [
   {
@@ -195,7 +94,15 @@ const faq: [string, string][] = [
 export default function ArticlePart() {
   return (
     <>
-      <ContentsPart />
+      {/* What is in the article on the left, two of its pictures on the right:
+          one row that answers both of a new reader's questions at once — what
+          this covers, and what it looks like. Narrower than a tablet there is
+          not room for both, so the pair drops under the list, still to the
+          right of it. */}
+      <div className="my-8 flex flex-col items-stretch gap-4 md:flex-row md:items-center md:gap-5">
+        <ContentsPart />
+        <TeasersPart />
+      </div>
 
       {/* The article's premise, said in two lines before anything else. The
           site's blockquote recipe sets it off with a rule and italics, which
@@ -514,7 +421,7 @@ export default function ArticlePart() {
         screen. Click any picture to open it full size.
       </p>
 
-      <GalleryPart shots={shots} />
+      <GalleryPart shots={SHOTS} />
 
       <SectionPart title={SECTIONS.how} />
 
