@@ -13,7 +13,10 @@ article/
   images/       17 pictures, numbered in the order they appear
 post/
   post.md       the feed post that carries the link, with a shorter variant
-  images/       1200×627 picture for the post
+  post-the-need-and-the-solution.md
+                a second post, the argument on its own: the need, then the
+                solution, with a shorter variant
+  images/       1200×627 pictures for the posts
 ```
 
 ## The order to do it in
@@ -23,6 +26,9 @@ post/
    `[IMAGE nn]` marker names, type its caption underneath.
 2. **Post the feed post** from `post/post.md`, with the published article's
    link pasted where the text says `{ARTICLE LINK}`.
+3. **Later, or to a different audience**, post
+   `post/post-the-need-and-the-solution.md`, which makes the same case as an
+   argument rather than a story and stands on its own.
 
 ## Why the text looks like this
 

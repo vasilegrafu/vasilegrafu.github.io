@@ -33,10 +33,10 @@ It is free and open source, and the example opens on your own machine in a few m
 
 {ARTICLE LINK}
 
-#ProductSpecification #AIAssistedDevelopment #SoftwareArchitecture #RequirementsEngineering #AgenticAI
+#ProductSpecification #RequirementsEngineering #AgenticAI
 ```
 
-_1,902 characters including the hashtags, once the link is pasted in._
+_About 1,860 characters including the hashtags, once the link is pasted in._
 
 ---
 
@@ -65,7 +65,7 @@ My new article is about holding a specification as a graph instead: small facts,
 
 {ARTICLE LINK}
 
-#ProductSpecification #AIAssistedDevelopment #SoftwareArchitecture #AgenticAI
+#ProductSpecification #RequirementsEngineering #AgenticAI
 ```
 
-_832 characters._
+_About 820 characters._
