@@ -27,10 +27,10 @@ Specifications as a graph
 **Subtitle** — LinkedIn has no subtitle field for articles. The first
 paragraph does that job, which is why the opening below is the definition.
 
-**Cover image**: `cover.png` (1920×820). Built from the application's own
+**Cover image**: `cover.png` (1920×1080). Built from the application's own
 screens: the title on the left, the graph and two of its screens fanned off the
-right edge. It is a 2.34:1 band rather than 16:9, close to the wide strip
-LinkedIn crops covers to, so little of it is lost.
+right edge. That is the size LinkedIn's help gives as optimal for an article
+cover — 16:9, centred — so nothing is cropped away.
 
 ---
 
