@@ -19,9 +19,9 @@ _85 characters._
 ```
 21+ years in software development, and every phase of it: shaping the specification, designing the architecture, writing the code, holding the quality, shipping the release, and running it in production. Usually several of those at once.
 
-Most weeks I wear several hats at once: software architect, software engineer, AI engineer and engineering manager. In practice that means owning the architecture, writing a large share of the code, building the AI systems on top of it, and still setting direction for the team.
+What occupies me most these days is how AI changes the way software gets built. AI makes code fast and cheap to write; it does not keep a system coherent, understood and under control. That is the part I care about: bringing AI into real engineering without losing what makes software trustworthy. Two things I am building toward it: specifications kept as a graph, so a change shows everything it touches before it is made, and AI agents held to a known architecture, so what they build is predictable. I write about both at vasilegrafu.github.io.
 ```
-_517 characters._
+_787 characters._
 
 ---
 
