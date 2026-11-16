@@ -8,7 +8,7 @@ Guidance for Claude Code working in this repository.
 
 - Make changes in the working tree and leave them uncommitted. I review them myself.
 - When work is done, summarise what changed and stop. Do not offer to commit as a next step; wait for me to ask.
-- `/publish` is how I ask: it means verify, commit everything in the working tree, push to `main`, and confirm the deploy (see `.claude/commands/publish.md`). `/cp` is the bare version: commit and push, nothing else.
+- `/publish` is how I ask: it means bump the site version, verify, commit everything in the working tree, push to `main`, and confirm the deploy (see `.claude/commands/publish.md`). `/cp` is the bare version: bump the site version, commit and push, nothing else. The bump rules are under **Version** in section 4.
 - When I do ask for a commit, commit only what I asked for. Never `git add -A` / `git add .` blindly — stage the specific paths.
 - Never rewrite history: no `commit --amend`, `rebase`, `reset --hard`, `push --force`, `checkout --` over my changes, `clean -fd`, or `stash drop`.
 - Never touch the remote: no `push`, `fetch --prune` with deletion, no branch deletion, no `gh pr create/merge`.
@@ -19,7 +19,7 @@ Guidance for Claude Code working in this repository.
 
 - **Deleting or overwriting files** I did not ask you to touch — look at the target first, and say what you are about to remove.
 - **Anything outward-facing**: publishing, deploying, posting, sending, or uploading content anywhere outside this machine.
-- **Dependency changes**: no `npm install <new-package>`, no version bumps, no lockfile regeneration unless I ask. If a task seems to need a new dependency, propose it and wait.
+- **Dependency changes**: no `npm install <new-package>`, no package version bumps, no lockfile regeneration unless I ask. If a task seems to need a new dependency, propose it and wait.
 - **Secrets**: never write credentials, tokens, API keys, or my email address into source, config, commit messages, or anything published. Nothing in this repo should ever contain a secret — it is a fully public static site.
 - **Generated / vendored paths**: `webapp/node_modules/`, `webapp/dist/` — never edit by hand, never commit.
 - Long-running or background processes (dev servers) are fine, but tell me the port and stop them when done.
@@ -54,6 +54,16 @@ All commands run from `webapp/`:
 - Layers, naming and the styling rules are in `docs/ARCHITECTURE.md` — read it before adding a page, part, icon or theme.
 - Pages are prerendered at build time and hydrated in the browser; `docs/SEO.md` explains that plus sitemap, RSS, canonical URLs and social previews. Every page must render `PageMetaPart`, and render-time state that differs per visitor must be hydration-safe.
 - `public/` is copied verbatim and referenced by absolute path.
+
+### Version
+
+`webapp/version.json` holds the site's version, shown on `/version` with the build time. Every push to `main` is a release, so **every release bumps it once, as part of the same commit**: `/publish`, `/cp`, or me asking in plain words to commit and push. Never in a separate commit, and never when nothing is being pushed.
+
+- **patch** (`1.0.0` → `1.0.1`): the default — content, wording, data, styling, fixes.
+- **minor** (`1.0.1` → `1.1.0`): something new — a page, a route, an article, a feature.
+- **major** (`1.1.0` → `2.0.0`): only when I say so.
+
+Pick the level from the diff being released and say which one you chose in the report. Only the `version` key changes; leave any other keys alone.
 
 ## 5. How I want you to work
 

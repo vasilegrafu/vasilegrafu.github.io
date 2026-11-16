@@ -5,7 +5,7 @@
 //
 // Each path is written twice — `career.html` and `career/index.html` — so
 // both `/career` and `/career/` are served directly, without a redirect.
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { createServer } from 'vite';
 
@@ -48,6 +48,13 @@ function filesFor(path: string): string[] {
   const rel = path.replace(/^\//, '');
   return [join(dist, `${rel}.html`), join(dist, rel, 'index.html')];
 }
+
+// The build's timestamp, left in dist/ by vite.config.ts. Passed back in so this
+// server's /version shows the same time as the bundle that hydrates it; then
+// removed, so it is not published.
+const buildTimeFile = join(dist, '.build-time');
+process.env.BUILD_TIME = readFileSync(buildTimeFile, 'utf8');
+rmSync(buildTimeFile);
 
 const vite = await createServer({
   server: { middlewareMode: true },

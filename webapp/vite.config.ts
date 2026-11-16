@@ -1,4 +1,4 @@
-import { copyFileSync } from 'node:fs'
+import { copyFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
@@ -9,6 +9,15 @@ import { articlesByDate } from './src/modules/articles/registry.ts'
 import { expandPath, routes } from './src/routes.ts'
 
 const src = (dir: string) => fileURLToPath(new URL(`./src/${dir}`, import.meta.url))
+
+/** Where the build leaves its timestamp for the prerender step, inside dist/. */
+const BUILD_TIME_FILE = '.build-time'
+
+// When the site was built, as finished text in UTC, shown on /version. The
+// prerender step (scripts/prerender.ts) starts its own Vite server, which loads
+// this file a second time; it hands the bundle's stamp back in through
+// BUILD_TIME, so the prerendered page and the bundle that hydrates it agree.
+const builtAt = process.env.BUILD_TIME ?? `${new Date().toISOString().slice(0, 19).replace('T', ' ')} UTC`
 
 const escapeXml = (s: string) =>
   s.replace(/[<>&'"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' })[c]!)
@@ -74,6 +83,7 @@ function staticSiteFiles(): Plugin {
     writeBundle(options) {
       const dir = options.dir ?? 'dist'
       copyFileSync(join(dir, 'index.html'), join(dir, '404.html'))
+      writeFileSync(join(dir, BUILD_TIME_FILE), builtAt)
     },
   }
 }
@@ -85,6 +95,7 @@ export default defineConfig({
     // agree on the tenure figures. Reading the clock at render would let the two
     // disagree across a New Year — see the hydration rule in docs/SEO.md.
     __BUILD_YEAR__: new Date().getFullYear(),
+    __BUILD_TIME__: JSON.stringify(builtAt),
   },
   plugins: [react(), tailwindcss(), staticSiteFiles()],
   resolve: {

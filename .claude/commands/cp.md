@@ -9,12 +9,15 @@ lint, no waiting for the deploy, no checks afterwards.
 
 1. If `git status --short` is empty, say so and stop. If the branch is not
    `main`, stop and ask.
-2. Stage every changed and untracked path from `git status --porcelain`
+2. Bump `version` in `webapp/version.json` by one step, chosen from the diff
+   as the Version rules in CLAUDE.md say (patch by default, minor for
+   something new, major only when I ask). It goes into this same commit.
+3. Stage every changed and untracked path from `git status --porcelain`
    explicitly with `git add -- <paths>`. Never `git add -A` or `git add .`.
    Never stage `webapp/node_modules`, `webapp/dist`, or anything that looks
    like a secret; if you see one, stop and ask.
-3. Commit. Use `$ARGUMENTS` as the message if given; otherwise write a short
+4. Commit. Use `$ARGUMENTS` as the message if given; otherwise write a short
    imperative subject line from the diff, with body bullets only if the change
    spans more than one area. End with the standard attribution trailer.
-4. `git push origin main`. No force, no other branches or tags.
-5. Reply with one line: the commit hash and subject.
+5. `git push origin main`. No force, no other branches or tags.
+6. Reply with one line: the commit hash, the subject and the new version.

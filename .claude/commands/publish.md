@@ -14,26 +14,31 @@ Do these steps in order and stop at the first failure, reporting what failed.
    shows changes. If there is nothing to commit, say so and stop. If the
    branch is not `main`, stop and ask.
 
-2. **Verify.** From `webapp/`, run `npm run lint` and then `npm run build`.
+2. **Bump the version.** Raise `version` in `webapp/version.json` by one
+   step, chosen from the diff as the Version rules in CLAUDE.md say (patch by
+   default, minor for something new, major only when I ask). The bump goes
+   into this same commit.
+
+3. **Verify.** From `webapp/`, run `npm run lint` and then `npm run build`.
    Both must pass. If either fails, show the output and stop — nothing is
    committed.
 
-3. **Stage.** List every changed and untracked path from `git status
+4. **Stage.** List every changed and untracked path from `git status
    --porcelain` and stage those paths explicitly with `git add -- <paths>`.
    Never use `git add -A` or `git add .`. Never stage `webapp/node_modules`,
    `webapp/dist`, or anything that looks like a secret or credential; if you
    see one, stop and ask.
 
-4. **Commit.** Use `$ARGUMENTS` as the commit message if given. Otherwise
+5. **Commit.** Use `$ARGUMENTS` as the commit message if given. Otherwise
    write one yourself: a short imperative subject line describing what
    changed (from the diff), plus a few body bullets if the change spans
    more than one area. End the message with the standard attribution
    trailer for this session.
 
-5. **Push.** `git push origin main`. No force, no history rewriting, no
+6. **Push.** `git push origin main`. No force, no history rewriting, no
    other branches or tags.
 
-6. **Watch the deploy.** Poll the workflow run for the pushed commit:
+7. **Watch the deploy.** Poll the workflow run for the pushed commit:
 
    ```sh
    curl -s "https://api.github.com/repos/vasilegrafu/vasilegrafu.github.io/actions/runs?per_page=3"
@@ -43,7 +48,7 @@ Do these steps in order and stop at the first failure, reporting what failed.
    until `status` is `completed`, for at most 5 minutes. If `conclusion`
    is not `success`, report the run URL and stop.
 
-7. **Check the live site.** Run:
+8. **Check the live site.** Run:
 
    ```sh
    curl -sI https://vasilegrafu.github.io/ | head -1
@@ -55,5 +60,5 @@ Do these steps in order and stop at the first failure, reporting what failed.
    site still serves the previous build, wait 30 seconds and try once more —
    Pages can lag behind the workflow by a moment.
 
-8. **Report.** In a few lines: the commit hash and subject, the workflow
+9. **Report.** In a few lines: the commit hash and subject, the new version, the workflow
    result, and the live-site check. Nothing else.
