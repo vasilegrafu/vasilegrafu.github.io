@@ -5,12 +5,18 @@ already rendered. Nothing here is served by the site: `webapp/dist` is what
 gets published, and this folder sits outside it.
 
 Source: `https://vasilegrafu.github.io/articles/specifications-as-a-graph`
+Published: `https://www.linkedin.com/pulse/specifications-graph-vasile-grafu-5lh9f/`
+
+`article/article.md` is kept the same as the published article. When the
+article is edited on LinkedIn, edit this file to match.
 
 ```
 article/
-  article.md    the full article, paste-ready, with [IMAGE nn] markers
+  article.md    the published article, paste-ready, with [IMAGE nn] markers
   cover.png     1920×1080 header, built from the app screenshots
-  images/       17 pictures, numbered in the order they appear
+  images/       10 pictures, numbered in the order they appear
+    unused/     8 pictures from an earlier, longer edition, not in the
+                published article
 post/
   post.md       the feed post that carries the link, with a shorter variant
   post-the-need-and-the-solution.md
@@ -37,42 +43,32 @@ get a literal `##`. So `article.md` keeps every heading outside the paste
 blocks and tells you which button to press. Same approach as
 `linkedin/profile/profile.md` takes for the profile itself.
 
-The paste-ready text runs to about 24,600 characters across 61 blocks, well
+The paste-ready text runs to about 11,000 characters across 35 blocks, well
 inside LinkedIn's 110,000-character limit.
 
 ## Why the pictures look like this
 
-The twelve diagrams exist in the site source only as SVG coloured by the
-page's own theme variables, and LinkedIn does not accept SVG. Each one is
-rendered to PNG at 2× on white through headless Chrome; standalone, the files
-fall back to the light palette, which is the one that suits LinkedIn. The
-screenshots were already PNG at 2560×1600 and are copied under the number they
-carry in the article.
-
-`build_linkedin.py` in the session scratchpad is what rendered them. It is not
-kept here: re-rendering is a one-liner against the SVGs, and a script in the
-repo would be one more thing to keep in step with the article.
+The diagrams exist in the site source only as SVG coloured by the page's own
+theme variables, and LinkedIn does not accept SVG. Each one is rendered to PNG
+on white through headless Chrome; standalone, the files fall back to the light
+palette, which is the one that suits LinkedIn. They were redrawn with larger
+type first, so their labels survive LinkedIn's 744px column. The screenshots
+were already PNG at 2560×1600 and are copied as they are.
 
 ## What was left out, and why
 
-The site article carries 12 diagrams and 15 screenshots. All 27 would be 27
-uploads, one at a time, for someone scrolling a feed. This set keeps:
+The published article is the argument and a look at the tool, not the manual.
+It keeps the scenario, the problem, the idea, five screens and how it works,
+and points at the site for the rest. Left out:
 
-- **Every diagram but one.** `talked.svg`, the example conversation with the
-  skill, is the one dropped — it illustrates a paragraph rather than an
-  argument.
-- **Six screenshots of fifteen**: the requirement with its links, the whole
-  specification, one requirement in full, the prototype, the impact view, and
-  what a reviewer sees. The other nine are named in the text, with a line
-  pointing at the site for them.
+- **Three parts: a skill, an application, two interfaces** — the section and
+  its diagram (`unused/04-three-parts.png`).
+- **A change, step by step** — the impact view, the five steps of a change and
+  what a reviewer sees (`unused/11` to `unused/17`).
+- **Words you will see**, **Compared with what you use today** and
+  **Questions people ask**.
+- **The rest of the tour's screenshots** — the "nine more views" line names
+  them and points at the site.
 
-Two things in the article do not survive the port and were rewritten rather
-than dropped:
-
-- **The comparison table** — LinkedIn has no tables, so each row is written
-  out as a sentence.
-- **The contents list** — LinkedIn builds its own outline from the headings,
-  and it has no anchors to point at.
-
-The six-tile picture of one rule in six places became a list, for the same
-reason.
+The six-tile picture of one rule in six places became a bulleted list, and
+the contents list is gone: LinkedIn builds its own outline from the headings.

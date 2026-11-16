@@ -8,9 +8,9 @@ Regenerate rather than hand-edit, so LinkedIn and the site cannot drift.
 ## Headline  _(LinkedIn limit: 220 characters)_
 
 ```
-Engineering Manager | Solutions Architect | Software Architecture, Cloud & Agentic AI
+Engineering Manager · Software & Solutions Architect | .NET, Python, AWS | Agentic AI: LLMs, RAG, MCP | Building specifications as a graph for AI agents
 ```
-_85 characters._
+_152 characters._
 
 ---
 
