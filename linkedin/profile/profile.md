@@ -83,7 +83,7 @@ Tech: C# / .NET, ASP.NET MVC, WCF · SQL Server · JavaScript, jQuery · AWS (EC
 ```
 _867 characters (limit 2,000)._
 
-### Senior Software Developer — Edisoft
+### Senior Software Engineer — Edisoft
 `2009 – 2010` · `Bucharest, Romania`
 
 ```
@@ -97,17 +97,17 @@ Tech: C# / .NET, ASP.NET Web Forms, WCF · SQL Server · SVN
 ```
 _727 characters (limit 2,000)._
 
-### Team Leader — TeamNet
+### Senior Software Engineer — TeamNet
 `2008 – 2009` · `Bucharest, Romania`
 
 ```
-The title here covered module ownership rather than people: I took Optimus ERP modules end to end, from specification through testing and deployment. Leading a team came later, at Consignor.
+I was responsible for Optimus ERP modules end to end, from specification through testing and deployment.
 
 • Optimus ERP modules: managed them through every development step, from specification to testing and deployment.
 • Feature planning: built development plans for new features with the design department.
 • Quality and maintenance: enhanced existing features, and triaged and resolved every defect raised by the Quality Department.
 ```
-_521 characters (limit 2,000)._
+_435 characters (limit 2,000)._
 
 ### Game Programmer — Ubisoft
 `January 2005 – June 2008` · `Bucharest, Romania`

@@ -192,7 +192,7 @@ export const experience: Role[] = [
   },
   {
     company: 'Edisoft',
-    position: 'Senior Software Developer',
+    position: 'Senior Software Engineer',
     icon: 'lucide:code-xml', // hands-on developer
     period: '2009 – 2010',
     location: 'Bucharest, Romania',
@@ -214,7 +214,7 @@ export const experience: Role[] = [
   },
   {
     company: 'TeamNet',
-    position: 'Team Leader',
+    position: 'Senior Software Engineer',
     icon: 'lucide:package', // TeamNet — ERP
     period: '2008 – 2009',
     location: 'Bucharest, Romania',
@@ -222,7 +222,7 @@ export const experience: Role[] = [
     about:
       'TeamNet International, a Romanian technology and systems-integration company delivering software, IT infrastructure, and technology solutions for major public- and private-sector organizations.',
     summary:
-      'The title here covered module ownership rather than people: I took Optimus ERP modules end to end, from specification through testing and deployment. Leading a team came later, at Consignor.',
+      'I was responsible for Optimus ERP modules end to end, from specification through testing and deployment.',
     bullets: [
       'Optimus ERP modules: managed them through every development step, from specification to testing and deployment.',
       'Feature planning: built development plans for new features with the design department.',
