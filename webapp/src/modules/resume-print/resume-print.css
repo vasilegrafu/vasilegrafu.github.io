@@ -176,10 +176,13 @@
   break-after: avoid;
   page-break-after: avoid;
 }
+/* The stack: a recruiter scans these lines for a technology, so they are set
+   at the body's size, in full-strength ink and a step heavier than the prose,
+   with each technology set apart by a bar (see Tech in ResumePrintPage). */
 .resume-print .tech {
   margin-top: 5px;
-  font-size: 9.25pt;
-  color: var(--muted);
+  color: var(--ink);
+  font-weight: 500;
 }
 /* The small label on Tech and Key projects. */
 .resume-print .label {

@@ -84,46 +84,67 @@ export const resume = {
   ],
 
   openSource: {
-    /** Opens the section, before the project: why the research exists, then
-     *  the two lines of work it leads to, as a short list. */
+    /** Opens the section, before the projects: why the research exists. Its
+     *  last line leads straight into the two projects under it. */
     intro: {
       paragraphs: [
         'What occupies me most these days is how AI changes the way software gets built.',
         'AI makes code fast and cheap to write; it does not keep a system coherent, understood and under control. That is the part I care about: bringing AI into real engineering without losing what makes software trustworthy.',
         'Two things I am building toward it:',
       ],
-      items: [
-        'Specifications kept as a graph (see below)',
-        'Controlling vibe coding (in progress): application-builder, a Claude Code skill that builds from existing codebases instead of from imagination. It adds features in the house style, or migrates and translates whole applications to another stack, proven to behave like the original, at any codebase size.',
-      ],
     },
-    meta: 'Creator | 2026 | Developer tools, AI',
-    /** Shown after `meta`, each as a link: the repository first. */
-    links: [
+    /** The projects, in the order of the list above. Each one's `meta` is
+     *  followed by its `links`, the repository first. */
+    projects: [
       {
-        label: 'github.com/vasilegrafu/project.specs-builder',
-        href: 'https://github.com/vasilegrafu/project.specs-builder',
+        meta: 'Creator | 2026 | Developer tools, AI',
+        links: [
+          {
+            label: 'github.com/vasilegrafu/project.specs-builder',
+            href: 'https://github.com/vasilegrafu/project.specs-builder',
+          },
+          {
+            label: 'Research article',
+            href: 'https://vasilegrafu.github.io/research/specifications-as-a-graph',
+          },
+          {
+            label: 'Video tutorials',
+            href: 'https://www.youtube.com/playlist?list=PLAlCi-PFDpyk',
+          },
+        ],
+        title: 'Specifications as a graph',
+        where: 'personal project',
+        bullets: [
+          {
+            text: 'A Claude Code skill that writes a product specification with you, in plain words, and keeps it as a graph of small, linked facts, so nothing is written twice and every change shows what it touches before it is made.',
+          },
+          {
+            text: 'Reverse-engineers existing products with specialised agents; people read the result in a browser, coding agents query the same files. Published with a research article and a five-episode video tutorial series.',
+          },
+        ] as ResumeBullet[],
+        tech: 'Claude Code, Agent Skills, multi-agent, Python, SQLite, JavaScript',
       },
       {
-        label: 'Research article',
-        href: 'https://vasilegrafu.github.io/research/specifications-as-a-graph',
-      },
-      {
-        label: 'Video tutorials',
-        href: 'https://www.youtube.com/playlist?list=PLAlCi-PFDpyk',
+        meta: 'Creator | 2026 | Developer tools, AI',
+        links: [
+          {
+            label: 'github.com/vasilegrafu/project.application-builder',
+            href: 'https://github.com/vasilegrafu/project.application-builder',
+          },
+        ],
+        title: 'Controlling vibe coding',
+        where: 'personal project (in progress)',
+        bullets: [
+          {
+            text: 'A Claude Code skill that builds from existing codebases instead of from imagination: it measures what a codebase\'s parts agree on, writes new code to that contract, and asks wherever they disagree, so the AI decides only what you want it to decide.',
+          },
+          {
+            text: 'Adds features in the house style, or migrates and translates whole applications to another stack, proven to behave like the original: it builds, its tests pass, and it runs the same as the original. Works at any codebase size, and reads Python, TypeScript, JavaScript and C#.',
+          },
+        ] as ResumeBullet[],
+        tech: 'Claude Code, Agent Skills, Python',
       },
     ],
-    title: 'Specifications as a graph',
-    where: 'personal project, open source',
-    bullets: [
-      {
-        text: 'A Claude Code skill that writes a product specification with you, in plain words, and keeps it as a graph of small, linked facts, so nothing is written twice and every change shows what it touches before it is made.',
-      },
-      {
-        text: 'Reverse-engineers existing products with specialised agents; people read the result in a browser, coding agents query the same files. Published with a research article and a five-episode video tutorial series.',
-      },
-    ] as ResumeBullet[],
-    tech: 'Claude Code, Agent Skills, multi-agent, Python, SQLite, JavaScript',
   },
 
   roles: [

@@ -55,11 +55,36 @@ function Bullets({ items }: { items: ResumeBullet[] }) {
   );
 }
 
+/**
+ * The stack, one technology per item, set apart by " | " so each one is a unit
+ * the eye can pick out. The data writes it comma-separated; a comma inside
+ * brackets, as in "AWS (ECS, Fargate)", belongs to that item and is kept.
+ */
 function Tech({ children }: { children: string }) {
+  const items: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < children.length; i++) {
+    const c = children[i];
+    if (c === '(') depth++;
+    else if (c === ')') depth--;
+    else if (c === ',' && depth === 0) {
+      items.push(children.slice(start, i).trim());
+      start = i + 1;
+    }
+  }
+  items.push(children.slice(start).trim());
+  // Each technology stays whole on its line ("AWS Bedrock" never breaks after
+  // "AWS"); a line breaks only between items.
   return (
     <p className="tech">
       <span className="label">Tech</span>
-      {children}
+      {items.map((item, i) => (
+        <span key={item}>
+          {i > 0 && ' | '}
+          <span className="nowrap">{item}</span>
+        </span>
+      ))}
     </p>
   );
 }
@@ -114,32 +139,30 @@ export default function ResumePrintPage() {
         {os.intro.paragraphs.map((p) => (
           <p key={p}>{p}</p>
         ))}
-        <ul>
-          {os.intro.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
       </div>
-      <div className="role keep">
-        <div className="role-head">
-          <p className="meta">
-            {os.meta}
-            {os.links.map((l) => (
-              <span key={l.href}>
-                {' | '}
-                <a className="link" href={l.href}>
-                  {l.label}
-                </a>
-              </span>
-            ))}
-          </p>
-          <h3>
-            {os.title} <span className="where">| {os.where}</span>
-          </h3>
+      {os.projects.map((p) => (
+        <div key={p.title} className="role keep">
+          {/* The project's name leads; its role, year and links follow. */}
+          <div className="role-head">
+            <h3>
+              {p.title} <span className="where">| {p.where}</span>
+            </h3>
+            <p className="meta">
+              {p.meta}
+              {p.links.map((l) => (
+                <span key={l.href}>
+                  {' | '}
+                  <a className="link" href={l.href}>
+                    {l.label}
+                  </a>
+                </span>
+              ))}
+            </p>
+          </div>
+          <Bullets items={p.bullets} />
+          <Tech>{p.tech}</Tech>
         </div>
-        <Bullets items={os.bullets} />
-        <Tech>{os.tech}</Tech>
-      </div>
+      ))}
 
       <h2>Experience</h2>
       {resume.roles.map((role) => (
