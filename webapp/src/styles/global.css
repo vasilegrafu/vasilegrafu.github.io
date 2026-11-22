@@ -78,8 +78,14 @@
   --color-blob-b: var(--t-blob-b);
 }
 
+/* A thin window scrollbar in the theme's colours, so it does not sit as a
+   wide grey bar down the whole screen on Windows. Standard properties: Chrome,
+   Edge and Firefox. Safari keeps its own; macOS and phones already overlay a
+   thin one. */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--t-line-strong) transparent;
 }
 
 /* Body text follows the scale's base step, so text without an explicit size
