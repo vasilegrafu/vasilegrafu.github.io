@@ -175,7 +175,7 @@ export const experience: Role[] = [
     summary:
       'I led the Webservices Team, behind the 50 web services that served over 10,000 business clients in the Consignor application suite.',
     bullets: [
-      'Applications at the core of the platform: built Routing Codes, Address Lookup and Sending Edifacts — all still part of the nShift ecosystem today.',
+      'Applications at the core of the platform: built Routing Codes and Sending Edifacts — both still part of the nShift ecosystem today.',
       'Custom Price Calculation Engine: kept developing the engine I had built the year before, as its use spread across the platform.',
       'Software architecture and solution design: owned the design decisions across the Consignor suite, from service boundaries to data model.',
       'Software engineering: wrote a large share of the code myself, alongside the team rather than above it.',
@@ -562,7 +562,7 @@ export const projects: Project[] = [
     icon: 'lucide:cloud',
     role: 'Technical lead · nShift · 2026 – present',
     description:
-      'Many shipping customers still run warehouse, ERP and label systems that exchange files through folders. FileWatcher is a small agent installed on the customer’s own machine — Windows, Linux or macOS — that watches local folders and remote FTP, FTPS and SFTP servers and delivers every finished file to nShift reliably, even through network drops, restarts and updates.',
+      'Many shipping customers still run warehouse, ERP and label systems that exchange files through folders. FileWatcher is a small background service installed on the customer’s own machine — Windows, Linux or macOS — that watches local folders and remote FTP, FTPS and SFTP servers and delivers every finished file to nShift reliably, even through network drops, restarts and updates.',
     did: [
       {
         label: 'Technical lead',

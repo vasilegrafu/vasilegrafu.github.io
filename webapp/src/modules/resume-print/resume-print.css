@@ -1,6 +1,9 @@
 /* Print stylesheet for the resume PDF (A4). Standalone by design — the PDF
    must keep a fixed, print-tuned look independent of the site's themes, so
-   every rule is scoped under .resume-print and uses its own palette. */
+   every rule is scoped under .resume-print and uses its own palette.
+
+   One column: applicant-tracking systems read the PDF's text in the order it
+   is written, and two columns of bullets came out interleaved there. */
 .resume-print {
   --ink: #1e293b;
   --muted: #64748b;
@@ -11,7 +14,7 @@
   color: var(--ink);
   font-family: 'Segoe UI', ui-sans-serif, system-ui, Arial, sans-serif;
   font-size: 10.25pt;
-  line-height: 1.5;
+  line-height: 1.45;
   flex-grow: 1;
 }
 /* "Page 1 of N" in the bottom margin. Margin boxes sit outside .resume-print,
@@ -19,7 +22,7 @@
    them even with --no-pdf-header-footer, which only drops its own header. */
 @page {
   size: A4;
-  margin: 13mm 13mm;
+  margin: 13mm 14mm;
 
   @bottom-right {
     content: 'Page ' counter(page) ' of ' counter(pages);
@@ -33,224 +36,180 @@
   .resume-print {
     max-width: 210mm;
     margin: 0 auto;
-    padding: 13mm;
+    padding: 13mm 14mm;
   }
 }
+
+.resume-print a {
+  color: inherit;
+  text-decoration: none;
+}
+.resume-print a.link {
+  color: var(--accent);
+}
+.resume-print b {
+  font-weight: 600;
+}
+.resume-print p {
+  margin-top: 4px;
+}
+
 .resume-print header {
-  border-bottom: 2.5px solid var(--accent);
-  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 8px;
 }
 .resume-print h1 {
-  font-size: 22.5pt;
+  font-size: 22pt;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
 }
-.resume-print .subtitle {
-  font-size: 11.25pt;
+.resume-print .headline {
   color: var(--accent);
+  font-size: 11.5pt;
   font-weight: 600;
   margin-top: 2px;
 }
 .resume-print .contact {
-  margin-top: 6px;
   color: var(--muted);
   font-size: 9pt;
+  margin-top: 4px;
 }
-.resume-print .contact span + span::before {
-  content: ' · ';
-}
-.resume-print a {
-  color: var(--accent);
-  text-decoration: none;
-}
-/* A section has to read as a new section, not as one more entry: the entries
-   are already separated by a thin grey rule, so the heading gets clear space
-   above it and a solid accent rule, and never ends a page on its own. */
+
+/* A section has to read as a new section, not as one more entry: clear space
+   above it and an accent hairline under it, and it never ends a page on its
+   own. The hairline is a background, not a border or a positioned layer:
+   Chrome snaps a border under 1px back up to 1px when it prints, and a
+   positioned layer makes it write the heading's text last on the page, out of
+   order for parsers. */
 .resume-print h2 {
   font-size: 11.25pt;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--accent);
-  margin: 30px 0 9px;
+  margin: 18px 0 7px;
   padding-bottom: 3px;
-  position: relative;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 0.5px no-repeat;
   break-after: avoid;
   page-break-after: avoid;
 }
-/* A hairline under the heading. Not a border: Chrome snaps a border thinner
-   than 1px back up to 1px when it prints, so the rule is a 1px line scaled to
-   half its height, which the PDF keeps as a true half-pixel line. */
-.resume-print h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleY(0.5);
-  transform-origin: bottom;
+
+.resume-print .industry {
+  margin-top: 6px;
 }
-.resume-print .skills {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7px 18px;
+.resume-print .industry-next {
+  margin-top: 1px;
 }
 .resume-print .skills p {
-  font-size: 9pt;
+  margin-top: 3px;
+  padding-left: 12px;
+  border-left: 2px solid var(--line);
 }
-.resume-print .skills b {
-  color: var(--ink);
+
+.resume-print ul {
+  list-style: disc;
+  margin: 4px 0 0 16px;
 }
-/* Entries break freely. Holding a whole role together sounds tidier, but an
-   entry that will not fit jumps the page whole and leaves a third of a page
-   blank - which is how this resume reached five pages for three and a half
-   pages of content. What must not split is a heading from the lines under it,
-   and that is handled by break-after on the parts, not by freezing the role. */
+.resume-print li {
+  margin-top: 3px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.resume-print li::marker {
+  color: var(--accent);
+}
+
+/* Entries break freely; what must not split is a heading from the lines
+   under it, which break-after on the parts handles. */
 .resume-print .role {
-  margin-top: 14px;
-  margin-bottom: 16px;
+  margin-top: 12px;
+  padding-top: 9px;
   border-top: 1px solid var(--line);
-  padding-top: 10px;
 }
 /* The first entry of a section sits under the section's own rule already. */
 .resume-print h2 + .role {
   margin-top: 0;
-  border-top: 0;
   padding-top: 0;
-}
-.resume-print .role-head,
-.resume-print .role .about,
-.resume-print .role .summary {
-  break-after: avoid;
-  page-break-after: avoid;
+  border-top: 0;
 }
 .resume-print .role-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-/* Experience entries stack like the Career page: period and location on the
-   first line, the role beneath. Projects keep the flex row. */
-.resume-print .role:has(.meta) .role-head {
-  display: block;
-  /* Stacked, the header is two blocks, and the page could fall between them:
-     a project's role line was printing alone at a page foot, its title on the
-     next page. Keep the two together. */
   break-inside: avoid;
-  page-break-inside: avoid;
-}
-.resume-print .role-head .meta {
   break-after: avoid;
   page-break-after: avoid;
 }
-.resume-print .role-head .meta {
+.resume-print .meta {
   color: var(--muted);
   font-size: 9pt;
-  font-variant-numeric: tabular-nums;
+  margin-top: 0;
 }
-.resume-print .role-head h3 {
+.resume-print h3 {
   font-size: 10.75pt;
   font-weight: 700;
 }
 /* The position is what a recruiter scans for, so it keeps the weight; the
-   employer and city step down rather than competing with it. */
-.resume-print .role-head .where {
+   employer steps down rather than competing with it. */
+.resume-print h3 .where {
   font-weight: 400;
   color: var(--muted);
 }
-.resume-print .role-head .period {
+.resume-print .about {
   color: var(--muted);
-  font-size: 9pt;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
+  font-size: 9.25pt;
+  break-after: avoid;
+  page-break-after: avoid;
 }
-.resume-print .role .summary {
-  margin-top: 2px;
-  color: var(--ink);
+.resume-print .tech {
+  margin-top: 5px;
+  font-size: 9.25pt;
+  color: var(--muted);
 }
-/* Two columns, like the Career page, but with discs rather than numerals: the
-   numbering there is a reading aid for a long scrolling page, and on paper it
-   would just be noise. break-inside keeps a bullet from splitting across the
-   column gap. */
-.resume-print .role ul {
-  list-style: disc;
-  margin: 4px 0 0 15px;
-  column-count: 2;
-  column-gap: 26px;
+/* The small label on Tech and Key projects. */
+.resume-print .label {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 7.5pt;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-right: 6px;
 }
-.resume-print .role li {
-  margin-bottom: 4px;
+
+/* Marks the blocks under it as projects done in the role above. */
+.resume-print .projects-label {
+  margin-top: 8px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+/* One key project: a context line, then what I did, indented under it. The
+   context line never ends a page on its own. */
+.resume-print .project {
+  margin-top: 10px;
+}
+.resume-print .proj-head {
+  margin-top: 0;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+/* The project name leads its block: in the accent colour and a step larger,
+   so it reads as a sub-heading and not as one more bullet. */
+.resume-print .proj-head .pname {
+  color: var(--accent);
+  font-size: 10.5pt;
+  font-weight: 600;
+}
+.resume-print .project ul {
+  margin-left: 22px;
+}
+
+/* Short blocks that should not split across a page: the open-source entry
+   and the two earlier roles. */
+.resume-print .keep,
+.resume-print .earlier {
   break-inside: avoid;
   page-break-inside: avoid;
 }
-/* The stack for a role: full-strength ink and a label, because a recruiter
-   scanning for a technology should find it without reading prose. No rule:
-   the only horizontal lines in Experience separate one job from the next, so
-   a second kind of rule inside an entry reads as a break that is not there. */
-.resume-print .tech {
-  margin-top: 6px;
-  color: var(--ink);
-  font-size: 9.5pt;
-}
-/* The label on Company, Role and Tech. Inline rather than stacked: on a
-   resume the vertical space costs more than the alignment buys. */
-.resume-print .block-label {
-  display: inline-block;
-  margin-right: 7px;
-  color: var(--accent);
-  font-size: 8pt;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-.resume-print .edu {
-  margin-bottom: 6px;
-}
-.resume-print .edu .period {
-  color: var(--muted);
-  font-size: 9pt;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Number-led facts under the summary, for the recruiter's first scan. */
-.resume-print .highlights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px 18px;
+.resume-print .earlier p {
   margin-top: 6px;
 }
-.resume-print .highlights div {
-  position: relative;
-  padding-left: 13px;
-  font-size: 9.75pt;
-}
-.resume-print .highlights div::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.45em;
-  width: 5px;
-  height: 5px;
-  border-radius: 1px;
-  background: var(--accent);
-}
-
-/* The figures a project is measured by. These are tiles on the web - a value
-   over a label - so joined into a sentence they read as fragments. */
-.resume-print .role .outcomes {
-  margin: 4px 0 0 15px;
-  list-style: disc;
-  color: var(--muted);
-}
-.resume-print .role .outcomes b {
-  color: var(--ink);
-}
-
-/* One line of company context under a role heading. */
-.resume-print .role .about {
-  margin-top: 1px;
-  color: var(--muted);
-  font-size: 9pt;
+.resume-print .nowrap {
+  white-space: nowrap;
 }

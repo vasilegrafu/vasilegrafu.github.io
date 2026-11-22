@@ -1,5 +1,6 @@
-// Print source for public/cv.pdf, rendered entirely from src/data/profile.ts.
-// Regenerate the PDF after any profile change with:
+// Print source for public/cv.pdf, rendered from src/data/resume.ts (the
+// resume's own content) and the contact details in src/data/profile.ts.
+// Regenerate the PDF after any change with:
 //   npm run build
 //   npm run preview   (note the port it prints)
 //   & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
@@ -9,178 +10,173 @@
 // web fonts have loaded, roughly half the time, and the fallback metrics
 // rewrap every line and change the pagination. With the flag the output is
 // byte-identical run to run, so if two renders of the same content differ,
-// the flag was missing. Type size is set for readability, not page count —
-// this resume runs long on purpose.
-// This page renders outside the site shell, is noindex, and stays out of the sitemap.
-import { Fragment } from 'react';
+// the flag was missing.
+//
+// One column throughout, so applicant-tracking systems read the PDF top to
+// bottom in order. This page renders outside the site shell, is noindex, and
+// stays out of the sitemap.
+import type { ReactNode } from 'react';
 import PageMetaPart from '@modules/shared/PageMetaPart';
-import {
-  careerStart,
-  education,
-  experience,
-  leadershipStart,
-  projects,
-  site,
-  skills,
-  yearsSince,
-} from '@data/profile';
+import { site } from '@data/profile';
+import { resume, type ResumeBullet } from '@data/resume';
 import './resume-print.css';
 
-
 const linkedinLabel = site.linkedin.replace('https://www.', '');
+const githubLabel = site.github.replace('https://', '');
 const siteLabel = site.url.replace('https://', '');
-const telHref = `tel:${site.phone.replace(/\s/g, '')}`;
 
-// Read in the first few seconds, so it leads with figures rather than prose.
-const highlights = [
-  'Millions of requests served every day by the platform my team runs',
-  '10,000+ business clients on the systems I have built and led',
-  '50 web services in production, distributed across AWS',
-  `${yearsSince(careerStart)}+ years, from real-time game engines to agentic AI systems`,
-  `${yearsSince(leadershipStart)} years leading teams, five of them running two at once`,
-];
+/** Text with [label](url) links in it, as the resume data writes them. */
+function withLinks(text: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  for (const m of text.matchAll(re)) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    parts.push(
+      <a key={m.index} className="link" href={m[2]}>
+        {m[1]}
+      </a>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
 
-/** Bullets are written as "Lead-in: detail" — split so the lead-in can be bold. */
-function splitBullet(b: string) {
-  const i = b.indexOf(': ');
-  return i > 0 ? { title: b.slice(0, i), rest: b.slice(i + 2) } : { title: null, rest: b };
+function Bullets({ items }: { items: ResumeBullet[] }) {
+  return (
+    <ul>
+      {items.map((b) => (
+        <li key={b.text}>
+          {b.lead && <b>{b.lead}</b>} {withLinks(b.text)}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Tech({ children }: { children: string }) {
+  return (
+    <p className="tech">
+      <span className="label">Tech</span>
+      {children}
+    </p>
+  );
 }
 
 export default function ResumePrintPage() {
+  const os = resume.openSource;
   return (
     <div className="resume-print">
       <PageMetaPart title={`${site.name} — Resume`} noindex />
 
       <header>
         <h1>{site.name}</h1>
-        <div className="subtitle">{site.title}</div>
+        <div className="headline">{resume.headline}</div>
         <div className="contact">
-          <span>{site.location}</span>
-          <span>
-            <a href={telHref}>{site.phone}</a>
-          </span>
-          <span>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-          </span>
-          <span>
-            <a href={site.linkedin}>{linkedinLabel}</a>
-          </span>
-          <span>
-            <a href={site.url}>{siteLabel}</a>
-          </span>
+          {site.location} | {site.phone} | {site.email} |{' '}
+          <a className="link" href={site.linkedin}>
+            {linkedinLabel}
+          </a>{' '}
+          |{' '}
+          <a className="link" href={site.github}>
+            {githubLabel}
+          </a>{' '}
+          |{' '}
+          <a className="link" href={site.url}>
+            {siteLabel}
+          </a>
         </div>
       </header>
 
       <h2>Summary</h2>
-      <p>{site.intro}</p>
-
-      <div className="highlights">
-        {highlights.map((h) => (
-          <div key={h}>{h}</div>
-        ))}
-      </div>
+      <p>{resume.summary()}</p>
+      <p className="industry">
+        <b>Industry:</b> {resume.industry()}
+      </p>
+      <p className="industry-next">
+        <b>Languages:</b> {resume.languages}
+      </p>
 
       <h2>Skills</h2>
       <div className="skills">
-        {skills.map((s) => (
-          <p key={s.group}>
-            <b>{s.group}:</b> {s.items.join(', ')}
+        {resume.skills.map((s) => (
+          <p key={s.label}>
+            <b>{s.label}:</b> {s.text}
           </p>
         ))}
       </div>
 
-      <h2>Experience</h2>
-      {experience.map((role) => {
-        const bullets = role.bullets;
-        return (
-          <div key={`${role.company}-${role.position}`} className="role">
-            <div className="role-head">
-              <p className="meta">
-                <span className="period">{role.period}</span>
-                {' · '}
-                {role.location}
-              </p>
-              <h3>
-                {role.position}
-                <span className="where">
-                  {' · '}
-                  {role.company}
-                </span>
-              </h3>
-            </div>
-            {role.aboutShort && (
-              <p className="about">
-                <span className="block-label">Company</span>
-                {role.aboutShort}
-              </p>
-            )}
-            {role.summary && (
-              <p className="summary">
-                <span className="block-label">Role</span>
-                {role.summary}
-              </p>
-            )}
-            <ul>
-              {bullets.map((b) => {
-                const { title, rest } = splitBullet(b);
-                return (
-                  <li key={b}>
-                    {title ? (
-                      <Fragment>
-                        <b>{title}:</b> {rest}
-                      </Fragment>
-                    ) : (
-                      b
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-            {role.tech && (
-              <p className="tech">
-                <span className="block-label">Tech</span>
-                {role.tech.join(' · ')}
-              </p>
-            )}
-          </div>
-        );
-      })}
+      <h2>Open Source (Research)</h2>
+      <div className="role keep">
+        <div className="role-head">
+          <p className="meta">
+            {os.meta}
+            {os.links.map((l) => (
+              <span key={l.href}>
+                {' | '}
+                <a className="link" href={l.href}>
+                  {l.label}
+                </a>
+              </span>
+            ))}
+          </p>
+          <h3>
+            {os.title} <span className="where">| {os.where}</span>
+          </h3>
+        </div>
+        <Bullets items={os.bullets} />
+        <Tech>{os.tech}</Tech>
+      </div>
 
-      {/* The same entries as the Projects page, laid out like a role: the
-          role line where a role has its dates, what the system is, what I
-          did, and the tech line. */}
-      <h2>Selected Projects</h2>
-      {projects.map((p) => (
-        <div key={p.title} className="role">
+      <h2>Experience</h2>
+      {resume.roles.map((role) => (
+        <div key={`${role.company}-${role.position}`} className="role">
           <div className="role-head">
-            <p className="meta">{p.role}</p>
-            <h3>{p.title}</h3>
+            <p className="meta">
+              {role.period} | {role.location}
+            </p>
+            <h3>
+              {role.position} <span className="where">| {role.company}</span>
+            </h3>
           </div>
-          <p className="summary">
-            <span className="block-label">System</span>
-            {p.description}
-          </p>
-          {p.did && p.did.length > 0 && (
-            <ul>
-              {p.did.map((d) => (
-                <li key={d.label}>
-                  <b>{d.label}:</b> {d.text}
-                </li>
+          {role.about && <p className="about">{role.about}</p>}
+          <Bullets items={role.bullets} />
+          {role.projects && (
+            <>
+              <p className="projects-label">
+                <span className="label">Key projects</span>
+              </p>
+              {role.projects.map((p) => (
+                <div key={p.name} className="project">
+                  <p className="proj-head">
+                    <b className="pname">{p.name}:</b> {p.context}
+                  </p>
+                  <Bullets items={p.bullets} />
+                </div>
               ))}
-            </ul>
+            </>
           )}
-          <p className="tech">
-            <span className="block-label">Tech</span>
-            {p.tags.join(' · ')}
-          </p>
+          <Tech>{role.tech}</Tech>
         </div>
       ))}
 
-      <h2>Education</h2>
-      {education.map((e) => (
-        <div key={e.degree} className="edu">
-          <b>{e.degree}</b> — {e.school} <span className="period">({e.period})</span>
+      <div className="role earlier">
+        <div className="role-head">
+          <h3>Earlier career</h3>
         </div>
+        {resume.earlier.map((e) => (
+          <p key={e.title}>
+            <b>{e.title}</b> <span className="meta">({e.period})</span>: {e.text}
+          </p>
+        ))}
+      </div>
+
+      <h2>Education</h2>
+      {resume.education.map((e) => (
+        <p key={e.degree}>
+          <b>{e.degree}</b>, {e.school} <span className="nowrap">({e.period})</span>
+        </p>
       ))}
     </div>
   );
