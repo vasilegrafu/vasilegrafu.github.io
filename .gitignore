@@ -9,3 +9,7 @@ __pycache__/
 # deliverables.
 _preview/
 
+# Scratch notes, drafts and other people's documents. Private working
+# material: never part of the public site or its history.
+/.do-not-commit/
+
