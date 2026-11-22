@@ -74,10 +74,6 @@ export const resume = {
       text: 'SQL Server, PostgreSQL, database design, TypeScript, React',
     },
     {
-      label: 'Foundations',
-      text: 'data structures and algorithms, design patterns and clean code, system design, machine learning and neural network fundamentals, probability, statistics, linear algebra and calculus',
-    },
-    {
       label: 'Engineering management',
       text: 'leading teams, hiring and mentoring, engineering standards, Agile and Scrum, Project Management (Prince2)',
     },
