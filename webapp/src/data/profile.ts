@@ -570,7 +570,7 @@ export const projects: Project[] = [
       },
       {
         label: 'Management web app',
-        text: 'built most of the local web app installers and support use every day: accounts, profiles, delivery endpoints, watch targets, settings, audit events and the status of every file.',
+        text: 'the web app support uses every day: accounts, profiles, delivery endpoints, watch targets, settings, audit events and the status of every file.',
       },
       {
         label: 'Reliable delivery',
