@@ -5,10 +5,13 @@
    One column: applicant-tracking systems read the PDF's text in the order it
    is written, and two columns of bullets came out interleaved there. */
 .resume-print {
+  /* Two tones of text, not three: ink for what is read, a dark slate for
+     what supports it (dates, company lines, project meta). A light grey made
+     the secondary lines hard to read and blurred where one block ended. */
   --ink: #1e293b;
-  --muted: #64748b;
+  --muted: #334155;
   --accent: #4338ca;
-  --line: #e2e8f0;
+  --line: #cbd5e1;
 
   background: #ffffff;
   color: var(--ink);
@@ -122,8 +125,8 @@
 /* Entries break freely; what must not split is a heading from the lines
    under it, which break-after on the parts handles. */
 .resume-print .role {
-  margin-top: 10px;
-  padding-top: 8px;
+  margin-top: 14px;
+  padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 /* The first entry of a section sits under the section's own rule already. */
@@ -165,10 +168,17 @@
   font-weight: 700;
 }
 /* The position is what a recruiter scans for, so it keeps the weight; the
-   employer steps down rather than competing with it. */
+   employer steps down in weight only, and stays in full ink. */
 .resume-print h3 .where {
   font-weight: 400;
+  color: var(--ink);
+}
+/* A role's years follow its company on the same line, set like the company. */
+.resume-print h3 .period {
+  font-weight: 400;
   color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 .resume-print .about {
   color: var(--muted);
@@ -180,9 +190,14 @@
    at the body's size, in full-strength ink and a step heavier than the prose,
    with each technology set apart by a bar (see Tech in ResumePrintPage). */
 .resume-print .tech {
-  margin-top: 5px;
+  margin-top: 8px;
   color: var(--ink);
   font-weight: 500;
+  /* It closes its entry: never the first line of a page on its own. */
+  break-before: avoid;
+  page-break-before: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 /* The small label on Tech and Key projects. */
 .resume-print .label {
@@ -196,14 +211,14 @@
 
 /* Marks the blocks under it as projects done in the role above. */
 .resume-print .projects-label {
-  margin-top: 8px;
+  margin-top: 12px;
   break-after: avoid;
   page-break-after: avoid;
 }
 /* One key project: a context line, then what I did, indented under it. The
    context line never ends a page on its own. */
 .resume-print .project {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 .resume-print .proj-head {
   margin-top: 0;

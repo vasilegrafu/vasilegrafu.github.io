@@ -59,7 +59,7 @@ export const resume = {
     },
     {
       label: 'Software and solution architecture',
-      text: 'distributed services and APIs at scale, Domain-Driven Design; C#, .NET, ASP.NET Core, Entity Framework, Python, FastAPI',
+      text: 'distributed services and APIs at scale, Domain-Driven Design, System Design; C#, .NET, ASP.NET Core, Entity Framework, Python, FastAPI',
     },
     {
       label: 'Cloud and DevOps',
@@ -97,7 +97,8 @@ export const resume = {
      *  followed by its `links`, the repository first. */
     projects: [
       {
-        meta: 'Creator | 2026 | Developer tools, AI',
+        meta: 'Developer tools, AI',
+        year: '2026',
         links: [
           {
             label: 'github.com/vasilegrafu/project.specs-builder',
@@ -125,7 +126,8 @@ export const resume = {
         tech: 'Claude Code, Agent Skills, multi-agent, Python, SQLite, JavaScript',
       },
       {
-        meta: 'Creator | 2026 | Developer tools, AI',
+        meta: 'Developer tools, AI',
+        year: '2026',
         links: [
           {
             label: 'github.com/vasilegrafu/project.application-builder',
@@ -164,15 +166,19 @@ export const resume = {
         {
           name: 'nShift Companion, AI assistant',
           context:
-            "a central piece of nShift's strategy for opening its products to customers through conversation. Built into the checkout, tracking, returns and portal products, with an agent of its own for each product.",
+            "a central piece of nShift's strategy for opening its products to customers through conversation. Built into the checkout, tracking, returns, audit and portal products, with an agent of its own for each product.",
           bullets: [
             {
-              lead: 'Architecture:',
-              text: "designed the routing so a question goes straight to the product's own agent with the whole conversation, replacing an orchestrator-first design that lost context on follow-up questions; agents can also consult one another, with a guard against delegating in circles.",
+              lead: 'Hybrid routing:',
+              text: "designed the routing model. When the product is known, the embedded widget sends the request straight to that product's agent, with the user's original message and the full conversation history. It replaced an orchestrator-first design that reworded questions and lost context on follow-ups.",
+            },
+            {
+              lead: 'Agent-to-agent delegation:',
+              text: "built peer-to-peer delegation, so any agent can consult another product's agent through a shared tool. The list of available agents is built from the database at runtime, and a guard prevents agents from delegating in circles.",
             },
             {
               lead: 'Five production agents,',
-              text: 'each with its own prompts, tools, knowledge and admin-managed starter questions; the largest contributor to the project over the year.',
+              text: "built and shipped, each with product-specific prompts kept under version control, its own tool set and knowledge-base scope, and admin-managed starter questions (backend endpoints plus admin UI). I was the project's largest contributor over the year.",
             },
             {
               lead: 'Knowledge (RAG):',
@@ -180,18 +186,18 @@ export const resume = {
             },
             {
               lead: 'Actions, not just answers:',
-              text: 'agents call company systems through MCP.',
+              text: 'connected the agents to company systems through MCP, including invoicing and user management.',
             },
           ],
         },
         {
           name: 'Enterprise MCP Gateway',
           context:
-            "the company's single, governed entry point between AI agents, nShift's own assistant and third-party agent platforms, and its systems, built on the open-source agentgateway.",
+            "the company's single, governed entry point between AI agents, nShift's own assistant and third-party agent platforms, and its systems, built on the open-source agentgateway. It fronts 8 tool servers across 6 product areas.",
           bullets: [
             {
               lead: 'Led design and build,',
-              text: 'from the first commit to production in four environments.',
+              text: 'from the first commit to production.',
             },
             {
               lead: 'Access control:',
@@ -206,7 +212,7 @@ export const resume = {
         {
           name: 'Custom Price Calculation',
           context:
-            "the new pricing engine behind nShift's self-service carrier rate cards. Customers keep their negotiated prices (zones, weight bands, surcharges, discounts) and get the exact cost of every shipment; it replaces the legacy pricing service.",
+            "the new pricing engine behind nShift's self-service carrier rate cards. Customers keep their negotiated prices (zones, weight bands, surcharges, discounts) and get the exact cost of every shipment. It replaces the pricing engine I wrote in 2009.",
           bullets: [
             {
               lead: 'Engine and API:',
@@ -255,12 +261,16 @@ export const resume = {
               text: 'own the project and steer the developers on it, including an external contractor, from requirements to release.',
             },
             {
-              lead: 'Reliable delivery:',
-              text: "waits until a file is completely written, delivers it at least once with a deduplication key so repeats are ignored, and records each file's journey, so support can always answer \"what happened to my file?\"",
+              lead: 'Management web app:',
+              text: 'built most of the local management web UI and API: client accounts, profiles, endpoints, watch targets, settings, audit events and per-file processing status.',
             },
             {
-              lead: 'Management web app',
-              text: "that support uses every day, with passwords kept in the operating system's secure credential store rather than in plain files.",
+              lead: 'Processing pipeline:',
+              text: 'worked on detecting new files, checking that a file has stopped changing before sending it, uploading, and archiving per watch target. Delivery is at-least-once, and I added the deduplication key that lets the receiving side ignore repeats.',
+            },
+            {
+              lead: 'Test environment:',
+              text: 'built a test environment with SFTPGo (one user per protocol) and an end-to-end upload check.',
             },
           ],
         },
@@ -314,7 +324,7 @@ export const resume = {
       bullets: [
         {
           lead: 'Custom Price Calculation Engine:',
-          text: 'designed and built it. Customers upload the rates agreed with their carriers, and the engine prices every shipment from them. Written in 2009, still in production across nShift, and large enough that it grew its own team.',
+          text: 'designed and built it. Customers upload the rates agreed with their carriers, and the engine prices every shipment from them. Written in 2009, still in production across nShift, and large enough that it grew its own team. I now lead its replacement (Custom Price Calculation, above).',
         },
       ],
       tech: 'C#, .NET, ASP.NET Web Forms, WCF, SQL Server',

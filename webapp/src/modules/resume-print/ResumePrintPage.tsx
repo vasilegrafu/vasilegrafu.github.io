@@ -145,7 +145,8 @@ export default function ResumePrintPage() {
           {/* The project's name leads; its role, year and links follow. */}
           <div className="role-head">
             <h3>
-              {p.title} <span className="where">| {p.where}</span>
+              {p.title} <span className="where">| {p.where}</span>{' '}
+              <span className="period">| {p.year}</span>
             </h3>
             <p className="meta">
               {p.meta}
@@ -167,12 +168,12 @@ export default function ResumePrintPage() {
       <h2>Experience</h2>
       {resume.roles.map((role) => (
         <div key={`${role.company}-${role.position}`} className="role">
+          {/* Title, company and years on one line, read left to right. The
+              location is the header's, said once. */}
           <div className="role-head">
-            <p className="meta">
-              {role.period} | {role.location}
-            </p>
             <h3>
-              {role.position} <span className="where">| {role.company}</span>
+              {role.position} <span className="where">| {role.company}</span>{' '}
+              <span className="period">| {role.period}</span>
             </h3>
           </div>
           {role.about && <p className="about">{role.about}</p>}
