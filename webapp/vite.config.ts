@@ -1,4 +1,4 @@
-import { copyFileSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 import { site } from './src/data/profile.ts'
 import { articlesByDate } from './src/modules/articles/registry.ts'
-import { expandPath, routes } from './src/routes.ts'
+import { expandPath, redirects, routes } from './src/routes.ts'
 
 const src = (dir: string) => fileURLToPath(new URL(`./src/${dir}`, import.meta.url))
 
@@ -69,9 +69,29 @@ function rssXml(): string {
   ].join('\n')
 }
 
+/** A page that forwards to `to` at once, for a URL that moved (`redirects` in routes.ts). */
+function redirectHtml(to: string): string {
+  const href = escapeXml(new URL(to, site.url).href)
+  return [
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '  <meta charset="utf-8">',
+    `  <title>Moved — ${escapeXml(site.name)}</title>`,
+    `  <link rel="canonical" href="${href}">`,
+    `  <meta http-equiv="refresh" content="0; url=${escapeXml(to)}">`,
+    `  <script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script>`,
+    '</head>',
+    `<body><p>This page has moved to <a href="${escapeXml(to)}">${href}</a>.</p></body>`,
+    '</html>',
+    '',
+  ].join('\n')
+}
+
 // Static-site files a SPA on GitHub Pages still needs: sitemap.xml and rss.xml
-// generated from the route manifest and article registry, and 404.html as a
-// copy of index.html so deep links load the app and the router takes over.
+// generated from the route manifest and article registry, 404.html as a copy
+// of index.html so deep links load the app and the router takes over, and a
+// forwarding page at every URL that moved.
 function staticSiteFiles(): Plugin {
   return {
     name: 'static-site-files',
@@ -83,6 +103,11 @@ function staticSiteFiles(): Plugin {
     writeBundle(options) {
       const dir = options.dir ?? 'dist'
       copyFileSync(join(dir, 'index.html'), join(dir, '404.html'))
+      for (const { from, to } of redirects) {
+        const target = join(dir, from)
+        mkdirSync(target, { recursive: true })
+        writeFileSync(join(target, 'index.html'), redirectHtml(to))
+      }
       writeFileSync(join(dir, BUILD_TIME_FILE), builtAt)
     },
   }

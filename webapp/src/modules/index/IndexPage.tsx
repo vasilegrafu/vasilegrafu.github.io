@@ -88,7 +88,7 @@ export default function IndexPage() {
           </ul>
           {w.article && (
             <p className="mt-6">
-              <Link to={`/articles/${w.article}`} className="btn btn-ghost">
+              <Link to={`/research/${w.article}`} className="btn btn-ghost">
                 Read the article
                 <IconPart name="lucide:arrow-right" className="h-3.5 w-3.5" />
               </Link>

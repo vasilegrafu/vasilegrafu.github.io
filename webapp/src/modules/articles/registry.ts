@@ -13,16 +13,9 @@ export interface ArticleMeta {
   tags: string[];
 }
 
-export const articles: ArticleMeta[] = [
-  {
-    id: 'specifications-as-a-graph',
-    title: 'Specifications as a graph',
-    description:
-      'A product specification held as a graph of small, linked facts: an AI assistant writes it with you, people read it in a browser, agents build from it, and every change shows what it touches before it is made.',
-    pubDate: new Date('2026-11-04'),
-    tags: ['AI-assisted development', 'Product specification', 'Agentic architectures'],
-  },
-];
+// Empty, for now: the one article, specifications-as-a-graph, moved to
+// Research. Its old URL redirects there (`redirects` in routes.ts).
+export const articles: ArticleMeta[] = [];
 
 export const articlesByDate = () =>
   [...articles].sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());

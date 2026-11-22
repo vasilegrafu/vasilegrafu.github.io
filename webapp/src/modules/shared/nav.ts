@@ -10,8 +10,9 @@ export interface NavItem {
 // current work, not a biography — the biography is on Career.
 export const navItems: NavItem[] = [
   { href: '/', label: 'Now', icon: 'lucide:sprout' },
-  { href: '/articles', label: 'Articles', icon: 'lucide:file-text' },
+  { href: '/research', label: 'Research', icon: 'lucide:telescope' },
   { href: '/career', label: 'Career', icon: 'lucide:briefcase' },
   { href: '/projects', label: 'Projects', icon: 'lucide:layers' },
+  { href: '/articles', label: 'Articles', icon: 'lucide:file-text' },
   { href: '/contact', label: 'Contact', icon: 'lucide:at-sign' },
 ];
