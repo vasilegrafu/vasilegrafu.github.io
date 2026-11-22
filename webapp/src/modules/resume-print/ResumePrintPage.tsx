@@ -19,6 +19,7 @@ import {
   education,
   experience,
   leadershipStart,
+  projects,
   site,
   skills,
   yearsSince,
@@ -145,6 +146,35 @@ export default function ResumePrintPage() {
         );
       })}
 
+      {/* The same entries as the Projects page, laid out like a role: the
+          role line where a role has its dates, what the system is, what I
+          did, and the tech line. */}
+      <h2>Selected Projects</h2>
+      {projects.map((p) => (
+        <div key={p.title} className="role">
+          <div className="role-head">
+            <p className="meta">{p.role}</p>
+            <h3>{p.title}</h3>
+          </div>
+          <p className="summary">
+            <span className="block-label">System</span>
+            {p.description}
+          </p>
+          {p.did && p.did.length > 0 && (
+            <ul>
+              {p.did.map((d) => (
+                <li key={d.label}>
+                  <b>{d.label}:</b> {d.text}
+                </li>
+              ))}
+            </ul>
+          )}
+          <p className="tech">
+            <span className="block-label">Tech</span>
+            {p.tags.join(' · ')}
+          </p>
+        </div>
+      ))}
 
       <h2>Education</h2>
       {education.map((e) => (

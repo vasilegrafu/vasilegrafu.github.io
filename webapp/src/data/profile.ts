@@ -461,8 +461,8 @@ export const projects: Project[] = [
       'One secure, governed entry point between AI agents and the company’s systems, built on the Model Context Protocol (MCP). AI clients — the company’s own assistant and third-party agent platforms — connect to the gateway, which checks who they are and what they may use, and routes each request to the right tool server: tracking, user management, invoicing and more.',
     did: [
       {
-        label: 'From idea to production',
-        text: 'owned the initiative and led the technical approach on the open-source agentgateway, taking it from the first commit to production in four environments.',
+        label: 'From first commit to production',
+        text: 'led the technical design and the build on the open-source agentgateway, and took it from the first commit to production in four environments.',
       },
       {
         label: 'Security model',
@@ -532,7 +532,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: 'Address Intelligence Service',
+    title: 'Address Lookup (Address Intelligence Service)',
     icon: 'lucide:map-pin',
     role: 'Creator and technical lead · nShift · 2023 – present',
     description:
