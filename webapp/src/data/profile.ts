@@ -1,6 +1,8 @@
 export const site = {
   name: 'Vasile Grafu',
-  title: 'Engineering Manager | Solutions Architect | Software Architecture, Cloud & Agentic AI',
+  // One title for the site and the resume (resume.ts reads it from here), so
+  // the two cannot say different things.
+  title: 'Engineering Manager and Solutions Architect, Agentic AI',
   // The line under the name in the banner, on every page. Deliberately not
   // the job title: `title` above still carries that, on the Career and Skills
   // pages and in the resume.

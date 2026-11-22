@@ -9,7 +9,7 @@
 // A bullet's `lead` is set in bold before its text, punctuation included, so
 // it can end in a colon, a comma or nothing. Links inside a text are written
 // as [label](url).
-import { careerStart, leadershipStart, yearsSince } from './profile';
+import { careerStart, leadershipStart, site, yearsSince } from './profile';
 
 export interface ResumeBullet {
   lead?: string;
@@ -40,7 +40,8 @@ export interface ResumeRole {
 const logisticsStart = 2009;
 
 export const resume = {
-  headline: 'Engineering Manager and Solutions Architect, Agentic AI',
+  /** The site's own title, so the resume and the Career page cannot drift apart. */
+  headline: site.title,
 
   // Functions rather than strings: the year counts come from the build year,
   // which only exists once Vite has substituted it (see yearsSince).

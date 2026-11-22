@@ -2,7 +2,9 @@
 // social links and theme toggle on the right, mobile dropdown panel below,
 // and the phone-only pager under it all.
 import { useState } from 'react';
+import { Link } from 'react-router';
 import MenuButtonPart from '@fx/components/MenuButtonPart';
+import { site } from '@data/profile';
 import MobileMenuPart from './MobileMenuPart';
 import NavMenuPart from './NavMenuPart';
 import PagerPart from './PagerPart';
@@ -23,14 +25,28 @@ export default function HeaderPart() {
           active rule sits on the bar's bottom edge; the other controls pad
           themselves to the same height. */}
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 px-4 sm:px-6 lg:px-8">
-        <div className="py-3 sm:hidden">
-          <MenuButtonPart
-            open={menuOpen}
-            onToggle={() => setMenuOpen((o) => !o)}
-            controls={MOBILE_MENU_ID}
-          />
+        <div className="flex items-center gap-x-4 lg:gap-x-6">
+          <div className="py-3 sm:hidden">
+            <MenuButtonPart
+              open={menuOpen}
+              onToggle={() => setMenuOpen((o) => !o)}
+              controls={MOBILE_MENU_ID}
+            />
+          </div>
+          {/* The name, said quietly: the menu's own size and the muted colour,
+              no weight, no accent. It answers "whose site is this" and takes
+              you home. Shown only where the bar has room for it: beside the
+              menu button on a wide phone, and before the tabs from lg up. On a
+              narrow phone and between sm and lg the bar is already full — the
+              contact icons and the theme button fill it — so it steps out. */}
+          <Link
+            to="/"
+            className="text-muted hover:text-ink hidden py-3 whitespace-nowrap transition-colors min-[480px]:inline sm:hidden lg:inline"
+          >
+            {site.name}
+          </Link>
+          <NavMenuPart />
         </div>
-        <NavMenuPart />
         <div className="flex items-center gap-x-5 py-3">
           <SocialLinksPart />
           <ThemeMenuPart />
