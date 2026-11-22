@@ -1,6 +1,7 @@
 // Project card: icon tile, title, role line, what the system is, what I did
 // on it, and tag chips. No key-figures strip — the card stays a plain summary
 // for recruiters, with the detail in the "What I did" lines.
+import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import type { Project } from '@data/profile';
 
@@ -39,6 +40,27 @@ export default function ProjectCardPart({ project }: Props) {
           </span>
         ))}
       </div>
+      {project.links && project.links.length > 0 && (
+        <p className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+          {project.links.map((l) =>
+            l.href.startsWith('/') ? (
+              <Link key={l.href} to={l.href} className="link-accent">
+                {l.label} →
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-accent"
+              >
+                {l.label} ↗
+              </a>
+            ),
+          )}
+        </p>
+      )}
     </article>
   );
 }

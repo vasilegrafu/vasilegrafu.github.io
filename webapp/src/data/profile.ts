@@ -365,16 +365,56 @@ export interface Project {
    */
   did?: { label: string; text: string }[];
   tags: string[];
+  /**
+   * Where to read more, under the tags. A path starting with "/" stays on the
+   * site; anything else opens in a new tab. Only for work that is public.
+   */
+  links?: { label: string; href: string }[];
 }
 
-// The systems I built at nShift, for the Projects page only: written for
-// recruiters and employers, so what each one does and my part in it, not how.
-// The order is deliberate — the AI work first. Neither the printable resume
-// nor the Career page reads this list.
+// The systems I built, for the Projects page only: written for recruiters and
+// employers, so what each one does and my part in it, not how. The order is
+// deliberate — my own open-source work first, then the AI work at nShift.
+// Neither the printable resume nor the Career page reads this list.
 //
 // Public page: no internal names, hostnames, suppliers, customers, scopes or
 // costs. Backends are named by business function only.
 export const projects: Project[] = [
+  {
+    title: 'Specifications as a graph',
+    icon: 'lucide:network',
+    role: 'Creator · Personal project, open source · 2026',
+    description:
+      'specs-builder turns a conversation into a complete product specification. You describe the product in plain words to Claude Code; it writes the requirements, rules, screens and a clickable prototype with you, and asks about whatever you left open. Everything is kept as small, linked facts, so nothing is written twice — and before you change anything, it shows you everything that change will touch.',
+    did: [
+      {
+        label: 'Designed and built it end to end',
+        text: 'the instructions Claude Code follows to write a specification with you, the structure every specification is stored in, and the small web application that opens it in your browser.',
+      },
+      {
+        label: 'No more out-of-date copies',
+        text: 'each fact — a requirement, a rule, a screen — is written once and linked to everything that depends on it, so the specification, the prototype and the code cannot quietly drift apart.',
+      },
+      {
+        label: 'Know the cost of a change before you make it',
+        text: 'ask for a change and it lists every requirement, screen and flow it affects, waits for your yes, then flags what needs a second look.',
+      },
+      {
+        label: 'Start from what you already have',
+        text: 'point it at an existing product — its code, database, APIs, website or documents — and its agents write the specification from it, showing where each requirement came from.',
+      },
+      {
+        label: 'One source for people and for AI',
+        text: 'product owners, designers and testers read it in a browser, with a map of how everything connects and a clickable prototype, and can share it as a single HTML file; coding agents read the same files and rebuild only what changed.',
+      },
+    ],
+    tags: ['Claude Code', 'Agent Skills', 'Multi-agent', 'Python', 'SQLite', 'JavaScript'],
+    links: [
+      { label: 'Read the research', href: '/research/specifications-as-a-graph' },
+      { label: 'Source on GitHub', href: 'https://github.com/vasilegrafu/project.specs-builder' },
+      { label: 'Video series', href: 'https://www.youtube.com/playlist?list=PLAlCi-PFDpyk' },
+    ],
+  },
   {
     title: 'nShift Companion',
     icon: 'lucide:bot-message-square',
