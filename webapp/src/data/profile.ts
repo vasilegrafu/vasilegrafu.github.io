@@ -448,32 +448,6 @@ export const projects: Project[] = [
     tags: ['MCP', 'Python', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
   },
   {
-    title: 'Address Intelligence Service',
-    icon: 'lucide:map-pin',
-    role: 'Creator and technical lead · nShift · 2023 – present',
-    description:
-      'nShift’s shared service for understanding addresses across many countries: autocomplete as you type, address and postcode validation, geocoding and distance. It powers the pickup-point search shoppers see at checkout, where an exact location decides which parcel lockers and service points they are offered.',
-    did: [
-      {
-        label: 'From proof of concept to platform',
-        text: 'designed and built the service from the first commit and grew it into a production platform other teams rely on; technical owner for three years, writing most of the code and guiding the developers and QA engineers who joined.',
-      },
-      {
-        label: 'Seven address features in one API',
-        text: 'autocomplete, geocoding, reverse geocoding, postcode validation, postcode details, address splitting and distance.',
-      },
-      {
-        label: 'Fast as you type',
-        text: 'in-memory search indexes so suggestions come back without a database round-trip, plus work on startup time, memory and behaviour under traffic spikes, proven with stress tests before rollout.',
-      },
-      {
-        label: 'Quality without the cost',
-        text: 'answers come from a licensed address dataset first, with a paid map service only as a fallback, and the data refreshes itself on a schedule.',
-      },
-    ],
-    tags: ['C#', '.NET', 'ASP.NET Core', 'SQL Server', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
-  },
-  {
     title: 'Custom Price Calculation',
     icon: 'lucide:calculator',
     role: 'Lead developer · nShift · 2026 – present',
@@ -518,27 +492,51 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: 'Central Carrier Library',
-    icon: 'lucide:globe',
-    role: 'Creator and main developer · nShift · 2021 – 2026',
+    title: 'Address Intelligence Service',
+    icon: 'lucide:map-pin',
+    role: 'Creator and technical lead · nShift · 2023 – present',
     description:
-      'The company’s master catalogue of carriers and their services, uniting data from shipping platforms that came together through mergers. Automatic imports, bulk Excel editing for carrier managers, and a secured API used across the company.',
-    tags: ['C#', '.NET 8', 'SQL Server', 'Entity Framework Core', 'AWS S3'],
+      'nShift’s shared service for understanding addresses across many countries: autocomplete as you type, address and postcode validation, geocoding and distance. It powers the pickup-point search shoppers see at checkout, where an exact location decides which parcel lockers and service points they are offered.',
+    did: [
+      {
+        label: 'From proof of concept to platform',
+        text: 'designed and built the service from the first commit and grew it into a production platform other teams rely on; technical owner for three years, writing most of the code and guiding the developers and QA engineers who joined.',
+      },
+      {
+        label: 'Seven address features in one API',
+        text: 'autocomplete, geocoding, reverse geocoding, postcode validation, postcode details, address splitting and distance.',
+      },
+      {
+        label: 'Fast as you type',
+        text: 'in-memory search indexes so suggestions come back without a database round-trip, plus work on startup time, memory and behaviour under traffic spikes, proven with stress tests before rollout.',
+      },
+      {
+        label: 'Quality without the cost',
+        text: 'answers come from a licensed address dataset first, with a paid map service only as a fallback, and the data refreshes itself on a schedule.',
+      },
+    ],
+    tags: ['C#', '.NET', 'ASP.NET Core', 'SQL Server', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
   },
   {
     title: 'FileWatcher',
     icon: 'lucide:cloud',
     role: 'Technical lead · nShift · 2026 – present',
     description:
-      'A cross-platform agent that runs on customer machines, watching local and remote folders and delivering files to nShift’s cloud reliably and traceably. I built its management web app and designed its release process for Windows, Linux and macOS.',
-    tags: ['C#', '.NET 10', 'ASP.NET Core', 'SFTP', 'AWS S3 / CloudFront', 'GitHub Actions'],
-  },
-  {
-    title: 'Label Converter',
-    icon: 'lucide:file-text',
-    role: 'Main developer · nShift · 2022 – 2026',
-    description:
-      'The service that turns printer-language shipping labels into PDF and PNG for nShift products and customers. I moved it to an autoscaling container setup on AWS.',
-    tags: ['C#', '.NET 8', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
+      'Many shipping customers still run warehouse, ERP and label systems that exchange files through folders. FileWatcher is a small agent installed on the customer’s own machine — Windows, Linux or macOS — that watches local folders and remote FTP, FTPS and SFTP servers and delivers every finished file to nShift reliably, even through network drops, restarts and updates.',
+    did: [
+      {
+        label: 'Technical lead',
+        text: 'own the project and steer the developers on it, including an external contractor, from requirements to release.',
+      },
+      {
+        label: 'Management web app',
+        text: 'built most of the local web app installers and support use every day: accounts, profiles, delivery endpoints, watch targets, settings, audit events and the status of every file.',
+      },
+      {
+        label: 'Reliable delivery',
+        text: 'worked on the core pipeline — spotting new files, waiting until a file is completely written, uploading and archiving — and added a deduplication key so a repeated delivery is safely ignored.',
+      },
+    ],
+    tags: ['C#', '.NET 10', 'ASP.NET Core', 'SFTP', 'GitHub Actions'],
   },
 ];

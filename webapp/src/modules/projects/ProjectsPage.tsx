@@ -10,11 +10,10 @@ export default function ProjectsPage() {
     <>
       <PageMetaPart
         title="Projects — Vasile Grafu"
-        description="Systems I designed and built at nShift: an AI assistant inside nShift’s products, an enterprise MCP gateway for AI agents, and the services behind addresses, pricing, carriers, files and labels."
+        description="Systems I designed and built at nShift: an AI assistant inside nShift’s products, an enterprise MCP gateway for AI agents, and the services behind addresses, pricing and file delivery."
       />
 
-      <p className="kicker">Selected systems</p>
-      <h1 className="title-page mt-2">Projects</h1>
+      <h1 className="title-page">Selected Projects</h1>
       <p className="lede">
         Systems I designed and built at nShift: what each one does, and my part in it.
       </p>
