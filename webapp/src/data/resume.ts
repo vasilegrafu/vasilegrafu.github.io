@@ -45,8 +45,9 @@ export const resume = {
 
   // Functions rather than strings: the year counts come from the build year,
   // which only exists once Vite has substituted it (see yearsSince).
-  summary: () =>
-    `Engineering manager and hands-on architect with ${yearsSince(careerStart)}+ years in software, from game engines at Ubisoft to agentic AI platforms at nShift. I lead nShift's Webservices Team, whose services handle millions of requests a day for 10,000+ business clients, and I build the AI systems on top of them: a multi-agent assistant inside nShift's products, central to its strategy for opening its products to customers through conversation, and the company's gateway that connects AI agents to its systems. ${yearsSince(leadershipStart)} years leading teams, five of them running two at once, and still writing a large share of the code.`,
+  summary: () => [
+    `Engineering manager and hands-on architect with ${yearsSince(careerStart)}+ years in software, from game engines at Ubisoft to agentic AI platforms at nShift. I lead nShift's Webservices Team, whose services handle millions of requests a day for 10,000+ business clients. I am responsible for a multi-agent assistant inside nShift's products, central to its strategy for opening its products to customers through conversation, and the company's gateway that connects AI agents to its systems. ${yearsSince(leadershipStart)} years leading teams, five of them running two at once, and still writing a large share of the code.`,
+  ],
   industry: () =>
     `logistics and delivery software (${yearsSince(logisticsStart)} years), video games (3 years)`,
   languages: 'Romanian (native), English (professional working proficiency)',
@@ -83,6 +84,19 @@ export const resume = {
   ],
 
   openSource: {
+    /** Opens the section, before the project: why the research exists, then
+     *  the two lines of work it leads to, as a short list. */
+    intro: {
+      paragraphs: [
+        'What occupies me most these days is how AI changes the way software gets built.',
+        'AI makes code fast and cheap to write; it does not keep a system coherent, understood and under control. That is the part I care about: bringing AI into real engineering without losing what makes software trustworthy.',
+        'Two things I am building toward it:',
+      ],
+      items: [
+        'Specifications kept as a graph (see below)',
+        'Controlling vibe coding (in progress): application-builder, a Claude Code skill that builds from existing codebases instead of from imagination. It adds features in the house style, or migrates and translates whole applications to another stack, proven to behave like the original, at any codebase size.',
+      ],
+    },
     meta: 'Creator | 2026 | Developer tools, AI',
     /** Shown after `meta`, each as a link: the repository first. */
     links: [

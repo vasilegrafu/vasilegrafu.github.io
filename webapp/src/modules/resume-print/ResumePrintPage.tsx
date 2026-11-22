@@ -90,7 +90,9 @@ export default function ResumePrintPage() {
       </header>
 
       <h2>Summary</h2>
-      <p>{resume.summary()}</p>
+      {resume.summary().map((para) => (
+        <p key={para.slice(0, 32)}>{withLinks(para)}</p>
+      ))}
       <p className="industry">
         <b>Industry:</b> {resume.industry()}
       </p>
@@ -108,6 +110,16 @@ export default function ResumePrintPage() {
       </div>
 
       <h2>Open Source (Research)</h2>
+      <div className="section-intro">
+        {os.intro.paragraphs.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+        <ul>
+          {os.intro.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
       <div className="role keep">
         <div className="role-head">
           <p className="meta">

@@ -22,7 +22,7 @@
    them even with --no-pdf-header-footer, which only drops its own header. */
 @page {
   size: A4;
-  margin: 13mm 14mm;
+  margin: 11mm 14mm;
 
   @bottom-right {
     content: 'Page ' counter(page) ' of ' counter(pages);
@@ -87,7 +87,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--accent);
-  margin: 18px 0 7px;
+  margin: 15px 0 6px;
   padding-bottom: 3px;
   background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 0.5px no-repeat;
   break-after: avoid;
@@ -122,13 +122,31 @@
 /* Entries break freely; what must not split is a heading from the lines
    under it, which break-after on the parts handles. */
 .resume-print .role {
-  margin-top: 12px;
-  padding-top: 9px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--line);
 }
 /* The first entry of a section sits under the section's own rule already. */
 .resume-print h2 + .role {
   margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+/* A few lines that open a section before its first entry: the entry follows
+   them without a rule, as part of the same thought. The block is short, so it
+   never splits across a page, and it stays with the entry after it. */
+.resume-print .section-intro {
+  margin-top: 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.resume-print .section-intro > p:first-child {
+  margin-top: 0;
+}
+.resume-print .section-intro + .role {
+  margin-top: 8px;
   padding-top: 0;
   border-top: 0;
 }
@@ -182,10 +200,12 @@
 /* One key project: a context line, then what I did, indented under it. The
    context line never ends a page on its own. */
 .resume-print .project {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .resume-print .proj-head {
   margin-top: 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
   break-after: avoid;
   page-break-after: avoid;
 }
