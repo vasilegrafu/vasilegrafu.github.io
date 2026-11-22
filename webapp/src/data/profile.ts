@@ -357,15 +357,188 @@ export interface Project {
   /** Lucide icon, on the project rather than in a positional array. */
   icon: string;
   role: string;
+  /** What the system is, in a sentence or two. My part goes in `did`. */
   description: string;
-  /** Three at most: what the system achieves, as a figure or a short word over a label. */
-  outcomes?: { value: string; label: string }[];
+  /**
+   * What I did on it, four to six lines. `label` is the bold lead a skimming
+   * reader takes in; `text` is the detail for a technical one.
+   */
+  did?: { label: string; text: string }[];
   tags: string[];
 }
 
-// Deliberately empty, for now: the projects are being rewritten and will go
-// back here. Everything that reads this list copes with it being empty — the
-// Projects page says so plainly, the Skills page drops its "applied in" lines,
-// and the printable resume leaves the section out — so adding entries back is
-// the only change needed to bring them all to life again.
-export const projects: Project[] = [];
+// The systems I built at nShift, for the Projects page only: written for
+// recruiters and employers, so what each one does and my part in it, not how.
+// The order is deliberate — the AI work first. Neither the printable resume
+// nor the Career page reads this list.
+//
+// Public page: no internal names, hostnames, suppliers, customers, scopes or
+// costs. Backends are named by business function only.
+export const projects: Project[] = [
+  {
+    title: 'nShift Companion',
+    icon: 'lucide:bot-message-square',
+    role: 'Lead engineer · nShift · 2025 – present',
+    description:
+      'A production AI assistant built into nShift’s checkout, tracking, returns and portal products. Each product has its own agent, with its own knowledge and tools, and the agents can consult one another.',
+    did: [
+      {
+        label: 'Multi-agent design',
+        text: 'designed how a question reaches the right agent — straight to the product’s own agent when the product is known, so follow-up questions keep their context — and let agents consult one another, with a guard against delegating in circles.',
+      },
+      {
+        label: 'Five production agents',
+        text: 'built and shipped one agent per product area, each with its own prompts, tools and knowledge, and admin-managed starter questions.',
+      },
+      {
+        label: 'Knowledge pipeline (RAG)',
+        text: 'imports the help-centre articles, keeps them in sync on a schedule, limits each agent to its own product’s content, and cites the source articles in its answers.',
+      },
+      {
+        label: 'Actions, not just answers',
+        text: 'connected the agents to company systems through MCP, and built a support-ticket flow where the assistant drafts the ticket and the user confirms it before anything is created.',
+      },
+    ],
+    tags: [
+      'Python',
+      'FastAPI',
+      'AWS Bedrock',
+      'Claude',
+      'Multi-agent',
+      'RAG',
+      'MCP',
+      'React',
+      'AWS ECS Fargate',
+      'Docker',
+      'GitHub Actions',
+    ],
+  },
+  {
+    title: 'Enterprise MCP Gateway',
+    icon: 'lucide:workflow',
+    role: 'Creator and project owner · nShift · 2026 – present',
+    description:
+      'One secure, governed entry point between AI agents and the company’s systems, built on the Model Context Protocol (MCP). AI clients — the company’s own assistant and third-party agent platforms — connect to the gateway, which checks who they are and what they may use, and routes each request to the right tool server: tracking, user management, invoicing and more.',
+    did: [
+      {
+        label: 'From idea to production',
+        text: 'owned the initiative and led the technical approach on the open-source agentgateway, taking it from the first commit to production in four environments.',
+      },
+      {
+        label: 'Security model',
+        text: 'every caller’s identity is checked, permissions are enforced per tool server, and private backends receive only the identity details they need.',
+      },
+      {
+        label: 'Two gateways, one catalogue each',
+        text: 'an internal and an external variant, each publishing only the tools its audience may use, with one endpoint per product that combines several tool servers and shows each caller only what they are allowed.',
+      },
+      {
+        label: 'Existing APIs as AI tools',
+        text: 'published existing REST APIs as MCP tools without rewriting them, and built a sample tool server as a template for other teams.',
+      },
+      {
+        label: 'Shipped like a product',
+        text: 'versioned, immutable releases with rollback, health checks and security scanning, and integration tests that check every deployed environment in one run.',
+      },
+      {
+        label: 'Adoption',
+        text: 'wrote the architecture docs and the onboarding guide teams use to add their own tool servers, and connected the company’s AI assistant to the first tools.',
+      },
+    ],
+    tags: ['MCP', 'Python', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
+  },
+  {
+    title: 'Address Intelligence Service',
+    icon: 'lucide:map-pin',
+    role: 'Creator and technical lead · nShift · 2023 – present',
+    description:
+      'nShift’s shared service for understanding addresses across many countries: autocomplete as you type, address and postcode validation, geocoding and distance. It powers the pickup-point search shoppers see at checkout, where an exact location decides which parcel lockers and service points they are offered.',
+    did: [
+      {
+        label: 'From proof of concept to platform',
+        text: 'designed and built the service from the first commit and grew it into a production platform other teams rely on; technical owner for three years, writing most of the code and guiding the developers and QA engineers who joined.',
+      },
+      {
+        label: 'Seven address features in one API',
+        text: 'autocomplete, geocoding, reverse geocoding, postcode validation, postcode details, address splitting and distance.',
+      },
+      {
+        label: 'Fast as you type',
+        text: 'in-memory search indexes so suggestions come back without a database round-trip, plus work on startup time, memory and behaviour under traffic spikes, proven with stress tests before rollout.',
+      },
+      {
+        label: 'Quality without the cost',
+        text: 'answers come from a licensed address dataset first, with a paid map service only as a fallback, and the data refreshes itself on a schedule.',
+      },
+    ],
+    tags: ['C#', '.NET', 'ASP.NET Core', 'SQL Server', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
+  },
+  {
+    title: 'Custom Price Calculation',
+    icon: 'lucide:calculator',
+    role: 'Lead developer · nShift · 2026 – present',
+    description:
+      'Where nShift’s customers keep the prices they have negotiated with carriers — zones, weight bands, surcharges, discounts — as digital rate cards they edit themselves. The engine then answers one question exactly: what does this shipment cost under this customer’s agreement? It replaces the custom-price part of an older pricing service.',
+    did: [
+      {
+        label: 'Engine and API',
+        text: 'designed the new pricing API as its own web service and built most of its endpoints and the logic behind the rate-card editor, as main developer on a three-person team.',
+      },
+      {
+        label: 'Engine roadmap',
+        text: 'own the new engine features rate managers need to model real carrier agreements: several price sheets per service, a richer pricing model, ready-made templates, and drafts, versions and publishing.',
+      },
+      {
+        label: 'Mistakes caught before they cost money',
+        text: 'every change goes through one checked intake, so a rate card cannot go live half-valid, and every error points to the exact line so rate managers can fix it themselves.',
+      },
+      {
+        label: 'Customer migration',
+        text: 'own the move of existing customers’ rate cards from the legacy service, kept backwards compatible and locked in by regression tests, so migrated customers see exactly the same prices.',
+      },
+      {
+        label: 'AI in rate management',
+        text: 'built a proof of concept where an AI agent edits a rate card from a plain-language instruction — “raise the fuel surcharge to 15%” — and returns a validated sheet with a summary of the changes.',
+      },
+      {
+        label: 'Quality built in',
+        text: 'automated API tests on every environment, browser tests for the editor, and the user manual and design documentation.',
+      },
+    ],
+    tags: [
+      'C#',
+      '.NET 10',
+      'React',
+      'TypeScript',
+      'SQL Server',
+      'Claude Agent SDK',
+      'AWS ECS Fargate',
+      'Docker',
+      'GitHub Actions',
+    ],
+  },
+  {
+    title: 'Central Carrier Library',
+    icon: 'lucide:globe',
+    role: 'Creator and main developer · nShift · 2021 – 2026',
+    description:
+      'The company’s master catalogue of carriers and their services, uniting data from shipping platforms that came together through mergers. Automatic imports, bulk Excel editing for carrier managers, and a secured API used across the company.',
+    tags: ['C#', '.NET 8', 'SQL Server', 'Entity Framework Core', 'AWS S3'],
+  },
+  {
+    title: 'FileWatcher',
+    icon: 'lucide:cloud',
+    role: 'Technical lead · nShift · 2026 – present',
+    description:
+      'A cross-platform agent that runs on customer machines, watching local and remote folders and delivering files to nShift’s cloud reliably and traceably. I built its management web app and designed its release process for Windows, Linux and macOS.',
+    tags: ['C#', '.NET 10', 'ASP.NET Core', 'SFTP', 'AWS S3 / CloudFront', 'GitHub Actions'],
+  },
+  {
+    title: 'Label Converter',
+    icon: 'lucide:file-text',
+    role: 'Main developer · nShift · 2022 – 2026',
+    description:
+      'The service that turns printer-language shipping labels into PDF and PNG for nShift products and customers. I moved it to an autoscaling container setup on AWS.',
+    tags: ['C#', '.NET 8', 'AWS ECS Fargate', 'Docker', 'GitHub Actions'],
+  },
+];

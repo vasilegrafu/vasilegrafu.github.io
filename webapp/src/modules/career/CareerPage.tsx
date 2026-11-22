@@ -1,8 +1,6 @@
-import { Link } from 'react-router';
 import IconPart from '@fx/components/IconPart';
 import SegmentBarPart from '@fx/components/SegmentBarPart';
 import StatTilePart from '@fx/components/StatTilePart';
-import { sharesToken } from '@fx/lib/tokens';
 import { yearsOnly } from '@fx/lib/yearsOnly';
 import IdentityPart from '@modules/shared/IdentityPart';
 import PageMetaPart from '@modules/shared/PageMetaPart';
@@ -11,18 +9,12 @@ import {
   education,
   experience,
   leadershipStart,
-  projects,
   skills,
   yearsSince,
 } from '@data/profile';
 import RoleItemPart from './RoleItemPart';
 
 const current = experience[0];
-
-// Projects whose tags overlap a skill group's items, e.g. "RAG" or "C# / .NET".
-// Derived rather than declared, so a project shows up here on its own once the
-// projects list has entries again.
-const relatedProjects = (items: string[]) => projects.filter((p) => sharesToken(items, p.tags));
 
 const stats = [
   { value: `${yearsSince(careerStart)}+`, label: 'years in software' },
@@ -121,7 +113,6 @@ export default function CareerPage() {
         <p className="kicker">Skills by area</p>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           {skills.map((cat) => {
-            const related = relatedProjects(cat.items);
             return (
               <section key={cat.group} className="card card-lift flex flex-col p-5">
                 <div className="flex items-center gap-3">
@@ -138,19 +129,6 @@ export default function CareerPage() {
                     </li>
                   ))}
                 </ul>
-                {related.length > 0 && (
-                  <p className="text-faint mt-auto pt-4">
-                    Applied in{' '}
-                    {related.map((pr, i) => (
-                      <span key={pr.title}>
-                        {i > 0 && ' · '}
-                        <Link to="/projects" className="link-accent">
-                          {pr.title}
-                        </Link>
-                      </span>
-                    ))}
-                  </p>
-                )}
               </section>
             );
           })}
