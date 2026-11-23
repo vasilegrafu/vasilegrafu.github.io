@@ -46,7 +46,7 @@ export const resume = {
   // Functions rather than strings: the year counts come from the build year,
   // which only exists once Vite has substituted it (see yearsSince).
   summary: () => [
-    `Engineering manager and hands-on architect with ${yearsSince(careerStart)}+ years in software, from game engines at Ubisoft to agentic AI platforms at nShift. I lead nShift's Webservices Team, whose services handle millions of requests a day for 10,000+ business clients. I am responsible for a multi-agent assistant inside nShift's products, central to its strategy for opening its products to customers through conversation, and the company's gateway that connects AI agents to its systems. ${yearsSince(leadershipStart)} years leading teams, five of them running two at once, and still writing a large share of the code.`,
+    `Engineering manager and hands-on architect with ${yearsSince(careerStart)}+ years in software, from game programming at Ubisoft to agentic AI platforms at nShift. I lead nShift's Webservices Team of 8, whose services handle millions of requests a day for 10,000+ business clients. I am responsible for the multi-agent AI assistant built into nShift's products and for the company's gateway that connects AI agents to its systems. ${yearsSince(leadershipStart)} years leading teams, five of them running two at once, and still writing a large share of the code.`,
   ],
   industry: () =>
     `logistics and delivery software (${yearsSince(logisticsStart)} years), video games (3 years)`,
@@ -86,7 +86,7 @@ export const resume = {
       paragraphs: [
         'What occupies me most these days is how AI changes the way software gets built.',
         'AI makes code fast and cheap to write; it does not keep a system coherent, understood and under control. That is the part I care about: bringing AI into real engineering without losing what makes software trustworthy.',
-        'Two things I am building toward it:',
+        'Two projects in that direction:',
       ],
     },
     /** The projects, in the order of the list above. Each one's `meta` is
@@ -137,7 +137,7 @@ export const resume = {
             text: 'A Claude Code skill that builds from existing codebases instead of from imagination: it measures what a codebase\'s parts agree on, writes new code to that contract, and asks wherever they disagree, so the AI decides only what you want it to decide.',
           },
           {
-            text: 'Adds features in the house style, or migrates and translates whole applications to another stack, proven to behave like the original: it builds, its tests pass, and it runs the same as the original. Works at any codebase size, and reads Python, TypeScript, JavaScript and C#.',
+            text: 'Adds features in the house style, or migrates and translates an application to another stack and checks the result in steps: it builds, its tests pass, and its structure and API match the original. Measured on codebases of up to 12,000 files; reads Python, TypeScript, JavaScript and C#.',
           },
         ] as ResumeBullet[],
         tech: 'Claude Code, Agent Skills, Python',
@@ -155,7 +155,7 @@ export const resume = {
       bullets: [
         {
           lead: 'Team leadership:',
-          text: "lead the Webservices Team, one of nShift's core teams: set direction and engineering standards, including end-to-end test automation and CI/CD to AWS; own the architecture; hire and mentor.",
+          text: "lead the Webservices Team of 8, one of nShift's core teams. I set direction and engineering standards, including end-to-end test automation and CI/CD to AWS, own the architecture, and hire and mentor.",
         },
       ],
       projects: [
@@ -166,19 +166,19 @@ export const resume = {
           bullets: [
             {
               lead: 'Hybrid routing:',
-              text: "designed the routing model. When the product is known, the embedded widget sends the request straight to that product's agent, with the user's original message and the full conversation history. It replaced an orchestrator-first design that reworded questions and lost context on follow-ups.",
+              text: "designed the routing model. Every product has its own agent, and the widget embedded in a product sends each request straight to it, with the user's original message and the full conversation history and no orchestrator in between. An agent that lacks the expertise for a question delegates it to another product's agent.",
             },
             {
               lead: 'Agent-to-agent delegation:',
-              text: "built peer-to-peer delegation, so any agent can consult another product's agent through a shared tool. The list of available agents is built from the database at runtime, and a guard prevents agents from delegating in circles.",
+              text: "built the peer-to-peer delegation behind it: any agent can consult another product's agent through a shared tool. The list of available agents is built from the database at runtime, and a guard prevents agents from delegating in circles.",
             },
             {
               lead: 'Five production agents,',
-              text: "built and shipped, each with product-specific prompts kept under version control, its own tool set and knowledge-base scope, and admin-managed starter questions (backend endpoints plus admin UI). I was the project's largest contributor over the year.",
+              text: "built and shipped (tracking, returns, portal, audit and QA testing), each with product-specific prompts kept under version control, its own tool set and knowledge-base scope, and admin-managed starter questions (backend endpoints plus admin UI).",
             },
             {
               lead: 'Knowledge (RAG):',
-              text: "imports the help-centre articles and keeps them in sync on a schedule, limits each agent to its own product's content, and cites the source articles in its answers.",
+              text: "built the pipeline that imports the help-centre articles and keeps them in sync on a schedule, limits each agent to its own product's content, and cites the source articles in its answers.",
             },
             {
               lead: 'Actions, not just answers:',
@@ -189,19 +189,15 @@ export const resume = {
         {
           name: 'Enterprise MCP Gateway',
           context:
-            "the company's single, governed entry point between AI agents, nShift's own assistant and third-party agent platforms, and its systems, built on the open-source agentgateway. It fronts 8 tool servers across 6 product areas.",
+            "nShift's single, governed entry point between AI agents (its own assistant and third-party agent platforms) and its systems, built on the open-source agentgateway. It fronts tool servers across several product areas, among them shipment tracking, checkout, user management, invoicing and pickup locations, in two variants: one for internal staff and one for external customers.",
           bullets: [
             {
-              lead: 'Led design and build,',
-              text: 'from the first commit to production.',
-            },
-            {
               lead: 'Access control:',
-              text: 'every agent is identified and reaches only the systems and tools it is allowed to use; internal and external variants each publish their own catalogue.',
+              text: 'designed it so that every agent is identified and reaches only the systems and tools it is allowed to use; each variant publishes only the tools its audience may use.',
             },
             {
               lead: 'Existing APIs as AI tools:',
-              text: 'published existing REST APIs as MCP tools without rewriting them, and connected tracking, checkout, user management, invoicing and pickup locations.',
+              text: 'published existing REST APIs as MCP tools without rewriting them, with one endpoint per product that combines several tool servers into a single catalogue.',
             },
           ],
         },
@@ -216,7 +212,7 @@ export const resume = {
             },
             {
               lead: 'Built for real agreements:',
-              text: 'several price sheets per service, 16 ready-made templates, drafts, versions and publishing; one checked intake, with errors that name the exact line, so a rate card cannot go live half-valid.',
+              text: 'added several price sheets per service, 16 ready-made templates, drafts, versions and publishing, and one checked intake whose errors name the exact line, so a rate card cannot go live half-valid.',
             },
             {
               lead: 'Migration:',
@@ -224,7 +220,7 @@ export const resume = {
             },
             {
               lead: 'AI:',
-              text: 'a proof of concept in which an agent edits a rate card from a plain-language instruction or builds one from an attached price list; now connecting the editor to nShift Companion.',
+              text: 'built a proof of concept in which an agent edits a rate card from a plain-language instruction or builds one from an attached price list; now connecting the editor to nShift Companion.',
             },
           ],
         },
@@ -239,11 +235,11 @@ export const resume = {
             },
             {
               lead: 'Fast and fair under load:',
-              text: 'in-memory search indexes for as-you-type speed, stress-tested before rollout, with per-client usage limits and a tracing ID that follows every request across services.',
+              text: 'built in-memory search indexes for as-you-type speed, stress-tested the service before rollout, and added per-client usage limits and a tracing ID that follows every request across services.',
             },
             {
               lead: 'Quality without the cost:',
-              text: 'a licensed address dataset answers first, with a paid map service only as a fallback, and the data refreshes itself on a schedule.',
+              text: 'designed it so that a licensed address dataset answers first and a paid map service is only a fallback, and built the importer that refreshes the data on a schedule.',
             },
           ],
         },
@@ -262,11 +258,11 @@ export const resume = {
             },
             {
               lead: 'Processing pipeline:',
-              text: 'worked on detecting new files, checking that a file has stopped changing before sending it, uploading, and archiving per watch target. Delivery is at-least-once, and I added the deduplication key that lets the receiving side ignore repeats.',
+              text: 'co-developed the detection of new files, the check that a file has stopped changing before it is sent, the upload, and archiving per watch target. Delivery is at-least-once, and I added the deduplication key that lets the receiving side ignore repeats.',
             },
             {
-              lead: 'Test environment:',
-              text: 'built a test environment with SFTPGo (one user per protocol) and an end-to-end upload check.',
+              lead: 'Testing:',
+              text: 'built an SFTPGo test server, with one user per protocol, and an end-to-end upload check.',
             },
           ],
         },
@@ -320,7 +316,7 @@ export const resume = {
       bullets: [
         {
           lead: 'Custom Price Calculation Engine:',
-          text: 'designed and built it. Customers upload the rates agreed with their carriers, and the engine prices every shipment from them. Written in 2009, still in production across nShift, and large enough that it grew its own team. I now lead its replacement (Custom Price Calculation, above).',
+          text: 'designed and built it. Customers upload the rates agreed with their carriers, and the engine prices every shipment from them. Written in 2009, still in production across nShift, and large enough that it grew its own team. I am now the main developer of its replacement (Custom Price Calculation, above).',
         },
       ],
       tech: 'C#, .NET, ASP.NET Web Forms, WCF, SQL Server',
@@ -336,7 +332,7 @@ export const resume = {
     {
       title: 'Game Programmer | Ubisoft',
       period: '2005 - 2008',
-      text: "gameplay and platform modules for Silent Hunter 4, King Kong, Blazing Angels and Tom Clancy's FireHawk. C++.",
+      text: "gameplay and platform modules for Silent Hunter 4, King Kong, Blazing Angels and Tom Clancy's H.A.W.X. C++.",
     },
   ],
 

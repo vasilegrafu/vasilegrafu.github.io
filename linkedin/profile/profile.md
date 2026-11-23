@@ -118,7 +118,7 @@ I designed, developed, and optimized gameplay and platform modules on four shipp
 • Silent Hunter 4: designed and built the framework managing the evolution of the Crew, Weapons, and Equipment of the U-Boat simulator.
 • King Kong (PC): Windows Media Center integration, multithreaded rendering, and the security module.
 • Blazing Angels (PC): Save/Load system and Media Center shell implementation.
-• Tom Clancy’s FireHawk: ERS (Enhanced Reality System) module.
+• Tom Clancy’s H.A.W.X: ERS (Enhanced Reality System) module.
 
 Tech: C++, STL · Linear algebra, Calculus, Probability
 ```
